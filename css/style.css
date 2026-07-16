@@ -283,6 +283,27 @@
   .study-btn.primary{ background: var(--jade); color:#fff; border-color:var(--jade); }
   .progress-note{ font-size:12px; color:var(--ink-soft); margin-top:10px; }
 
+  /* --- Writing practice --- */
+  .writing-wrap{ display:flex; flex-direction:column; align-items:center; padding: 10px 0 30px; }
+  .writing-info{ text-align:center; }
+  .writing-info .py{ font-size:18px; color:var(--seal); font-weight:600; }
+  .writing-info .en{ font-size:14px; color:var(--ink-soft); margin-top:2px; }
+  .writing-info .kh{ font-size:13px; color:var(--jade); margin-top:4px; font-weight:600; }
+  .writing-canvases{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:18px 0 6px; }
+  .writing-box{
+    background: var(--card); border:2px solid var(--line); border-radius:12px;
+    box-shadow: var(--shadow); overflow:hidden; transition: border-color .15s ease;
+  }
+  .writing-box.mistake{ border-color: var(--seal); animation: writingShake .3s ease; }
+  @keyframes writingShake{
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+  .writing-hint{ font-size:13px; font-weight:600; color:var(--seal); min-height:18px; margin:6px 0 0; }
+  .writing-result{ font-size:14px; font-weight:700; color:var(--jade); min-height:20px; margin:2px 0 0; }
+  .writing-error-note{ font-size:12px; color:var(--seal); }
+
   footer{ text-align:center; padding: 20px; font-size:11.5px; color: var(--ink-soft); }
 
   @media (max-width:480px){
