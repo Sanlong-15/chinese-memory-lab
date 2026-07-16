@@ -326,7 +326,8 @@
       <button class="filter-chip active" data-level="ALL">All</button>
       <button class="filter-chip" data-level="HSK1">HSK 1</button>
       <button class="filter-chip" data-level="HSK2">HSK 2</button>
-      <button class="filter-chip" data-level="BOYA">Boya Book (L11-12)</button>
+      <button class="filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip" data-level="L12">Boya L12</button>
     </div>
     <p class="count-note" id="countNote"></p>
     <div class="grid" id="wordGrid"></div>
@@ -397,9 +398,7 @@ let currentLevel = "ALL";
 let currentSearch = "";
 
 function matchesFilter(w){
-  if(currentLevel === "BOYA"){
-    if(w.level !== "L11" && w.level !== "L12") return false;
-  } else if(currentLevel !== "ALL" && w.level !== currentLevel){
+  if(currentLevel !== "ALL" && w.level !== currentLevel){
     return false;
   }
   if(currentSearch){
