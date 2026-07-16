@@ -22,6 +22,7 @@
   <button class="tab-btn" data-view="patternsView">Pattern Families</button>
   <button class="tab-btn" data-view="studyView">Study Mode</button>
   <button class="tab-btn" data-view="writingView">Writing</button>
+  <button class="tab-btn" data-view="speakingView">Speaking</button>
 </nav>
 
 <main>
@@ -116,6 +117,45 @@
         <button class="study-btn" id="wrNextBtn">Next &rarr;</button>
       </div>
       <p class="progress-note" id="writingProgress"></p>
+    </div>
+  </div>
+
+  <!-- SPEAKING VIEW -->
+  <div id="speakingView" class="view">
+    <h2 class="section-title">Pronunciation Practice</h2>
+    <p class="intro-text">Listen, then say the word out loud. Chrome or Edge will check whether it recognized the right word — this is a pass/fail check based on speech recognition, not a graded AI pronunciation score. Since Mandarin tones change meaning (mā/má/mǎ/mà), getting recognized correctly is still a good sign your tone landed.</p>
+    <p class="writing-error-note" id="spSupportNote" style="display:none;"></p>
+    <div class="controls" style="margin-bottom:6px;">
+      <button class="filter-chip speaking-filter-chip active" data-level="ALL">All</button>
+      <button class="filter-chip speaking-filter-chip" data-level="HSK1">HSK 1</button>
+      <button class="filter-chip speaking-filter-chip" data-level="HSK2">HSK 2</button>
+      <button class="filter-chip speaking-filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip speaking-filter-chip" data-level="L12">Boya L12</button>
+    </div>
+    <div class="writing-wrap">
+      <div class="speaking-card">
+        <div class="zi" id="sp-zi">你</div>
+        <div class="py" id="sp-py"></div>
+        <div class="en" id="sp-en"></div>
+        <div class="kh" id="sp-kh"></div>
+      </div>
+      <div class="example-box" style="margin-top:12px; max-width:420px;">
+        <div class="cn" id="sp-ex-cn"></div>
+        <div class="py" id="sp-ex-py"></div>
+        <div class="en" id="sp-ex-en"></div>
+      </div>
+      <div class="study-controls" style="margin-top:16px;">
+        <button class="study-btn" id="spListenBtn">🔊 Listen</button>
+        <button class="study-btn primary" id="spRecordBtn">🎙 Record &amp; Check</button>
+        <button class="study-btn" id="spPlayBtn" disabled>▶ Play mine</button>
+      </div>
+      <p class="writing-result" id="spResult"></p>
+      <div class="study-controls">
+        <button class="study-btn" id="spPrevBtn">&larr; Prev</button>
+        <button class="study-btn primary" id="spShuffleBtn">🔀 Shuffle</button>
+        <button class="study-btn" id="spNextBtn">Next &rarr;</button>
+      </div>
+      <p class="progress-note" id="speakingProgress"></p>
     </div>
   </div>
 
