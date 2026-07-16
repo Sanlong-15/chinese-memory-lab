@@ -348,6 +348,13 @@
   <div id="studyView" class="view">
     <h2 class="section-title">Study Mode</h2>
     <p class="intro-text">Tap the card to flip it. Try to recall the pinyin and meaning BEFORE you flip — that's the part that actually builds memory.</p>
+    <div class="controls" style="margin-bottom:6px;">
+      <button class="filter-chip study-filter-chip active" data-level="ALL">All</button>
+      <button class="filter-chip study-filter-chip" data-level="HSK1">HSK 1</button>
+      <button class="filter-chip study-filter-chip" data-level="HSK2">HSK 2</button>
+      <button class="filter-chip study-filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip study-filter-chip" data-level="L12">Boya L12</button>
+    </div>
     <div class="study-wrap">
       <div class="flashcard" id="flashcard">
         <div class="zi" id="fc-zi">你</div>
@@ -584,8 +591,25 @@ function renderPatterns(){
 }
 
 // --- Study mode ---
+let currentStudyLevel = "ALL";
 let studyList = DB.words.slice();
 let studyIndex = 0;
+
+function buildStudyList(){
+  studyList = currentStudyLevel === "ALL"
+    ? DB.words.slice()
+    : DB.words.filter(w => w.level === currentStudyLevel);
+  studyIndex = 0;
+  renderFlashcard();
+}
+document.querySelectorAll('.study-filter-chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.study-filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentStudyLevel = btn.dataset.level;
+    buildStudyList();
+  });
+});
 
 function shuffleArray(arr){
   for(let i = arr.length -1; i>0; i--){
