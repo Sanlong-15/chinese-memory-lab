@@ -1,5 +1,6 @@
 let currentLevel = "ALL";
 let currentSearch = "";
+const wordImageCache = {};
 
 function matchesFilter(w) {
   if (currentLevel !== "ALL" && w.level !== currentLevel) {
@@ -103,6 +104,89 @@ function charStoryHTML(ch) {
   `;
 }
 
+// --- Picture (live Wikimedia Commons search, no key needed) ---
+function cleanImageQuery(english) {
+  let t = (english || "").replace(/\([^)]*\)/g, "").trim();
+  t = t.split(",")[0].trim();
+  return t;
+}
+
+async function loadWordImage(w) {
+  const wrap = document.getElementById("wordImageWrap");
+  if (!wrap) return;
+  const term = cleanImageQuery(w.english);
+  if (!term) {
+    wrap.innerHTML = `<p class="image-none">No picture found for this word.</p>`;
+    return;
+  }
+
+  if (wordImageCache[term]) {
+    renderWordImage(wrap, term, wordImageCache[term], 0);
+    return;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      action: "query",
+      generator: "search",
+      gsrsearch: term,
+      gsrnamespace: "6",
+      gsrlimit: "8",
+      prop: "imageinfo",
+      iiprop: "url|extmetadata",
+      iiurlwidth: "320",
+      format: "json",
+      origin: "*",
+    });
+    const res = await fetch(
+      "https://commons.wikimedia.org/w/api.php?" + params.toString(),
+    );
+    const data = await res.json();
+    const pages = (data.query && data.query.pages) || {};
+    const results = Object.values(pages)
+      .filter((p) => p.imageinfo && p.imageinfo[0] && p.imageinfo[0].thumburl)
+      .filter((p) => /\.(jpe?g|png|webp)$/i.test(p.title || ""))
+      .sort((a, b) => (a.index || 99) - (b.index || 99))
+      .map((p) => ({
+        thumb: p.imageinfo[0].thumburl,
+        page: p.imageinfo[0].descriptionurl,
+      }));
+    wordImageCache[term] = results;
+    if (document.getElementById("wordImageWrap") === wrap) {
+      renderWordImage(wrap, term, results, 0);
+    }
+  } catch (err) {
+    wrap.innerHTML = `<p class="image-none">Couldn't reach the picture search. Check your internet connection.</p>`;
+  }
+}
+
+function renderWordImage(wrap, term, results, index) {
+  if (!results.length) {
+    wrap.innerHTML = `<p class="image-none">No picture found for "${term}".</p>`;
+    return;
+  }
+  const i = index % results.length;
+  const r = results[i];
+  wrap.innerHTML = `
+    <img class="word-image" src="${r.thumb}" alt="${term}" loading="lazy" />
+    <div class="image-caption">
+      <span>photo: &ldquo;${term}&rdquo; &middot; <a href="${r.page}" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+      ${results.length > 1 ? `<button type="button" class="img-shuffle-btn">&#128260; try another</button>` : ""}
+    </div>
+  `;
+  const shuffleBtn = wrap.querySelector(".img-shuffle-btn");
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener("click", () => {
+      renderWordImage(wrap, term, results, i + 1);
+    });
+  }
+  const img = wrap.querySelector(".word-image");
+  img.addEventListener("error", () => {
+    const remaining = results.filter((x) => x !== r);
+    renderWordImage(wrap, term, remaining, 0);
+  });
+}
+
 function openDetail(id) {
   const w = DB.words.find((x) => x.id === id);
   if (!w) return;
@@ -116,6 +200,8 @@ function openDetail(id) {
       <div class="en">${w.english}</div>
       <div class="kh">${w.khmer}</div>
     </div>
+    <div class="section-label">Picture</div>
+    <div id="wordImageWrap" class="word-image-wrap"><p class="image-loading">Looking for a picture&hellip;</p></div>
     <div class="section-label">Example</div>
     <div class="example-box">
       <div class="cn">${w.ex_cn} <button class="speak-btn small" data-speak="${w.ex_cn}" title="Play sentence">🔊</button></div>
@@ -128,6 +214,7 @@ function openDetail(id) {
   `;
   document.getElementById("detailContent").innerHTML = html;
   document.getElementById("overlay").classList.add("show");
+  loadWordImage(w);
 
   document.querySelectorAll("#detailContent [data-speak]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -354,18 +441,19 @@ function renderWritingWord() {
     canvasWrap.appendChild(box);
 
     const writer = HanziWriter.create(box, ch, {
-      width: 110,
-      height: 110,
-      padding: 6,
+      width: 180,
+      height: 180,
+      padding: 10,
       showCharacter: false,
       showOutline: true,
       strokeColor: "#2A2622",
       outlineColor: "#DDD2BC",
       highlightColor: "#3F6F5E",
       drawingColor: "#AE3428",
+      drawingWidth: 5,
       onLoadCharDataError: () => {
         box.innerHTML =
-          '<p class="writing-error-note" style="padding:10px;max-width:110px;">No stroke data for ' +
+          '<p class="writing-error-note" style="padding:10px;max-width:180px;">No stroke data for ' +
           ch +
           "</p>";
       },
