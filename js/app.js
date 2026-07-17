@@ -187,10 +187,28 @@ function renderWordImage(wrap, term, results, index) {
   });
 }
 
+function exampleBoxHTML(ex) {
+  const badge = ex.level
+    ? `<span class="level-badge level-badge-${ex.level.toLowerCase()}">${ex.level}</span>`
+    : "";
+  return `
+    <div class="example-box">
+      ${badge}
+      <div class="cn">${ex.cn} <button class="speak-btn small" data-speak="${ex.cn}" title="Play sentence">🔊</button></div>
+      <div class="py">${ex.py}</div>
+      <div class="en">${ex.en}</div>
+    </div>
+  `;
+}
+
 function openDetail(id) {
   const w = DB.words.find((x) => x.id === id);
   if (!w) return;
   const uniqueChars = [...new Set(w.chars)];
+  const examples =
+    w.examples && w.examples.length
+      ? w.examples
+      : [{ level: null, cn: w.ex_cn, py: w.ex_py, en: w.ex_en }];
   const html = `
     <div class="detail-head">
       <div class="zi-row"><div class="zi">${w.chinese}</div>
@@ -202,12 +220,8 @@ function openDetail(id) {
     </div>
     <div class="section-label">Picture</div>
     <div id="wordImageWrap" class="word-image-wrap"><p class="image-loading">Looking for a picture&hellip;</p></div>
-    <div class="section-label">Example</div>
-    <div class="example-box">
-      <div class="cn">${w.ex_cn} <button class="speak-btn small" data-speak="${w.ex_cn}" title="Play sentence">🔊</button></div>
-      <div class="py">${w.ex_py}</div>
-      <div class="en">${w.ex_en}</div>
-    </div>
+    <div class="section-label">${examples.length > 1 ? "Examples" : "Example"}</div>
+    ${examples.map(exampleBoxHTML).join("")}
     <div class="section-label">How to remember it</div>
     ${uniqueChars.length > 1 ? `<div class="parts-line" style="margin-bottom:8px;"><strong>Word breakdown:</strong> ${w.breakdown}</div>` : ""}
     ${uniqueChars.map(charStoryHTML).join("")}
@@ -420,9 +434,10 @@ function renderWritingWord() {
   document.getElementById("wr-py").textContent = w.pinyin;
   document.getElementById("wr-en").textContent = w.english;
   document.getElementById("wr-kh").textContent = w.khmer;
-  document.getElementById("wr-ex-cn").textContent = w.ex_cn;
-  document.getElementById("wr-ex-py").textContent = w.ex_py;
-  document.getElementById("wr-ex-en").textContent = w.ex_en;
+  const wrEx = w.examples && w.examples.length ? w.examples[0] : w;
+  document.getElementById("wr-ex-cn").textContent = wrEx.cn || w.ex_cn;
+  document.getElementById("wr-ex-py").textContent = wrEx.py || w.ex_py;
+  document.getElementById("wr-ex-en").textContent = wrEx.en || w.ex_en;
   document.getElementById("writingResult").textContent = "";
   document.getElementById("writingHint").textContent = "";
   document.getElementById("writingProgress").textContent =

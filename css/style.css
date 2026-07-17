@@ -203,7 +203,15 @@
 
   .example-box{
     background: var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+    margin-bottom:8px; position:relative;
   }
+  .example-box:last-child{ margin-bottom:0; }
+  .level-badge{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-bottom:6px; letter-spacing:0.3px;
+  }
+  .level-badge-hsk1{ background: var(--jade-soft); color: var(--jade); }
+  .level-badge-hsk2{ background: var(--seal-soft); color: var(--seal); }
   .example-box .cn{ font-family:'Noto Serif SC'; font-size:17px; }
   .example-box .py{ font-size:13px; color:var(--ink-soft); margin-top:3px; font-style:italic; }
   .example-box .en{ font-size:13px; color:var(--ink); margin-top:3px; }
