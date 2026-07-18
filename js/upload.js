@@ -20,7 +20,7 @@
 // Replace this with your deployed Cloudflare Worker URL once you've
 // followed worker/README.md. Example:
 //   const WORKER_URL = "https://cml-lesson-generator.koko123.workers.dev";
-const WORKER_URL = "https://REPLACE-ME.workers.dev";
+const WORKER_URL = "https://cml-lesson-generator.huysanlong1.workers.dev";
 
 const WORD_CAP = 40; // max words per upload — keeps one mistake from burning a lot of API credit
 const MAX_OCR_PAGES = 5; // OCR is slow; cap how many pages we'll try
