@@ -37,7 +37,8 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:54px;height:54px;
+    width: 108px; 
+    height: 54px;
     background: var(--seal);
     color:#fff;
     font-family:'Noto Serif SC', serif;
