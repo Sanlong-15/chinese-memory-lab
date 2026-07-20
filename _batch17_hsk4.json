@@ -1,0 +1,225 @@
+[
+{"chinese":"职业","pinyin":"zhíyè","english":"occupation; profession","khmer":"មុខរបរ","breakdown":"职(duty, post)+业(work) — your line of work","chars":["职","业"],"examples":[
+{"level":"HSK4","cn":"你的职业是什么？","py":"Nǐ de zhíyè shì shénme?","en":"What is your occupation?"},
+{"level":"HSK4","cn":"医生是很好的职业。","py":"Yīshēng shì hěn hǎo de zhíyè.","en":"Doctor is a good profession."},
+{"level":"HSK4","cn":"请填写职业。","py":"Qǐng tiánxiě zhíyè.","en":"Please fill in your occupation."},
+{"level":"HSK4","cn":"他换了职业。","py":"Tā huàn le zhíyè.","en":"He changed profession."},
+{"level":"HSK4","cn":"选择职业要考虑兴趣。","py":"Xuǎnzé zhíyè yào kǎolǜ xìngqù.","en":"Consider your interests when choosing a career."}]},
+
+{"chinese":"植物","pinyin":"zhíwù","english":"plant","khmer":"រុក្ខជាតិ","breakdown":"植(to plant, 木wood radical)+物(thing) — a planted thing","chars":["植","物"],"examples":[
+{"level":"HSK4","cn":"这是什么植物？","py":"Zhè shì shénme zhíwù?","en":"What plant is this?"},
+{"level":"HSK4","cn":"植物需要阳光和水。","py":"Zhíwù xūyào yángguāng hé shuǐ.","en":"Plants need sunlight and water."},
+{"level":"HSK4","cn":"我家里有很多植物。","py":"Wǒ jiā lǐ yǒu hěn duō zhíwù.","en":"There are many plants in my home."},
+{"level":"HSK4","cn":"森林里有很多植物。","py":"Sēnlín lǐ yǒu hěn duō zhíwù.","en":"There are many plants in the forest."},
+{"level":"HSK4","cn":"这种植物很少见。","py":"Zhè zhǒng zhíwù hěn shǎo jiàn.","en":"This kind of plant is rare."}]},
+
+{"chinese":"只好","pinyin":"zhǐhǎo","english":"to have no choice but to","khmer":"ចាំបាច់ត្រូវ","breakdown":"只(only)+好(good, okay) — the only okay option left","chars":["只","好"],"examples":[
+{"level":"HSK4","cn":"下雨了，我只好回家。","py":"Xià yǔ le, wǒ zhǐhǎo huí jiā.","en":"It rained, so I had to go home."},
+{"level":"HSK4","cn":"没有票，我们只好走路。","py":"Méiyǒu piào, wǒmen zhǐhǎo zǒulù.","en":"No tickets, so we had to walk."},
+{"level":"HSK4","cn":"他不来，我只好一个人去。","py":"Tā bù lái, wǒ zhǐhǎo yí ge rén qù.","en":"He isn't coming, so I have to go alone."},
+{"level":"HSK4","cn":"钱不够，只好选便宜的。","py":"Qián bú gòu, zhǐhǎo xuǎn piányi de.","en":"Not enough money, so I had to choose the cheap one."},
+{"level":"HSK4","cn":"电脑坏了，只好用手机。","py":"Diànnǎo huài le, zhǐhǎo yòng shǒujī.","en":"The computer broke, so I had to use my phone."}]},
+
+{"chinese":"只要","pinyin":"zhǐyào","english":"as long as; so long as","khmer":"គ្រាន់តែ","breakdown":"只(only)+要(need) — you only need this much","chars":["只","要"],"examples":[
+{"level":"HSK4","cn":"只要努力就会成功。","py":"Zhǐyào nǔlì jiù huì chénggōng.","en":"As long as you try, you'll succeed."},
+{"level":"HSK4","cn":"只要你来，我就高兴。","py":"Zhǐyào nǐ lái, wǒ jiù gāoxìng.","en":"As long as you come, I'm happy."},
+{"level":"HSK4","cn":"只要有时间，我就阅读。","py":"Zhǐyào yǒu shíjiān, wǒ jiù yuèdú.","en":"Whenever I have time, I read."},
+{"level":"HSK4","cn":"只要坚持，就有效果。","py":"Zhǐyào jiānchí, jiù yǒu xiàoguǒ.","en":"As long as you persist, there will be results."},
+{"level":"HSK4","cn":"只要不下雨，我们就出发。","py":"Zhǐyào bú xià yǔ, wǒmen jiù chūfā.","en":"As long as it doesn't rain, we'll set off."}]},
+
+{"chinese":"指","pinyin":"zhǐ","english":"to point; finger","khmer":"ចង្អុល / ម្រាមដៃ","breakdown":"扌(hand radical)+旨 — the hand that points","chars":["指"],"examples":[
+{"level":"HSK4","cn":"他指着那个方向。","py":"Tā zhǐ zhe nàge fāngxiàng.","en":"He is pointing in that direction."},
+{"level":"HSK4","cn":"请别用手指着别人。","py":"Qǐng bié yòng shǒu zhǐ zhe biéren.","en":"Please don't point at people."},
+{"level":"HSK4","cn":"他指出了我的错误。","py":"Tā zhǐ chū le wǒ de cuòwù.","en":"He pointed out my mistake."},
+{"level":"HSK4","cn":"这个词指的是什么？","py":"Zhège cí zhǐ de shì shénme?","en":"What does this word refer to?"},
+{"level":"HSK4","cn":"我的手指受伤了。","py":"Wǒ de shǒuzhǐ shòushāng le.","en":"My finger is injured."}]},
+
+{"chinese":"至少","pinyin":"zhìshǎo","english":"at least","khmer":"យ៉ាងហោចណាស់","breakdown":"至(reach, extreme)+少(few) — at the fewest","chars":["至","少"],"examples":[
+{"level":"HSK4","cn":"至少要三天。","py":"Zhìshǎo yào sān tiān.","en":"It takes at least three days."},
+{"level":"HSK4","cn":"至少有一百人。","py":"Zhìshǎo yǒu yìbǎi rén.","en":"There are at least a hundred people."},
+{"level":"HSK4","cn":"至少你努力了。","py":"Zhìshǎo nǐ nǔlì le.","en":"At least you tried."},
+{"level":"HSK4","cn":"每天至少练习半小时。","py":"Měitiān zhìshǎo liànxí bàn xiǎoshí.","en":"Practice at least half an hour daily."},
+{"level":"HSK4","cn":"这个至少值一千块。","py":"Zhège zhìshǎo zhí yìqiān kuài.","en":"This is worth at least a thousand yuan."}]},
+
+{"chinese":"质量","pinyin":"zhìliàng","english":"quality","khmer":"គុណភាព","breakdown":"质(substance, nature)+量(amount) — the nature and measure of a thing","chars":["质","量"],"examples":[
+{"level":"HSK4","cn":"这个产品质量很好。","py":"Zhège chǎnpǐn zhìliàng hěn hǎo.","en":"This product's quality is good."},
+{"level":"HSK4","cn":"质量比数量更重要。","py":"Zhìliàng bǐ shùliàng gèng zhòngyào.","en":"Quality matters more than quantity."},
+{"level":"HSK4","cn":"价格低，质量也低。","py":"Jiàgé dī, zhìliàng yě dī.","en":"Low price, low quality too."},
+{"level":"HSK4","cn":"顾客对质量很满意。","py":"Gùkè duì zhìliàng hěn mǎnyì.","en":"Customers are satisfied with the quality."},
+{"level":"HSK4","cn":"这个质量不合格。","py":"Zhège zhìliàng bù hégé.","en":"This quality isn't up to standard."}]},
+
+{"chinese":"重点","pinyin":"zhòngdiǎn","english":"key point; focus","khmer":"ចំណុចសំខាន់","breakdown":"重(heavy, important)+点(point) — the important point","chars":["重","点"],"examples":[
+{"level":"HSK4","cn":"这是考试的重点。","py":"Zhè shì kǎoshì de zhòngdiǎn.","en":"This is the exam's key point."},
+{"level":"HSK4","cn":"请说重点。","py":"Qǐng shuō zhòngdiǎn.","en":"Please get to the point."},
+{"level":"HSK4","cn":"老师说明了重点。","py":"Lǎoshī shuōmíng le zhòngdiǎn.","en":"The teacher explained the key points."},
+{"level":"HSK4","cn":"复习要抓住重点。","py":"Fùxí yào zhuāzhù zhòngdiǎn.","en":"When reviewing, grasp the key points."},
+{"level":"HSK4","cn":"这篇文章的重点在最后。","py":"Zhè piān wénzhāng de zhòngdiǎn zài zuìhòu.","en":"This article's key point is at the end."}]},
+
+{"chinese":"重视","pinyin":"zhòngshì","english":"to value; to attach importance to","khmer":"យកចិត្តទុកដាក់ខ្ពស់","breakdown":"重(heavy, important)+视(view) — viewing it as important","chars":["重","视"],"examples":[
+{"level":"HSK4","cn":"这个国家重视教育。","py":"Zhège guójiā zhòngshì jiàoyù.","en":"This country values education."},
+{"level":"HSK4","cn":"我们要重视健康。","py":"Wǒmen yào zhòngshì jiànkāng.","en":"We should value our health."},
+{"level":"HSK4","cn":"他很重视这个机会。","py":"Tā hěn zhòngshì zhège jīhuì.","en":"He greatly values this opportunity."},
+{"level":"HSK4","cn":"公司重视顾客的意见。","py":"Gōngsī zhòngshì gùkè de yìjiàn.","en":"The company values customer opinions."},
+{"level":"HSK4","cn":"这个问题没有受到重视。","py":"Zhège wèntí méiyǒu shòudào zhòngshì.","en":"This problem hasn't received attention."}]},
+
+{"chinese":"周围","pinyin":"zhōuwéi","english":"surroundings; around","khmer":"ជុំវិញ","breakdown":"周(circle, week)+围(surround) — the circle around you","chars":["周","围"],"examples":[
+{"level":"HSK4","cn":"学校周围有很多商店。","py":"Xuéxiào zhōuwéi yǒu hěn duō shāngdiàn.","en":"There are many shops around the school."},
+{"level":"HSK4","cn":"周围很安静。","py":"Zhōuwéi hěn ānjìng.","en":"The surroundings are very quiet."},
+{"level":"HSK4","cn":"他看了看周围。","py":"Tā kàn le kàn zhōuwéi.","en":"He looked around."},
+{"level":"HSK4","cn":"周围的环境很美。","py":"Zhōuwéi de huánjìng hěn měi.","en":"The surrounding environment is beautiful."},
+{"level":"HSK4","cn":"周围的人都在帮忙。","py":"Zhōuwéi de rén dōu zài bāngmáng.","en":"The people around are all helping."}]},
+
+{"chinese":"主意","pinyin":"zhǔyi","english":"idea; plan","khmer":"គំនិត","breakdown":"主(main)+意(idea) — your main idea","chars":["主","意"],"examples":[
+{"level":"HSK4","cn":"这是个好主意。","py":"Zhè shì ge hǎo zhǔyi.","en":"This is a good idea."},
+{"level":"HSK4","cn":"你有什么主意？","py":"Nǐ yǒu shénme zhǔyi?","en":"What's your idea?"},
+{"level":"HSK4","cn":"我没有主意了。","py":"Wǒ méiyǒu zhǔyi le.","en":"I'm out of ideas."},
+{"level":"HSK4","cn":"他改变了主意。","py":"Tā gǎibiàn le zhǔyi.","en":"He changed his mind."},
+{"level":"HSK4","cn":"这个主意值得试试。","py":"Zhège zhǔyi zhíde shìshi.","en":"This idea is worth trying."}]},
+
+{"chinese":"祝贺","pinyin":"zhùhè","english":"to congratulate","khmer":"អបអរសាទរ","breakdown":"祝(wish)+贺(congratulate) — wishing and congratulating","chars":["祝","贺"],"examples":[
+{"level":"HSK4","cn":"祝贺你！","py":"Zhùhè nǐ!","en":"Congratulations!"},
+{"level":"HSK4","cn":"祝贺你毕业。","py":"Zhùhè nǐ bìyè.","en":"Congratulations on graduating."},
+{"level":"HSK4","cn":"大家都来祝贺他。","py":"Dàjiā dōu lái zhùhè tā.","en":"Everyone came to congratulate him."},
+{"level":"HSK4","cn":"祝贺你们结婚！","py":"Zhùhè nǐmen jiéhūn!","en":"Congratulations on your marriage!"},
+{"level":"HSK4","cn":"我收到了很多祝贺。","py":"Wǒ shōu dào le hěn duō zhùhè.","en":"I received many congratulations."}]},
+
+{"chinese":"著名","pinyin":"zhùmíng","english":"famous; well-known","khmer":"ល្បីល្បាញ","breakdown":"著(notable)+名(name) — a notable name","chars":["著","名"],"examples":[
+{"level":"HSK4","cn":"他是著名的作家。","py":"Tā shì zhùmíng de zuòjiā.","en":"He is a famous writer."},
+{"level":"HSK4","cn":"长城是著名的地方。","py":"Chángchéng shì zhùmíng de dìfang.","en":"The Great Wall is a famous place."},
+{"level":"HSK4","cn":"这位教授很著名。","py":"Zhè wèi jiàoshòu hěn zhùmíng.","en":"This professor is famous."},
+{"level":"HSK4","cn":"这是一部著名的小说。","py":"Zhè shì yí bù zhùmíng de xiǎoshuō.","en":"This is a famous novel."},
+{"level":"HSK4","cn":"这个城市因为小吃著名。","py":"Zhège chéngshì yīnwèi xiǎochī zhùmíng.","en":"This city is famous for its snacks."}]},
+
+{"chinese":"专门","pinyin":"zhuānmén","english":"specially; specialized","khmer":"ដោយឡែក / ជំនាញ","breakdown":"专(focused)+门(door, field) — focused on one field","chars":["专","门"],"examples":[
+{"level":"HSK4","cn":"我专门来看你。","py":"Wǒ zhuānmén lái kàn nǐ.","en":"I came specially to see you."},
+{"level":"HSK4","cn":"这是专门的工具。","py":"Zhè shì zhuānmén de gōngjù.","en":"This is a specialized tool."},
+{"level":"HSK4","cn":"他专门研究历史。","py":"Tā zhuānmén yánjiū lìshǐ.","en":"He specializes in researching history."},
+{"level":"HSK4","cn":"这家店专门卖茶。","py":"Zhè jiā diàn zhuānmén mài chá.","en":"This shop specializes in tea."},
+{"level":"HSK4","cn":"我专门为你准备的。","py":"Wǒ zhuānmén wèi nǐ zhǔnbèi de.","en":"I prepared this specially for you."}]},
+
+{"chinese":"专业","pinyin":"zhuānyè","english":"major (of study); professional","khmer":"ជំនាញ","breakdown":"专(focused)+业(field of work) — your focused field","chars":["专","业"],"examples":[
+{"level":"HSK4","cn":"我的专业是软件工程。","py":"Wǒ de zhuānyè shì ruǎnjiàn gōngchéng.","en":"My major is software engineering."},
+{"level":"HSK4","cn":"你学什么专业？","py":"Nǐ xué shénme zhuānyè?","en":"What is your major?"},
+{"level":"HSK4","cn":"他很专业。","py":"Tā hěn zhuānyè.","en":"He is very professional."},
+{"level":"HSK4","cn":"这个专业很难。","py":"Zhège zhuānyè hěn nán.","en":"This major is difficult."},
+{"level":"HSK4","cn":"选专业要考虑将来。","py":"Xuǎn zhuānyè yào kǎolǜ jiānglái.","en":"Consider the future when choosing a major."}]},
+
+{"chinese":"转","pinyin":"zhuǎn","english":"to turn; to transfer","khmer":"បត់ / ផ្ទេរ","breakdown":"车(vehicle radical)+专 — wheels turning","chars":["转"],"examples":[
+{"level":"HSK4","cn":"请向右转。","py":"Qǐng xiàng yòu zhuǎn.","en":"Please turn right."},
+{"level":"HSK4","cn":"他转过身来。","py":"Tā zhuǎn guò shēn lái.","en":"He turned around."},
+{"level":"HSK4","cn":"请把这封信转给他。","py":"Qǐng bǎ zhè fēng xìn zhuǎn gěi tā.","en":"Please pass this letter on to him."},
+{"level":"HSK4","cn":"我转到了另一个专业。","py":"Wǒ zhuǎn dào le lìng yí ge zhuānyè.","en":"I transferred to another major."},
+{"level":"HSK4","cn":"天气转冷了。","py":"Tiānqì zhuǎn lěng le.","en":"The weather turned cold."}]},
+
+{"chinese":"赚","pinyin":"zhuàn","english":"to earn (money)","khmer":"រកប្រាក់","breakdown":"贝(shell, money radical)+兼 — the money radical shows the meaning","chars":["赚"],"examples":[
+{"level":"HSK4","cn":"他赚了很多钱。","py":"Tā zhuàn le hěn duō qián.","en":"He earned a lot of money."},
+{"level":"HSK4","cn":"做生意可以赚钱。","py":"Zuò shēngyi kěyǐ zhuàn qián.","en":"Doing business can earn money."},
+{"level":"HSK4","cn":"这个工作赚得不多。","py":"Zhège gōngzuò zhuàn de bù duō.","en":"This job doesn't earn much."},
+{"level":"HSK4","cn":"赚钱不容易。","py":"Zhuàn qián bù róngyì.","en":"Earning money isn't easy."},
+{"level":"HSK4","cn":"他一边学习一边赚钱。","py":"Tā yìbiān xuéxí yìbiān zhuàn qián.","en":"He earns money while studying."}]},
+
+{"chinese":"准确","pinyin":"zhǔnquè","english":"accurate; precise","khmer":"ត្រឹមត្រូវច្បាស់លាស់","breakdown":"准(accurate)+确(certain) — accurate and certain","chars":["准","确"],"examples":[
+{"level":"HSK4","cn":"这个数字很准确。","py":"Zhège shùzì hěn zhǔnquè.","en":"This number is accurate."},
+{"level":"HSK4","cn":"他的发音很准确。","py":"Tā de fāyīn hěn zhǔnquè.","en":"His pronunciation is accurate."},
+{"level":"HSK4","cn":"我们要慢而准确。","py":"Wǒmen yào màn ér zhǔnquè.","en":"We should be slow yet accurate."},
+{"level":"HSK4","cn":"请给我准确的信息。","py":"Qǐng gěi wǒ zhǔnquè de xìnxī.","en":"Please give me accurate information."},
+{"level":"HSK4","cn":"这个翻译不太准确。","py":"Zhège fānyì bú tài zhǔnquè.","en":"This translation isn't very accurate."}]},
+
+{"chinese":"准时","pinyin":"zhǔnshí","english":"punctual; on time","khmer":"ទាន់ពេលវេលា","breakdown":"准(exact)+时(time) — exactly on time","chars":["准","时"],"examples":[
+{"level":"HSK4","cn":"请准时来。","py":"Qǐng zhǔnshí lái.","en":"Please come on time."},
+{"level":"HSK4","cn":"他每次都很准时。","py":"Tā měi cì dōu hěn zhǔnshí.","en":"He is punctual every time."},
+{"level":"HSK4","cn":"飞机准时起飞了。","py":"Fēijī zhǔnshí qǐfēi le.","en":"The plane took off on time."},
+{"level":"HSK4","cn":"准时是一种礼貌。","py":"Zhǔnshí shì yì zhǒng lǐmào.","en":"Punctuality is a form of politeness."},
+{"level":"HSK4","cn":"会议准时开始。","py":"Huìyì zhǔnshí kāishǐ.","en":"The meeting starts on time."}]},
+
+{"chinese":"仔细","pinyin":"zǐxì","english":"careful; attentive","khmer":"ដោយប្រុងប្រយ័ត្ន","breakdown":"仔(careful, 亻person radical)+细(fine, thin) — attending to fine detail","chars":["仔","细"],"examples":[
+{"level":"HSK4","cn":"请仔细检查。","py":"Qǐng zǐxì jiǎnchá.","en":"Please check carefully."},
+{"level":"HSK4","cn":"他做事很仔细。","py":"Tā zuò shì hěn zǐxì.","en":"He works very carefully."},
+{"level":"HSK4","cn":"仔细看这个句子。","py":"Zǐxì kàn zhège jùzi.","en":"Look carefully at this sentence."},
+{"level":"HSK4","cn":"仔细的人不容易出错。","py":"Zǐxì de rén bù róngyì chū cuò.","en":"Careful people rarely make mistakes."},
+{"level":"HSK4","cn":"请仔细听说明。","py":"Qǐng zǐxì tīng shuōmíng.","en":"Please listen carefully to the instructions."}]},
+
+{"chinese":"自然","pinyin":"zìrán","english":"nature; natural","khmer":"ធម្មជាតិ","breakdown":"自(self)+然(so) — being so by itself","chars":["自","然"],"examples":[
+{"level":"HSK4","cn":"我喜欢大自然。","py":"Wǒ xǐhuan dà zìrán.","en":"I love nature."},
+{"level":"HSK4","cn":"这很自然。","py":"Zhè hěn zìrán.","en":"This is natural."},
+{"level":"HSK4","cn":"他说得很自然。","py":"Tā shuō de hěn zìrán.","en":"He speaks very naturally."},
+{"level":"HSK4","cn":"我们要保护自然。","py":"Wǒmen yào bǎohù zìrán.","en":"We must protect nature."},
+{"level":"HSK4","cn":"紧张是很自然的。","py":"Jǐnzhāng shì hěn zìrán de.","en":"Being nervous is quite natural."}]},
+
+{"chinese":"自信","pinyin":"zìxìn","english":"confident; self-confidence","khmer":"ទំនុកចិត្តលើខ្លួនឯង","breakdown":"自(self)+信(believe) — believing in yourself","chars":["自","信"],"examples":[
+{"level":"HSK4","cn":"他很自信。","py":"Tā hěn zìxìn.","en":"He is very confident."},
+{"level":"HSK4","cn":"要对自己自信一点。","py":"Yào duì zìjǐ zìxìn yìdiǎn.","en":"Be a bit more confident in yourself."},
+{"level":"HSK4","cn":"练习让我更自信。","py":"Liànxí ràng wǒ gèng zìxìn.","en":"Practice makes me more confident."},
+{"level":"HSK4","cn":"自信的人容易成功。","py":"Zìxìn de rén róngyì chénggōng.","en":"Confident people succeed more easily."},
+{"level":"HSK4","cn":"他自信地回答了问题。","py":"Tā zìxìn de huídá le wèntí.","en":"He answered the question confidently."}]},
+
+{"chinese":"总结","pinyin":"zǒngjié","english":"to summarize; summary","khmer":"សេចក្ដីសង្ខេប","breakdown":"总(overall)+结(tie up) — tying it all together","chars":["总","结"],"examples":[
+{"level":"HSK4","cn":"请总结一下。","py":"Qǐng zǒngjié yíxià.","en":"Please summarize."},
+{"level":"HSK4","cn":"他总结了这次的经验。","py":"Tā zǒngjié le zhè cì de jīngyàn.","en":"He summarized this experience."},
+{"level":"HSK4","cn":"学期末要写总结。","py":"Xuéqī mò yào xiě zǒngjié.","en":"You write a summary at term's end."},
+{"level":"HSK4","cn":"总结失败的原因很重要。","py":"Zǒngjié shībài de yuányīn hěn zhòngyào.","en":"Summarizing failure reasons is important."},
+{"level":"HSK4","cn":"这个总结很详细。","py":"Zhège zǒngjié hěn xiángxì.","en":"This summary is detailed."}]},
+
+{"chinese":"租","pinyin":"zū","english":"to rent","khmer":"ជួល","breakdown":"禾(grain radical)+且 — rent was once paid in grain","chars":["租"],"examples":[
+{"level":"HSK4","cn":"我租了一个房子。","py":"Wǒ zū le yí ge fángzi.","en":"I rented a house."},
+{"level":"HSK4","cn":"房租每月多少钱？","py":"Fángzū měi yuè duōshao qián?","en":"How much is the monthly rent?"},
+{"level":"HSK4","cn":"这里可以租自行车。","py":"Zhèlǐ kěyǐ zū zìxíngchē.","en":"You can rent bicycles here."},
+{"level":"HSK4","cn":"房东来收租了。","py":"Fángdōng lái shōu zū le.","en":"The landlord came to collect rent."},
+{"level":"HSK4","cn":"租房子比买房子便宜。","py":"Zū fángzi bǐ mǎi fángzi piányi.","en":"Renting is cheaper than buying."}]},
+
+{"chinese":"最好","pinyin":"zuìhǎo","english":"best; had better","khmer":"ល្អបំផុត / គួរតែ","breakdown":"最(most)+好(good) — the most good","chars":["最","好"],"examples":[
+{"level":"HSK4","cn":"这是最好的方法。","py":"Zhè shì zuì hǎo de fāngfǎ.","en":"This is the best method."},
+{"level":"HSK4","cn":"你最好早点休息。","py":"Nǐ zuì hǎo zǎo diǎn xiūxi.","en":"You'd better rest early."},
+{"level":"HSK4","cn":"他是我最好的朋友。","py":"Tā shì wǒ zuì hǎo de péngyou.","en":"He is my best friend."},
+{"level":"HSK4","cn":"最好提前准备。","py":"Zuì hǎo tíqián zhǔnbèi.","en":"It's best to prepare in advance."},
+{"level":"HSK4","cn":"最好别在这里停车。","py":"Zuì hǎo bié zài zhèlǐ tíngchē.","en":"You'd better not park here."}]},
+
+{"chinese":"尊重","pinyin":"zūnzhòng","english":"to respect","khmer":"គោរព","breakdown":"尊(honor)+重(value highly) — honoring and valuing","chars":["尊","重"],"examples":[
+{"level":"HSK4","cn":"我们要互相尊重。","py":"Wǒmen yào hùxiāng zūnzhòng.","en":"We should respect each other."},
+{"level":"HSK4","cn":"我尊重你的决定。","py":"Wǒ zūnzhòng nǐ de juédìng.","en":"I respect your decision."},
+{"level":"HSK4","cn":"要尊重别人的意见。","py":"Yào zūnzhòng biéren de yìjiàn.","en":"Respect other people's opinions."},
+{"level":"HSK4","cn":"他很尊重老人。","py":"Tā hěn zūnzhòng lǎorén.","en":"He respects elderly people."},
+{"level":"HSK4","cn":"尊重不同的文化。","py":"Zūnzhòng bùtóng de wénhuà.","en":"Respect different cultures."}]},
+
+{"chinese":"左右","pinyin":"zuǒyòu","english":"approximately; around","khmer":"ប្រហែល","breakdown":"左(left)+右(right) — a little to either side, so 'about'","chars":["左","右"],"examples":[
+{"level":"HSK4","cn":"大概三点左右。","py":"Dàgài sān diǎn zuǒyòu.","en":"Around three o'clock."},
+{"level":"HSK4","cn":"他三十岁左右。","py":"Tā sānshí suì zuǒyòu.","en":"He is about thirty years old."},
+{"level":"HSK4","cn":"价格在一百元左右。","py":"Jiàgé zài yìbǎi yuán zuǒyòu.","en":"The price is around a hundred yuan."},
+{"level":"HSK4","cn":"来了五十人左右。","py":"Lái le wǔshí rén zuǒyòu.","en":"About fifty people came."},
+{"level":"HSK4","cn":"请看左右两边。","py":"Qǐng kàn zuǒyòu liǎng biān.","en":"Please look both left and right."}]},
+
+{"chinese":"作家","pinyin":"zuòjiā","english":"writer; author","khmer":"អ្នកនិពន្ធ","breakdown":"作(create, write)+家(expert, master) — a master of writing","chars":["作","家"],"examples":[
+{"level":"HSK4","cn":"他是著名的作家。","py":"Tā shì zhùmíng de zuòjiā.","en":"He is a famous writer."},
+{"level":"HSK4","cn":"我想当作家。","py":"Wǒ xiǎng dāng zuòjiā.","en":"I want to be a writer."},
+{"level":"HSK4","cn":"这位作家写了很多小说。","py":"Zhè wèi zuòjiā xiě le hěn duō xiǎoshuō.","en":"This writer wrote many novels."},
+{"level":"HSK4","cn":"作家需要很多阅读。","py":"Zuòjiā xūyào hěn duō yuèdú.","en":"Writers need a lot of reading."},
+{"level":"HSK4","cn":"我最喜欢的作家是他。","py":"Wǒ zuì xǐhuan de zuòjiā shì tā.","en":"He is my favorite writer."}]},
+
+{"chinese":"作用","pinyin":"zuòyòng","english":"effect; function; role","khmer":"តួនាទី / ឥទ្ធិពល","breakdown":"作(act)+用(use) — how something acts and is used","chars":["作","用"],"examples":[
+{"level":"HSK4","cn":"这个药有什么作用？","py":"Zhège yào yǒu shénme zuòyòng?","en":"What effect does this medicine have?"},
+{"level":"HSK4","cn":"他起了很大的作用。","py":"Tā qǐ le hěn dà de zuòyòng.","en":"He played a big role."},
+{"level":"HSK4","cn":"这个方法没有作用。","py":"Zhège fāngfǎ méiyǒu zuòyòng.","en":"This method has no effect."},
+{"level":"HSK4","cn":"教育的作用很重要。","py":"Jiàoyù de zuòyòng hěn zhòngyào.","en":"Education's role is important."},
+{"level":"HSK4","cn":"练习对提高水平有作用。","py":"Liànxí duì tígāo shuǐpíng yǒu zuòyòng.","en":"Practice has an effect on raising your level."}]},
+
+{"chinese":"作者","pinyin":"zuòzhě","english":"author","khmer":"អ្នកនិពន្ធ (អត្ថបទ)","breakdown":"作(write, create)+者(person) — the person who wrote it","chars":["作","者"],"examples":[
+{"level":"HSK4","cn":"这本书的作者是谁？","py":"Zhè běn shū de zuòzhě shì shéi?","en":"Who is the author of this book?"},
+{"level":"HSK4","cn":"作者写得很好。","py":"Zuòzhě xiě de hěn hǎo.","en":"The author writes very well."},
+{"level":"HSK4","cn":"我不认识这个作者。","py":"Wǒ bú rènshi zhège zuòzhě.","en":"I don't know this author."},
+{"level":"HSK4","cn":"作者的名字在最后一页。","py":"Zuòzhě de míngzi zài zuìhòu yí yè.","en":"The author's name is on the last page."},
+{"level":"HSK4","cn":"这篇文章的作者是教授。","py":"Zhè piān wénzhāng de zuòzhě shì jiàoshòu.","en":"The author of this article is a professor."}]},
+
+{"chinese":"座","pinyin":"zuò","english":"(measure word for buildings, mountains); seat","khmer":"កន្លែងអង្គុយ","breakdown":"广(shelter)+two 人(people)+土(earth) — people seated under a roof","chars":["座"],"examples":[
+{"level":"HSK4","cn":"这座桥很长。","py":"Zhè zuò qiáo hěn cháng.","en":"This bridge is very long."},
+{"level":"HSK4","cn":"那座山很高。","py":"Nà zuò shān hěn gāo.","en":"That mountain is very tall."},
+{"level":"HSK4","cn":"这座城市很美丽。","py":"Zhè zuò chéngshì hěn měilì.","en":"This city is beautiful."},
+{"level":"HSK4","cn":"学校有三座楼。","py":"Xuéxiào yǒu sān zuò lóu.","en":"The school has three buildings."},
+{"level":"HSK4","cn":"请入座。","py":"Qǐng rùzuò.","en":"Please take your seat."}]},
+
+{"chinese":"座位","pinyin":"zuòwèi","english":"seat","khmer":"កៅអី / កន្លែងអង្គុយ","breakdown":"座(seat)+位(position) — the position where you sit","chars":["座","位"],"examples":[
+{"level":"HSK4","cn":"这个座位有人吗？","py":"Zhège zuòwèi yǒu rén ma?","en":"Is this seat taken?"},
+{"level":"HSK4","cn":"我的座位在前面。","py":"Wǒ de zuòwèi zài qiánmiàn.","en":"My seat is at the front."},
+{"level":"HSK4","cn":"座位号在登机牌上。","py":"Zuòwèi hào zài dēngjīpái shàng.","en":"The seat number is on the boarding pass."},
+{"level":"HSK4","cn":"请让座位给老人。","py":"Qǐng ràng zuòwèi gěi lǎorén.","en":"Please give your seat to elderly people."},
+{"level":"HSK4","cn":"我在餐厅预定了座位。","py":"Wǒ zài cāntīng yùdìng le zuòwèi.","en":"I reserved a seat at the restaurant."}]}
+]

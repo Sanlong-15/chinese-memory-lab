@@ -1,0 +1,351 @@
+[
+{"chinese":"民族","pinyin":"mínzú","english":"ethnic group; nationality","khmer":"ជនជាតិ","breakdown":"民(people)+族(clan) — a people and their clan","chars":["民","族"],"examples":[
+{"level":"HSK4","cn":"中国有很多民族。","py":"Zhōngguó yǒu hěn duō mínzú.","en":"China has many ethnic groups."},
+{"level":"HSK4","cn":"每个民族都有自己的文化。","py":"Měi ge mínzú dōu yǒu zìjǐ de wénhuà.","en":"Every ethnic group has its own culture."},
+{"level":"HSK4","cn":"这是民族音乐。","py":"Zhè shì mínzú yīnyuè.","en":"This is ethnic music."},
+{"level":"HSK4","cn":"他穿着民族服装。","py":"Tā chuān zhe mínzú fúzhuāng.","en":"He is wearing ethnic clothing."},
+{"level":"HSK4","cn":"民族之间要互相尊重。","py":"Mínzú zhījiān yào hùxiāng zūnzhòng.","en":"Ethnic groups should respect each other."}]},
+
+{"chinese":"母亲","pinyin":"mǔqīn","english":"mother (formal)","khmer":"ម្ដាយ","breakdown":"母(mother)+亲(relative, close) — your close mother","chars":["母","亲"],"examples":[
+{"level":"HSK4","cn":"我的母亲是护士。","py":"Wǒ de mǔqīn shì hùshi.","en":"My mother is a nurse."},
+{"level":"HSK4","cn":"母亲对孩子的爱最深。","py":"Mǔqīn duì háizi de ài zuì shēn.","en":"A mother's love for her child is deepest."},
+{"level":"HSK4","cn":"母亲节快到了。","py":"Mǔqīn jié kuài dào le.","en":"Mother's Day is coming."},
+{"level":"HSK4","cn":"我很感谢我的母亲。","py":"Wǒ hěn gǎnxiè wǒ de mǔqīn.","en":"I'm very grateful to my mother."},
+{"level":"HSK4","cn":"她长得很像母亲。","py":"Tā zhǎng de hěn xiàng mǔqīn.","en":"She looks a lot like her mother."}]},
+
+{"chinese":"目的","pinyin":"mùdì","english":"purpose; goal","khmer":"គោលបំណង","breakdown":"目(eye)+的(target) — what your eye is aimed at","chars":["目","的"],"examples":[
+{"level":"HSK4","cn":"你的目的是什么？","py":"Nǐ de mùdì shì shénme?","en":"What is your purpose?"},
+{"level":"HSK4","cn":"我们的目的很清楚。","py":"Wǒmen de mùdì hěn qīngchu.","en":"Our goal is very clear."},
+{"level":"HSK4","cn":"这次旅行的目的是学习。","py":"Zhè cì lǚxíng de mùdì shì xuéxí.","en":"The purpose of this trip is learning."},
+{"level":"HSK4","cn":"没有目的就没有方向。","py":"Méiyǒu mùdì jiù méiyǒu fāngxiàng.","en":"Without a goal there's no direction."},
+{"level":"HSK4","cn":"他达到了自己的目的。","py":"Tā dádào le zìjǐ de mùdì.","en":"He achieved his goal."}]},
+
+{"chinese":"耐心","pinyin":"nàixīn","english":"patience; patient","khmer":"ការអត់ធ្មត់","breakdown":"耐(endure)+心(heart) — a heart that endures","chars":["耐","心"],"examples":[
+{"level":"HSK4","cn":"他很有耐心。","py":"Tā hěn yǒu nàixīn.","en":"He is very patient."},
+{"level":"HSK4","cn":"学语言需要耐心。","py":"Xué yǔyán xūyào nàixīn.","en":"Learning a language needs patience."},
+{"level":"HSK4","cn":"请耐心一点。","py":"Qǐng nàixīn yìdiǎn.","en":"Please be a bit more patient."},
+{"level":"HSK4","cn":"老师很耐心地解释。","py":"Lǎoshī hěn nàixīn de jiěshì.","en":"The teacher explained patiently."},
+{"level":"HSK4","cn":"我没有耐心等下去了。","py":"Wǒ méiyǒu nàixīn děng xiàqù le.","en":"I have no patience to keep waiting."}]},
+
+{"chinese":"难道","pinyin":"nándào","english":"could it be that...?; don't tell me","khmer":"តើមែនទេ?","breakdown":"难(hard)+道(say) — 'is it hard to say that...?', used for rhetorical questions","chars":["难","道"],"examples":[
+{"level":"HSK4","cn":"难道你不知道吗？","py":"Nándào nǐ bù zhīdào ma?","en":"Don't tell me you don't know?"},
+{"level":"HSK4","cn":"难道他忘了？","py":"Nándào tā wàng le?","en":"Could it be that he forgot?"},
+{"level":"HSK4","cn":"难道这样做不对吗？","py":"Nándào zhèyàng zuò bú duì ma?","en":"Is doing it this way really wrong?"},
+{"level":"HSK4","cn":"难道你不想成功吗？","py":"Nándào nǐ bù xiǎng chénggōng ma?","en":"Don't you want to succeed?"},
+{"level":"HSK4","cn":"难道我说错了？","py":"Nándào wǒ shuō cuò le?","en":"Did I really say something wrong?"}]},
+
+{"chinese":"难受","pinyin":"nánshòu","english":"to feel unwell; to feel bad","khmer":"មិនស្រួលខ្លួន","breakdown":"难(hard)+受(bear) — hard to bear","chars":["难","受"],"examples":[
+{"level":"HSK4","cn":"我很难受。","py":"Wǒ hěn nánshòu.","en":"I feel very unwell."},
+{"level":"HSK4","cn":"肚子疼得难受。","py":"Dùzi téng de nánshòu.","en":"My stomach hurts badly."},
+{"level":"HSK4","cn":"听到这个消息我很难受。","py":"Tīng dào zhège xiāoxi wǒ hěn nánshòu.","en":"I felt bad hearing this news."},
+{"level":"HSK4","cn":"天太热，我难受。","py":"Tiān tài rè, wǒ nánshòu.","en":"It's so hot I feel uncomfortable."},
+{"level":"HSK4","cn":"哪里难受？","py":"Nǎlǐ nánshòu?","en":"Where does it feel bad?"}]},
+
+{"chinese":"内","pinyin":"nèi","english":"inside; within","khmer":"ខាងក្នុង","breakdown":"冂(enclosure)+入(enter) — entering inside","chars":["内"],"examples":[
+{"level":"HSK4","cn":"请在三天内完成。","py":"Qǐng zài sān tiān nèi wánchéng.","en":"Please finish within three days."},
+{"level":"HSK4","cn":"室内不能抽烟。","py":"Shìnèi bù néng chōuyān.","en":"No smoking indoors."},
+{"level":"HSK4","cn":"一个月内他改变了很多。","py":"Yí ge yuè nèi tā gǎibiàn le hěn duō.","en":"He changed a lot within a month."},
+{"level":"HSK4","cn":"这个价格在我的预算内。","py":"Zhège jiàgé zài wǒ de yùsuàn nèi.","en":"This price is within my budget."},
+{"level":"HSK4","cn":"国内和国外都有分公司。","py":"Guónèi hé guówài dōu yǒu fēn gōngsī.","en":"There are branches both at home and abroad."}]},
+
+{"chinese":"内容","pinyin":"nèiróng","english":"content","khmer":"ខ្លឹមសារ","breakdown":"内(inside)+容(contain) — what is contained inside","chars":["内","容"],"examples":[
+{"level":"HSK4","cn":"这本书的内容很有意思。","py":"Zhè běn shū de nèiróng hěn yǒu yìsi.","en":"This book's content is interesting."},
+{"level":"HSK4","cn":"请说明一下内容。","py":"Qǐng shuōmíng yíxià nèiróng.","en":"Please explain the content."},
+{"level":"HSK4","cn":"这部分内容很重要。","py":"Zhè bùfen nèiróng hěn zhòngyào.","en":"This part of the content is important."},
+{"level":"HSK4","cn":"考试的内容是什么？","py":"Kǎoshì de nèiróng shì shénme?","en":"What is the exam content?"},
+{"level":"HSK4","cn":"我忘了会议的内容。","py":"Wǒ wàng le huìyì de nèiróng.","en":"I forgot the meeting content."}]},
+
+{"chinese":"能力","pinyin":"nénglì","english":"ability; capability","khmer":"សមត្ថភាព","breakdown":"能(able)+力(power) — the power to be able","chars":["能","力"],"examples":[
+{"level":"HSK4","cn":"他的能力很强。","py":"Tā de nénglì hěn qiáng.","en":"His ability is very strong."},
+{"level":"HSK4","cn":"这超过了我的能力。","py":"Zhè chāoguò le wǒ de nénglì.","en":"This exceeds my ability."},
+{"level":"HSK4","cn":"工作能力比学历更重要。","py":"Gōngzuò nénglì bǐ xuélì gèng zhòngyào.","en":"Work ability matters more than degrees."},
+{"level":"HSK4","cn":"练习可以提高能力。","py":"Liànxí kěyǐ tígāo nénglì.","en":"Practice can improve ability."},
+{"level":"HSK4","cn":"没有人怀疑他的能力。","py":"Méiyǒu rén huáiyí tā de nénglì.","en":"Nobody doubts his ability."}]},
+
+{"chinese":"年龄","pinyin":"niánlíng","english":"age","khmer":"អាយុ","breakdown":"年(year)+龄(age, 齿tooth radical) — old age was told by teeth","chars":["年","龄"],"examples":[
+{"level":"HSK4","cn":"你的年龄是多少？","py":"Nǐ de niánlíng shì duōshao?","en":"What is your age?"},
+{"level":"HSK4","cn":"请填写年龄。","py":"Qǐng tiánxiě niánlíng.","en":"Please fill in your age."},
+{"level":"HSK4","cn":"我们年龄差不多。","py":"Wǒmen niánlíng chàbuduō.","en":"We are about the same age."},
+{"level":"HSK4","cn":"年龄不是问题。","py":"Niánlíng bú shì wèntí.","en":"Age isn't a problem."},
+{"level":"HSK4","cn":"这个活动没有年龄限制。","py":"Zhège huódòng méiyǒu niánlíng xiànzhì.","en":"This event has no age limit."}]},
+
+{"chinese":"暖和","pinyin":"nuǎnhuo","english":"warm","khmer":"ក្ដៅឧណ្ហៗ","breakdown":"暖(warm, 日sun radical)+和(gentle) — gently warm like the sun","chars":["暖","和"],"examples":[
+{"level":"HSK4","cn":"春天很暖和。","py":"Chūntiān hěn nuǎnhuo.","en":"Spring is warm."},
+{"level":"HSK4","cn":"房间里很暖和。","py":"Fángjiān lǐ hěn nuǎnhuo.","en":"It's warm in the room."},
+{"level":"HSK4","cn":"这件衣服很暖和。","py":"Zhè jiàn yīfu hěn nuǎnhuo.","en":"This clothing is very warm."},
+{"level":"HSK4","cn":"今天比昨天暖和。","py":"Jīntiān bǐ zuótiān nuǎnhuo.","en":"Today is warmer than yesterday."},
+{"level":"HSK4","cn":"厚被子很暖和。","py":"Hòu bèizi hěn nuǎnhuo.","en":"A thick quilt is warm."}]},
+
+{"chinese":"偶尔","pinyin":"ǒu'ěr","english":"occasionally; once in a while","khmer":"ម្ដងម្កាល","breakdown":"偶(by chance, 亻person radical)+尔(so) — happening by chance","chars":["偶","尔"],"examples":[
+{"level":"HSK4","cn":"我偶尔去看电影。","py":"Wǒ ǒu'ěr qù kàn diànyǐng.","en":"I occasionally go to the cinema."},
+{"level":"HSK4","cn":"他偶尔会迟到。","py":"Tā ǒu'ěr huì chídào.","en":"He is occasionally late."},
+{"level":"HSK4","cn":"我们偶尔联系。","py":"Wǒmen ǒu'ěr liánxì.","en":"We contact each other once in a while."},
+{"level":"HSK4","cn":"偶尔休息一下很重要。","py":"Ǒu'ěr xiūxi yíxià hěn zhòngyào.","en":"Resting once in a while is important."},
+{"level":"HSK4","cn":"这里偶尔会下雪。","py":"Zhèlǐ ǒu'ěr huì xià xuě.","en":"It occasionally snows here."}]},
+
+{"chinese":"排队","pinyin":"páiduì","english":"to queue; to line up","khmer":"តម្រង់ជួរ","breakdown":"排(arrange in a row)+队(team, line) — arranging into a line","chars":["排","队"],"examples":[
+{"level":"HSK4","cn":"请排队。","py":"Qǐng páiduì.","en":"Please queue up."},
+{"level":"HSK4","cn":"这里排队的人很多。","py":"Zhèlǐ páiduì de rén hěn duō.","en":"Many people are queuing here."},
+{"level":"HSK4","cn":"我排了半个小时的队。","py":"Wǒ pái le bàn ge xiǎoshí de duì.","en":"I queued for half an hour."},
+{"level":"HSK4","cn":"排队是一种礼貌。","py":"Páiduì shì yì zhǒng lǐmào.","en":"Queuing is a form of politeness."},
+{"level":"HSK4","cn":"买票要排队。","py":"Mǎi piào yào páiduì.","en":"You must queue to buy tickets."}]},
+
+{"chinese":"排列","pinyin":"páiliè","english":"to arrange; to line up in order","khmer":"រៀបតាមលំដាប់","breakdown":"排(arrange)+列(line, row) — putting into rows","chars":["排","列"],"examples":[
+{"level":"HSK4","cn":"请按顺序排列。","py":"Qǐng àn shùnxù páiliè.","en":"Please arrange in order."},
+{"level":"HSK4","cn":"书按名字排列。","py":"Shū àn míngzi páiliè.","en":"The books are arranged by name."},
+{"level":"HSK4","cn":"这些数字排列得很整齐。","py":"Zhèxiē shùzì páiliè de hěn zhěngqí.","en":"These numbers are arranged neatly."},
+{"level":"HSK4","cn":"请重新排列这些照片。","py":"Qǐng chóngxīn páiliè zhèxiē zhàopiàn.","en":"Please rearrange these photos."},
+{"level":"HSK4","cn":"椅子排列成两排。","py":"Yǐzi páiliè chéng liǎng pái.","en":"The chairs are arranged in two rows."}]},
+
+{"chinese":"判断","pinyin":"pànduàn","english":"to judge; judgment","khmer":"វិនិច្ឆ័យ","breakdown":"判(judge, 刂knife radical)+断(cut off) — cutting a clear decision","chars":["判","断"],"examples":[
+{"level":"HSK4","cn":"我不能判断谁对。","py":"Wǒ bù néng pànduàn shéi duì.","en":"I can't judge who is right."},
+{"level":"HSK4","cn":"他的判断很正确。","py":"Tā de pànduàn hěn zhèngquè.","en":"His judgment is correct."},
+{"level":"HSK4","cn":"请根据材料判断。","py":"Qǐng gēnjù cáiliào pànduàn.","en":"Please judge based on the materials."},
+{"level":"HSK4","cn":"判断错了就要重新考虑。","py":"Pànduàn cuò le jiù yào chóngxīn kǎolǜ.","en":"If the judgment is wrong, reconsider."},
+{"level":"HSK4","cn":"从声音可以判断他很累。","py":"Cóng shēngyīn kěyǐ pànduàn tā hěn lèi.","en":"From his voice you can tell he's tired."}]},
+
+{"chinese":"陪","pinyin":"péi","english":"to accompany","khmer":"អមដំណើរ","breakdown":"阝(mound radical)+咅 — staying alongside someone","chars":["陪"],"examples":[
+{"level":"HSK4","cn":"我陪你去。","py":"Wǒ péi nǐ qù.","en":"I'll go with you."},
+{"level":"HSK4","cn":"他陪母亲去医院。","py":"Tā péi mǔqīn qù yīyuàn.","en":"He accompanied his mother to the hospital."},
+{"level":"HSK4","cn":"谢谢你陪我。","py":"Xièxie nǐ péi wǒ.","en":"Thank you for keeping me company."},
+{"level":"HSK4","cn":"周末我陪孩子玩。","py":"Zhōumò wǒ péi háizi wán.","en":"On weekends I play with my child."},
+{"level":"HSK4","cn":"请陪我去逛街吧。","py":"Qǐng péi wǒ qù guàngjiē ba.","en":"Please come shopping with me."}]},
+
+{"chinese":"批评","pinyin":"pīpíng","english":"to criticize; criticism","khmer":"រិះគន់","breakdown":"批(comment on, 扌hand radical)+评(judge, 讠speech radical) — commenting and judging","chars":["批","评"],"examples":[
+{"level":"HSK4","cn":"老师批评了他。","py":"Lǎoshī pīpíng le tā.","en":"The teacher criticized him."},
+{"level":"HSK4","cn":"批评要有道理。","py":"Pīpíng yào yǒu dàolǐ.","en":"Criticism should be reasonable."},
+{"level":"HSK4","cn":"鼓励比批评更有用。","py":"Gǔlì bǐ pīpíng gèng yǒuyòng.","en":"Encouragement is more useful than criticism."},
+{"level":"HSK4","cn":"他不能接受批评。","py":"Tā bù néng jiēshòu pīpíng.","en":"He can't accept criticism."},
+{"level":"HSK4","cn":"因为马虎，他被批评了。","py":"Yīnwèi mǎhu, tā bèi pīpíng le.","en":"He was criticized for being careless."}]},
+
+{"chinese":"皮肤","pinyin":"pífū","english":"skin","khmer":"ស្បែក","breakdown":"皮(skin, hide)+肤(skin, 月body radical) — two skin characters together","chars":["皮","肤"],"examples":[
+{"level":"HSK4","cn":"她的皮肤很好。","py":"Tā de pífū hěn hǎo.","en":"Her skin is very good."},
+{"level":"HSK4","cn":"太阳对皮肤不好。","py":"Tàiyáng duì pífū bù hǎo.","en":"The sun is bad for the skin."},
+{"level":"HSK4","cn":"冬天皮肤容易干。","py":"Dōngtiān pífū róngyì gān.","en":"Skin gets dry easily in winter."},
+{"level":"HSK4","cn":"他的皮肤有点红。","py":"Tā de pífū yǒudiǎn hóng.","en":"His skin is a bit red."},
+{"level":"HSK4","cn":"多喝水对皮肤有好处。","py":"Duō hē shuǐ duì pífū yǒu hǎochu.","en":"Drinking water benefits the skin."}]},
+
+{"chinese":"脾气","pinyin":"píqi","english":"temper","khmer":"អារម្មណ៍ / និស្ស័យ","breakdown":"脾(spleen, 月body radical)+气(energy) — old belief that temper came from the spleen","chars":["脾","气"],"examples":[
+{"level":"HSK4","cn":"他的脾气很好。","py":"Tā de píqi hěn hǎo.","en":"He has a good temper."},
+{"level":"HSK4","cn":"她脾气不好，容易生气。","py":"Tā píqi bù hǎo, róngyì shēngqì.","en":"She has a bad temper and gets angry easily."},
+{"level":"HSK4","cn":"别发脾气。","py":"Bié fā píqi.","en":"Don't lose your temper."},
+{"level":"HSK4","cn":"累的时候脾气会变差。","py":"Lèi de shíhou píqi huì biàn chà.","en":"When tired your temper gets worse."},
+{"level":"HSK4","cn":"我了解他的脾气。","py":"Wǒ liǎojiě tā de píqi.","en":"I understand his temper."}]},
+
+{"chinese":"篇","pinyin":"piān","english":"(measure word for articles, essays)","khmer":"ច្បាប់ (សម្រាប់អត្ថបទ)","breakdown":"竹(bamboo radical)+扁 — writing was on bamboo strips","chars":["篇"],"examples":[
+{"level":"HSK4","cn":"我读了一篇文章。","py":"Wǒ dú le yì piān wénzhāng.","en":"I read an article."},
+{"level":"HSK4","cn":"这篇文章很长。","py":"Zhè piān wénzhāng hěn cháng.","en":"This article is very long."},
+{"level":"HSK4","cn":"他写了三篇日记。","py":"Tā xiě le sān piān rìjì.","en":"He wrote three diary entries."},
+{"level":"HSK4","cn":"这篇新闻很重要。","py":"Zhè piān xīnwén hěn zhòngyào.","en":"This news article is important."},
+{"level":"HSK4","cn":"请写一篇短文。","py":"Qǐng xiě yì piān duǎnwén.","en":"Please write a short essay."}]},
+
+{"chinese":"骗","pinyin":"piàn","english":"to cheat; to deceive","khmer":"បញ្ឆោត","breakdown":"马(horse radical)+扁 — tricking someone onto a horse","chars":["骗"],"examples":[
+{"level":"HSK4","cn":"别骗我。","py":"Bié piàn wǒ.","en":"Don't lie to me."},
+{"level":"HSK4","cn":"他骗了很多人。","py":"Tā piàn le hěn duō rén.","en":"He deceived many people."},
+{"level":"HSK4","cn":"我被骗了。","py":"Wǒ bèi piàn le.","en":"I was cheated."},
+{"level":"HSK4","cn":"网上有很多骗人的广告。","py":"Wǎng shàng yǒu hěn duō piàn rén de guǎnggào.","en":"There are many deceptive ads online."},
+{"level":"HSK4","cn":"骗人是不诚实的。","py":"Piàn rén shì bù chéngshí de.","en":"Deceiving people is dishonest."}]},
+
+{"chinese":"乒乓球","pinyin":"pīngpāngqiú","english":"table tennis","khmer":"បាល់ប៉ីងប៉ុង","breakdown":"乒乓(the sound of the ball)+球(ball) — named for its sound","chars":["乒","乓","球"],"examples":[
+{"level":"HSK4","cn":"我喜欢打乒乓球。","py":"Wǒ xǐhuan dǎ pīngpāngqiú.","en":"I like playing table tennis."},
+{"level":"HSK4","cn":"他的乒乓球打得很好。","py":"Tā de pīngpāngqiú dǎ de hěn hǎo.","en":"He plays table tennis very well."},
+{"level":"HSK4","cn":"中国的乒乓球很厉害。","py":"Zhōngguó de pīngpāngqiú hěn lìhai.","en":"China's table tennis is impressive."},
+{"level":"HSK4","cn":"我们下午打乒乓球吧。","py":"Wǒmen xiàwǔ dǎ pīngpāngqiú ba.","en":"Let's play table tennis this afternoon."},
+{"level":"HSK4","cn":"乒乓球比赛很精彩。","py":"Pīngpāngqiú bǐsài hěn jīngcǎi.","en":"The table tennis match was brilliant."}]},
+
+{"chinese":"平时","pinyin":"píngshí","english":"usually; in normal times","khmer":"ធម្មតា","breakdown":"平(ordinary, level)+时(time) — ordinary times","chars":["平","时"],"examples":[
+{"level":"HSK4","cn":"我平时六点起床。","py":"Wǒ píngshí liù diǎn qǐchuáng.","en":"I usually get up at six."},
+{"level":"HSK4","cn":"平时他很安静。","py":"Píngshí tā hěn ānjìng.","en":"He is usually very quiet."},
+{"level":"HSK4","cn":"平时要多练习。","py":"Píngshí yào duō liànxí.","en":"You should practice more in normal times."},
+{"level":"HSK4","cn":"平时这里人不多。","py":"Píngshí zhèlǐ rén bù duō.","en":"Usually there aren't many people here."},
+{"level":"HSK4","cn":"平时的努力很重要。","py":"Píngshí de nǔlì hěn zhòngyào.","en":"Everyday effort is important."}]},
+
+{"chinese":"破","pinyin":"pò","english":"broken; to break","khmer":"បែក / ខូច","breakdown":"石(stone radical)+皮(skin) — a stone breaking a surface","chars":["破"],"examples":[
+{"level":"HSK4","cn":"杯子破了。","py":"Bēizi pò le.","en":"The cup is broken."},
+{"level":"HSK4","cn":"这件衣服破了。","py":"Zhè jiàn yīfu pò le.","en":"This clothing is torn."},
+{"level":"HSK4","cn":"小心别把盘子打破。","py":"Xiǎoxīn bié bǎ pánzi dǎ pò.","en":"Be careful not to break the plate."},
+{"level":"HSK4","cn":"他的鞋破了个洞。","py":"Tā de xié pò le ge dòng.","en":"His shoe has a hole in it."},
+{"level":"HSK4","cn":"破了的东西还能修理。","py":"Pò le de dōngxi hái néng xiūlǐ.","en":"Broken things can still be repaired."}]},
+
+{"chinese":"葡萄","pinyin":"pútao","english":"grape","khmer":"ទំពាំងបាយជូរ","breakdown":"葡+萄, both with 艹(grass radical) — a two-character plant name","chars":["葡","萄"],"examples":[
+{"level":"HSK4","cn":"我喜欢吃葡萄。","py":"Wǒ xǐhuan chī pútao.","en":"I like eating grapes."},
+{"level":"HSK4","cn":"这些葡萄很甜。","py":"Zhèxiē pútao hěn tián.","en":"These grapes are very sweet."},
+{"level":"HSK4","cn":"我买了一公斤葡萄。","py":"Wǒ mǎi le yì gōngjīn pútao.","en":"I bought a kilogram of grapes."},
+{"level":"HSK4","cn":"葡萄酒是用葡萄做的。","py":"Pútaojiǔ shì yòng pútao zuò de.","en":"Wine is made from grapes."},
+{"level":"HSK4","cn":"葡萄在冰箱里很新鲜。","py":"Pútao zài bīngxiāng lǐ hěn xīnxiān.","en":"The grapes stay fresh in the fridge."}]},
+
+{"chinese":"普遍","pinyin":"pǔbiàn","english":"common; widespread","khmer":"ទូទៅ","breakdown":"普(general)+遍(everywhere) — general and everywhere","chars":["普","遍"],"examples":[
+{"level":"HSK4","cn":"这个问题很普遍。","py":"Zhège wèntí hěn pǔbiàn.","en":"This problem is very common."},
+{"level":"HSK4","cn":"手机现在很普遍。","py":"Shǒujī xiànzài hěn pǔbiàn.","en":"Phones are common now."},
+{"level":"HSK4","cn":"这是一个普遍的看法。","py":"Zhè shì yí ge pǔbiàn de kànfǎ.","en":"This is a common view."},
+{"level":"HSK4","cn":"普遍来说，年轻人喜欢上网。","py":"Pǔbiàn lái shuō, niánqīng rén xǐhuan shàngwǎng.","en":"Generally, young people like going online."},
+{"level":"HSK4","cn":"这种情况在城市里很普遍。","py":"Zhè zhǒng qíngkuàng zài chéngshì lǐ hěn pǔbiàn.","en":"This situation is common in cities."}]},
+
+{"chinese":"普通话","pinyin":"pǔtōnghuà","english":"Mandarin (standard Chinese)","khmer":"ភាសាចិនកុកងឺ","breakdown":"普通(common)+话(speech) — the common speech","chars":["普","通","话"],"examples":[
+{"level":"HSK4","cn":"他说普通话。","py":"Tā shuō pǔtōnghuà.","en":"He speaks Mandarin."},
+{"level":"HSK4","cn":"我的普通话不太标准。","py":"Wǒ de pǔtōnghuà bú tài biāozhǔn.","en":"My Mandarin isn't very standard."},
+{"level":"HSK4","cn":"学普通话要多练习。","py":"Xué pǔtōnghuà yào duō liànxí.","en":"Learning Mandarin needs much practice."},
+{"level":"HSK4","cn":"请用普通话说。","py":"Qǐng yòng pǔtōnghuà shuō.","en":"Please speak in Mandarin."},
+{"level":"HSK4","cn":"她的普通话很流利。","py":"Tā de pǔtōnghuà hěn liúlì.","en":"Her Mandarin is very fluent."}]},
+
+{"chinese":"其次","pinyin":"qícì","english":"secondly; next","khmer":"បន្ទាប់មក","breakdown":"其(that)+次(order, time) — the next in order","chars":["其","次"],"examples":[
+{"level":"HSK4","cn":"首先是安全，其次是速度。","py":"Shǒuxiān shì ānquán, qícì shì sùdù.","en":"First is safety, second is speed."},
+{"level":"HSK4","cn":"其次我们要考虑价格。","py":"Qícì wǒmen yào kǎolǜ jiàgé.","en":"Secondly we must consider price."},
+{"level":"HSK4","cn":"内容最重要，其次是形式。","py":"Nèiróng zuì zhòngyào, qícì shì xíngshì.","en":"Content matters most, form second."},
+{"level":"HSK4","cn":"其次的问题以后再说。","py":"Qícì de wèntí yǐhòu zài shuō.","en":"We'll discuss secondary issues later."},
+{"level":"HSK4","cn":"首先要有目的，其次要有计划。","py":"Shǒuxiān yào yǒu mùdì, qícì yào yǒu jìhuà.","en":"First have a goal, then have a plan."}]},
+
+{"chinese":"其中","pinyin":"qízhōng","english":"among them; in it","khmer":"ក្នុងចំណោមនោះ","breakdown":"其(that)+中(middle) — in the middle of that group","chars":["其","中"],"examples":[
+{"level":"HSK4","cn":"其中一个是我的。","py":"Qízhōng yí ge shì wǒ de.","en":"One of them is mine."},
+{"level":"HSK4","cn":"有十个人，其中三个是学生。","py":"Yǒu shí ge rén, qízhōng sān ge shì xuésheng.","en":"There are ten people, three of them students."},
+{"level":"HSK4","cn":"其中的原因很复杂。","py":"Qízhōng de yuányīn hěn fùzá.","en":"The reasons behind it are complex."},
+{"level":"HSK4","cn":"这些书其中一本很有名。","py":"Zhèxiē shū qízhōng yì běn hěn yǒumíng.","en":"One of these books is famous."},
+{"level":"HSK4","cn":"我参加了很多活动，其中这个最好。","py":"Wǒ cānjiā le hěn duō huódòng, qízhōng zhège zuì hǎo.","en":"I joined many events, this one was the best."}]},
+
+{"chinese":"气候","pinyin":"qìhòu","english":"climate","khmer":"អាកាសធាតុ","breakdown":"气(air, weather)+候(season, condition) — long-term weather conditions","chars":["气","候"],"examples":[
+{"level":"HSK4","cn":"这里的气候很好。","py":"Zhèlǐ de qìhòu hěn hǎo.","en":"The climate here is good."},
+{"level":"HSK4","cn":"气候变化是个大问题。","py":"Qìhòu biànhuà shì ge dà wèntí.","en":"Climate change is a big problem."},
+{"level":"HSK4","cn":"南方的气候比较暖和。","py":"Nánfāng de qìhòu bǐjiào nuǎnhuo.","en":"The southern climate is warmer."},
+{"level":"HSK4","cn":"我不习惯这里的气候。","py":"Wǒ bù xíguàn zhèlǐ de qìhòu.","en":"I'm not used to the climate here."},
+{"level":"HSK4","cn":"气候影响农业。","py":"Qìhòu yǐngxiǎng nóngyè.","en":"Climate affects agriculture."}]},
+
+{"chinese":"千万","pinyin":"qiānwàn","english":"by all means; must (in warnings)","khmer":"ត្រូវតែ (ការព្រមាន)","breakdown":"千(thousand)+万(ten thousand) — a huge amount, used to stress urgency","chars":["千","万"],"examples":[
+{"level":"HSK4","cn":"千万别忘了。","py":"Qiānwàn bié wàng le.","en":"Whatever you do, don't forget."},
+{"level":"HSK4","cn":"千万要小心。","py":"Qiānwàn yào xiǎoxīn.","en":"You must be careful."},
+{"level":"HSK4","cn":"千万别迟到。","py":"Qiānwàn bié chídào.","en":"By all means don't be late."},
+{"level":"HSK4","cn":"这件事千万别告诉别人。","py":"Zhè jiàn shì qiānwàn bié gàosu biéren.","en":"Don't tell anyone about this."},
+{"level":"HSK4","cn":"千万记得带护照。","py":"Qiānwàn jìde dài hùzhào.","en":"Be sure to remember your passport."}]},
+
+{"chinese":"签证","pinyin":"qiānzhèng","english":"visa","khmer":"ទិដ្ឋាការ","breakdown":"签(sign)+证(certificate) — a signed certificate","chars":["签","证"],"examples":[
+{"level":"HSK4","cn":"我要办签证。","py":"Wǒ yào bàn qiānzhèng.","en":"I need to get a visa."},
+{"level":"HSK4","cn":"签证在大使馆办。","py":"Qiānzhèng zài dàshǐguǎn bàn.","en":"Visas are handled at the embassy."},
+{"level":"HSK4","cn":"我的签证下个月到期。","py":"Wǒ de qiānzhèng xià ge yuè dàoqī.","en":"My visa expires next month."},
+{"level":"HSK4","cn":"办签证要很多材料。","py":"Bàn qiānzhèng yào hěn duō cáiliào.","en":"Getting a visa requires many documents."},
+{"level":"HSK4","cn":"没有签证不能出国。","py":"Méiyǒu qiānzhèng bù néng chū guó.","en":"Without a visa you can't go abroad."}]},
+
+{"chinese":"敲","pinyin":"qiāo","english":"to knock","khmer":"គោះ","breakdown":"高(tall)+攴(strike) — striking something","chars":["敲"],"examples":[
+{"level":"HSK4","cn":"有人在敲门。","py":"Yǒu rén zài qiāo mén.","en":"Someone is knocking at the door."},
+{"level":"HSK4","cn":"请先敲门。","py":"Qǐng xiān qiāo mén.","en":"Please knock first."},
+{"level":"HSK4","cn":"他轻轻地敲了敲桌子。","py":"Tā qīngqīng de qiāo le qiāo zhuōzi.","en":"He lightly knocked on the table."},
+{"level":"HSK4","cn":"我敲了很久，没人开门。","py":"Wǒ qiāo le hěn jiǔ, méi rén kāi mén.","en":"I knocked a long time, nobody opened."},
+{"level":"HSK4","cn":"敲门是一种礼貌。","py":"Qiāo mén shì yì zhǒng lǐmào.","en":"Knocking is a form of politeness."}]},
+
+{"chinese":"桥","pinyin":"qiáo","english":"bridge","khmer":"ស្ពាន","breakdown":"木(wood radical)+乔(tall) — a tall wooden structure","chars":["桥"],"examples":[
+{"level":"HSK4","cn":"这座桥很长。","py":"Zhè zuò qiáo hěn cháng.","en":"This bridge is very long."},
+{"level":"HSK4","cn":"我们过桥吧。","py":"Wǒmen guò qiáo ba.","en":"Let's cross the bridge."},
+{"level":"HSK4","cn":"桥上的景色很美。","py":"Qiáo shàng de jǐngsè hěn měi.","en":"The view from the bridge is beautiful."},
+{"level":"HSK4","cn":"这座桥有一百年了。","py":"Zhè zuò qiáo yǒu yìbǎi nián le.","en":"This bridge is a hundred years old."},
+{"level":"HSK4","cn":"过了桥就到了。","py":"Guò le qiáo jiù dào le.","en":"Cross the bridge and you're there."}]},
+
+{"chinese":"巧克力","pinyin":"qiǎokèlì","english":"chocolate","khmer":"សូកូឡា","breakdown":"A sound-borrowed word from English 'chocolate'","chars":["巧","克","力"],"examples":[
+{"level":"HSK4","cn":"我喜欢吃巧克力。","py":"Wǒ xǐhuan chī qiǎokèlì.","en":"I like eating chocolate."},
+{"level":"HSK4","cn":"这个巧克力很甜。","py":"Zhège qiǎokèlì hěn tián.","en":"This chocolate is very sweet."},
+{"level":"HSK4","cn":"他送了我一盒巧克力。","py":"Tā sòng le wǒ yì hé qiǎokèlì.","en":"He gave me a box of chocolate."},
+{"level":"HSK4","cn":"巧克力吃多了不好。","py":"Qiǎokèlì chī duō le bù hǎo.","en":"Eating too much chocolate isn't good."},
+{"level":"HSK4","cn":"这是巧克力蛋糕。","py":"Zhè shì qiǎokèlì dàngāo.","en":"This is chocolate cake."}]},
+
+{"chinese":"亲戚","pinyin":"qīnqi","english":"relative (family)","khmer":"សាច់ញាតិ","breakdown":"亲(close, kin)+戚(relative) — close kin","chars":["亲","戚"],"examples":[
+{"level":"HSK4","cn":"他是我的亲戚。","py":"Tā shì wǒ de qīnqi.","en":"He is my relative."},
+{"level":"HSK4","cn":"过节的时候亲戚都来了。","py":"Guò jié de shíhou qīnqi dōu lái le.","en":"All the relatives came during the festival."},
+{"level":"HSK4","cn":"我有很多亲戚在国外。","py":"Wǒ yǒu hěn duō qīnqi zài guówài.","en":"I have many relatives abroad."},
+{"level":"HSK4","cn":"我去看亲戚了。","py":"Wǒ qù kàn qīnqi le.","en":"I went to visit relatives."},
+{"level":"HSK4","cn":"亲戚之间要互相帮助。","py":"Qīnqi zhījiān yào hùxiāng bāngzhù.","en":"Relatives should help each other."}]},
+
+{"chinese":"轻","pinyin":"qīng","english":"light (in weight); gentle","khmer":"ស្រាល","breakdown":"车(vehicle radical)+圣 — a light cart","chars":["轻"],"examples":[
+{"level":"HSK4","cn":"这个盒子很轻。","py":"Zhège hézi hěn qīng.","en":"This box is very light."},
+{"level":"HSK4","cn":"请轻一点。","py":"Qǐng qīng yìdiǎn.","en":"Please be gentler."},
+{"level":"HSK4","cn":"他轻轻地关上了门。","py":"Tā qīngqīng de guān shàng le mén.","en":"He gently closed the door."},
+{"level":"HSK4","cn":"这个行李箱很轻。","py":"Zhège xínglǐxiāng hěn qīng.","en":"This suitcase is very light."},
+{"level":"HSK4","cn":"轻的东西容易被风吹走。","py":"Qīng de dōngxi róngyì bèi fēng chuī zǒu.","en":"Light things blow away easily."}]},
+
+{"chinese":"轻松","pinyin":"qīngsōng","english":"relaxed; easy","khmer":"ធូរស្រាល","breakdown":"轻(light)+松(loose) — light and loose","chars":["轻","松"],"examples":[
+{"level":"HSK4","cn":"这个工作很轻松。","py":"Zhège gōngzuò hěn qīngsōng.","en":"This job is easy."},
+{"level":"HSK4","cn":"考完试我很轻松。","py":"Kǎo wán shì wǒ hěn qīngsōng.","en":"After the exam I felt relaxed."},
+{"level":"HSK4","cn":"听音乐让我轻松。","py":"Tīng yīnyuè ràng wǒ qīngsōng.","en":"Listening to music relaxes me."},
+{"level":"HSK4","cn":"他轻松地完成了任务。","py":"Tā qīngsōng de wánchéng le rènwu.","en":"He completed the task easily."},
+{"level":"HSK4","cn":"周末的气氛很轻松。","py":"Zhōumò de qìfēn hěn qīngsōng.","en":"The weekend atmosphere is relaxed."}]},
+
+{"chinese":"情况","pinyin":"qíngkuàng","english":"situation; circumstances","khmer":"ស្ថានភាព","breakdown":"情(condition, feeling)+况(situation) — the state of things","chars":["情","况"],"examples":[
+{"level":"HSK4","cn":"情况怎么样？","py":"Qíngkuàng zěnmeyàng?","en":"How is the situation?"},
+{"level":"HSK4","cn":"这种情况很少见。","py":"Zhè zhǒng qíngkuàng hěn shǎo jiàn.","en":"This situation is rare."},
+{"level":"HSK4","cn":"请说明一下情况。","py":"Qǐng shuōmíng yíxià qíngkuàng.","en":"Please explain the situation."},
+{"level":"HSK4","cn":"情况比我想的复杂。","py":"Qíngkuàng bǐ wǒ xiǎng de fùzá.","en":"The situation is more complex than I thought."},
+{"level":"HSK4","cn":"根据情况我们再决定。","py":"Gēnjù qíngkuàng wǒmen zài juédìng.","en":"We'll decide based on the situation."}]},
+
+{"chinese":"穷","pinyin":"qióng","english":"poor","khmer":"ក្រ","breakdown":"穴(cave)+力(strength) — living in a cave, out of strength","chars":["穷"],"examples":[
+{"level":"HSK4","cn":"他小时候很穷。","py":"Tā xiǎoshíhou hěn qióng.","en":"He was poor as a child."},
+{"level":"HSK4","cn":"穷不等于不快乐。","py":"Qióng bù děngyú bú kuàilè.","en":"Being poor doesn't mean being unhappy."},
+{"level":"HSK4","cn":"这个国家以前很穷。","py":"Zhège guójiā yǐqián hěn qióng.","en":"This country used to be poor."},
+{"level":"HSK4","cn":"我这个月很穷。","py":"Wǒ zhège yuè hěn qióng.","en":"I'm broke this month."},
+{"level":"HSK4","cn":"教育可以帮助穷人。","py":"Jiàoyù kěyǐ bāngzhù qióng rén.","en":"Education can help poor people."}]},
+
+{"chinese":"区别","pinyin":"qūbié","english":"difference; to distinguish","khmer":"ភាពខុសគ្នា","breakdown":"区(divide, area)+别(separate) — dividing and separating","chars":["区","别"],"examples":[
+{"level":"HSK4","cn":"这两个有什么区别？","py":"Zhè liǎng ge yǒu shénme qūbié?","en":"What's the difference between these two?"},
+{"level":"HSK4","cn":"我看不出区别。","py":"Wǒ kàn bu chū qūbié.","en":"I can't see the difference."},
+{"level":"HSK4","cn":"区别不太大。","py":"Qūbié bú tài dà.","en":"The difference isn't big."},
+{"level":"HSK4","cn":"请解释一下区别。","py":"Qǐng jiěshì yíxià qūbié.","en":"Please explain the difference."},
+{"level":"HSK4","cn":"这两个词的区别很重要。","py":"Zhè liǎng ge cí de qūbié hěn zhòngyào.","en":"The difference between these two words matters."}]},
+
+{"chinese":"取","pinyin":"qǔ","english":"to take; to fetch; to withdraw","khmer":"យក / ដក","breakdown":"耳(ear)+又(hand) — a hand taking hold","chars":["取"],"examples":[
+{"level":"HSK4","cn":"我去银行取钱。","py":"Wǒ qù yínháng qǔ qián.","en":"I'm going to the bank to withdraw money."},
+{"level":"HSK4","cn":"请取一下行李。","py":"Qǐng qǔ yíxià xínglǐ.","en":"Please collect your luggage."},
+{"level":"HSK4","cn":"在这里取登机牌。","py":"Zài zhèlǐ qǔ dēngjīpái.","en":"Get your boarding pass here."},
+{"level":"HSK4","cn":"他去邮局取包裹。","py":"Tā qù yóujú qǔ bāoguǒ.","en":"He goes to the post office to collect a package."},
+{"level":"HSK4","cn":"取钱要带密码。","py":"Qǔ qián yào dài mìmǎ.","en":"You need your PIN to withdraw money."}]},
+
+{"chinese":"全部","pinyin":"quánbù","english":"all; entire","khmer":"ទាំងអស់","breakdown":"全(whole)+部(part) — every part of the whole","chars":["全","部"],"examples":[
+{"level":"HSK4","cn":"我全部完成了。","py":"Wǒ quánbù wánchéng le.","en":"I finished all of it."},
+{"level":"HSK4","cn":"这是全部的材料。","py":"Zhè shì quánbù de cáiliào.","en":"This is all the material."},
+{"level":"HSK4","cn":"钱全部花光了。","py":"Qián quánbù huā guāng le.","en":"All the money is spent."},
+{"level":"HSK4","cn":"全部学生都参加了。","py":"Quánbù xuésheng dōu cānjiā le.","en":"All the students took part."},
+{"level":"HSK4","cn":"这不是全部的原因。","py":"Zhè bú shì quánbù de yuányīn.","en":"This isn't the whole reason."}]},
+
+{"chinese":"缺点","pinyin":"quēdiǎn","english":"shortcoming; weak point","khmer":"ចំណុចខ្សោយ","breakdown":"缺(lacking)+点(point) — a point that is lacking","chars":["缺","点"],"examples":[
+{"level":"HSK4","cn":"每个人都有缺点。","py":"Měi ge rén dōu yǒu quēdiǎn.","en":"Everyone has shortcomings."},
+{"level":"HSK4","cn":"这个方法的缺点是太慢。","py":"Zhège fāngfǎ de quēdiǎn shì tài màn.","en":"This method's weakness is being too slow."},
+{"level":"HSK4","cn":"我知道自己的缺点。","py":"Wǒ zhīdào zìjǐ de quēdiǎn.","en":"I know my own shortcomings."},
+{"level":"HSK4","cn":"优点比缺点多。","py":"Yōudiǎn bǐ quēdiǎn duō.","en":"There are more strengths than weaknesses."},
+{"level":"HSK4","cn":"改正缺点需要时间。","py":"Gǎizhèng quēdiǎn xūyào shíjiān.","en":"Fixing weaknesses takes time."}]},
+
+{"chinese":"缺少","pinyin":"quēshǎo","english":"to lack; to be short of","khmer":"ខ្វះ","breakdown":"缺(lacking)+少(few) — lacking and few","chars":["缺","少"],"examples":[
+{"level":"HSK4","cn":"我们缺少材料。","py":"Wǒmen quēshǎo cáiliào.","en":"We lack materials."},
+{"level":"HSK4","cn":"他缺少经验。","py":"Tā quēshǎo jīngyàn.","en":"He lacks experience."},
+{"level":"HSK4","cn":"这里缺少一个垃圾桶。","py":"Zhèlǐ quēshǎo yí ge lājītǒng.","en":"A bin is missing here."},
+{"level":"HSK4","cn":"缺少耐心很难成功。","py":"Quēshǎo nàixīn hěn nán chénggōng.","en":"Lacking patience makes success hard."},
+{"level":"HSK4","cn":"这个城市缺少绿色。","py":"Zhège chéngshì quēshǎo lǜsè.","en":"This city lacks greenery."}]},
+
+{"chinese":"却","pinyin":"què","english":"but; yet","khmer":"ប៉ុន្តែ","breakdown":"Whole shape — a turning word placed before the verb","chars":["却"],"examples":[
+{"level":"HSK4","cn":"他很年轻，经验却很多。","py":"Tā hěn niánqīng, jīngyàn què hěn duō.","en":"He is young, yet has much experience."},
+{"level":"HSK4","cn":"我叫了他，他却没听见。","py":"Wǒ jiào le tā, tā què méi tīngjiàn.","en":"I called him, yet he didn't hear."},
+{"level":"HSK4","cn":"东西很贵，质量却不好。","py":"Dōngxi hěn guì, zhìliàng què bù hǎo.","en":"It's expensive, yet the quality is poor."},
+{"level":"HSK4","cn":"他学得很久，却还不流利。","py":"Tā xué de hěn jiǔ, què hái bù liúlì.","en":"He studied long, yet still isn't fluent."},
+{"level":"HSK4","cn":"天气不好，我们却很开心。","py":"Tiānqì bù hǎo, wǒmen què hěn kāixīn.","en":"The weather was bad, yet we were happy."}]},
+
+{"chinese":"确实","pinyin":"quèshí","english":"indeed; really","khmer":"ពិតជា","breakdown":"确(certain)+实(real) — certainly real","chars":["确","实"],"examples":[
+{"level":"HSK4","cn":"这确实是个好办法。","py":"Zhè quèshí shì ge hǎo bànfǎ.","en":"This is indeed a good method."},
+{"level":"HSK4","cn":"他确实很努力。","py":"Tā quèshí hěn nǔlì.","en":"He really does work hard."},
+{"level":"HSK4","cn":"这个消息确实是真的。","py":"Zhège xiāoxi quèshí shì zhēn de.","en":"This news is indeed true."},
+{"level":"HSK4","cn":"确实有一点困难。","py":"Quèshí yǒu yìdiǎn kùnnan.","en":"There is indeed some difficulty."},
+{"level":"HSK4","cn":"我确实忘了。","py":"Wǒ quèshí wàng le.","en":"I really did forget."}]},
+
+{"chinese":"然而","pinyin":"rán'ér","english":"however; nevertheless","khmer":"ទោះជាយ៉ាងណា","breakdown":"然(so)+而(but) — 'so, but' — a formal turn","chars":["然","而"],"examples":[
+{"level":"HSK4","cn":"他很努力，然而没有成功。","py":"Tā hěn nǔlì, rán'ér méiyǒu chénggōng.","en":"He tried hard, however he didn't succeed."},
+{"level":"HSK4","cn":"计划很好，然而很难实现。","py":"Jìhuà hěn hǎo, rán'ér hěn nán shíxiàn.","en":"The plan is good, however it's hard to realize."},
+{"level":"HSK4","cn":"然而情况改变了。","py":"Rán'ér qíngkuàng gǎibiàn le.","en":"However, the situation changed."},
+{"level":"HSK4","cn":"我同意，然而有一个条件。","py":"Wǒ tóngyì, rán'ér yǒu yí ge tiáojiàn.","en":"I agree, however there is one condition."},
+{"level":"HSK4","cn":"价格很低，然而质量不好。","py":"Jiàgé hěn dī, rán'ér zhìliàng bù hǎo.","en":"The price is low, however the quality is poor."}]},
+
+{"chinese":"热闹","pinyin":"rènao","english":"lively; bustling","khmer":"មមាញឹករំភើប","breakdown":"热(hot)+闹(noisy) — hot and noisy with people","chars":["热","闹"],"examples":[
+{"level":"HSK4","cn":"这里很热闹。","py":"Zhèlǐ hěn rènao.","en":"It's very lively here."},
+{"level":"HSK4","cn":"节日的街道很热闹。","py":"Jiérì de jiēdào hěn rènao.","en":"The streets are lively during festivals."},
+{"level":"HSK4","cn":"聚会很热闹。","py":"Jùhuì hěn rènao.","en":"The party was lively."},
+{"level":"HSK4","cn":"我喜欢热闹的地方。","py":"Wǒ xǐhuan rènao de dìfang.","en":"I like lively places."},
+{"level":"HSK4","cn":"晚上的市场特别热闹。","py":"Wǎnshang de shìchǎng tèbié rènao.","en":"The night market is especially lively."}]},
+
+{"chinese":"任何","pinyin":"rènhé","english":"any; whatever","khmer":"ណាមួយក៏បាន","breakdown":"任(allow, any)+何(what) — any whatever","chars":["任","何"],"examples":[
+{"level":"HSK4","cn":"任何人都可以参加。","py":"Rènhé rén dōu kěyǐ cānjiā.","en":"Anyone can take part."},
+{"level":"HSK4","cn":"我没有任何问题。","py":"Wǒ méiyǒu rènhé wèntí.","en":"I have no questions at all."},
+{"level":"HSK4","cn":"任何时候都可以联系我。","py":"Rènhé shíhou dōu kěyǐ liánxì wǒ.","en":"You can contact me any time."},
+{"level":"HSK4","cn":"这件事跟他没有任何关系。","py":"Zhè jiàn shì gēn tā méiyǒu rènhé guānxi.","en":"This has nothing to do with him."},
+{"level":"HSK4","cn":"任何困难都不能让我放弃。","py":"Rènhé kùnnan dōu bù néng ràng wǒ fàngqì.","en":"No difficulty can make me give up."}]}
+]

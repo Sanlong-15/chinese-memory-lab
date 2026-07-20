@@ -1,0 +1,442 @@
+[
+{"chinese":"同意","pinyin":"tóngyì","english":"to agree; to approve","khmer":"យល់ព្រម","breakdown":"同(same)+意(idea) — having the same idea","chars":["同","意"],"examples":[
+{"level":"HSK3","cn":"我同意你的想法。","py":"Wǒ tóngyì nǐ de xiǎngfǎ.","en":"I agree with your idea."},
+{"level":"HSK3","cn":"他不同意。","py":"Tā bù tóngyì.","en":"He doesn't agree."},
+{"level":"HSK3","cn":"经理同意了。","py":"Jīnglǐ tóngyì le.","en":"The manager approved."},
+{"level":"HSK3","cn":"大家都同意这个办法。","py":"Dàjiā dōu tóngyì zhège bànfǎ.","en":"Everyone agrees with this method."},
+{"level":"HSK3","cn":"如果你同意，我们就开始。","py":"Rúguǒ nǐ tóngyì, wǒmen jiù kāishǐ.","en":"If you agree, we'll start."}]},
+
+{"chinese":"头发","pinyin":"tóufa","english":"hair (on the head)","khmer":"សក់","breakdown":"头(head)+发(hair) — hair on the head","chars":["头","发"],"examples":[
+{"level":"HSK3","cn":"她的头发很长。","py":"Tā de tóufa hěn cháng.","en":"Her hair is very long."},
+{"level":"HSK3","cn":"我要洗头发。","py":"Wǒ yào xǐ tóufa.","en":"I need to wash my hair."},
+{"level":"HSK3","cn":"他的头发很短。","py":"Tā de tóufa hěn duǎn.","en":"His hair is very short."},
+{"level":"HSK3","cn":"奶奶的头发白了。","py":"Nǎinai de tóufa bái le.","en":"Grandma's hair has turned white."},
+{"level":"HSK3","cn":"刮风的时候头发很乱。","py":"Guāfēng de shíhou tóufa hěn luàn.","en":"When it's windy your hair gets messy."}]},
+
+{"chinese":"突然","pinyin":"tūrán","english":"sudden; suddenly","khmer":"ភ្លាមៗ / ដោយមិននឹកស្មាន","breakdown":"突(rush out)+然(so) — it rushed out just like that","chars":["突","然"],"examples":[
+{"level":"HSK3","cn":"他突然走了。","py":"Tā tūrán zǒu le.","en":"He suddenly left."},
+{"level":"HSK3","cn":"天突然下雨了。","py":"Tiān tūrán xià yǔ le.","en":"It suddenly started raining."},
+{"level":"HSK3","cn":"我突然想起一件事。","py":"Wǒ tūrán xiǎng qǐ yí jiàn shì.","en":"I suddenly remembered something."},
+{"level":"HSK3","cn":"这个决定很突然。","py":"Zhège juédìng hěn tūrán.","en":"This decision is very sudden."},
+{"level":"HSK3","cn":"他突然生气了。","py":"Tā tūrán shēngqì le.","en":"He suddenly got angry."}]},
+
+{"chinese":"图书馆","pinyin":"túshūguǎn","english":"library","khmer":"បណ្ណាល័យ","breakdown":"图(picture)+书(book)+馆(hall) — a hall of books and pictures","chars":["图","书","馆"],"examples":[
+{"level":"HSK3","cn":"我在图书馆看书。","py":"Wǒ zài túshūguǎn kàn shū.","en":"I read books in the library."},
+{"level":"HSK3","cn":"图书馆很安静。","py":"Túshūguǎn hěn ānjìng.","en":"The library is very quiet."},
+{"level":"HSK3","cn":"图书馆几点关门？","py":"Túshūguǎn jǐ diǎn guān mén?","en":"What time does the library close?"},
+{"level":"HSK3","cn":"这本书是从图书馆借的。","py":"Zhè běn shū shì cóng túshūguǎn jiè de.","en":"This book was borrowed from the library."},
+{"level":"HSK3","cn":"学校的图书馆很大。","py":"Xuéxiào de túshūguǎn hěn dà.","en":"The school library is very big."}]},
+
+{"chinese":"腿","pinyin":"tuǐ","english":"leg","khmer":"ជើង (ដើមជើង)","breakdown":"月(body radical)+退(sound tuì) — body part plus a sound clue","chars":["腿"],"examples":[
+{"level":"HSK3","cn":"我的腿很疼。","py":"Wǒ de tuǐ hěn téng.","en":"My leg hurts a lot."},
+{"level":"HSK3","cn":"他的腿很长。","py":"Tā de tuǐ hěn cháng.","en":"His legs are very long."},
+{"level":"HSK3","cn":"爬山以后腿很累。","py":"Páshān yǐhòu tuǐ hěn lèi.","en":"After hiking my legs are tired."},
+{"level":"HSK3","cn":"请小心你的腿。","py":"Qǐng xiǎoxīn nǐ de tuǐ.","en":"Please mind your legs."},
+{"level":"HSK3","cn":"这只鸟的腿很细。","py":"Zhè zhī niǎo de tuǐ hěn xì.","en":"This bird's legs are very thin."}]},
+
+{"chinese":"完成","pinyin":"wánchéng","english":"to complete; to finish","khmer":"បញ្ចប់សម្រេច","breakdown":"完(finish)+成(become, succeed) — finished and done","chars":["完","成"],"examples":[
+{"level":"HSK3","cn":"我完成了作业。","py":"Wǒ wánchéng le zuòyè.","en":"I finished my homework."},
+{"level":"HSK3","cn":"这件事很难完成。","py":"Zhè jiàn shì hěn nán wánchéng.","en":"This is hard to complete."},
+{"level":"HSK3","cn":"请在今天完成。","py":"Qǐng zài jīntiān wánchéng.","en":"Please complete it today."},
+{"level":"HSK3","cn":"他完成得很快。","py":"Tā wánchéng de hěn kuài.","en":"He finished very quickly."},
+{"level":"HSK3","cn":"我们一起完成这个练习。","py":"Wǒmen yìqǐ wánchéng zhège liànxí.","en":"Let's finish this exercise together."}]},
+
+{"chinese":"碗","pinyin":"wǎn","english":"bowl","khmer":"ចាន (ជ្រៅ)","breakdown":"石(stone radical)+宛 — bowls were made from stone or clay","chars":["碗"],"examples":[
+{"level":"HSK3","cn":"请给我一个碗。","py":"Qǐng gěi wǒ yí ge wǎn.","en":"Please give me a bowl."},
+{"level":"HSK3","cn":"我吃了两碗米饭。","py":"Wǒ chī le liǎng wǎn mǐfàn.","en":"I ate two bowls of rice."},
+{"level":"HSK3","cn":"碗在盘子旁边。","py":"Wǎn zài pánzi pángbiān.","en":"The bowl is next to the plate."},
+{"level":"HSK3","cn":"吃完饭要洗碗。","py":"Chī wán fàn yào xǐ wǎn.","en":"After eating you must wash the bowls."},
+{"level":"HSK3","cn":"这个碗很干净。","py":"Zhège wǎn hěn gānjìng.","en":"This bowl is very clean."}]},
+
+{"chinese":"万","pinyin":"wàn","english":"ten thousand","khmer":"មួយម៉ឺន","breakdown":"Whole shape — memorize as the number 10,000","chars":["万"],"examples":[
+{"level":"HSK3","cn":"这个东西一万块。","py":"Zhège dōngxi yíwàn kuài.","en":"This thing costs ten thousand yuan."},
+{"level":"HSK3","cn":"这个城市有一百万人。","py":"Zhège chéngshì yǒu yìbǎiwàn rén.","en":"This city has a million people."},
+{"level":"HSK3","cn":"他有很多钱，几十万。","py":"Tā yǒu hěn duō qián, jǐshí wàn.","en":"He has a lot of money, several hundred thousand."},
+{"level":"HSK3","cn":"一万是四个零。","py":"Yíwàn shì sì ge líng.","en":"Ten thousand has four zeros."},
+{"level":"HSK3","cn":"这本书卖了十万本。","py":"Zhè běn shū mài le shíwàn běn.","en":"This book sold a hundred thousand copies."}]},
+
+{"chinese":"为","pinyin":"wèi","english":"for; because of","khmer":"សម្រាប់","breakdown":"Whole shape — read wèi for 'for the sake of'","chars":["为"],"examples":[
+{"level":"HSK3","cn":"我为你高兴。","py":"Wǒ wèi nǐ gāoxìng.","en":"I'm happy for you."},
+{"level":"HSK3","cn":"他为大家做了很多。","py":"Tā wèi dàjiā zuò le hěn duō.","en":"He did a lot for everyone."},
+{"level":"HSK3","cn":"为什么你不来？","py":"Wèishénme nǐ bù lái?","en":"Why don't you come?"},
+{"level":"HSK3","cn":"我为这件事担心。","py":"Wǒ wèi zhè jiàn shì dānxīn.","en":"I'm worried about this matter."},
+{"level":"HSK3","cn":"他为家人努力工作。","py":"Tā wèi jiārén nǔlì gōngzuò.","en":"He works hard for his family."}]},
+
+{"chinese":"为了","pinyin":"wèile","english":"in order to; for the purpose of","khmer":"ដើម្បី","breakdown":"为(for)+了(particle) — for the purpose of","chars":["为","了"],"examples":[
+{"level":"HSK3","cn":"为了健康，我每天锻炼。","py":"Wèile jiànkāng, wǒ měitiān duànliàn.","en":"For my health, I exercise every day."},
+{"level":"HSK3","cn":"为了考试，他很努力。","py":"Wèile kǎoshì, tā hěn nǔlì.","en":"For the exam, he works very hard."},
+{"level":"HSK3","cn":"为了孩子，父母做了很多。","py":"Wèile háizi, fùmǔ zuò le hěn duō.","en":"For their children, parents do a lot."},
+{"level":"HSK3","cn":"为了留学，我在学汉语。","py":"Wèile liúxué, wǒ zài xué Hànyǔ.","en":"In order to study abroad, I'm learning Chinese."},
+{"level":"HSK3","cn":"为了不迟到，我起得很早。","py":"Wèile bù chídào, wǒ qǐ de hěn zǎo.","en":"In order not to be late, I got up early."}]},
+
+{"chinese":"位","pinyin":"wèi","english":"(polite measure word for people); position","khmer":"នាក់ (ពាក្យគួរសម)","breakdown":"亻(person radical)+立(stand) — where a person stands","chars":["位"],"examples":[
+{"level":"HSK3","cn":"这位是我的老师。","py":"Zhè wèi shì wǒ de lǎoshī.","en":"This is my teacher."},
+{"level":"HSK3","cn":"请问几位？","py":"Qǐngwèn jǐ wèi?","en":"How many people, please?"},
+{"level":"HSK3","cn":"那位阿姨很热情。","py":"Nà wèi āyí hěn rèqíng.","en":"That lady is very warm."},
+{"level":"HSK3","cn":"有三位客人来了。","py":"Yǒu sān wèi kèrén lái le.","en":"Three guests have arrived."},
+{"level":"HSK3","cn":"请这位先生坐这里。","py":"Qǐng zhè wèi xiānsheng zuò zhèlǐ.","en":"Please have this gentleman sit here."}]},
+
+{"chinese":"文化","pinyin":"wénhuà","english":"culture","khmer":"វប្បធម៌","breakdown":"文(writing, civilization)+化(transform) — what shapes a people","chars":["文","化"],"examples":[
+{"level":"HSK3","cn":"我对中国文化感兴趣。","py":"Wǒ duì Zhōngguó wénhuà gǎn xìngqù.","en":"I'm interested in Chinese culture."},
+{"level":"HSK3","cn":"每个国家的文化都不一样。","py":"Měi ge guójiā de wénhuà dōu bù yíyàng.","en":"Every country's culture is different."},
+{"level":"HSK3","cn":"这本书讲的是文化。","py":"Zhè běn shū jiǎng de shì wénhuà.","en":"This book is about culture."},
+{"level":"HSK3","cn":"文化和历史很有关系。","py":"Wénhuà hé lìshǐ hěn yǒu guānxi.","en":"Culture and history are closely related."},
+{"level":"HSK3","cn":"了解文化才能了解人。","py":"Liǎojiě wénhuà cái néng liǎojiě rén.","en":"Only by understanding culture can you understand people."}]},
+
+{"chinese":"西","pinyin":"xī","english":"west","khmer":"ខាងលិច","breakdown":"Whole shape — memorize as the opposite of 东","chars":["西"],"examples":[
+{"level":"HSK3","cn":"太阳从西边下去。","py":"Tàiyáng cóng xībiān xiàqù.","en":"The sun goes down in the west."},
+{"level":"HSK3","cn":"我家在城市的西边。","py":"Wǒ jiā zài chéngshì de xībiān.","en":"My home is on the west side of the city."},
+{"level":"HSK3","cn":"往西走就是图书馆。","py":"Wǎng xī zǒu jiù shì túshūguǎn.","en":"Walk west and you'll find the library."},
+{"level":"HSK3","cn":"西边有一条街道。","py":"Xībiān yǒu yì tiáo jiēdào.","en":"There is a street to the west."},
+{"level":"HSK3","cn":"这个房间朝西。","py":"Zhège fángjiān cháo xī.","en":"This room faces west."}]},
+
+{"chinese":"洗澡","pinyin":"xǐzǎo","english":"to take a bath or shower","khmer":"ងូតទឹក","breakdown":"洗(wash, 氵water radical)+澡(bathe, 氵water radical) — both about water","chars":["洗","澡"],"examples":[
+{"level":"HSK3","cn":"我每天洗澡。","py":"Wǒ měitiān xǐzǎo.","en":"I shower every day."},
+{"level":"HSK3","cn":"他在洗澡。","py":"Tā zài xǐzǎo.","en":"He is taking a shower."},
+{"level":"HSK3","cn":"运动以后要洗澡。","py":"Yùndòng yǐhòu yào xǐzǎo.","en":"You should shower after exercising."},
+{"level":"HSK3","cn":"洗澡以后我很舒服。","py":"Xǐzǎo yǐhòu wǒ hěn shūfu.","en":"After showering I feel very comfortable."},
+{"level":"HSK3","cn":"睡觉以前我喜欢洗澡。","py":"Shuìjiào yǐqián wǒ xǐhuan xǐzǎo.","en":"I like to shower before sleeping."}]},
+
+{"chinese":"夏","pinyin":"xià","english":"summer","khmer":"រដូវក្ដៅ","breakdown":"Whole shape — a person walking slowly in the summer heat","chars":["夏"],"examples":[
+{"level":"HSK3","cn":"夏天很热。","py":"Xiàtiān hěn rè.","en":"Summer is very hot."},
+{"level":"HSK3","cn":"我喜欢夏天。","py":"Wǒ xǐhuan xiàtiān.","en":"I like summer."},
+{"level":"HSK3","cn":"夏天要开空调。","py":"Xiàtiān yào kāi kōngtiáo.","en":"In summer you need the air conditioning on."},
+{"level":"HSK3","cn":"夏天的白天很长。","py":"Xiàtiān de báitiān hěn cháng.","en":"Summer days are very long."},
+{"level":"HSK3","cn":"春天以后就是夏天。","py":"Chūntiān yǐhòu jiù shì xiàtiān.","en":"After spring comes summer."}]},
+
+{"chinese":"先","pinyin":"xiān","english":"first; earlier","khmer":"មុនគេ","breakdown":"Whole shape — a foot stepping out ahead of a person","chars":["先"],"examples":[
+{"level":"HSK3","cn":"你先走吧。","py":"Nǐ xiān zǒu ba.","en":"You go first."},
+{"level":"HSK3","cn":"我先吃饭，然后休息。","py":"Wǒ xiān chīfàn, ránhòu xiūxi.","en":"I eat first, then rest."},
+{"level":"HSK3","cn":"请先洗手。","py":"Qǐng xiān xǐ shǒu.","en":"Please wash your hands first."},
+{"level":"HSK3","cn":"他比我先到。","py":"Tā bǐ wǒ xiān dào.","en":"He arrived before me."},
+{"level":"HSK3","cn":"先复习，然后考试。","py":"Xiān fùxí, ránhòu kǎoshì.","en":"Review first, then take the exam."}]},
+
+{"chinese":"相信","pinyin":"xiāngxìn","english":"to believe; to trust","khmer":"ជឿ","breakdown":"相(mutually)+信(trust) — mutual trust","chars":["相","信"],"examples":[
+{"level":"HSK3","cn":"我相信你。","py":"Wǒ xiāngxìn nǐ.","en":"I believe you."},
+{"level":"HSK3","cn":"他不相信这件事。","py":"Tā bù xiāngxìn zhè jiàn shì.","en":"He doesn't believe this."},
+{"level":"HSK3","cn":"请相信我，我会努力。","py":"Qǐng xiāngxìn wǒ, wǒ huì nǔlì.","en":"Please trust me, I will work hard."},
+{"level":"HSK3","cn":"我相信他一定会来。","py":"Wǒ xiāngxìn tā yídìng huì lái.","en":"I believe he will certainly come."},
+{"level":"HSK3","cn":"很难相信这是真的。","py":"Hěn nán xiāngxìn zhè shì zhēn de.","en":"It's hard to believe this is true."}]},
+
+{"chinese":"香蕉","pinyin":"xiāngjiāo","english":"banana","khmer":"ចេក","breakdown":"香(fragrant)+蕉(a broad-leaf plant, 艹grass radical) — the fragrant plant fruit","chars":["香","蕉"],"examples":[
+{"level":"HSK3","cn":"我喜欢吃香蕉。","py":"Wǒ xǐhuan chī xiāngjiāo.","en":"I like eating bananas."},
+{"level":"HSK3","cn":"这个香蕉很甜。","py":"Zhège xiāngjiāo hěn tián.","en":"This banana is very sweet."},
+{"level":"HSK3","cn":"香蕉在盘子里。","py":"Xiāngjiāo zài pánzi lǐ.","en":"The bananas are on the plate."},
+{"level":"HSK3","cn":"我买了三公斤香蕉。","py":"Wǒ mǎi le sān gōngjīn xiāngjiāo.","en":"I bought three kilograms of bananas."},
+{"level":"HSK3","cn":"香蕉是很健康的水果。","py":"Xiāngjiāo shì hěn jiànkāng de shuǐguǒ.","en":"Bananas are a very healthy fruit."}]},
+
+{"chinese":"向","pinyin":"xiàng","english":"towards; to face","khmer":"ទៅកាន់","breakdown":"A picture of a window facing a direction","chars":["向"],"examples":[
+{"level":"HSK3","cn":"请向前走。","py":"Qǐng xiàng qián zǒu.","en":"Please walk forward."},
+{"level":"HSK3","cn":"他向我笑了。","py":"Tā xiàng wǒ xiào le.","en":"He smiled at me."},
+{"level":"HSK3","cn":"向右转就到了。","py":"Xiàng yòu zhuǎn jiù dào le.","en":"Turn right and you're there."},
+{"level":"HSK3","cn":"我要向他学习。","py":"Wǒ yào xiàng tā xuéxí.","en":"I want to learn from him."},
+{"level":"HSK3","cn":"这个房间向南。","py":"Zhège fángjiān xiàng nán.","en":"This room faces south."}]},
+
+{"chinese":"像","pinyin":"xiàng","english":"to be like; to resemble","khmer":"ដូច","breakdown":"亻(person radical)+象(elephant, image) — a person's image","chars":["像"],"examples":[
+{"level":"HSK3","cn":"他很像他爸爸。","py":"Tā hěn xiàng tā bàba.","en":"He looks a lot like his dad."},
+{"level":"HSK3","cn":"这个像什么？","py":"Zhège xiàng shénme?","en":"What does this look like?"},
+{"level":"HSK3","cn":"她笑起来像妈妈。","py":"Tā xiào qǐlái xiàng māma.","en":"When she smiles she looks like her mom."},
+{"level":"HSK3","cn":"这个地方像我的老家。","py":"Zhège dìfang xiàng wǒ de lǎojiā.","en":"This place is like my hometown."},
+{"level":"HSK3","cn":"今天像夏天一样热。","py":"Jīntiān xiàng xiàtiān yíyàng rè.","en":"Today is as hot as summer."}]},
+
+{"chinese":"校长","pinyin":"xiàozhǎng","english":"principal; headmaster","khmer":"នាយកសាលា","breakdown":"校(school)+长(chief, head) — the head of the school","chars":["校","长"],"examples":[
+{"level":"HSK3","cn":"他是我们的校长。","py":"Tā shì wǒmen de xiàozhǎng.","en":"He is our principal."},
+{"level":"HSK3","cn":"校长在办公室。","py":"Xiàozhǎng zài bàngōngshì.","en":"The principal is in the office."},
+{"level":"HSK3","cn":"校长很热情。","py":"Xiàozhǎng hěn rèqíng.","en":"The principal is very warm."},
+{"level":"HSK3","cn":"新校长很年轻。","py":"Xīn xiàozhǎng hěn niánqīng.","en":"The new principal is very young."},
+{"level":"HSK3","cn":"校长今天要讲话。","py":"Xiàozhǎng jīntiān yào jiǎnghuà.","en":"The principal will speak today."}]},
+
+{"chinese":"新闻","pinyin":"xīnwén","english":"news","khmer":"ព័ត៌មាន","breakdown":"新(new)+闻(hear) — newly heard things","chars":["新","闻"],"examples":[
+{"level":"HSK3","cn":"我每天看新闻。","py":"Wǒ měitiān kàn xīnwén.","en":"I watch the news every day."},
+{"level":"HSK3","cn":"这个新闻很重要。","py":"Zhège xīnwén hěn zhòngyào.","en":"This news is very important."},
+{"level":"HSK3","cn":"新闻里说明天下雨。","py":"Xīnwén lǐ shuō míngtiān xià yǔ.","en":"The news says it will rain tomorrow."},
+{"level":"HSK3","cn":"他在网上看新闻。","py":"Tā zài wǎng shàng kàn xīnwén.","en":"He reads the news online."},
+{"level":"HSK3","cn":"这是一个奇怪的新闻。","py":"Zhè shì yí ge qíguài de xīnwén.","en":"This is a strange piece of news."}]},
+
+{"chinese":"新鲜","pinyin":"xīnxiān","english":"fresh","khmer":"ស្រស់","breakdown":"新(new)+鲜(fresh, 鱼fish radical) — as new as fresh fish","chars":["新","鲜"],"examples":[
+{"level":"HSK3","cn":"这些水果很新鲜。","py":"Zhèxiē shuǐguǒ hěn xīnxiān.","en":"This fruit is very fresh."},
+{"level":"HSK3","cn":"超市的菜很新鲜。","py":"Chāoshì de cài hěn xīnxiān.","en":"The vegetables at the supermarket are fresh."},
+{"level":"HSK3","cn":"早上的空气很新鲜。","py":"Zǎoshang de kōngqì hěn xīnxiān.","en":"The morning air is very fresh."},
+{"level":"HSK3","cn":"这个面包不新鲜了。","py":"Zhège miànbāo bù xīnxiān le.","en":"This bread isn't fresh anymore."},
+{"level":"HSK3","cn":"对我来说这是新鲜事。","py":"Duì wǒ lái shuō zhè shì xīnxiān shì.","en":"For me this is something new."}]},
+
+{"chinese":"信用卡","pinyin":"xìnyòngkǎ","english":"credit card","khmer":"កាតឥណទាន","breakdown":"信用(credit, trust)+卡(card) — a trust card","chars":["信","用","卡"],"examples":[
+{"level":"HSK3","cn":"我可以用信用卡吗？","py":"Wǒ kěyǐ yòng xìnyòngkǎ ma?","en":"Can I use a credit card?"},
+{"level":"HSK3","cn":"这里不能用信用卡。","py":"Zhèlǐ bù néng yòng xìnyòngkǎ.","en":"You can't use a credit card here."},
+{"level":"HSK3","cn":"我的信用卡在钱包里。","py":"Wǒ de xìnyòngkǎ zài qiánbāo lǐ.","en":"My credit card is in my wallet."},
+{"level":"HSK3","cn":"他丢了信用卡。","py":"Tā diū le xìnyòngkǎ.","en":"He lost his credit card."},
+{"level":"HSK3","cn":"用信用卡很方便。","py":"Yòng xìnyòngkǎ hěn fāngbiàn.","en":"Using a credit card is very convenient."}]},
+
+{"chinese":"行李箱","pinyin":"xínglǐxiāng","english":"suitcase","khmer":"វ៉ាលី","breakdown":"行李(luggage)+箱(box) — a box for luggage","chars":["行","李","箱"],"examples":[
+{"level":"HSK3","cn":"我的行李箱很重。","py":"Wǒ de xínglǐxiāng hěn zhòng.","en":"My suitcase is very heavy."},
+{"level":"HSK3","cn":"请检查行李箱。","py":"Qǐng jiǎnchá xínglǐxiāng.","en":"Please check the suitcase."},
+{"level":"HSK3","cn":"行李箱在门口。","py":"Xínglǐxiāng zài ménkǒu.","en":"The suitcase is at the door."},
+{"level":"HSK3","cn":"我买了一个新行李箱。","py":"Wǒ mǎi le yí ge xīn xínglǐxiāng.","en":"I bought a new suitcase."},
+{"level":"HSK3","cn":"帮我搬一下行李箱。","py":"Bāng wǒ bān yíxià xínglǐxiāng.","en":"Help me move the suitcase."}]},
+
+{"chinese":"熊猫","pinyin":"xióngmāo","english":"panda","khmer":"ខ្លាឃ្មុំផេនដា","breakdown":"熊(bear)+猫(cat) — the bear that looks like a cat","chars":["熊","猫"],"examples":[
+{"level":"HSK3","cn":"熊猫很可爱。","py":"Xióngmāo hěn kě'ài.","en":"Pandas are very cute."},
+{"level":"HSK3","cn":"我想去看熊猫。","py":"Wǒ xiǎng qù kàn xióngmāo.","en":"I want to go see pandas."},
+{"level":"HSK3","cn":"熊猫是中国的动物。","py":"Xióngmāo shì Zhōngguó de dòngwù.","en":"The panda is a Chinese animal."},
+{"level":"HSK3","cn":"熊猫喜欢吃竹子。","py":"Xióngmāo xǐhuan chī zhúzi.","en":"Pandas like eating bamboo."},
+{"level":"HSK3","cn":"动物园里有两只熊猫。","py":"Dòngwùyuán lǐ yǒu liǎng zhī xióngmāo.","en":"There are two pandas in the zoo."}]},
+
+{"chinese":"选择","pinyin":"xuǎnzé","english":"to choose; choice","khmer":"ជ្រើសរើស","breakdown":"选(select)+择(pick) — two choosing characters together","chars":["选","择"],"examples":[
+{"level":"HSK3","cn":"你选择哪个？","py":"Nǐ xuǎnzé nǎge?","en":"Which one do you choose?"},
+{"level":"HSK3","cn":"我选择了这条路。","py":"Wǒ xuǎnzé le zhè tiáo lù.","en":"I chose this road."},
+{"level":"HSK3","cn":"这是一个难的选择。","py":"Zhè shì yí ge nán de xuǎnzé.","en":"This is a difficult choice."},
+{"level":"HSK3","cn":"根据成绩来选择。","py":"Gēnjù chéngjì lái xuǎnzé.","en":"Choose based on the results."},
+{"level":"HSK3","cn":"我们有很多选择。","py":"Wǒmen yǒu hěn duō xuǎnzé.","en":"We have many choices."}]},
+
+{"chinese":"要求","pinyin":"yāoqiú","english":"to request; requirement","khmer":"តម្រូវការ / ស្នើសុំ","breakdown":"要(want)+求(seek) — wanting and seeking something","chars":["要","求"],"examples":[
+{"level":"HSK3","cn":"老师的要求很高。","py":"Lǎoshī de yāoqiú hěn gāo.","en":"The teacher's requirements are high."},
+{"level":"HSK3","cn":"他要求我们认真复习。","py":"Tā yāoqiú wǒmen rènzhēn fùxí.","en":"He asks us to review seriously."},
+{"level":"HSK3","cn":"这个工作的要求是什么？","py":"Zhège gōngzuò de yāoqiú shì shénme?","en":"What are the requirements for this job?"},
+{"level":"HSK3","cn":"我同意你的要求。","py":"Wǒ tóngyì nǐ de yāoqiú.","en":"I agree to your request."},
+{"level":"HSK3","cn":"他的要求不太容易完成。","py":"Tā de yāoqiú bú tài róngyì wánchéng.","en":"His request isn't easy to fulfill."}]},
+
+{"chinese":"爷爷","pinyin":"yéye","english":"grandpa (father's father)","khmer":"តា","breakdown":"爷(father, grandfather) repeated for warmth","chars":["爷","爷"],"examples":[
+{"level":"HSK3","cn":"我爷爷很老了。","py":"Wǒ yéye hěn lǎo le.","en":"My grandpa is very old."},
+{"level":"HSK3","cn":"爷爷喜欢喝茶。","py":"Yéye xǐhuan hē chá.","en":"Grandpa likes drinking tea."},
+{"level":"HSK3","cn":"爷爷给我讲历史故事。","py":"Yéye gěi wǒ jiǎng lìshǐ gùshi.","en":"Grandpa tells me history stories."},
+{"level":"HSK3","cn":"我周末去看爷爷奶奶。","py":"Wǒ zhōumò qù kàn yéye nǎinai.","en":"I visit grandpa and grandma on weekends."},
+{"level":"HSK3","cn":"爷爷每天早上锻炼。","py":"Yéye měitiān zǎoshang duànliàn.","en":"Grandpa exercises every morning."}]},
+
+{"chinese":"一般","pinyin":"yìbān","english":"ordinary; generally; so-so","khmer":"ធម្មតា","breakdown":"一(one)+般(kind, sort) — all of one kind, so 'ordinary'","chars":["一","般"],"examples":[
+{"level":"HSK3","cn":"他的成绩一般。","py":"Tā de chéngjì yìbān.","en":"His results are so-so."},
+{"level":"HSK3","cn":"我一般七点起来。","py":"Wǒ yìbān qī diǎn qǐlái.","en":"I generally get up at seven."},
+{"level":"HSK3","cn":"这个饭店的菜一般。","py":"Zhège fàndiàn de cài yìbān.","en":"This restaurant's food is average."},
+{"level":"HSK3","cn":"一般来说，冬天很冷。","py":"Yìbān lái shuō, dōngtiān hěn lěng.","en":"Generally speaking, winter is very cold."},
+{"level":"HSK3","cn":"我跟他关系一般。","py":"Wǒ gēn tā guānxi yìbān.","en":"My relationship with him is ordinary."}]},
+
+{"chinese":"一边","pinyin":"yìbiān","english":"on one side; at the same time (一边...一边...)","khmer":"ម្ខាង / ព្រមគ្នា","breakdown":"一(one)+边(side) — one side; doubled it means doing two things at once","chars":["一","边"],"examples":[
+{"level":"HSK3","cn":"他一边走一边聊天。","py":"Tā yìbiān zǒu yìbiān liáotiān.","en":"He chats while walking."},
+{"level":"HSK3","cn":"我一边吃饭一边看新闻。","py":"Wǒ yìbiān chīfàn yìbiān kàn xīnwén.","en":"I watch the news while eating."},
+{"level":"HSK3","cn":"请站在一边。","py":"Qǐng zhàn zài yìbiān.","en":"Please stand to one side."},
+{"level":"HSK3","cn":"她一边笑一边说。","py":"Tā yìbiān xiào yìbiān shuō.","en":"She talks while laughing."},
+{"level":"HSK3","cn":"别一边上网一边学习。","py":"Bié yìbiān shàngwǎng yìbiān xuéxí.","en":"Don't study while surfing the internet."}]},
+
+{"chinese":"一定","pinyin":"yídìng","english":"certainly; definitely","khmer":"ប្រាកដជា","breakdown":"一(one)+定(fixed) — fixed as one way","chars":["一","定"],"examples":[
+{"level":"HSK3","cn":"我一定会来。","py":"Wǒ yídìng huì lái.","en":"I will definitely come."},
+{"level":"HSK3","cn":"你一定要小心。","py":"Nǐ yídìng yào xiǎoxīn.","en":"You must certainly be careful."},
+{"level":"HSK3","cn":"他一定知道。","py":"Tā yídìng zhīdào.","en":"He definitely knows."},
+{"level":"HSK3","cn":"认真复习一定能考好。","py":"Rènzhēn fùxí yídìng néng kǎo hǎo.","en":"Reviewing seriously will definitely get good results."},
+{"level":"HSK3","cn":"这件事不一定是真的。","py":"Zhè jiàn shì bù yídìng shì zhēn de.","en":"This isn't necessarily true."}]},
+
+{"chinese":"一共","pinyin":"yígòng","english":"altogether; in total","khmer":"សរុប","breakdown":"一(one)+共(together) — all put into one","chars":["一","共"],"examples":[
+{"level":"HSK3","cn":"一共多少钱？","py":"Yígòng duōshao qián?","en":"How much altogether?"},
+{"level":"HSK3","cn":"我们班一共有三十个人。","py":"Wǒmen bān yígòng yǒu sānshí ge rén.","en":"Our class has thirty people in total."},
+{"level":"HSK3","cn":"这本书一共十章。","py":"Zhè běn shū yígòng shí zhāng.","en":"This book has ten chapters in total."},
+{"level":"HSK3","cn":"一共来了五位客人。","py":"Yígòng lái le wǔ wèi kèrén.","en":"Five guests came altogether."},
+{"level":"HSK3","cn":"我一共买了三双鞋。","py":"Wǒ yígòng mǎi le sān shuāng xié.","en":"I bought three pairs of shoes in total."}]},
+
+{"chinese":"一会儿","pinyin":"yíhuìr","english":"a moment; a little while","khmer":"មួយភ្លែត","breakdown":"一(one)+会(moment)+儿(suffix) — one short moment","chars":["一","会","儿"],"examples":[
+{"level":"HSK3","cn":"请等一会儿。","py":"Qǐng děng yíhuìr.","en":"Please wait a moment."},
+{"level":"HSK3","cn":"我一会儿就来。","py":"Wǒ yíhuìr jiù lái.","en":"I'll come in a moment."},
+{"level":"HSK3","cn":"休息一会儿吧。","py":"Xiūxi yíhuìr ba.","en":"Let's rest a while."},
+{"level":"HSK3","cn":"他一会儿哭一会儿笑。","py":"Tā yíhuìr kū yíhuìr xiào.","en":"He cries one moment and laughs the next."},
+{"level":"HSK3","cn":"过一会儿再打电话。","py":"Guò yíhuìr zài dǎ diànhuà.","en":"Call again in a little while."}]},
+
+{"chinese":"一样","pinyin":"yíyàng","english":"the same; alike","khmer":"ដូចគ្នា","breakdown":"一(one)+样(kind, appearance) — of one kind","chars":["一","样"],"examples":[
+{"level":"HSK3","cn":"这两个一样。","py":"Zhè liǎng ge yíyàng.","en":"These two are the same."},
+{"level":"HSK3","cn":"我跟他一样高。","py":"Wǒ gēn tā yíyàng gāo.","en":"I am as tall as him."},
+{"level":"HSK3","cn":"我们的爱好一样。","py":"Wǒmen de àihào yíyàng.","en":"We have the same hobbies."},
+{"level":"HSK3","cn":"今天像夏天一样热。","py":"Jīntiān xiàng xiàtiān yíyàng rè.","en":"Today is as hot as summer."},
+{"level":"HSK3","cn":"这两条裤子不一样。","py":"Zhè liǎng tiáo kùzi bù yíyàng.","en":"These two pairs of trousers are different."}]},
+
+{"chinese":"饮料","pinyin":"yǐnliào","english":"beverage; drink","khmer":"ភេសជ្ជៈ","breakdown":"饮(drink, 饣food radical)+料(material) — drinkable material","chars":["饮","料"],"examples":[
+{"level":"HSK3","cn":"你想喝什么饮料？","py":"Nǐ xiǎng hē shénme yǐnliào?","en":"What drink would you like?"},
+{"level":"HSK3","cn":"饮料在冰箱里。","py":"Yǐnliào zài bīngxiāng lǐ.","en":"The drinks are in the fridge."},
+{"level":"HSK3","cn":"这种饮料太甜了。","py":"Zhè zhǒng yǐnliào tài tián le.","en":"This drink is too sweet."},
+{"level":"HSK3","cn":"我买了一些饮料。","py":"Wǒ mǎi le yìxiē yǐnliào.","en":"I bought some drinks."},
+{"level":"HSK3","cn":"甜饮料对健康不好。","py":"Tián yǐnliào duì jiànkāng bù hǎo.","en":"Sweet drinks are bad for your health."}]},
+
+{"chinese":"游戏","pinyin":"yóuxì","english":"game","khmer":"ល្បែង / ហ្គេម","breakdown":"游(roam, play)+戏(play, show) — two playing characters together","chars":["游","戏"],"examples":[
+{"level":"HSK3","cn":"我喜欢玩游戏。","py":"Wǒ xǐhuan wán yóuxì.","en":"I like playing games."},
+{"level":"HSK3","cn":"这个游戏很有意思。","py":"Zhège yóuxì hěn yǒu yìsi.","en":"This game is very interesting."},
+{"level":"HSK3","cn":"孩子们在玩游戏。","py":"Háizimen zài wán yóuxì.","en":"The children are playing games."},
+{"level":"HSK3","cn":"玩游戏时间太长不好。","py":"Wán yóuxì shíjiān tài cháng bù hǎo.","en":"Playing games too long isn't good."},
+{"level":"HSK3","cn":"我们一起玩这个游戏吧。","py":"Wǒmen yìqǐ wán zhège yóuxì ba.","en":"Let's play this game together."}]},
+
+{"chinese":"有名","pinyin":"yǒumíng","english":"famous; well-known","khmer":"ល្បីល្បាញ","breakdown":"有(have)+名(name) — to have a name people know","chars":["有","名"],"examples":[
+{"level":"HSK3","cn":"他很有名。","py":"Tā hěn yǒumíng.","en":"He is very famous."},
+{"level":"HSK3","cn":"这是一个有名的地方。","py":"Zhè shì yí ge yǒumíng de dìfang.","en":"This is a famous place."},
+{"level":"HSK3","cn":"这张画很有名。","py":"Zhè zhāng huà hěn yǒumíng.","en":"This painting is very famous."},
+{"level":"HSK3","cn":"黄河是中国有名的河。","py":"Huánghé shì Zhōngguó yǒumíng de hé.","en":"The Yellow River is a famous Chinese river."},
+{"level":"HSK3","cn":"这个饭店在城市里很有名。","py":"Zhège fàndiàn zài chéngshì lǐ hěn yǒumíng.","en":"This restaurant is famous in the city."}]},
+
+{"chinese":"又","pinyin":"yòu","english":"again; also","khmer":"ម្ដងទៀត","breakdown":"A picture of a right hand — used for repeating actions","chars":["又"],"examples":[
+{"level":"HSK3","cn":"他又迟到了。","py":"Tā yòu chídào le.","en":"He was late again."},
+{"level":"HSK3","cn":"今天又下雨了。","py":"Jīntiān yòu xià yǔ le.","en":"It's raining again today."},
+{"level":"HSK3","cn":"这里又干净又安静。","py":"Zhèlǐ yòu gānjìng yòu ānjìng.","en":"This place is both clean and quiet."},
+{"level":"HSK3","cn":"我又忘记了。","py":"Wǒ yòu wàngjì le.","en":"I forgot again."},
+{"level":"HSK3","cn":"这个菜又甜又好吃。","py":"Zhège cài yòu tián yòu hǎochī.","en":"This dish is both sweet and tasty."}]},
+
+{"chinese":"遇到","pinyin":"yùdào","english":"to meet; to run into","khmer":"ជួបប្រទះ","breakdown":"遇(meet, 辶walking radical)+到(arrive) — meeting while moving","chars":["遇","到"],"examples":[
+{"level":"HSK3","cn":"我在路上遇到了他。","py":"Wǒ zài lù shàng yùdào le tā.","en":"I ran into him on the road."},
+{"level":"HSK3","cn":"我遇到了一个问题。","py":"Wǒ yùdào le yí ge wèntí.","en":"I ran into a problem."},
+{"level":"HSK3","cn":"昨天我遇到了老同学。","py":"Zuótiān wǒ yùdào le lǎo tóngxué.","en":"Yesterday I ran into an old classmate."},
+{"level":"HSK3","cn":"遇到困难别害怕。","py":"Yùdào kùnnan bié hàipà.","en":"Don't be afraid when you meet difficulties."},
+{"level":"HSK3","cn":"我们经常在超市遇到。","py":"Wǒmen jīngcháng zài chāoshì yùdào.","en":"We often run into each other at the supermarket."}]},
+
+{"chinese":"元","pinyin":"yuán","english":"yuan (Chinese money unit)","khmer":"យន់ (រូបិយប័ណ្ណចិន)","breakdown":"Whole shape — the formal written word for money units","chars":["元"],"examples":[
+{"level":"HSK3","cn":"这个东西二十元。","py":"Zhège dōngxi èrshí yuán.","en":"This thing costs twenty yuan."},
+{"level":"HSK3","cn":"一元等于十角。","py":"Yì yuán děngyú shí jiǎo.","en":"One yuan equals ten jiao."},
+{"level":"HSK3","cn":"一共一百元。","py":"Yígòng yìbǎi yuán.","en":"One hundred yuan altogether."},
+{"level":"HSK3","cn":"这本书五十元。","py":"Zhè běn shū wǔshí yuán.","en":"This book is fifty yuan."},
+{"level":"HSK3","cn":"我只有十元钱。","py":"Wǒ zhǐ yǒu shí yuán qián.","en":"I only have ten yuan."}]},
+
+{"chinese":"愿意","pinyin":"yuànyì","english":"to be willing; to want to","khmer":"សុខចិត្ត","breakdown":"愿(wish, 心heart at bottom)+意(intention) — your heart's intention","chars":["愿","意"],"examples":[
+{"level":"HSK3","cn":"我愿意帮你。","py":"Wǒ yuànyì bāng nǐ.","en":"I'm willing to help you."},
+{"level":"HSK3","cn":"他不愿意去。","py":"Tā bú yuànyì qù.","en":"He isn't willing to go."},
+{"level":"HSK3","cn":"你愿意跟我一起吗？","py":"Nǐ yuànyì gēn wǒ yìqǐ ma?","en":"Are you willing to come with me?"},
+{"level":"HSK3","cn":"她愿意学习新东西。","py":"Tā yuànyì xuéxí xīn dōngxi.","en":"She is willing to learn new things."},
+{"level":"HSK3","cn":"没有人愿意做这件事。","py":"Méiyǒu rén yuànyì zuò zhè jiàn shì.","en":"Nobody is willing to do this."}]},
+
+{"chinese":"月亮","pinyin":"yuèliang","english":"the moon","khmer":"ព្រះចន្ទ","breakdown":"月(moon)+亮(bright) — the bright moon","chars":["月","亮"],"examples":[
+{"level":"HSK3","cn":"今天的月亮很大。","py":"Jīntiān de yuèliang hěn dà.","en":"The moon is very big today."},
+{"level":"HSK3","cn":"我喜欢看月亮。","py":"Wǒ xǐhuan kàn yuèliang.","en":"I like looking at the moon."},
+{"level":"HSK3","cn":"月亮很亮。","py":"Yuèliang hěn liàng.","en":"The moon is very bright."},
+{"level":"HSK3","cn":"晚上月亮出来了。","py":"Wǎnshang yuèliang chūlái le.","en":"The moon came out at night."},
+{"level":"HSK3","cn":"关于月亮有很多故事。","py":"Guānyú yuèliang yǒu hěn duō gùshi.","en":"There are many stories about the moon."}]},
+
+{"chinese":"越","pinyin":"yuè","english":"the more... (越...越...)","khmer":"កាន់តែ","breakdown":"走(walk radical)+戉 — going further and further","chars":["越"],"examples":[
+{"level":"HSK3","cn":"雨越下越大。","py":"Yǔ yuè xià yuè dà.","en":"The rain is getting heavier and heavier."},
+{"level":"HSK3","cn":"他越说越快。","py":"Tā yuè shuō yuè kuài.","en":"The more he talks the faster he goes."},
+{"level":"HSK3","cn":"我越学越喜欢汉语。","py":"Wǒ yuè xué yuè xǐhuan Hànyǔ.","en":"The more I study the more I like Chinese."},
+{"level":"HSK3","cn":"天气越来越冷了。","py":"Tiānqì yuè lái yuè lěng le.","en":"The weather is getting colder and colder."},
+{"level":"HSK3","cn":"她越练习越有信心。","py":"Tā yuè liànxí yuè yǒu xìnxīn.","en":"The more she practices the more confident she gets."}]},
+
+{"chinese":"站","pinyin":"zhàn","english":"to stand; station","khmer":"ឈរ / ស្ថានីយ","breakdown":"立(stand)+占(sound zhàn) — standing plus a sound clue","chars":["站"],"examples":[
+{"level":"HSK3","cn":"请站起来。","py":"Qǐng zhàn qǐlái.","en":"Please stand up."},
+{"level":"HSK3","cn":"地铁站在哪儿？","py":"Dìtiě zhàn zài nǎr?","en":"Where is the subway station?"},
+{"level":"HSK3","cn":"他站在门口。","py":"Tā zhàn zài ménkǒu.","en":"He is standing at the door."},
+{"level":"HSK3","cn":"下一站是学校。","py":"Xià yí zhàn shì xuéxiào.","en":"The next stop is the school."},
+{"level":"HSK3","cn":"站得太久腿会疼。","py":"Zhàn de tài jiǔ tuǐ huì téng.","en":"Standing too long makes your legs hurt."}]},
+
+{"chinese":"张","pinyin":"zhāng","english":"(measure word for flat objects)","khmer":"សន្លឹក","breakdown":"弓(bow)+长(sound cháng) — stretching a bow, used for flat spread things","chars":["张"],"examples":[
+{"level":"HSK3","cn":"请给我一张纸。","py":"Qǐng gěi wǒ yì zhāng zhǐ.","en":"Please give me a sheet of paper."},
+{"level":"HSK3","cn":"这张桌子很大。","py":"Zhè zhāng zhuōzi hěn dà.","en":"This table is very big."},
+{"level":"HSK3","cn":"我买了两张票。","py":"Wǒ mǎi le liǎng zhāng piào.","en":"I bought two tickets."},
+{"level":"HSK3","cn":"这张照片很好看。","py":"Zhè zhāng zhàopiàn hěn hǎokàn.","en":"This photo looks very nice."},
+{"level":"HSK3","cn":"墙上有一张地图。","py":"Qiáng shàng yǒu yì zhāng dìtú.","en":"There is a map on the wall."}]},
+
+{"chinese":"着急","pinyin":"zháojí","english":"to worry; to be anxious","khmer":"ប្រញាប់ / ខ្វល់","breakdown":"着(be in a state)+急(urgent, 心heart at bottom) — the heart in a hurry","chars":["着","急"],"examples":[
+{"level":"HSK3","cn":"别着急。","py":"Bié zháojí.","en":"Don't worry."},
+{"level":"HSK3","cn":"他很着急。","py":"Tā hěn zháojí.","en":"He is very anxious."},
+{"level":"HSK3","cn":"妈妈着急地打电话。","py":"Māma zháojí de dǎ diànhuà.","en":"Mom anxiously made a phone call."},
+{"level":"HSK3","cn":"我着急去机场。","py":"Wǒ zháojí qù jīchǎng.","en":"I'm in a hurry to get to the airport."},
+{"level":"HSK3","cn":"着急也没有用。","py":"Zháojí yě méiyǒu yòng.","en":"Worrying is no use either."}]},
+
+{"chinese":"照顾","pinyin":"zhàogù","english":"to take care of; to look after","khmer":"មើលថែ","breakdown":"照(shine on, attend to)+顾(look after) — keeping your eye on someone","chars":["照","顾"],"examples":[
+{"level":"HSK3","cn":"请照顾好自己。","py":"Qǐng zhàogù hǎo zìjǐ.","en":"Please take good care of yourself."},
+{"level":"HSK3","cn":"她照顾生病的奶奶。","py":"Tā zhàogù shēngbìng de nǎinai.","en":"She takes care of her sick grandma."},
+{"level":"HSK3","cn":"谢谢你的照顾。","py":"Xièxie nǐ de zhàogù.","en":"Thank you for taking care of me."},
+{"level":"HSK3","cn":"父母照顾孩子很辛苦。","py":"Fùmǔ zhàogù háizi hěn xīnkǔ.","en":"It's hard work for parents to care for children."},
+{"level":"HSK3","cn":"我会照顾你的动物。","py":"Wǒ huì zhàogù nǐ de dòngwù.","en":"I'll look after your animals."}]},
+
+{"chinese":"照片","pinyin":"zhàopiàn","english":"photo; picture","khmer":"រូបថត","breakdown":"照(shine, photograph)+片(flat piece) — a flat piece made by light","chars":["照","片"],"examples":[
+{"level":"HSK3","cn":"这张照片很好看。","py":"Zhè zhāng zhàopiàn hěn hǎokàn.","en":"This photo looks very nice."},
+{"level":"HSK3","cn":"我给你看一张照片。","py":"Wǒ gěi nǐ kàn yì zhāng zhàopiàn.","en":"Let me show you a photo."},
+{"level":"HSK3","cn":"他发了很多照片。","py":"Tā fā le hěn duō zhàopiàn.","en":"He posted many photos."},
+{"level":"HSK3","cn":"这是我小时候的照片。","py":"Zhè shì wǒ xiǎoshíhou de zhàopiàn.","en":"This is a photo of me as a child."},
+{"level":"HSK3","cn":"照片里的人是我爷爷。","py":"Zhàopiàn lǐ de rén shì wǒ yéye.","en":"The person in the photo is my grandpa."}]},
+
+{"chinese":"照相机","pinyin":"zhàoxiàngjī","english":"camera","khmer":"ម៉ាស៊ីនថត","breakdown":"照(shine)+相(image)+机(machine) — a machine that makes images with light","chars":["照","相","机"],"examples":[
+{"level":"HSK3","cn":"我买了一个照相机。","py":"Wǒ mǎi le yí ge zhàoxiàngjī.","en":"I bought a camera."},
+{"level":"HSK3","cn":"这个照相机很贵。","py":"Zhège zhàoxiàngjī hěn guì.","en":"This camera is very expensive."},
+{"level":"HSK3","cn":"照相机在我的包里。","py":"Zhàoxiàngjī zài wǒ de bāo lǐ.","en":"The camera is in my bag."},
+{"level":"HSK3","cn":"请带照相机去爬山。","py":"Qǐng dài zhàoxiàngjī qù páshān.","en":"Please bring the camera hiking."},
+{"level":"HSK3","cn":"现在手机比照相机方便。","py":"Xiànzài shǒujī bǐ zhàoxiàngjī fāngbiàn.","en":"Now phones are more convenient than cameras."}]},
+
+{"chinese":"只有","pinyin":"zhǐyǒu","english":"only; only if","khmer":"មានតែ","breakdown":"只(only)+有(have) — only having this","chars":["只","有"],"examples":[
+{"level":"HSK3","cn":"我只有十元钱。","py":"Wǒ zhǐ yǒu shí yuán qián.","en":"I only have ten yuan."},
+{"level":"HSK3","cn":"只有他知道。","py":"Zhǐyǒu tā zhīdào.","en":"Only he knows."},
+{"level":"HSK3","cn":"只有努力才能成功。","py":"Zhǐyǒu nǔlì cái néng chénggōng.","en":"Only by working hard can you succeed."},
+{"level":"HSK3","cn":"教室里只有两个人。","py":"Jiàoshì lǐ zhǐyǒu liǎng ge rén.","en":"There are only two people in the classroom."},
+{"level":"HSK3","cn":"只有练习才能提高水平。","py":"Zhǐyǒu liànxí cái néng tígāo shuǐpíng.","en":"Only practice can raise your level."}]},
+
+{"chinese":"才","pinyin":"cái","english":"only then; not until; just now","khmer":"ទើបតែ","breakdown":"Whole shape — a small sprout, meaning something only just happening","chars":["才"],"examples":[
+{"level":"HSK3","cn":"他八点才来。","py":"Tā bā diǎn cái lái.","en":"He didn't come until eight."},
+{"level":"HSK3","cn":"我才知道这件事。","py":"Wǒ cái zhīdào zhè jiàn shì.","en":"I only just found out about this."},
+{"level":"HSK3","cn":"努力才能成功。","py":"Nǔlì cái néng chénggōng.","en":"Only by working hard can you succeed."},
+{"level":"HSK3","cn":"他才五岁。","py":"Tā cái wǔ suì.","en":"He is only five years old."},
+{"level":"HSK3","cn":"我等了很久他才回来。","py":"Wǒ děng le hěn jiǔ tā cái huílái.","en":"I waited a long time before he came back."}]},
+
+{"chinese":"中文","pinyin":"Zhōngwén","english":"Chinese (language)","khmer":"ភាសាចិន","breakdown":"中(China, middle)+文(writing, language) — the language of China","chars":["中","文"],"examples":[
+{"level":"HSK3","cn":"我在学中文。","py":"Wǒ zài xué Zhōngwén.","en":"I am learning Chinese."},
+{"level":"HSK3","cn":"中文很难，可是很有意思。","py":"Zhōngwén hěn nán, kěshì hěn yǒu yìsi.","en":"Chinese is hard, but very interesting."},
+{"level":"HSK3","cn":"他的中文水平很高。","py":"Tā de Zhōngwén shuǐpíng hěn gāo.","en":"His Chinese level is very high."},
+{"level":"HSK3","cn":"这是一本中文书。","py":"Zhè shì yì běn Zhōngwén shū.","en":"This is a Chinese book."},
+{"level":"HSK3","cn":"我看不懂中文菜单。","py":"Wǒ kàn bu dǒng Zhōngwén càidān.","en":"I can't read a Chinese menu."}]},
+
+{"chinese":"终于","pinyin":"zhōngyú","english":"at last; finally","khmer":"ទីបំផុត","breakdown":"终(end)+于(at) — arriving at the end","chars":["终","于"],"examples":[
+{"level":"HSK3","cn":"他终于来了。","py":"Tā zhōngyú lái le.","en":"He finally came."},
+{"level":"HSK3","cn":"我终于完成了作业。","py":"Wǒ zhōngyú wánchéng le zuòyè.","en":"I finally finished my homework."},
+{"level":"HSK3","cn":"问题终于解决了。","py":"Wèntí zhōngyú jiějué le.","en":"The problem was finally solved."},
+{"level":"HSK3","cn":"等了很久，飞机终于起飞了。","py":"Děng le hěn jiǔ, fēijī zhōngyú qǐfēi le.","en":"After a long wait, the plane finally took off."},
+{"level":"HSK3","cn":"我终于明白了。","py":"Wǒ zhōngyú míngbai le.","en":"I finally understood."}]},
+
+{"chinese":"重要","pinyin":"zhòngyào","english":"important","khmer":"សំខាន់","breakdown":"重(heavy)+要(need) — something with heavy need","chars":["重","要"],"examples":[
+{"level":"HSK3","cn":"这件事很重要。","py":"Zhè jiàn shì hěn zhòngyào.","en":"This matter is very important."},
+{"level":"HSK3","cn":"身体健康最重要。","py":"Shēntǐ jiànkāng zuì zhòngyào.","en":"Health is most important."},
+{"level":"HSK3","cn":"这是一个重要的决定。","py":"Zhè shì yí ge zhòngyào de juédìng.","en":"This is an important decision."},
+{"level":"HSK3","cn":"练习对学习很重要。","py":"Liànxí duì xuéxí hěn zhòngyào.","en":"Practice is very important for learning."},
+{"level":"HSK3","cn":"没有比家人更重要的。","py":"Méiyǒu bǐ jiārén gèng zhòngyào de.","en":"Nothing is more important than family."}]},
+
+{"chinese":"周末","pinyin":"zhōumò","english":"weekend","khmer":"ចុងសប្ដាហ៍","breakdown":"周(week)+末(end) — the end of the week","chars":["周","末"],"examples":[
+{"level":"HSK3","cn":"周末你做什么？","py":"Zhōumò nǐ zuò shénme?","en":"What do you do on the weekend?"},
+{"level":"HSK3","cn":"我周末去爬山。","py":"Wǒ zhōumò qù páshān.","en":"I go hiking on the weekend."},
+{"level":"HSK3","cn":"周末我在家休息。","py":"Zhōumò wǒ zài jiā xiūxi.","en":"On the weekend I rest at home."},
+{"level":"HSK3","cn":"周末愉快！","py":"Zhōumò yúkuài!","en":"Have a nice weekend!"},
+{"level":"HSK3","cn":"这个周末我要复习。","py":"Zhège zhōumò wǒ yào fùxí.","en":"This weekend I need to review."}]},
+
+{"chinese":"主要","pinyin":"zhǔyào","english":"main; principal","khmer":"សំខាន់បំផុត","breakdown":"主(main, master)+要(important) — the master and most needed part","chars":["主","要"],"examples":[
+{"level":"HSK3","cn":"这是主要的问题。","py":"Zhè shì zhǔyào de wèntí.","en":"This is the main problem."},
+{"level":"HSK3","cn":"我主要学习中文。","py":"Wǒ zhǔyào xuéxí Zhōngwén.","en":"I mainly study Chinese."},
+{"level":"HSK3","cn":"主要的原因是天气。","py":"Zhǔyào de yuányīn shì tiānqì.","en":"The main reason is the weather."},
+{"level":"HSK3","cn":"他主要负责这个班。","py":"Tā zhǔyào fùzé zhège bān.","en":"He is mainly responsible for this class."},
+{"level":"HSK3","cn":"米饭是他们的主要食物。","py":"Mǐfàn shì tāmen de zhǔyào shíwù.","en":"Rice is their main food."}]},
+
+{"chinese":"注意","pinyin":"zhùyì","english":"to pay attention; to be careful","khmer":"យកចិត្តទុកដាក់ / ប្រុងប្រយ័ត្ន","breakdown":"注(pour, focus)+意(mind) — pouring your mind into it","chars":["注","意"],"examples":[
+{"level":"HSK3","cn":"请注意安全。","py":"Qǐng zhùyì ānquán.","en":"Please pay attention to safety."},
+{"level":"HSK3","cn":"注意听老师说。","py":"Zhùyì tīng lǎoshī shuō.","en":"Pay attention to what the teacher says."},
+{"level":"HSK3","cn":"我没注意到他。","py":"Wǒ méi zhùyì dào tā.","en":"I didn't notice him."},
+{"level":"HSK3","cn":"开车要注意。","py":"Kāichē yào zhùyì.","en":"You must be careful when driving."},
+{"level":"HSK3","cn":"注意身体健康。","py":"Zhùyì shēntǐ jiànkāng.","en":"Pay attention to your health."}]},
+
+{"chinese":"自行车","pinyin":"zìxíngchē","english":"bicycle","khmer":"កង់","breakdown":"自(self)+行(move, go)+车(vehicle) — a vehicle you move yourself","chars":["自","行","车"],"examples":[
+{"level":"HSK3","cn":"我骑自行车上学。","py":"Wǒ qí zìxíngchē shàngxué.","en":"I ride my bicycle to school."},
+{"level":"HSK3","cn":"这辆自行车很旧了。","py":"Zhè liàng zìxíngchē hěn jiù le.","en":"This bicycle is very old."},
+{"level":"HSK3","cn":"我的自行车坏了。","py":"Wǒ de zìxíngchē huài le.","en":"My bicycle is broken."},
+{"level":"HSK3","cn":"骑自行车是很好的锻炼。","py":"Qí zìxíngchē shì hěn hǎo de duànliàn.","en":"Riding a bicycle is good exercise."},
+{"level":"HSK3","cn":"他借了我的自行车。","py":"Tā jiè le wǒ de zìxíngchē.","en":"He borrowed my bicycle."}]},
+
+{"chinese":"总是","pinyin":"zǒngshì","english":"always","khmer":"តែងតែ","breakdown":"总(all, always)+是(be) — it is always so","chars":["总","是"],"examples":[
+{"level":"HSK3","cn":"他总是迟到。","py":"Tā zǒngshì chídào.","en":"He is always late."},
+{"level":"HSK3","cn":"我总是忘记带伞。","py":"Wǒ zǒngshì wàngjì dài sǎn.","en":"I always forget to bring an umbrella."},
+{"level":"HSK3","cn":"她总是很热情。","py":"Tā zǒngshì hěn rèqíng.","en":"She is always very warm."},
+{"level":"HSK3","cn":"你为什么总是着急？","py":"Nǐ wèishénme zǒngshì zháojí?","en":"Why are you always anxious?"},
+{"level":"HSK3","cn":"周末我总是在家休息。","py":"Zhōumò wǒ zǒngshì zài jiā xiūxi.","en":"On weekends I always rest at home."}]},
+
+{"chinese":"嘴","pinyin":"zuǐ","english":"mouth","khmer":"មាត់","breakdown":"口(mouth radical)+此+角 — the mouth radical gives the meaning","chars":["嘴"],"examples":[
+{"level":"HSK3","cn":"请张开嘴。","py":"Qǐng zhāng kāi zuǐ.","en":"Please open your mouth."},
+{"level":"HSK3","cn":"他的嘴很小。","py":"Tā de zuǐ hěn xiǎo.","en":"His mouth is very small."},
+{"level":"HSK3","cn":"吃饭的时候别说话，嘴里有东西。","py":"Chīfàn de shíhou bié shuōhuà, zuǐ lǐ yǒu dōngxi.","en":"Don't talk while eating, there's food in your mouth."},
+{"level":"HSK3","cn":"刷牙以后嘴很干净。","py":"Shuāyá yǐhòu zuǐ hěn gānjìng.","en":"After brushing, the mouth is clean."},
+{"level":"HSK3","cn":"孩子的嘴上有蛋糕。","py":"Háizi de zuǐ shàng yǒu dàngāo.","en":"There is cake on the child's mouth."}]},
+
+{"chinese":"最近","pinyin":"zuìjìn","english":"recently; lately","khmer":"ថ្មីៗនេះ","breakdown":"最(most)+近(near) — the nearest time to now","chars":["最","近"],"examples":[
+{"level":"HSK3","cn":"你最近怎么样？","py":"Nǐ zuìjìn zěnmeyàng?","en":"How have you been lately?"},
+{"level":"HSK3","cn":"我最近很忙。","py":"Wǒ zuìjìn hěn máng.","en":"I've been very busy recently."},
+{"level":"HSK3","cn":"他最近瘦了。","py":"Tā zuìjìn shòu le.","en":"He has lost weight recently."},
+{"level":"HSK3","cn":"最近天气变化很大。","py":"Zuìjìn tiānqì biànhuà hěn dà.","en":"The weather has changed a lot recently."},
+{"level":"HSK3","cn":"我最近在学中文。","py":"Wǒ zuìjìn zài xué Zhōngwén.","en":"I've been learning Chinese recently."}]},
+
+{"chinese":"作业","pinyin":"zuòyè","english":"homework; assignment","khmer":"កិច្ចការផ្ទះ","breakdown":"作(do, make)+业(work, task) — the task you must do","chars":["作","业"],"examples":[
+{"level":"HSK3","cn":"我要做作业。","py":"Wǒ yào zuò zuòyè.","en":"I need to do my homework."},
+{"level":"HSK3","cn":"今天的作业很多。","py":"Jīntiān de zuòyè hěn duō.","en":"There is a lot of homework today."},
+{"level":"HSK3","cn":"我完成了作业。","py":"Wǒ wánchéng le zuòyè.","en":"I finished my homework."},
+{"level":"HSK3","cn":"请把作业交给老师。","py":"Qǐng bǎ zuòyè jiāo gěi lǎoshī.","en":"Please hand the homework to the teacher."},
+{"level":"HSK3","cn":"作业太难，我做不完。","py":"Zuòyè tài nán, wǒ zuò bu wán.","en":"The homework is too hard, I can't finish it."}]}
+]

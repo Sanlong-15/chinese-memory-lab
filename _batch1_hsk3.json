@@ -1,0 +1,323 @@
+[
+{"chinese":"啊","pinyin":"a","english":"ah (softening particle at end of sentence)","khmer":"ណា / អា","breakdown":"口(mouth)+阿(sound 'a') — a mouth making the sound 'a'","chars":["啊"],"examples":[
+{"level":"HSK3","cn":"好啊！","py":"Hǎo a!","en":"Sure, okay!"},
+{"level":"HSK3","cn":"你快点啊。","py":"Nǐ kuài diǎn a.","en":"Hurry up, will you."},
+{"level":"HSK3","cn":"这个菜真好吃啊！","py":"Zhège cài zhēn hǎochī a!","en":"This dish is really tasty!"},
+{"level":"HSK3","cn":"是啊，我也这么想。","py":"Shì a, wǒ yě zhème xiǎng.","en":"Yeah, I think so too."},
+{"level":"HSK3","cn":"你怎么才来啊？","py":"Nǐ zěnme cái lái a?","en":"How come you only got here now?"}]},
+
+{"chinese":"阿姨","pinyin":"āyí","english":"auntie; a woman of your mother's age","khmer":"មីង","breakdown":"阿(prefix for people)+姨(mother's sister)","chars":["阿","姨"],"examples":[
+{"level":"HSK3","cn":"阿姨好！","py":"Āyí hǎo!","en":"Hello, auntie!"},
+{"level":"HSK3","cn":"这位阿姨是我妈妈的朋友。","py":"Zhè wèi āyí shì wǒ māma de péngyou.","en":"This lady is my mom's friend."},
+{"level":"HSK3","cn":"阿姨每天来打扫房间。","py":"Āyí měitiān lái dǎsǎo fángjiān.","en":"The auntie comes to clean the room every day."},
+{"level":"HSK3","cn":"我想请阿姨帮个忙。","py":"Wǒ xiǎng qǐng āyí bāng ge máng.","en":"I want to ask auntie for a favor."},
+{"level":"HSK3","cn":"阿姨做的菜很好吃。","py":"Āyí zuò de cài hěn hǎochī.","en":"The food auntie makes is delicious."}]},
+
+{"chinese":"矮","pinyin":"ǎi","english":"short (in height)","khmer":"ទាប","breakdown":"矢(arrow)+委 — think of a short arrow","chars":["矮"],"examples":[
+{"level":"HSK3","cn":"他很矮。","py":"Tā hěn ǎi.","en":"He is very short."},
+{"level":"HSK3","cn":"这棵树太矮了。","py":"Zhè kē shù tài ǎi le.","en":"This tree is too short."},
+{"level":"HSK3","cn":"我比我哥哥矮一点儿。","py":"Wǒ bǐ wǒ gēge ǎi yìdiǎnr.","en":"I am a little shorter than my older brother."},
+{"level":"HSK3","cn":"这张桌子有点矮。","py":"Zhè zhāng zhuōzi yǒudiǎn ǎi.","en":"This table is a bit low."},
+{"level":"HSK3","cn":"他小时候很矮，现在很高。","py":"Tā xiǎoshíhou hěn ǎi, xiànzài hěn gāo.","en":"He was short as a child, now he is tall."}]},
+
+{"chinese":"爱好","pinyin":"àihào","english":"hobby; interest","khmer":"ចំណង់ចំណូលចិត្ត","breakdown":"爱(love)+好(like) — what you love and like doing","chars":["爱","好"],"examples":[
+{"level":"HSK3","cn":"我的爱好是看书。","py":"Wǒ de àihào shì kàn shū.","en":"My hobby is reading."},
+{"level":"HSK3","cn":"你有什么爱好？","py":"Nǐ yǒu shénme àihào?","en":"What hobbies do you have?"},
+{"level":"HSK3","cn":"他的爱好很多。","py":"Tā de àihào hěn duō.","en":"He has many hobbies."},
+{"level":"HSK3","cn":"打球是我最大的爱好。","py":"Dǎ qiú shì wǒ zuì dà de àihào.","en":"Playing ball is my biggest hobby."},
+{"level":"HSK3","cn":"我们的爱好一样。","py":"Wǒmen de àihào yíyàng.","en":"We have the same hobbies."}]},
+
+{"chinese":"安静","pinyin":"ānjìng","english":"quiet; peaceful","khmer":"ស្ងាត់","breakdown":"安(safe, calm)+静(still) — calm and still","chars":["安","静"],"examples":[
+{"level":"HSK3","cn":"请安静！","py":"Qǐng ānjìng!","en":"Please be quiet!"},
+{"level":"HSK3","cn":"图书馆很安静。","py":"Túshūguǎn hěn ānjìng.","en":"The library is very quiet."},
+{"level":"HSK3","cn":"这个地方又安静又干净。","py":"Zhège dìfang yòu ānjìng yòu gānjìng.","en":"This place is both quiet and clean."},
+{"level":"HSK3","cn":"孩子们安静下来了。","py":"Háizimen ānjìng xiàlái le.","en":"The children quieted down."},
+{"level":"HSK3","cn":"我喜欢安静的早上。","py":"Wǒ xǐhuan ānjìng de zǎoshang.","en":"I like quiet mornings."}]},
+
+{"chinese":"搬","pinyin":"bān","english":"to move (something heavy); to move house","khmer":"ផ្លាស់ទី / លីក","breakdown":"扌(hand radical)+般 — hands moving something","chars":["搬"],"examples":[
+{"level":"HSK3","cn":"我下个月搬家。","py":"Wǒ xià ge yuè bān jiā.","en":"I am moving house next month."},
+{"level":"HSK3","cn":"请帮我搬桌子。","py":"Qǐng bāng wǒ bān zhuōzi.","en":"Please help me move the table."},
+{"level":"HSK3","cn":"这个箱子太重，我搬不动。","py":"Zhège xiāngzi tài zhòng, wǒ bān bu dòng.","en":"This box is too heavy, I can't move it."},
+{"level":"HSK3","cn":"他们搬到北京去了。","py":"Tāmen bān dào Běijīng qù le.","en":"They moved to Beijing."},
+{"level":"HSK3","cn":"我们一起搬吧。","py":"Wǒmen yìqǐ bān ba.","en":"Let's move it together."}]},
+
+{"chinese":"班","pinyin":"bān","english":"class (group of students)","khmer":"ថ្នាក់","breakdown":"两个王(jade)+刂(knife) — originally splitting jade, now a split group","chars":["班"],"examples":[
+{"level":"HSK3","cn":"我们班有二十个学生。","py":"Wǒmen bān yǒu èrshí ge xuésheng.","en":"Our class has twenty students."},
+{"level":"HSK3","cn":"他是我们班的班长。","py":"Tā shì wǒmen bān de bānzhǎng.","en":"He is our class monitor."},
+{"level":"HSK3","cn":"你在哪个班？","py":"Nǐ zài nǎge bān?","en":"Which class are you in?"},
+{"level":"HSK3","cn":"我们班的成绩很好。","py":"Wǒmen bān de chéngjì hěn hǎo.","en":"Our class's results are very good."},
+{"level":"HSK3","cn":"全班同学都来了。","py":"Quán bān tóngxué dōu lái le.","en":"The whole class came."}]},
+
+{"chinese":"半","pinyin":"bàn","english":"half","khmer":"ពាក់កណ្ដាល","breakdown":"八(split into two)+牛(ox) — an ox split in two","chars":["半"],"examples":[
+{"level":"HSK3","cn":"现在是三点半。","py":"Xiànzài shì sān diǎn bàn.","en":"It's half past three now."},
+{"level":"HSK3","cn":"我只吃了一半。","py":"Wǒ zhǐ chī le yíbàn.","en":"I only ate half."},
+{"level":"HSK3","cn":"我等了半个小时。","py":"Wǒ děng le bàn ge xiǎoshí.","en":"I waited half an hour."},
+{"level":"HSK3","cn":"这本书我看了一半。","py":"Zhè běn shū wǒ kàn le yíbàn.","en":"I've read half of this book."},
+{"level":"HSK3","cn":"半年以后他就回来了。","py":"Bàn nián yǐhòu tā jiù huílái le.","en":"He came back after half a year."}]},
+
+{"chinese":"办法","pinyin":"bànfǎ","english":"way; method; solution","khmer":"វិធី","breakdown":"办(handle, do)+法(method) — a way of handling things","chars":["办","法"],"examples":[
+{"level":"HSK3","cn":"这是个好办法。","py":"Zhè shì ge hǎo bànfǎ.","en":"This is a good method."},
+{"level":"HSK3","cn":"我没有办法。","py":"Wǒ méiyǒu bànfǎ.","en":"I have no way / I can't help it."},
+{"level":"HSK3","cn":"我们要想个办法。","py":"Wǒmen yào xiǎng ge bànfǎ.","en":"We need to think of a way."},
+{"level":"HSK3","cn":"你有什么好办法吗？","py":"Nǐ yǒu shénme hǎo bànfǎ ma?","en":"Do you have any good ideas?"},
+{"level":"HSK3","cn":"这个办法很有用。","py":"Zhège bànfǎ hěn yǒuyòng.","en":"This method is very useful."}]},
+
+{"chinese":"办公室","pinyin":"bàngōngshì","english":"office","khmer":"ការិយាល័យ","breakdown":"办(handle)+公(public, official)+室(room) — the room for official work","chars":["办","公","室"],"examples":[
+{"level":"HSK3","cn":"老师在办公室。","py":"Lǎoshī zài bàngōngshì.","en":"The teacher is in the office."},
+{"level":"HSK3","cn":"我们的办公室在三楼。","py":"Wǒmen de bàngōngshì zài sān lóu.","en":"Our office is on the third floor."},
+{"level":"HSK3","cn":"办公室里有五个人。","py":"Bàngōngshì lǐ yǒu wǔ ge rén.","en":"There are five people in the office."},
+{"level":"HSK3","cn":"他去办公室开会了。","py":"Tā qù bàngōngshì kāihuì le.","en":"He went to the office for a meeting."},
+{"level":"HSK3","cn":"这间办公室很安静。","py":"Zhè jiān bàngōngshì hěn ānjìng.","en":"This office is very quiet."}]},
+
+{"chinese":"帮忙","pinyin":"bāngmáng","english":"to help; to lend a hand","khmer":"ជួយ","breakdown":"帮(help)+忙(busy) — help someone who is busy","chars":["帮","忙"],"examples":[
+{"level":"HSK3","cn":"请帮忙！","py":"Qǐng bāngmáng!","en":"Please help!"},
+{"level":"HSK3","cn":"谢谢你帮忙。","py":"Xièxie nǐ bāngmáng.","en":"Thank you for helping."},
+{"level":"HSK3","cn":"你能帮我一个忙吗？","py":"Nǐ néng bāng wǒ yí ge máng ma?","en":"Can you do me a favor?"},
+{"level":"HSK3","cn":"他常常帮妈妈的忙。","py":"Tā chángcháng bāng māma de máng.","en":"He often helps his mom."},
+{"level":"HSK3","cn":"大家一起帮忙，很快就做完了。","py":"Dàjiā yìqǐ bāngmáng, hěn kuài jiù zuò wán le.","en":"Everyone helped together, so it was done quickly."}]},
+
+{"chinese":"包","pinyin":"bāo","english":"bag; to wrap","khmer":"កាបូប / ខ្ចប់","breakdown":"勹(wrap)+巳 — something wrapped up","chars":["包"],"examples":[
+{"level":"HSK3","cn":"这是我的包。","py":"Zhè shì wǒ de bāo.","en":"This is my bag."},
+{"level":"HSK3","cn":"她买了一个新包。","py":"Tā mǎi le yí ge xīn bāo.","en":"She bought a new bag."},
+{"level":"HSK3","cn":"妈妈在包饺子。","py":"Māma zài bāo jiǎozi.","en":"Mom is wrapping dumplings."},
+{"level":"HSK3","cn":"我的书都在包里。","py":"Wǒ de shū dōu zài bāo lǐ.","en":"All my books are in the bag."},
+{"level":"HSK3","cn":"请帮我包起来。","py":"Qǐng bāng wǒ bāo qǐlái.","en":"Please wrap it up for me."}]},
+
+{"chinese":"饱","pinyin":"bǎo","english":"full (after eating)","khmer":"ឆ្អែត","breakdown":"饣(food radical)+包(sound bāo) — food + the 'bao' sound","chars":["饱"],"examples":[
+{"level":"HSK3","cn":"我吃饱了。","py":"Wǒ chī bǎo le.","en":"I'm full."},
+{"level":"HSK3","cn":"你饱了吗？","py":"Nǐ bǎo le ma?","en":"Are you full?"},
+{"level":"HSK3","cn":"这些菜够我们吃饱了。","py":"Zhèxiē cài gòu wǒmen chī bǎo le.","en":"This food is enough to fill us up."},
+{"level":"HSK3","cn":"我还没吃饱。","py":"Wǒ hái méi chī bǎo.","en":"I'm not full yet."},
+{"level":"HSK3","cn":"吃饱了才有力气学习。","py":"Chī bǎo le cái yǒu lìqi xuéxí.","en":"Only when you're full do you have energy to study."}]},
+
+{"chinese":"被","pinyin":"bèi","english":"by (marks the passive); quilt","khmer":"ដោយ (ទម្រង់អកម្ម)","breakdown":"衤(clothing radical)+皮(skin) — cloth over you; also the passive marker","chars":["被"],"examples":[
+{"level":"HSK3","cn":"我的车被人开走了。","py":"Wǒ de chē bèi rén kāi zǒu le.","en":"My car was driven away by someone."},
+{"level":"HSK3","cn":"蛋糕被弟弟吃完了。","py":"Dàngāo bèi dìdi chī wán le.","en":"The cake was eaten up by my little brother."},
+{"level":"HSK3","cn":"他被老师叫到办公室。","py":"Tā bèi lǎoshī jiào dào bàngōngshì.","en":"He was called to the office by the teacher."},
+{"level":"HSK3","cn":"这本书被借走了。","py":"Zhè běn shū bèi jiè zǒu le.","en":"This book has been borrowed."},
+{"level":"HSK3","cn":"天冷了，请多盖一床被。","py":"Tiān lěng le, qǐng duō gài yì chuáng bèi.","en":"It's cold, please use one more quilt."}]},
+
+{"chinese":"北方","pinyin":"běifāng","english":"the north","khmer":"ភាគខាងជើង","breakdown":"北(north)+方(direction) — the north direction","chars":["北","方"],"examples":[
+{"level":"HSK3","cn":"他是北方人。","py":"Tā shì běifāng rén.","en":"He is a northerner."},
+{"level":"HSK3","cn":"北方的冬天很冷。","py":"Běifāng de dōngtiān hěn lěng.","en":"Winter in the north is very cold."},
+{"level":"HSK3","cn":"我没去过北方。","py":"Wǒ méi qù guo běifāng.","en":"I have never been to the north."},
+{"level":"HSK3","cn":"北方人喜欢吃面条。","py":"Běifāng rén xǐhuan chī miàntiáo.","en":"Northerners like eating noodles."},
+{"level":"HSK3","cn":"从北方到南方要坐飞机。","py":"Cóng běifāng dào nánfāng yào zuò fēijī.","en":"From the north to the south you need to fly."}]},
+
+{"chinese":"笔记本","pinyin":"bǐjìběn","english":"notebook","khmer":"សៀវភៅកត់ត្រា","breakdown":"笔(pen)+记(record)+本(book) — a book to write records in","chars":["笔","记","本"],"examples":[
+{"level":"HSK3","cn":"这是我的笔记本。","py":"Zhè shì wǒ de bǐjìběn.","en":"This is my notebook."},
+{"level":"HSK3","cn":"我买了两个笔记本。","py":"Wǒ mǎi le liǎng ge bǐjìběn.","en":"I bought two notebooks."},
+{"level":"HSK3","cn":"请把笔记本拿出来。","py":"Qǐng bǎ bǐjìběn ná chūlái.","en":"Please take out your notebook."},
+{"level":"HSK3","cn":"我的笔记本找不到了。","py":"Wǒ de bǐjìběn zhǎo bu dào le.","en":"I can't find my notebook."},
+{"level":"HSK3","cn":"他在笔记本上写了很多。","py":"Tā zài bǐjìběn shàng xiě le hěn duō.","en":"He wrote a lot in his notebook."}]},
+
+{"chinese":"比较","pinyin":"bǐjiào","english":"rather; fairly; to compare","khmer":"ប្រៀបធៀប / ស្មើៗ","breakdown":"比(compare)+较(compare) — two compare characters together","chars":["比","较"],"examples":[
+{"level":"HSK3","cn":"今天比较冷。","py":"Jīntiān bǐjiào lěng.","en":"Today is rather cold."},
+{"level":"HSK3","cn":"这个比较容易。","py":"Zhège bǐjiào róngyì.","en":"This one is fairly easy."},
+{"level":"HSK3","cn":"我比较喜欢喝茶。","py":"Wǒ bǐjiào xǐhuan hē chá.","en":"I rather prefer drinking tea."},
+{"level":"HSK3","cn":"请比较这两个词。","py":"Qǐng bǐjiào zhè liǎng ge cí.","en":"Please compare these two words."},
+{"level":"HSK3","cn":"他的成绩比较好。","py":"Tā de chéngjì bǐjiào hǎo.","en":"His results are fairly good."}]},
+
+{"chinese":"比赛","pinyin":"bǐsài","english":"match; competition","khmer":"ការប្រកួត","breakdown":"比(compare)+赛(contest) — comparing who is better","chars":["比","赛"],"examples":[
+{"level":"HSK3","cn":"明天有一场比赛。","py":"Míngtiān yǒu yì chǎng bǐsài.","en":"There is a match tomorrow."},
+{"level":"HSK3","cn":"我们班赢了比赛。","py":"Wǒmen bān yíng le bǐsài.","en":"Our class won the match."},
+{"level":"HSK3","cn":"你参加比赛吗？","py":"Nǐ cānjiā bǐsài ma?","en":"Are you taking part in the competition?"},
+{"level":"HSK3","cn":"这场比赛很有意思。","py":"Zhè chǎng bǐsài hěn yǒu yìsi.","en":"This match is very interesting."},
+{"level":"HSK3","cn":"比赛下午三点开始。","py":"Bǐsài xiàwǔ sān diǎn kāishǐ.","en":"The match starts at three in the afternoon."}]},
+
+{"chinese":"必须","pinyin":"bìxū","english":"must; have to","khmer":"ត្រូវតែ","breakdown":"必(certainly)+须(need) — certainly need to","chars":["必","须"],"examples":[
+{"level":"HSK3","cn":"你必须去。","py":"Nǐ bìxū qù.","en":"You must go."},
+{"level":"HSK3","cn":"我们必须准备好。","py":"Wǒmen bìxū zhǔnbèi hǎo.","en":"We must be well prepared."},
+{"level":"HSK3","cn":"学生必须八点到教室。","py":"Xuésheng bìxū bā diǎn dào jiàoshì.","en":"Students must arrive at the classroom at eight."},
+{"level":"HSK3","cn":"这件事必须今天做完。","py":"Zhè jiàn shì bìxū jīntiān zuò wán.","en":"This must be finished today."},
+{"level":"HSK3","cn":"你必须先休息一下。","py":"Nǐ bìxū xiān xiūxi yíxià.","en":"You must rest a bit first."}]},
+
+{"chinese":"鼻子","pinyin":"bízi","english":"nose","khmer":"ច្រមុះ","breakdown":"鼻(nose)+子(noun suffix)","chars":["鼻","子"],"examples":[
+{"level":"HSK3","cn":"他的鼻子很高。","py":"Tā de bízi hěn gāo.","en":"He has a high nose."},
+{"level":"HSK3","cn":"我的鼻子不舒服。","py":"Wǒ de bízi bù shūfu.","en":"My nose feels uncomfortable."},
+{"level":"HSK3","cn":"小狗的鼻子很灵。","py":"Xiǎo gǒu de bízi hěn líng.","en":"A dog's nose is very sharp."},
+{"level":"HSK3","cn":"天冷的时候鼻子会红。","py":"Tiān lěng de shíhou bízi huì hóng.","en":"When it's cold the nose turns red."},
+{"level":"HSK3","cn":"请用鼻子慢慢呼吸。","py":"Qǐng yòng bízi mànmàn hūxī.","en":"Please breathe slowly through your nose."}]},
+
+{"chinese":"变化","pinyin":"biànhuà","english":"change","khmer":"ការផ្លាស់ប្ដូរ","breakdown":"变(change)+化(transform) — two change characters together","chars":["变","化"],"examples":[
+{"level":"HSK3","cn":"这里变化很大。","py":"Zhèlǐ biànhuà hěn dà.","en":"There have been big changes here."},
+{"level":"HSK3","cn":"天气变化很快。","py":"Tiānqì biànhuà hěn kuài.","en":"The weather changes quickly."},
+{"level":"HSK3","cn":"我看到了他的变化。","py":"Wǒ kàn dào le tā de biànhuà.","en":"I saw the change in him."},
+{"level":"HSK3","cn":"这几年城市变化了很多。","py":"Zhè jǐ nián chéngshì biànhuà le hěn duō.","en":"The city has changed a lot these few years."},
+{"level":"HSK3","cn":"计划有一点变化。","py":"Jìhuà yǒu yìdiǎn biànhuà.","en":"There is a small change to the plan."}]},
+
+{"chinese":"别人","pinyin":"biéren","english":"other people; others","khmer":"អ្នកដទៃ","breakdown":"别(other)+人(person) — other persons","chars":["别","人"],"examples":[
+{"level":"HSK3","cn":"别人不知道这件事。","py":"Biéren bù zhīdào zhè jiàn shì.","en":"Other people don't know about this."},
+{"level":"HSK3","cn":"不要说别人的坏话。","py":"Bú yào shuō biéren de huàihuà.","en":"Don't speak badly of others."},
+{"level":"HSK3","cn":"别人都走了。","py":"Biéren dōu zǒu le.","en":"Everyone else has left."},
+{"level":"HSK3","cn":"要多帮助别人。","py":"Yào duō bāngzhù biéren.","en":"You should help others more."},
+{"level":"HSK3","cn":"这是别人的东西。","py":"Zhè shì biéren de dōngxi.","en":"This is someone else's thing."}]},
+
+{"chinese":"冰箱","pinyin":"bīngxiāng","english":"fridge","khmer":"ទូទឹកកក","breakdown":"冰(ice)+箱(box) — an ice box","chars":["冰","箱"],"examples":[
+{"level":"HSK3","cn":"牛奶在冰箱里。","py":"Niúnǎi zài bīngxiāng lǐ.","en":"The milk is in the fridge."},
+{"level":"HSK3","cn":"我家的冰箱很大。","py":"Wǒ jiā de bīngxiāng hěn dà.","en":"My family's fridge is very big."},
+{"level":"HSK3","cn":"请把水果放进冰箱。","py":"Qǐng bǎ shuǐguǒ fàng jìn bīngxiāng.","en":"Please put the fruit in the fridge."},
+{"level":"HSK3","cn":"冰箱里没有东西了。","py":"Bīngxiāng lǐ méiyǒu dōngxi le.","en":"There's nothing left in the fridge."},
+{"level":"HSK3","cn":"这个冰箱是新买的。","py":"Zhège bīngxiāng shì xīn mǎi de.","en":"This fridge was just bought."}]},
+
+{"chinese":"菜单","pinyin":"càidān","english":"menu","khmer":"បញ្ជីមុខម្ហូប","breakdown":"菜(dish)+单(list) — a list of dishes","chars":["菜","单"],"examples":[
+{"level":"HSK3","cn":"请给我菜单。","py":"Qǐng gěi wǒ càidān.","en":"Please give me the menu."},
+{"level":"HSK3","cn":"这家饭店的菜单很长。","py":"Zhè jiā fàndiàn de càidān hěn cháng.","en":"This restaurant's menu is very long."},
+{"level":"HSK3","cn":"我看不懂中文菜单。","py":"Wǒ kàn bu dǒng Zhōngwén càidān.","en":"I can't read a Chinese menu."},
+{"level":"HSK3","cn":"菜单上有图片。","py":"Càidān shàng yǒu túpiàn.","en":"There are pictures on the menu."},
+{"level":"HSK3","cn":"服务员，菜单在哪儿？","py":"Fúwùyuán, càidān zài nǎr?","en":"Waiter, where is the menu?"}]},
+
+{"chinese":"参加","pinyin":"cānjiā","english":"to take part; to join","khmer":"ចូលរួម","breakdown":"参(participate)+加(add) — add yourself in","chars":["参","加"],"examples":[
+{"level":"HSK3","cn":"我要参加比赛。","py":"Wǒ yào cānjiā bǐsài.","en":"I want to take part in the competition."},
+{"level":"HSK3","cn":"你参加考试了吗？","py":"Nǐ cānjiā kǎoshì le ma?","en":"Did you sit the exam?"},
+{"level":"HSK3","cn":"很多人参加了这个会。","py":"Hěn duō rén cānjiā le zhège huì.","en":"Many people attended this meeting."},
+{"level":"HSK3","cn":"欢迎大家参加！","py":"Huānyíng dàjiā cānjiā!","en":"Everyone is welcome to join!"},
+{"level":"HSK3","cn":"他没时间参加。","py":"Tā méi shíjiān cānjiā.","en":"He has no time to take part."}]},
+
+{"chinese":"草","pinyin":"cǎo","english":"grass","khmer":"ស្មៅ","breakdown":"艹(grass radical)+早(sound zǎo) — plants + the 'cao/zao' sound","chars":["草"],"examples":[
+{"level":"HSK3","cn":"草是绿色的。","py":"Cǎo shì lǜsè de.","en":"Grass is green."},
+{"level":"HSK3","cn":"公园里有很多草。","py":"Gōngyuán lǐ yǒu hěn duō cǎo.","en":"There is a lot of grass in the park."},
+{"level":"HSK3","cn":"孩子们在草上玩儿。","py":"Háizimen zài cǎo shàng wánr.","en":"The children are playing on the grass."},
+{"level":"HSK3","cn":"春天草长得很快。","py":"Chūntiān cǎo zhǎng de hěn kuài.","en":"Grass grows fast in spring."},
+{"level":"HSK3","cn":"请不要走在草上。","py":"Qǐng bú yào zǒu zài cǎo shàng.","en":"Please don't walk on the grass."}]},
+
+{"chinese":"层","pinyin":"céng","english":"floor; storey (measure word)","khmer":"ជាន់","breakdown":"尸(roof shape)+云(cloud) — layers stacked up","chars":["层"],"examples":[
+{"level":"HSK3","cn":"我住在三层。","py":"Wǒ zhù zài sān céng.","en":"I live on the third floor."},
+{"level":"HSK3","cn":"这个楼有十层。","py":"Zhège lóu yǒu shí céng.","en":"This building has ten floors."},
+{"level":"HSK3","cn":"办公室在几层？","py":"Bàngōngshì zài jǐ céng?","en":"Which floor is the office on?"},
+{"level":"HSK3","cn":"上一层有个超市。","py":"Shàng yì céng yǒu ge chāoshì.","en":"There is a supermarket one floor up."},
+{"level":"HSK3","cn":"桌子上有一层水。","py":"Zhuōzi shàng yǒu yì céng shuǐ.","en":"There is a layer of water on the table."}]},
+
+{"chinese":"差","pinyin":"chà","english":"to lack; poor (in quality); short of","khmer":"ខ្វះ / មិនល្អ","breakdown":"Whole shape — no reliable split","chars":["差"],"examples":[
+{"level":"HSK3","cn":"现在差五分八点。","py":"Xiànzài chà wǔ fēn bā diǎn.","en":"It's five minutes to eight."},
+{"level":"HSK3","cn":"他的成绩很差。","py":"Tā de chéngjì hěn chà.","en":"His results are very poor."},
+{"level":"HSK3","cn":"还差一个人。","py":"Hái chà yí ge rén.","en":"We're still one person short."},
+{"level":"HSK3","cn":"这个饭店的服务太差了。","py":"Zhège fàndiàn de fúwù tài chà le.","en":"This restaurant's service is too poor."},
+{"level":"HSK3","cn":"我差一点儿就迟到了。","py":"Wǒ chà yìdiǎnr jiù chídào le.","en":"I almost arrived late."}]},
+
+{"chinese":"超市","pinyin":"chāoshì","english":"supermarket","khmer":"ផ្សារទំនើប","breakdown":"超(super)+市(market) — super market","chars":["超","市"],"examples":[
+{"level":"HSK3","cn":"我去超市买东西。","py":"Wǒ qù chāoshì mǎi dōngxi.","en":"I'm going to the supermarket to buy things."},
+{"level":"HSK3","cn":"超市就在旁边。","py":"Chāoshì jiù zài pángbiān.","en":"The supermarket is right next door."},
+{"level":"HSK3","cn":"这个超市很大。","py":"Zhège chāoshì hěn dà.","en":"This supermarket is very big."},
+{"level":"HSK3","cn":"超市几点关门？","py":"Chāoshì jǐ diǎn guānmén?","en":"What time does the supermarket close?"},
+{"level":"HSK3","cn":"超市里的水果很新鲜。","py":"Chāoshì lǐ de shuǐguǒ hěn xīnxiān.","en":"The fruit in the supermarket is very fresh."}]},
+
+{"chinese":"衬衫","pinyin":"chènshān","english":"shirt","khmer":"អាវ","breakdown":"衬(lining, 衤clothing radical)+衫(shirt, 衤clothing radical) — both have the clothing radical","chars":["衬","衫"],"examples":[
+{"level":"HSK3","cn":"这件衬衫很好看。","py":"Zhè jiàn chènshān hěn hǎokàn.","en":"This shirt looks very nice."},
+{"level":"HSK3","cn":"我买了一件白衬衫。","py":"Wǒ mǎi le yí jiàn bái chènshān.","en":"I bought a white shirt."},
+{"level":"HSK3","cn":"他的衬衫是新的。","py":"Tā de chènshān shì xīn de.","en":"His shirt is new."},
+{"level":"HSK3","cn":"这件衬衫太小了。","py":"Zhè jiàn chènshān tài xiǎo le.","en":"This shirt is too small."},
+{"level":"HSK3","cn":"开会要穿衬衫。","py":"Kāihuì yào chuān chènshān.","en":"You should wear a shirt for the meeting."}]},
+
+{"chinese":"成绩","pinyin":"chéngjì","english":"results; grades; achievement","khmer":"លទ្ធផល / ពិន្ទុ","breakdown":"成(become, succeed)+绩(achievement) — what you achieved","chars":["成","绩"],"examples":[
+{"level":"HSK3","cn":"我的成绩很好。","py":"Wǒ de chéngjì hěn hǎo.","en":"My grades are very good."},
+{"level":"HSK3","cn":"考试成绩明天出来。","py":"Kǎoshì chéngjì míngtiān chūlái.","en":"The exam results come out tomorrow."},
+{"level":"HSK3","cn":"他的成绩比我好。","py":"Tā de chéngjì bǐ wǒ hǎo.","en":"His grades are better than mine."},
+{"level":"HSK3","cn":"努力学习才有好成绩。","py":"Nǔlì xuéxí cái yǒu hǎo chéngjì.","en":"Only by studying hard do you get good grades."},
+{"level":"HSK3","cn":"老师说我的成绩有变化。","py":"Lǎoshī shuō wǒ de chéngjì yǒu biànhuà.","en":"The teacher said my grades have changed."}]},
+
+{"chinese":"城市","pinyin":"chéngshì","english":"city","khmer":"ទីក្រុង","breakdown":"城(city wall)+市(market) — a walled place with a market","chars":["城","市"],"examples":[
+{"level":"HSK3","cn":"北京是个大城市。","py":"Běijīng shì ge dà chéngshì.","en":"Beijing is a big city."},
+{"level":"HSK3","cn":"我喜欢这个城市。","py":"Wǒ xǐhuan zhège chéngshì.","en":"I like this city."},
+{"level":"HSK3","cn":"城市里人很多。","py":"Chéngshì lǐ rén hěn duō.","en":"There are many people in the city."},
+{"level":"HSK3","cn":"他从小城市来。","py":"Tā cóng xiǎo chéngshì lái.","en":"He comes from a small city."},
+{"level":"HSK3","cn":"这个城市变化很大。","py":"Zhège chéngshì biànhuà hěn dà.","en":"This city has changed a lot."}]},
+
+{"chinese":"迟到","pinyin":"chídào","english":"to arrive late","khmer":"មកយឺត","breakdown":"迟(late)+到(arrive) — arrive late","chars":["迟","到"],"examples":[
+{"level":"HSK3","cn":"我今天迟到了。","py":"Wǒ jīntiān chídào le.","en":"I was late today."},
+{"level":"HSK3","cn":"请不要迟到。","py":"Qǐng bú yào chídào.","en":"Please don't be late."},
+{"level":"HSK3","cn":"他上课常常迟到。","py":"Tā shàngkè chángcháng chídào.","en":"He is often late for class."},
+{"level":"HSK3","cn":"因为下雨，我迟到了。","py":"Yīnwèi xià yǔ, wǒ chídào le.","en":"Because it rained, I was late."},
+{"level":"HSK3","cn":"迟到的人要说对不起。","py":"Chídào de rén yào shuō duìbuqǐ.","en":"People who are late should say sorry."}]},
+
+{"chinese":"除了","pinyin":"chúle","english":"except; apart from; besides","khmer":"លើកលែងតែ","breakdown":"除(remove)+了(particle) — take it out of the group","chars":["除","了"],"examples":[
+{"level":"HSK3","cn":"除了我，大家都去了。","py":"Chúle wǒ, dàjiā dōu qù le.","en":"Apart from me, everyone went."},
+{"level":"HSK3","cn":"除了汉语，他还会英语。","py":"Chúle Hànyǔ, tā hái huì Yīngyǔ.","en":"Besides Chinese, he also knows English."},
+{"level":"HSK3","cn":"除了星期天，我每天上班。","py":"Chúle xīngqītiān, wǒ měitiān shàngbān.","en":"Except Sunday, I work every day."},
+{"level":"HSK3","cn":"除了他以外，没人知道。","py":"Chúle tā yǐwài, méi rén zhīdào.","en":"Apart from him, nobody knows."},
+{"level":"HSK3","cn":"除了茶，我什么都不喝。","py":"Chúle chá, wǒ shénme dōu bù hē.","en":"Apart from tea, I don't drink anything."}]},
+
+{"chinese":"船","pinyin":"chuán","english":"boat; ship","khmer":"ទូក / នាវា","breakdown":"舟(boat radical)+铅(sound clue) — the boat radical gives the meaning","chars":["船"],"examples":[
+{"level":"HSK3","cn":"我坐船去。","py":"Wǒ zuò chuán qù.","en":"I'm going by boat."},
+{"level":"HSK3","cn":"那条船很大。","py":"Nà tiáo chuán hěn dà.","en":"That ship is very big."},
+{"level":"HSK3","cn":"坐船比坐飞机慢。","py":"Zuò chuán bǐ zuò fēijī màn.","en":"Going by boat is slower than by plane."},
+{"level":"HSK3","cn":"船上有很多人。","py":"Chuán shàng yǒu hěn duō rén.","en":"There are many people on the boat."},
+{"level":"HSK3","cn":"船几点开？","py":"Chuán jǐ diǎn kāi?","en":"What time does the boat leave?"}]},
+
+{"chinese":"春","pinyin":"chūn","english":"spring (season)","khmer":"និទាឃរដូវ","breakdown":"Top part + 日(sun) — the sun getting warmer","chars":["春"],"examples":[
+{"level":"HSK3","cn":"春天来了。","py":"Chūntiān lái le.","en":"Spring has come."},
+{"level":"HSK3","cn":"我喜欢春天。","py":"Wǒ xǐhuan chūntiān.","en":"I like spring."},
+{"level":"HSK3","cn":"春天的天气很好。","py":"Chūntiān de tiānqì hěn hǎo.","en":"The weather in spring is very nice."},
+{"level":"HSK3","cn":"春天花开了。","py":"Chūntiān huā kāi le.","en":"Flowers bloom in spring."},
+{"level":"HSK3","cn":"春天以后是夏天。","py":"Chūntiān yǐhòu shì xiàtiān.","en":"After spring comes summer."}]},
+
+{"chinese":"词典","pinyin":"cídiǎn","english":"dictionary","khmer":"វចនានុក្រម","breakdown":"词(word)+典(standard book) — a standard book of words","chars":["词","典"],"examples":[
+{"level":"HSK3","cn":"这是我的词典。","py":"Zhè shì wǒ de cídiǎn.","en":"This is my dictionary."},
+{"level":"HSK3","cn":"请借我一本词典。","py":"Qǐng jiè wǒ yì běn cídiǎn.","en":"Please lend me a dictionary."},
+{"level":"HSK3","cn":"我用词典查生词。","py":"Wǒ yòng cídiǎn chá shēngcí.","en":"I use a dictionary to look up new words."},
+{"level":"HSK3","cn":"这本词典很有用。","py":"Zhè běn cídiǎn hěn yǒuyòng.","en":"This dictionary is very useful."},
+{"level":"HSK3","cn":"现在手机上也有词典。","py":"Xiànzài shǒujī shàng yě yǒu cídiǎn.","en":"Now there are dictionaries on phones too."}]},
+
+{"chinese":"聪明","pinyin":"cōngming","english":"clever; smart","khmer":"ឆ្លាត","breakdown":"聪(good hearing, 耳ear radical)+明(bright) — sharp ears and a bright mind","chars":["聪","明"],"examples":[
+{"level":"HSK3","cn":"他很聪明。","py":"Tā hěn cōngming.","en":"He is very clever."},
+{"level":"HSK3","cn":"这个孩子真聪明。","py":"Zhège háizi zhēn cōngming.","en":"This child is really smart."},
+{"level":"HSK3","cn":"聪明的人也要努力。","py":"Cōngming de rén yě yào nǔlì.","en":"Clever people also need to work hard."},
+{"level":"HSK3","cn":"你想的这个办法很聪明。","py":"Nǐ xiǎng de zhège bànfǎ hěn cōngming.","en":"The method you thought of is very clever."},
+{"level":"HSK3","cn":"她比我聪明。","py":"Tā bǐ wǒ cōngming.","en":"She is cleverer than me."}]},
+
+{"chinese":"打扫","pinyin":"dǎsǎo","english":"to clean; to sweep","khmer":"សម្អាត","breakdown":"打(do, hit, 扌hand)+扫(sweep, 扌hand) — both use the hand radical","chars":["打","扫"],"examples":[
+{"level":"HSK3","cn":"我要打扫房间。","py":"Wǒ yào dǎsǎo fángjiān.","en":"I need to clean the room."},
+{"level":"HSK3","cn":"妈妈在打扫。","py":"Māma zài dǎsǎo.","en":"Mom is cleaning."},
+{"level":"HSK3","cn":"我们一起打扫教室吧。","py":"Wǒmen yìqǐ dǎsǎo jiàoshì ba.","en":"Let's clean the classroom together."},
+{"level":"HSK3","cn":"打扫完了，房间很干净。","py":"Dǎsǎo wán le, fángjiān hěn gānjìng.","en":"After cleaning, the room is very clean."},
+{"level":"HSK3","cn":"每个星期天我都打扫。","py":"Měi ge xīngqītiān wǒ dōu dǎsǎo.","en":"I clean every Sunday."}]},
+
+{"chinese":"打算","pinyin":"dǎsuàn","english":"to plan; to intend","khmer":"គ្រោងនឹង","breakdown":"打(do)+算(calculate) — work out what you will do","chars":["打","算"],"examples":[
+{"level":"HSK3","cn":"你打算做什么？","py":"Nǐ dǎsuàn zuò shénme?","en":"What do you plan to do?"},
+{"level":"HSK3","cn":"我打算去中国。","py":"Wǒ dǎsuàn qù Zhōngguó.","en":"I plan to go to China."},
+{"level":"HSK3","cn":"他打算搬家。","py":"Tā dǎsuàn bān jiā.","en":"He plans to move house."},
+{"level":"HSK3","cn":"我没有别的打算。","py":"Wǒ méiyǒu bié de dǎsuàn.","en":"I have no other plans."},
+{"level":"HSK3","cn":"我们打算参加比赛。","py":"Wǒmen dǎsuàn cānjiā bǐsài.","en":"We plan to take part in the competition."}]},
+
+{"chinese":"蛋糕","pinyin":"dàngāo","english":"cake","khmer":"នំខេក","breakdown":"蛋(egg)+糕(cake, 米rice radical) — made from eggs and flour","chars":["蛋","糕"],"examples":[
+{"level":"HSK3","cn":"我喜欢吃蛋糕。","py":"Wǒ xǐhuan chī dàngāo.","en":"I like eating cake."},
+{"level":"HSK3","cn":"这个蛋糕很好吃。","py":"Zhège dàngāo hěn hǎochī.","en":"This cake is delicious."},
+{"level":"HSK3","cn":"生日要吃蛋糕。","py":"Shēngrì yào chī dàngāo.","en":"You eat cake on your birthday."},
+{"level":"HSK3","cn":"妈妈做了一个大蛋糕。","py":"Māma zuò le yí ge dà dàngāo.","en":"Mom made a big cake."},
+{"level":"HSK3","cn":"蛋糕在冰箱里。","py":"Dàngāo zài bīngxiāng lǐ.","en":"The cake is in the fridge."}]},
+
+{"chinese":"担心","pinyin":"dānxīn","english":"to worry","khmer":"បារម្ភ","breakdown":"担(carry on a shoulder)+心(heart) — carrying something heavy on your heart","chars":["担","心"],"examples":[
+{"level":"HSK3","cn":"别担心。","py":"Bié dānxīn.","en":"Don't worry."},
+{"level":"HSK3","cn":"妈妈很担心我。","py":"Māma hěn dānxīn wǒ.","en":"Mom worries about me a lot."},
+{"level":"HSK3","cn":"我担心考试。","py":"Wǒ dānxīn kǎoshì.","en":"I'm worried about the exam."},
+{"level":"HSK3","cn":"你不用担心，我没事。","py":"Nǐ búyòng dānxīn, wǒ méi shì.","en":"You don't need to worry, I'm fine."},
+{"level":"HSK3","cn":"他担心会迟到。","py":"Tā dānxīn huì chídào.","en":"He worries he will be late."}]},
+
+{"chinese":"当然","pinyin":"dāngrán","english":"of course","khmer":"ពិតណាស់","breakdown":"当(ought to be)+然(so) — it ought to be so","chars":["当","然"],"examples":[
+{"level":"HSK3","cn":"当然可以！","py":"Dāngrán kěyǐ!","en":"Of course you can!"},
+{"level":"HSK3","cn":"我当然认识他。","py":"Wǒ dāngrán rènshi tā.","en":"Of course I know him."},
+{"level":"HSK3","cn":"这件事当然很重要。","py":"Zhè jiàn shì dāngrán hěn zhòngyào.","en":"This matter is of course very important."},
+{"level":"HSK3","cn":"你当然应该休息。","py":"Nǐ dāngrán yīnggāi xiūxi.","en":"Of course you should rest."},
+{"level":"HSK3","cn":"当然，我会帮你的。","py":"Dāngrán, wǒ huì bāng nǐ de.","en":"Of course, I will help you."}]},
+
+{"chinese":"地","pinyin":"de","english":"-ly (connects an adverb to a verb)","khmer":"ដោយ (បច្ច័យគុណកិរិយា)","breakdown":"土(earth)+也(sound yě) — read 'de' as a grammar particle, 'dì' as ground","chars":["地"],"examples":[
+{"level":"HSK3","cn":"他慢慢地走。","py":"Tā mànmàn de zǒu.","en":"He walks slowly."},
+{"level":"HSK3","cn":"请安静地坐下。","py":"Qǐng ānjìng de zuò xià.","en":"Please sit down quietly."},
+{"level":"HSK3","cn":"她高兴地笑了。","py":"Tā gāoxìng de xiào le.","en":"She smiled happily."},
+{"level":"HSK3","cn":"我认真地准备了考试。","py":"Wǒ rènzhēn de zhǔnbèi le kǎoshì.","en":"I prepared for the exam seriously."},
+{"level":"HSK3","cn":"他快快地吃完了饭。","py":"Tā kuàikuài de chī wán le fàn.","en":"He quickly finished the meal."}]},
+
+{"chinese":"灯","pinyin":"dēng","english":"lamp; light","khmer":"អំពូល","breakdown":"火(fire radical)+丁(sound dīng) — fire gives the meaning, 丁 gives the sound","chars":["灯"],"examples":[
+{"level":"HSK3","cn":"请开灯。","py":"Qǐng kāi dēng.","en":"Please turn on the light."},
+{"level":"HSK3","cn":"灯坏了。","py":"Dēng huài le.","en":"The light is broken."},
+{"level":"HSK3","cn":"房间里有两个灯。","py":"Fángjiān lǐ yǒu liǎng ge dēng.","en":"There are two lights in the room."},
+{"level":"HSK3","cn":"走的时候请关灯。","py":"Zǒu de shíhou qǐng guān dēng.","en":"Please turn off the light when you leave."},
+{"level":"HSK3","cn":"这个灯太亮了。","py":"Zhège dēng tài liàng le.","en":"This light is too bright."}]},
+
+{"chinese":"地方","pinyin":"dìfang","english":"place","khmer":"កន្លែង","breakdown":"地(ground, earth)+方(area, direction) — an area of ground","chars":["地","方"],"examples":[
+{"level":"HSK3","cn":"这个地方很好。","py":"Zhège dìfang hěn hǎo.","en":"This place is very nice."},
+{"level":"HSK3","cn":"你去过什么地方？","py":"Nǐ qù guo shénme dìfang?","en":"What places have you been to?"},
+{"level":"HSK3","cn":"我找不到那个地方。","py":"Wǒ zhǎo bu dào nàge dìfang.","en":"I can't find that place."},
+{"level":"HSK3","cn":"这里是我最喜欢的地方。","py":"Zhèlǐ shì wǒ zuì xǐhuan de dìfang.","en":"This is my favorite place."},
+{"level":"HSK3","cn":"那个地方又安静又干净。","py":"Nàge dìfang yòu ānjìng yòu gānjìng.","en":"That place is both quiet and clean."}]}
+]
