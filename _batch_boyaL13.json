@@ -1,0 +1,239 @@
+[
+{"chinese":"封","pinyin":"fēng","english":"(measure word for letters)","khmer":"ច្បាប់ (សម្រាប់សំបុត្រ)","breakdown":"土(earth)+土+寸 — sealing a letter with earth/clay; now the measure word for sealed letters","chars":["封"],"examples":[
+{"level":"L13","cn":"我写了一封信。","py":"Wǒ xiě le yì fēng xìn.","en":"I wrote a letter."},
+{"level":"L13","cn":"这封信是给你的。","py":"Zhè fēng xìn shì gěi nǐ de.","en":"This letter is for you."},
+{"level":"L13","cn":"他收到了两封信。","py":"Tā shōu dào le liǎng fēng xìn.","en":"He received two letters."},
+{"level":"L13","cn":"我给妈妈寄了一封信。","py":"Wǒ gěi māma jì le yì fēng xìn.","en":"I mailed a letter to my mom."},
+{"level":"L13","cn":"这封信很长。","py":"Zhè fēng xìn hěn cháng.","en":"This letter is very long."}]},
+
+{"chinese":"信","pinyin":"xìn","english":"letter; to believe","khmer":"សំបុត្រ / ជឿ","breakdown":"亻(person radical)+言(words) — a person's words sent to another, a letter","chars":["信"],"examples":[
+{"level":"L13","cn":"我给你写信。","py":"Wǒ gěi nǐ xiě xìn.","en":"I'll write you a letter."},
+{"level":"L13","cn":"这封信很重要。","py":"Zhè fēng xìn hěn zhòngyào.","en":"This letter is important."},
+{"level":"L13","cn":"我相信你。","py":"Wǒ xiāngxìn nǐ.","en":"I believe you."},
+{"level":"L13","cn":"他还没回我的信。","py":"Tā hái méi huí wǒ de xìn.","en":"He hasn't replied to my letter yet."},
+{"level":"L13","cn":"请把信放进信封。","py":"Qǐng bǎ xìn fàng jìn xìnfēng.","en":"Please put the letter in the envelope."}]},
+
+{"chinese":"收到","pinyin":"shōudào","english":"to receive","khmer":"ទទួលបាន","breakdown":"收(receive, gather)+到(reach) — something reaches you and you take it in","chars":["收","到"],"examples":[
+{"level":"L13","cn":"我收到了你的信。","py":"Wǒ shōu dào le nǐ de xìn.","en":"I received your letter."},
+{"level":"L13","cn":"你收到消息了吗？","py":"Nǐ shōu dào xiāoxi le ma?","en":"Did you get the message?"},
+{"level":"L13","cn":"我收到了一个礼物。","py":"Wǒ shōu dào le yí ge lǐwù.","en":"I received a gift."},
+{"level":"L13","cn":"他收到了很多祝贺。","py":"Tā shōu dào le hěn duō zhùhè.","en":"He received many congratulations."},
+{"level":"L13","cn":"我还没收到答案。","py":"Wǒ hái méi shōu dào dá'àn.","en":"I haven't received the answer yet."}]},
+
+{"chinese":"原谅","pinyin":"yuánliàng","english":"to forgive; to pardon","khmer":"អភ័យទោស","breakdown":"原(original)+谅(understand, 讠speech radical) — understanding the original reason and letting it go","chars":["原","谅"],"examples":[
+{"level":"L13","cn":"请原谅我。","py":"Qǐng yuánliàng wǒ.","en":"Please forgive me."},
+{"level":"L13","cn":"他原谅了我的错误。","py":"Tā yuánliàng le wǒ de cuòwù.","en":"He forgave my mistake."},
+{"level":"L13","cn":"我原谅你了。","py":"Wǒ yuánliàng nǐ le.","en":"I forgive you."},
+{"level":"L13","cn":"这件事很难原谅。","py":"Zhè jiàn shì hěn nán yuánliàng.","en":"This is hard to forgive."},
+{"level":"L13","cn":"原谅别人也是帮自己。","py":"Yuánliàng biéren yě shì bāng zìjǐ.","en":"Forgiving others also helps yourself."}]},
+
+{"chinese":"一切","pinyin":"yíqiè","english":"everything; all","khmer":"អ្វីៗទាំងអស់","breakdown":"一(one)+切(cut, all) — all cut together into one whole","chars":["一","切"],"examples":[
+{"level":"L13","cn":"一切都很顺利。","py":"Yíqiè dōu hěn shùnlì.","en":"Everything is going smoothly."},
+{"level":"L13","cn":"一切都会好的。","py":"Yíqiè dōu huì hǎo de.","en":"Everything will be fine."},
+{"level":"L13","cn":"感谢你为我做的一切。","py":"Gǎnxiè nǐ wèi wǒ zuò de yíqiè.","en":"Thank you for everything you did for me."},
+{"level":"L13","cn":"健康比一切都重要。","py":"Jiànkāng bǐ yíqiè dōu zhòngyào.","en":"Health is more important than everything."},
+{"level":"L13","cn":"他失去了一切。","py":"Tā shīqù le yíqiè.","en":"He lost everything."}]},
+
+{"chinese":"转眼","pinyin":"zhuǎnyǎn","english":"in the blink of an eye","khmer":"ក្នុងមួយប៉ប្រិចភ្នែក","breakdown":"转(turn)+眼(eye) — in the time it takes to turn your eyes","chars":["转","眼"],"examples":[
+{"level":"L13","cn":"转眼一年过去了。","py":"Zhuǎnyǎn yì nián guòqù le.","en":"In the blink of an eye a year has passed."},
+{"level":"L13","cn":"转眼就到了冬天。","py":"Zhuǎnyǎn jiù dào le dōngtiān.","en":"Winter arrived in the blink of an eye."},
+{"level":"L13","cn":"孩子转眼就长大了。","py":"Háizi zhuǎnyǎn jiù zhǎng dà le.","en":"The child grew up in no time."},
+{"level":"L13","cn":"转眼我们毕业了。","py":"Zhuǎnyǎn wǒmen bìyè le.","en":"Before we knew it, we graduated."},
+{"level":"L13","cn":"时间过得真快，转眼又是新年。","py":"Shíjiān guò de zhēn kuài, zhuǎnyǎn yòu shì xīnnián.","en":"Time flies, and suddenly it's New Year again."}]},
+
+{"chinese":"去年","pinyin":"qùnián","english":"last year","khmer":"ឆ្នាំមុន","breakdown":"去(gone, past)+年(year) — the year that has gone","chars":["去","年"],"examples":[
+{"level":"L13","cn":"我去年去了中国。","py":"Wǒ qùnián qù le Zhōngguó.","en":"I went to China last year."},
+{"level":"L13","cn":"去年冬天很冷。","py":"Qùnián dōngtiān hěn lěng.","en":"Last winter was very cold."},
+{"level":"L13","cn":"他去年毕业了。","py":"Tā qùnián bìyè le.","en":"He graduated last year."},
+{"level":"L13","cn":"去年我学了汉语。","py":"Qùnián wǒ xué le Hànyǔ.","en":"Last year I studied Chinese."},
+{"level":"L13","cn":"去年的今天我们见面了。","py":"Qùnián de jīntiān wǒmen jiànmiàn le.","en":"A year ago today we met."}]},
+
+{"chinese":"难过","pinyin":"nánguò","english":"sad; to feel bad","khmer":"ព្រួយចិត្ត","breakdown":"难(difficult)+过(to pass) — a time that is hard to get through","chars":["难","过"],"examples":[
+{"level":"L13","cn":"我很难过。","py":"Wǒ hěn nánguò.","en":"I feel very sad."},
+{"level":"L13","cn":"别难过了。","py":"Bié nánguò le.","en":"Don't be sad."},
+{"level":"L13","cn":"听到这个消息她很难过。","py":"Tīng dào zhège xiāoxi tā hěn nánguò.","en":"She was very sad to hear this news."},
+{"level":"L13","cn":"他难过得哭了。","py":"Tā nánguò de kū le.","en":"He was so sad he cried."},
+{"level":"L13","cn":"考试没考好，我有点难过。","py":"Kǎoshì méi kǎo hǎo, wǒ yǒudiǎn nánguò.","en":"I didn't do well on the exam, I feel a bit down."}]},
+
+{"chinese":"一定","pinyin":"yídìng","english":"certainly; definitely","khmer":"ប្រាកដជា","breakdown":"一(one)+定(fixed) — fixed as one certain way","chars":["一","定"],"examples":[
+{"level":"L13","cn":"我一定会来。","py":"Wǒ yídìng huì lái.","en":"I will definitely come."},
+{"level":"L13","cn":"你一定要小心。","py":"Nǐ yídìng yào xiǎoxīn.","en":"You must certainly be careful."},
+{"level":"L13","cn":"他一定知道。","py":"Tā yídìng zhīdào.","en":"He definitely knows."},
+{"level":"L13","cn":"认真复习一定能考好。","py":"Rènzhēn fùxí yídìng néng kǎo hǎo.","en":"Reviewing seriously will surely get good results."},
+{"level":"L13","cn":"这件事不一定是真的。","py":"Zhè jiàn shì bù yídìng shì zhēn de.","en":"This isn't necessarily true."}]},
+
+{"chinese":"程度","pinyin":"chéngdù","english":"degree; level; extent","khmer":"កម្រិត","breakdown":"程(stage, procedure)+度(degree) — how far along a scale something is","chars":["程","度"],"examples":[
+{"level":"L13","cn":"他的汉语程度很高。","py":"Tā de Hànyǔ chéngdù hěn gāo.","en":"His Chinese level is high."},
+{"level":"L13","cn":"你的中文到什么程度了？","py":"Nǐ de Zhōngwén dào shénme chéngdù le?","en":"What level has your Chinese reached?"},
+{"level":"L13","cn":"这个班的程度差不多。","py":"Zhège bān de chéngdù chàbuduō.","en":"This class's level is about the same."},
+{"level":"L13","cn":"污染的程度很严重。","py":"Wūrǎn de chéngdù hěn yánzhòng.","en":"The extent of pollution is serious."},
+{"level":"L13","cn":"我很喜欢他，喜欢到不能没有他的程度。","py":"Wǒ hěn xǐhuan tā, xǐhuan dào bù néng méiyǒu tā de chéngdù.","en":"I like him to the degree that I can't be without him."}]},
+
+{"chinese":"提高","pinyin":"tígāo","english":"to raise; to improve","khmer":"លើកកម្ពស់","breakdown":"提(lift up)+高(high) — lifting something higher","chars":["提","高"],"examples":[
+{"level":"L13","cn":"多练习可以提高水平。","py":"Duō liànxí kěyǐ tígāo shuǐpíng.","en":"Practicing more can raise your level."},
+{"level":"L13","cn":"我想提高我的中文。","py":"Wǒ xiǎng tígāo wǒ de Zhōngwén.","en":"I want to improve my Chinese."},
+{"level":"L13","cn":"阅读可以提高理解能力。","py":"Yuèdú kěyǐ tígāo lǐjiě nénglì.","en":"Reading can improve comprehension."},
+{"level":"L13","cn":"他的成绩提高了。","py":"Tā de chéngjì tígāo le.","en":"His grades improved."},
+{"level":"L13","cn":"及时复习效果更好，能提高分数。","py":"Jíshí fùxí xiàoguǒ gèng hǎo, néng tígāo fēnshù.","en":"Reviewing promptly works better and can raise your score."}]},
+
+{"chinese":"交","pinyin":"jiāo","english":"to make (friends); to hand in","khmer":"ចង (មិត្ត) / ប្រគល់","breakdown":"Whole shape — two lines crossing, like people or things coming together","chars":["交"],"examples":[
+{"level":"L13","cn":"我交了很多朋友。","py":"Wǒ jiāo le hěn duō péngyou.","en":"I made many friends."},
+{"level":"L13","cn":"他很容易交朋友。","py":"Tā hěn róngyì jiāo péngyou.","en":"He makes friends easily."},
+{"level":"L13","cn":"请把作业交给老师。","py":"Qǐng bǎ zuòyè jiāo gěi lǎoshī.","en":"Please hand the homework to the teacher."},
+{"level":"L13","cn":"我想和你交个朋友。","py":"Wǒ xiǎng hé nǐ jiāo ge péngyou.","en":"I'd like to make friends with you."},
+{"level":"L13","cn":"我们交换了电话号码。","py":"Wǒmen jiāohuàn le diànhuà hàomǎ.","en":"We exchanged phone numbers."}]},
+
+{"chinese":"不但","pinyin":"búdàn","english":"not only (usually with 而且)","khmer":"មិនត្រឹមតែ","breakdown":"不(not)+但(only) — 'not only this'","chars":["不","但"],"examples":[
+{"level":"L13","cn":"他不但聪明，而且努力。","py":"Tā búdàn cōngming, érqiě nǔlì.","en":"He is not only clever, but also hardworking."},
+{"level":"L13","cn":"这里不但干净，而且安静。","py":"Zhèlǐ búdàn gānjìng, érqiě ānjìng.","en":"This place is not only clean, but also quiet."},
+{"level":"L13","cn":"我不但会说汉语，还会写汉字。","py":"Wǒ búdàn huì shuō Hànyǔ, hái huì xiě Hànzì.","en":"I can not only speak Chinese, but also write characters."},
+{"level":"L13","cn":"他不但迟到了，还忘了带书。","py":"Tā búdàn chídào le, hái wàng le dài shū.","en":"He was not only late, he also forgot his book."},
+{"level":"L13","cn":"这个办法不但简单，而且有用。","py":"Zhège bànfǎ búdàn jiǎndān, érqiě yǒuyòng.","en":"This method is not only simple, but also useful."}]},
+
+{"chinese":"而且","pinyin":"érqiě","english":"but also; moreover","khmer":"ថែមទាំង","breakdown":"而(and)+且(also) — 'and also'","chars":["而","且"],"examples":[
+{"level":"L13","cn":"这个菜好吃，而且便宜。","py":"Zhège cài hǎochī, érqiě piányi.","en":"This dish is tasty, and also cheap."},
+{"level":"L13","cn":"他很忙，而且很累。","py":"Tā hěn máng, érqiě hěn lèi.","en":"He is very busy, and also very tired."},
+{"level":"L13","cn":"她会说汉语，而且说得很好。","py":"Tā huì shuō Hànyǔ, érqiě shuō de hěn hǎo.","en":"She can speak Chinese, and speaks it very well."},
+{"level":"L13","cn":"这里的东西新鲜，而且不贵。","py":"Zhèlǐ de dōngxi xīnxiān, érqiě bú guì.","en":"The things here are fresh, and not expensive."},
+{"level":"L13","cn":"我认识他，而且我们是同事。","py":"Wǒ rènshi tā, érqiě wǒmen shì tóngshì.","en":"I know him, and we are colleagues too."}]},
+
+{"chinese":"世界","pinyin":"shìjiè","english":"world","khmer":"ពិភពលោក","breakdown":"世(era, generation)+界(boundary) — all the lands within the boundaries of the age","chars":["世","界"],"examples":[
+{"level":"L13","cn":"世界很大。","py":"Shìjiè hěn dà.","en":"The world is very big."},
+{"level":"L13","cn":"我想看看世界。","py":"Wǒ xiǎng kànkan shìjiè.","en":"I want to see the world."},
+{"level":"L13","cn":"这是世界上最长的河。","py":"Zhè shì shìjiè shàng zuì cháng de hé.","en":"This is the longest river in the world."},
+{"level":"L13","cn":"世界上有很多国家。","py":"Shìjiè shàng yǒu hěn duō guójiā.","en":"There are many countries in the world."},
+{"level":"L13","cn":"他很有名，全世界都知道。","py":"Tā hěn yǒumíng, quán shìjiè dōu zhīdào.","en":"He is famous, the whole world knows him."}]},
+
+{"chinese":"各","pinyin":"gè","english":"various; each; every","khmer":"នីមួយៗ","breakdown":"Whole shape — pointing to each separate one","chars":["各"],"examples":[
+{"level":"L13","cn":"各位好！","py":"Gèwèi hǎo!","en":"Hello everyone!"},
+{"level":"L13","cn":"各国的文化都不一样。","py":"Gè guó de wénhuà dōu bù yíyàng.","en":"Each country's culture is different."},
+{"level":"L13","cn":"各人有各人的方法。","py":"Gè rén yǒu gè rén de fāngfǎ.","en":"Each person has their own method."},
+{"level":"L13","cn":"请各自准备材料。","py":"Qǐng gèzì zhǔnbèi cáiliào.","en":"Please each prepare your own materials."},
+{"level":"L13","cn":"各个方面都要考虑。","py":"Gège fāngmiàn dōu yào kǎolǜ.","en":"Every aspect must be considered."}]},
+
+{"chinese":"互相","pinyin":"hùxiāng","english":"each other; mutually","khmer":"គ្នាទៅវិញទៅមក","breakdown":"互(mutual)+相(each other) — two 'each other' characters together","chars":["互","相"],"examples":[
+{"level":"L13","cn":"我们要互相帮助。","py":"Wǒmen yào hùxiāng bāngzhù.","en":"We should help each other."},
+{"level":"L13","cn":"同事之间要互相尊重。","py":"Tóngshì zhījiān yào hùxiāng zūnzhòng.","en":"Colleagues should respect each other."},
+{"level":"L13","cn":"他们互相不认识。","py":"Tāmen hùxiāng bú rènshi.","en":"They don't know each other."},
+{"level":"L13","cn":"互相鼓励很重要。","py":"Hùxiāng gǔlì hěn zhòngyào.","en":"Encouraging each other is important."},
+{"level":"L13","cn":"我们互相学习语言。","py":"Wǒmen hùxiāng xuéxí yǔyán.","en":"We learn languages from each other."}]},
+
+{"chinese":"越来越","pinyin":"yuè lái yuè","english":"more and more","khmer":"កាន់តែ...ឡើងៗ","breakdown":"越(the more)+来(come)+越(the more) — as it goes on, more and more","chars":["越","来","越"],"examples":[
+{"level":"L13","cn":"天气越来越冷了。","py":"Tiānqì yuè lái yuè lěng le.","en":"The weather is getting colder and colder."},
+{"level":"L13","cn":"我越来越喜欢汉语。","py":"Wǒ yuè lái yuè xǐhuan Hànyǔ.","en":"I like Chinese more and more."},
+{"level":"L13","cn":"他的中文越来越好。","py":"Tā de Zhōngwén yuè lái yuè hǎo.","en":"His Chinese is getting better and better."},
+{"level":"L13","cn":"城市里的人越来越多。","py":"Chéngshì lǐ de rén yuè lái yuè duō.","en":"There are more and more people in the city."},
+{"level":"L13","cn":"她越来越有信心了。","py":"Tā yuè lái yuè yǒu xìnxīn le.","en":"She is getting more and more confident."}]},
+
+{"chinese":"分之","pinyin":"fēnzhī","english":"the frame for fractions and percent (X分之Y)","khmer":"ភាគ (ទម្រង់ប្រភាគ)","breakdown":"分(divide, part)+之(of) — 'parts of', the frame 三分之一 = one third, 百分之十 = ten percent","chars":["分","之"],"examples":[
+{"level":"L13","cn":"这是三分之一。","py":"Zhè shì sān fēn zhī yī.","en":"This is one third."},
+{"level":"L13","cn":"百分之八十的学生同意。","py":"Bǎi fēn zhī bāshí de xuésheng tóngyì.","en":"Eighty percent of students agree."},
+{"level":"L13","cn":"价格降低了百分之十。","py":"Jiàgé jiàngdī le bǎi fēn zhī shí.","en":"The price dropped by ten percent."},
+{"level":"L13","cn":"我们完成了四分之三。","py":"Wǒmen wánchéng le sì fēn zhī sān.","en":"We finished three quarters."},
+{"level":"L13","cn":"百分之百我会来。","py":"Bǎi fēn zhī bǎi wǒ huì lái.","en":"One hundred percent I'll come."}]},
+
+{"chinese":"过","pinyin":"guo","english":"(after a verb: marks a past experience)","khmer":"ធ្លាប់ (បច្ច័យ)","breakdown":"辶(walking radical)+寸 — passing through; as a particle it marks that you have 'passed through' doing something","chars":["过"],"examples":[
+{"level":"L13","cn":"我去过中国。","py":"Wǒ qù guo Zhōngguó.","en":"I have been to China."},
+{"level":"L13","cn":"你吃过饺子吗？","py":"Nǐ chī guo jiǎozi ma?","en":"Have you ever eaten dumplings?"},
+{"level":"L13","cn":"我没看过这部电影。","py":"Wǒ méi kàn guo zhè bù diànyǐng.","en":"I haven't seen this film."},
+{"level":"L13","cn":"他学过三年汉语。","py":"Tā xué guo sān nián Hànyǔ.","en":"He has studied Chinese for three years."},
+{"level":"L13","cn":"我以前来过这里。","py":"Wǒ yǐqián lái guo zhèlǐ.","en":"I have been here before."}]},
+
+{"chinese":"简化字","pinyin":"jiǎnhuàzì","english":"simplified Chinese characters","khmer":"អក្សរចិនសាមញ្ញ","breakdown":"简(simple)+化(transform)+字(character) — characters that have been made simpler","chars":["简","化","字"],"examples":[
+{"level":"L13","cn":"我在学简化字。","py":"Wǒ zài xué jiǎnhuàzì.","en":"I'm learning simplified characters."},
+{"level":"L13","cn":"中国大陆用简化字。","py":"Zhōngguó dàlù yòng jiǎnhuàzì.","en":"Mainland China uses simplified characters."},
+{"level":"L13","cn":"简化字比繁体字少笔画。","py":"Jiǎnhuàzì bǐ fántǐzì shǎo bǐhuà.","en":"Simplified characters have fewer strokes than traditional ones."},
+{"level":"L13","cn":"这个简化字怎么写？","py":"Zhège jiǎnhuàzì zěnme xiě?","en":"How do you write this simplified character?"},
+{"level":"L13","cn":"简化字容易学一点。","py":"Jiǎnhuàzì róngyì xué yìdiǎn.","en":"Simplified characters are a bit easier to learn."}]},
+
+{"chinese":"进行","pinyin":"jìnxíng","english":"to carry out; to be in progress","khmer":"ដំណើរការ / អនុវត្ត","breakdown":"进(advance)+行(go) — moving forward with an activity","chars":["进","行"],"examples":[
+{"level":"L13","cn":"会议正在进行。","py":"Huìyì zhèngzài jìnxíng.","en":"The meeting is in progress."},
+{"level":"L13","cn":"我们进行了一次调查。","py":"Wǒmen jìnxíng le yí cì diàochá.","en":"We carried out a survey."},
+{"level":"L13","cn":"比赛顺利进行。","py":"Bǐsài shùnlì jìnxíng.","en":"The match is going smoothly."},
+{"level":"L13","cn":"工作进行得很慢。","py":"Gōngzuò jìnxíng de hěn màn.","en":"The work is progressing slowly."},
+{"level":"L13","cn":"我们进行了一次会话练习。","py":"Wǒmen jìnxíng le yí cì huìhuà liànxí.","en":"We did a conversation exercise."}]},
+
+{"chinese":"会话","pinyin":"huìhuà","english":"to make a dialogue; conversation","khmer":"សន្ទនា","breakdown":"会(meet)+话(speech) — meeting and speaking together","chars":["会","话"],"examples":[
+{"level":"L13","cn":"请读这段会话。","py":"Qǐng dú zhè duàn huìhuà.","en":"Please read this dialogue."},
+{"level":"L13","cn":"我们练习会话。","py":"Wǒmen liànxí huìhuà.","en":"We practice conversation."},
+{"level":"L13","cn":"这个会话很简单。","py":"Zhège huìhuà hěn jiǎndān.","en":"This dialogue is very simple."},
+{"level":"L13","cn":"书里有很多会话。","py":"Shū lǐ yǒu hěn duō huìhuà.","en":"There are many dialogues in the book."},
+{"level":"L13","cn":"练习会话可以提高水平。","py":"Liànxí huìhuà kěyǐ tígāo shuǐpíng.","en":"Practicing conversation raises your level."}]},
+
+{"chinese":"将来","pinyin":"jiānglái","english":"future","khmer":"អនាគត","breakdown":"将(about to)+来(come) — what is about to come","chars":["将","来"],"examples":[
+{"level":"L13","cn":"将来你想做什么？","py":"Jiānglái nǐ xiǎng zuò shénme?","en":"What do you want to do in the future?"},
+{"level":"L13","cn":"将来我想当老师。","py":"Jiānglái wǒ xiǎng dāng lǎoshī.","en":"In the future I want to be a teacher."},
+{"level":"L13","cn":"将来的事很难说。","py":"Jiānglái de shì hěn nán shuō.","en":"Future things are hard to say."},
+{"level":"L13","cn":"为了将来，现在要努力。","py":"Wèile jiānglái, xiànzài yào nǔlì.","en":"For the future, work hard now."},
+{"level":"L13","cn":"他对将来很有信心。","py":"Tā duì jiānglái hěn yǒu xìnxīn.","en":"He is confident about the future."}]},
+
+{"chinese":"基本","pinyin":"jīběn","english":"basic; fundamental","khmer":"មូលដ្ឋាន","breakdown":"基(base, foundation)+本(root) — the base and the root","chars":["基","本"],"examples":[
+{"level":"L13","cn":"这是基本知识。","py":"Zhè shì jīběn zhīshi.","en":"This is basic knowledge."},
+{"level":"L13","cn":"我基本上同意。","py":"Wǒ jīběn shàng tóngyì.","en":"I basically agree."},
+{"level":"L13","cn":"他的中文基本没问题。","py":"Tā de Zhōngwén jīběn méi wèntí.","en":"His Chinese is basically fine."},
+{"level":"L13","cn":"我们要先学基本的语法。","py":"Wǒmen yào xiān xué jīběn de yǔfǎ.","en":"We should learn basic grammar first."},
+{"level":"L13","cn":"这个工作基本完成了。","py":"Zhège gōngzuò jīběn wánchéng le.","en":"This work is basically finished."}]},
+
+{"chinese":"菜单","pinyin":"càidān","english":"menu","khmer":"បញ្ជីមុខម្ហូប","breakdown":"菜(dish)+单(list) — a list of dishes","chars":["菜","单"],"examples":[
+{"level":"L13","cn":"请给我菜单。","py":"Qǐng gěi wǒ càidān.","en":"Please give me the menu."},
+{"level":"L13","cn":"这家饭店的菜单很长。","py":"Zhè jiā fàndiàn de càidān hěn cháng.","en":"This restaurant's menu is very long."},
+{"level":"L13","cn":"我看不懂中文菜单。","py":"Wǒ kàn bu dǒng Zhōngwén càidān.","en":"I can't read a Chinese menu."},
+{"level":"L13","cn":"菜单上有图片。","py":"Càidān shàng yǒu túpiàn.","en":"There are pictures on the menu."},
+{"level":"L13","cn":"服务员，菜单在哪儿？","py":"Fúwùyuán, càidān zài nǎr?","en":"Waiter, where is the menu?"}]},
+
+{"chinese":"中餐","pinyin":"zhōngcān","english":"Chinese food","khmer":"ម្ហូបចិន","breakdown":"中(China)+餐(meal) — a Chinese meal","chars":["中","餐"],"examples":[
+{"level":"L13","cn":"我喜欢吃中餐。","py":"Wǒ xǐhuan chī zhōngcān.","en":"I like eating Chinese food."},
+{"level":"L13","cn":"这家中餐馆很有名。","py":"Zhè jiā zhōngcānguǎn hěn yǒumíng.","en":"This Chinese restaurant is famous."},
+{"level":"L13","cn":"中餐和西餐不一样。","py":"Zhōngcān hé xīcān bù yíyàng.","en":"Chinese food and Western food are different."},
+{"level":"L13","cn":"晚上我们吃中餐吧。","py":"Wǎnshang wǒmen chī zhōngcān ba.","en":"Let's eat Chinese food tonight."},
+{"level":"L13","cn":"地道的中餐很好吃。","py":"Dìdao de zhōngcān hěn hǎochī.","en":"Authentic Chinese food is delicious."}]},
+
+{"chinese":"地道","pinyin":"dìdao","english":"genuine; authentic","khmer":"ពិតប្រាកដ / ដើមកំណើត","breakdown":"地(place, local)+道(way) — done the true local way","chars":["地","道"],"examples":[
+{"level":"L13","cn":"这是地道的中餐。","py":"Zhè shì dìdao de zhōngcān.","en":"This is authentic Chinese food."},
+{"level":"L13","cn":"他说一口地道的普通话。","py":"Tā shuō yì kǒu dìdao de pǔtōnghuà.","en":"He speaks authentic standard Mandarin."},
+{"level":"L13","cn":"这家店的味道很地道。","py":"Zhè jiā diàn de wèidao hěn dìdao.","en":"This shop's flavor is very authentic."},
+{"level":"L13","cn":"我想学地道的发音。","py":"Wǒ xiǎng xué dìdao de fāyīn.","en":"I want to learn authentic pronunciation."},
+{"level":"L13","cn":"这是地道的北京小吃。","py":"Zhè shì dìdao de Běijīng xiǎochī.","en":"This is authentic Beijing snack food."}]},
+
+{"chinese":"今年","pinyin":"jīnnián","english":"this year","khmer":"ឆ្នាំនេះ","breakdown":"今(now, present)+年(year) — the present year","chars":["今","年"],"examples":[
+{"level":"L13","cn":"今年我二十岁。","py":"Jīnnián wǒ èrshí suì.","en":"I'm twenty this year."},
+{"level":"L13","cn":"今年冬天很冷。","py":"Jīnnián dōngtiān hěn lěng.","en":"This winter is very cold."},
+{"level":"L13","cn":"今年我要好好学习。","py":"Jīnnián wǒ yào hǎohǎo xuéxí.","en":"This year I'll study hard."},
+{"level":"L13","cn":"今年的计划是什么？","py":"Jīnnián de jìhuà shì shénme?","en":"What is this year's plan?"},
+{"level":"L13","cn":"今年比去年忙。","py":"Jīnnián bǐ qùnián máng.","en":"This year is busier than last year."}]},
+
+{"chinese":"延长","pinyin":"yáncháng","english":"to prolong; to extend","khmer":"ពន្យារ","breakdown":"延(extend, delay)+长(long) — to make longer","chars":["延","长"],"examples":[
+{"level":"L13","cn":"会议延长了一个小时。","py":"Huìyì yáncháng le yí ge xiǎoshí.","en":"The meeting was extended by an hour."},
+{"level":"L13","cn":"我们延长了假期。","py":"Wǒmen yáncháng le jiàqī.","en":"We extended the holiday."},
+{"level":"L13","cn":"请延长签证的时间。","py":"Qǐng yáncháng qiānzhèng de shíjiān.","en":"Please extend the visa period."},
+{"level":"L13","cn":"锻炼可以延长寿命。","py":"Duànliàn kěyǐ yáncháng shòumìng.","en":"Exercise can extend your lifespan."},
+{"level":"L13","cn":"考试时间延长了十分钟。","py":"Kǎoshì shíjiān yáncháng le shí fēnzhōng.","en":"The exam time was extended by ten minutes."}]},
+
+{"chinese":"明年","pinyin":"míngnián","english":"next year","khmer":"ឆ្នាំក្រោយ","breakdown":"明(next, bright)+年(year) — the coming year","chars":["明","年"],"examples":[
+{"level":"L13","cn":"我明年毕业。","py":"Wǒ míngnián bìyè.","en":"I graduate next year."},
+{"level":"L13","cn":"明年我想去中国。","py":"Míngnián wǒ xiǎng qù Zhōngguó.","en":"Next year I want to go to China."},
+{"level":"L13","cn":"明年的计划已经定了。","py":"Míngnián de jìhuà yǐjīng dìng le.","en":"Next year's plan is already set."},
+{"level":"L13","cn":"明年见！","py":"Míngnián jiàn!","en":"See you next year!"},
+{"level":"L13","cn":"我明年就二十一岁了。","py":"Wǒ míngnián jiù èrshíyī suì le.","en":"I'll be twenty-one next year."}]},
+
+{"chinese":"了解","pinyin":"liǎojiě","english":"to comprehend; to understand; to know about","khmer":"យល់ដឹង","breakdown":"了(finish, grasp)+解(untie) — you have untied and grasped the meaning","chars":["了","解"],"examples":[
+{"level":"L13","cn":"我不太了解他。","py":"Wǒ bú tài liǎojiě tā.","en":"I don't know him very well."},
+{"level":"L13","cn":"你了解这件事吗？","py":"Nǐ liǎojiě zhè jiàn shì ma?","en":"Do you understand this matter?"},
+{"level":"L13","cn":"我想了解中国文化。","py":"Wǒ xiǎng liǎojiě Zhōngguó wénhuà.","en":"I want to learn about Chinese culture."},
+{"level":"L13","cn":"他很了解这个城市。","py":"Tā hěn liǎojiě zhège chéngshì.","en":"He knows this city very well."},
+{"level":"L13","cn":"了解以后我就不担心了。","py":"Liǎojiě yǐhòu wǒ jiù bù dānxīn le.","en":"After understanding it I stopped worrying."}]},
+
+{"chinese":"文化","pinyin":"wénhuà","english":"culture","khmer":"វប្បធម៌","breakdown":"文(writing, civilization)+化(transform) — what shapes and transforms a people","chars":["文","化"],"examples":[
+{"level":"L13","cn":"我对中国文化感兴趣。","py":"Wǒ duì Zhōngguó wénhuà gǎn xìngqù.","en":"I'm interested in Chinese culture."},
+{"level":"L13","cn":"每个国家的文化都不一样。","py":"Měi ge guójiā de wénhuà dōu bù yíyàng.","en":"Every country's culture is different."},
+{"level":"L13","cn":"这本书讲的是文化。","py":"Zhè běn shū jiǎng de shì wénhuà.","en":"This book is about culture."},
+{"level":"L13","cn":"文化和历史很有关系。","py":"Wénhuà hé lìshǐ hěn yǒu guānxi.","en":"Culture and history are closely related."},
+{"level":"L13","cn":"了解文化才能了解人。","py":"Liǎojiě wénhuà cái néng liǎojiě rén.","en":"Only by understanding culture can you understand people."}]},
+
+{"chinese":"健康","pinyin":"jiànkāng","english":"healthy; health","khmer":"សុខភាព","breakdown":"健(strong, 亻person radical)+康(well) — a person who is strong and well","chars":["健","康"],"examples":[
+{"level":"L13","cn":"身体健康最重要。","py":"Shēntǐ jiànkāng zuì zhòngyào.","en":"Health is most important."},
+{"level":"L13","cn":"他很健康。","py":"Tā hěn jiànkāng.","en":"He is very healthy."},
+{"level":"L13","cn":"锻炼对健康很好。","py":"Duànliàn duì jiànkāng hěn hǎo.","en":"Exercise is very good for health."},
+{"level":"L13","cn":"祝你身体健康！","py":"Zhù nǐ shēntǐ jiànkāng!","en":"Wishing you good health!"},
+{"level":"L13","cn":"吃水果对健康有帮助。","py":"Chī shuǐguǒ duì jiànkāng yǒu bāngzhù.","en":"Eating fruit helps your health."}]}
+]
