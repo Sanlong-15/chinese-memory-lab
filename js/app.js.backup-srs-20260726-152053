@@ -422,19 +422,29 @@ function initRadicalFilter() {
   });
 }
 
-// --- Study mode (with spaced repetition) ---
+// --- Study mode ---
 let currentStudyLevel = "ALL";
-let studyMode = "review"; // "review" (SRS due queue) or "browse" (free flip)
-
-// browse-mode state
 let studyList = (DB.words || []).slice();
 let studyIndex = 0;
 
-// review-mode state
-let reviewQueue = [];
-const NEW_PER_SESSION = 15;
-const DAY = 86400000;
-const SRS_KEY = "cml_srs_v1";
+function buildStudyList() {
+  studyList =
+    currentStudyLevel === "ALL"
+      ? DB.words.slice()
+      : DB.words.filter((w) => w.level === currentStudyLevel);
+  studyIndex = 0;
+  renderFlashcard();
+}
+document.querySelectorAll(".study-filter-chip").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".study-filter-chip")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentStudyLevel = btn.dataset.level;
+    buildStudyList();
+  });
+});
 
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -444,101 +454,10 @@ function shuffleArray(arr) {
   return arr;
 }
 
-// ---- SRS storage ----
-function loadSrs() {
-  try {
-    return JSON.parse(localStorage.getItem(SRS_KEY)) || {};
-  } catch (e) {
-    return {};
-  }
-}
-function saveSrs(data) {
-  try {
-    localStorage.setItem(SRS_KEY, JSON.stringify(data));
-  } catch (e) {
-    /* private mode: progress won't persist, app still works */
-  }
-}
-let srs = loadSrs();
-
-function getState(id) {
-  return (
-    srs[id] || { state: "new", due: 0, interval: 0, ease: 2.3, reps: 0, lapses: 0 }
-  );
-}
-
-function schedule(id, rating) {
-  const now = Date.now();
-  const st = { ...getState(id) };
-  const fresh = st.state === "new" || st.state === "learning";
-  if (rating === "again") {
-    if (st.state === "review") st.lapses++;
-    st.ease = Math.max(1.3, st.ease - 0.2);
-    st.state = "learning";
-    st.interval = 0;
-    st.due = now;
-  } else if (rating === "hard") {
-    st.ease = Math.max(1.3, st.ease - 0.15);
-    st.interval = fresh ? 1 : Math.max(1, Math.round(st.interval * 1.2));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  } else if (rating === "good") {
-    st.interval = fresh ? 1 : Math.max(1, Math.round(st.interval * st.ease));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  } else if (rating === "easy") {
-    st.ease = st.ease + 0.15;
-    st.interval = fresh ? 4 : Math.max(4, Math.round(st.interval * st.ease * 1.3));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  }
-  srs[id] = st;
-  saveSrs(srs);
-}
-
-function filteredWords() {
-  return currentStudyLevel === "ALL"
-    ? DB.words.slice()
-    : DB.words.filter((w) => w.level === currentStudyLevel);
-}
-
-function updateSrsStats() {
-  const el = document.getElementById("srsStats");
-  if (!el) return;
-  const now = Date.now();
-  const words = filteredWords();
-  let due = 0,
-    fresh = 0,
-    learned = 0;
-  for (const w of words) {
-    const st = getState(w.id);
-    if (st.state === "new") fresh++;
-    else {
-      if (st.reps > 0) learned++;
-      if (st.due <= now) due++;
-    }
-  }
-  el.innerHTML =
-    `<span class="srs-stat due">Due: ${due}</span>` +
-    `<span class="srs-stat new">New: ${fresh}</span>` +
-    `<span class="srs-stat learned">Learned: ${learned}</span>`;
-}
-
-// ---- Browse mode ----
-function buildStudyList() {
-  studyList = filteredWords();
-  studyIndex = 0;
-  renderBrowseCard();
-}
-
-function renderBrowseCard() {
+function renderFlashcard() {
   const w = studyList[studyIndex];
   const card = document.getElementById("flashcard");
   card.classList.remove("flipped");
-  if (!w) return;
   document.getElementById("fc-zi").textContent = w.chinese;
   document.getElementById("fc-py").textContent = w.pinyin;
   document.getElementById("fc-en").textContent = w.english;
@@ -546,164 +465,25 @@ function renderBrowseCard() {
   document.getElementById("progressNote").textContent =
     studyIndex + 1 + " / " + studyList.length;
 }
-
-// ---- Review mode (SRS queue) ----
-function buildReviewQueue() {
-  const now = Date.now();
-  const words = filteredWords();
-  const dueCards = [];
-  const newCards = [];
-  for (const w of words) {
-    const st = getState(w.id);
-    if (st.state === "new") newCards.push(w);
-    else if (st.due <= now) dueCards.push(w);
-  }
-  shuffleArray(dueCards);
-  shuffleArray(newCards);
-  reviewQueue = dueCards.concat(newCards.slice(0, NEW_PER_SESSION));
-  renderReviewCard();
-}
-
-function renderReviewCard() {
-  const card = document.getElementById("flashcard");
-  const ratingRow = document.getElementById("ratingRow");
-  card.classList.remove("flipped");
-  ratingRow.classList.remove("show");
-  updateSrsStats();
-
-  if (reviewQueue.length === 0) {
-    document.getElementById("fc-zi").textContent = "完成";
-    document.getElementById("fc-py").textContent = "wánchéng le";
-    document.getElementById("fc-en").textContent =
-      "All caught up for this filter. Come back later, or switch level.";
-    document.getElementById("fc-kh").textContent = "";
-    document.getElementById("progressNote").textContent = "Nothing due right now";
-    card.classList.add("done");
-    return;
-  }
-  card.classList.remove("done");
-  const w = reviewQueue[0];
-  document.getElementById("fc-zi").textContent = w.chinese;
-  document.getElementById("fc-py").textContent = w.pinyin;
-  document.getElementById("fc-en").textContent = w.english;
-  document.getElementById("fc-kh").textContent = w.khmer;
-  document.getElementById("progressNote").textContent =
-    "In this session: " + reviewQueue.length + " left";
-}
-
-function rateCurrent(rating) {
-  if (studyMode !== "review" || reviewQueue.length === 0) return;
-  const w = reviewQueue.shift();
-  schedule(w.id, rating);
-  if (rating === "again") {
-    const pos = Math.min(4, reviewQueue.length);
-    reviewQueue.splice(pos, 0, w); // repeat later this session
-  }
-  renderReviewCard();
-}
-
-// ---- Mode switching ----
-function setStudyMode(mode) {
-  studyMode = mode;
-  document
-    .getElementById("mode-review")
-    .classList.toggle("active", mode === "review");
-  document
-    .getElementById("mode-browse")
-    .classList.toggle("active", mode === "browse");
-  document
-    .getElementById("srsStats")
-    .classList.toggle("hidden", mode !== "review");
-  document
-    .getElementById("browseControls")
-    .classList.toggle("hidden", mode !== "browse");
-  const ratingRow = document.getElementById("ratingRow");
-  if (mode === "review") {
-    ratingRow.classList.remove("hidden");
-    buildReviewQueue();
-  } else {
-    ratingRow.classList.add("hidden");
-    ratingRow.classList.remove("show");
-    buildStudyList();
-  }
-}
-
-function refreshStudy() {
-  if (studyMode === "review") buildReviewQueue();
-  else buildStudyList();
-}
-
-// ---- Wiring ----
-document.querySelectorAll(".study-filter-chip").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".study-filter-chip")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentStudyLevel = btn.dataset.level;
-    refreshStudy();
-  });
-});
-
-document.getElementById("mode-review").addEventListener("click", () => setStudyMode("review"));
-document.getElementById("mode-browse").addEventListener("click", () => setStudyMode("browse"));
-
 document.getElementById("flashcard").addEventListener("click", () => {
   const card = document.getElementById("flashcard");
-  if (card.classList.contains("done")) return;
   card.classList.toggle("flipped");
-  const flipped = card.classList.contains("flipped");
-  if (flipped) {
-    const w = studyMode === "review" ? reviewQueue[0] : studyList[studyIndex];
-    if (w) speak(w.chinese);
-    if (studyMode === "review")
-      document.getElementById("ratingRow").classList.add("show");
-  } else {
-    document.getElementById("ratingRow").classList.remove("show");
+  if (card.classList.contains("flipped")) {
+    speak(studyList[studyIndex].chinese);
   }
 });
-
-["again", "hard", "good", "easy"].forEach((r) => {
-  const b = document.getElementById("rate-" + r);
-  if (b) b.addEventListener("click", () => rateCurrent(r));
-});
-
-document.getElementById("srsReset").addEventListener("click", () => {
-  const label =
-    currentStudyLevel === "ALL" ? "ALL levels" : currentStudyLevel;
-  if (
-    !confirm(
-      "Reset spaced-repetition progress for " +
-        label +
-        "? This cannot be undone.",
-    )
-  )
-    return;
-  if (currentStudyLevel === "ALL") {
-    srs = {};
-  } else {
-    for (const w of DB.words.filter((x) => x.level === currentStudyLevel))
-      delete srs[w.id];
-  }
-  saveSrs(srs);
-  refreshStudy();
-});
-
-// browse buttons
 document.getElementById("nextBtn").addEventListener("click", () => {
-  if (!studyList.length) return;
   studyIndex = (studyIndex + 1) % studyList.length;
-  renderBrowseCard();
+  renderFlashcard();
 });
 document.getElementById("prevBtn").addEventListener("click", () => {
-  if (!studyList.length) return;
   studyIndex = (studyIndex - 1 + studyList.length) % studyList.length;
-  renderBrowseCard();
+  renderFlashcard();
 });
 document.getElementById("shuffleBtn").addEventListener("click", () => {
   shuffleArray(studyList);
   studyIndex = 0;
-  renderBrowseCard();
+  renderFlashcard();
 });
 
 // --- Writing practice ---
@@ -835,5 +615,5 @@ document.getElementById("wrShuffleBtn").addEventListener("click", () => {
 renderGrid();
 renderPatterns();
 initRadicalFilter();
-setStudyMode("review");
+renderFlashcard();
 renderWritingWord();

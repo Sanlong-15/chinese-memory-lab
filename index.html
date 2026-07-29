@@ -14,7 +14,7 @@
 <header class="top">
   <div class="stamp">学习</div>
   <h1 class="title">Character Memory Lab</h1>
-  <p class="subtitle">1,262 words · HSK 1–4 complete · Boya L11–L13 · every character broken into its story</p>
+  <p class="subtitle">1,298 words · HSK 1–4 complete · Boya L11–L13 · GCP7 L6 · every character broken into its story</p>
   <p style="margin:10px 0 0;"><a href="index.html" style="font-size:12.5px; color:var(--jade); font-weight:600;">+ Upload a new lesson from a PDF</a></p>
 </header>
 
@@ -41,6 +41,7 @@
       <button class="filter-chip" data-level="L11">Boya L11</button>
       <button class="filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip" data-level="GCP6">GCP7 L6</button>
     </div>
     <p class="count-note" id="countNote"></p>
     <div class="grid" id="wordGrid"></div>
@@ -68,7 +69,13 @@
   <!-- STUDY VIEW -->
   <div id="studyView" class="view">
     <h2 class="section-title">Study Mode</h2>
-    <p class="intro-text">Tap the card to flip it. Try to recall the pinyin and meaning BEFORE you flip — that's the part that actually builds memory.</p>
+    <p class="intro-text">Review mode uses spaced repetition: rate each card and it comes back at the right time — hard words often, easy words rarely. Try to recall the pinyin and meaning BEFORE you flip. Your progress is saved in this browser.</p>
+
+    <div class="mode-toggle">
+      <button id="mode-review" class="mode-btn active">Review (due)</button>
+      <button id="mode-browse" class="mode-btn">Browse freely</button>
+    </div>
+
     <div class="controls" style="margin-bottom:6px;">
       <button class="filter-chip study-filter-chip active" data-level="ALL">All</button>
       <button class="filter-chip study-filter-chip" data-level="HSK1">HSK 1</button>
@@ -78,7 +85,14 @@
       <button class="filter-chip study-filter-chip" data-level="L11">Boya L11</button>
       <button class="filter-chip study-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip study-filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip study-filter-chip" data-level="GCP6">GCP7 L6</button>
     </div>
+
+    <div class="srs-bar">
+      <div id="srsStats" class="srs-stats"></div>
+      <button id="srsReset" class="srs-reset" title="Reset progress for the current level">Reset progress</button>
+    </div>
+
     <div class="study-wrap">
       <div class="flashcard" id="flashcard">
         <div class="zi" id="fc-zi">你</div>
@@ -89,11 +103,20 @@
           <div class="kh" id="fc-kh"></div>
         </div>
       </div>
-      <div class="study-controls">
+
+      <div id="ratingRow" class="rating-row">
+        <button class="rate-btn again" id="rate-again"><span class="rlabel">Again</span><span class="rhint">&lt; 10 min</span></button>
+        <button class="rate-btn hard" id="rate-hard"><span class="rlabel">Hard</span><span class="rhint">~1 day</span></button>
+        <button class="rate-btn good" id="rate-good"><span class="rlabel">Good</span><span class="rhint">few days</span></button>
+        <button class="rate-btn easy" id="rate-easy"><span class="rlabel">Easy</span><span class="rhint">long</span></button>
+      </div>
+
+      <div class="study-controls hidden" id="browseControls">
         <button class="study-btn" id="prevBtn">&larr; Prev</button>
         <button class="study-btn primary" id="shuffleBtn">Shuffle</button>
         <button class="study-btn" id="nextBtn">Next &rarr;</button>
       </div>
+
       <p class="progress-note" id="progressNote"></p>
     </div>
   </div>
@@ -111,6 +134,7 @@
       <button class="filter-chip writing-filter-chip" data-level="L11">Boya L11</button>
       <button class="filter-chip writing-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip writing-filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip writing-filter-chip" data-level="GCP6">GCP7 L6</button>
     </div>
     <div class="writing-wrap">
       <div class="writing-info">
