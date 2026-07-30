@@ -374,6 +374,39 @@
   .rate-btn:hover{ transform:translateY(-1px); box-shadow:0 3px 8px rgba(0,0,0,.08); }
   .rate-btn:active{ transform:translateY(0); }
 
+  .struct-card{
+    display:flex; gap:16px; align-items:flex-start;
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .struct-diagram{ flex:0 0 auto; }
+  .struct-diagram svg{ display:block; }
+  .struct-body{ flex:1 1 auto; min-width:0; }
+  .struct-head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .struct-name{ font-family:'Noto Serif SC'; font-size:17px; font-weight:700; color:var(--ink); }
+  .struct-py{ font-family:'Zilla Slab'; font-size:14px; color:var(--jade); font-weight:600; }
+  .struct-en{ font-size:12.5px; color:var(--ink-soft); }
+  .struct-badge{ font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:999px; margin-left:auto; white-space:nowrap; }
+  .struct-badge.tier-very-high{ background:#b3312c; color:#fff; }
+  .struct-badge.tier-high{ background:#c9722e; color:#fff; }
+  .struct-badge.tier-medium{ background:#3f7d68; color:#fff; }
+  .struct-badge.tier-low{ background:#8b8378; color:#fff; }
+  .struct-hint{ font-size:12.5px; color:var(--ink); line-height:1.6; margin:7px 0 9px; max-width:600px; }
+  .struct-members{ display:flex; flex-wrap:wrap; gap:6px; }
+  .struct-chip{
+    font-family:'Noto Serif SC'; font-size:20px; font-weight:700; color:var(--ink);
+    background:transparent; border:1px solid var(--line); border-radius:9px;
+    padding:2px 9px; cursor:pointer; transition:.12s; line-height:1.4;
+  }
+  .struct-chip:hover{ border-color:var(--seal); color:var(--seal); background:rgba(179,49,44,.06); }
+  .struct-chip.flat{ cursor:default; color:var(--ink-soft); }
+  .struct-chip.flat:hover{ border-color:var(--line); color:var(--ink-soft); background:transparent; }
+
+  @media (max-width:560px){
+    .struct-card{ gap:12px; padding:12px; }
+    .struct-badge{ margin-left:0; }
+  }
+
   h2.section-title{
     font-family:'Zilla Slab'; font-size:20px; margin: 6px 0 14px; padding-bottom:8px;
     border-bottom: 2px solid var(--seal); display:inline-block;

@@ -410,6 +410,61 @@ function renderRadicals(tierFilter) {
   }
 }
 
+// --- Character structures ---
+function renderStructures() {
+  const wrap = document.getElementById("structuresWrap");
+  if (!wrap || typeof STRUCTURES === "undefined") return;
+  const labChars = new Set();
+  for (const w of DB.words || [])
+    for (const ch of w.chinese) if (/[一-鿿]/.test(ch)) labChars.add(ch);
+
+  const tierClass = {
+    "most common": "tier-very-high",
+    common: "tier-high",
+    "less common": "tier-low",
+    base: "tier-medium",
+  };
+
+  wrap.innerHTML = STRUCTURES.map((s) => {
+    const chips = s.members
+      .map((ch) => {
+        const inLab = labChars.has(ch);
+        return inLab
+          ? `<button class="struct-chip" data-lookup="${ch}">${ch}</button>`
+          : `<span class="struct-chip flat">${ch}</span>`;
+      })
+      .join("");
+    return `
+    <div class="struct-card">
+      <div class="struct-diagram">
+        <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">${s.svg}</svg>
+      </div>
+      <div class="struct-body">
+        <div class="struct-head">
+          <span class="struct-name">${s.name}</span>
+          <span class="struct-py">${s.pinyin}</span>
+          <span class="struct-en">${s.en}</span>
+          <span class="struct-badge ${tierClass[s.tier] || "tier-medium"}">${s.tier}</span>
+        </div>
+        <p class="struct-hint">${s.hint}</p>
+        <div class="struct-members">${chips}</div>
+      </div>
+    </div>`;
+  }).join("");
+
+  wrap.querySelectorAll(".struct-chip[data-lookup]").forEach((p) => {
+    p.addEventListener("click", () => {
+      const ch = p.dataset.lookup;
+      speak(ch);
+      const w = (DB.words || []).find((x) => (x.chars || []).includes(ch));
+      if (w) {
+        switchView("wordsView");
+        openDetail(w.id);
+      }
+    });
+  });
+}
+
 function initRadicalFilter() {
   document.querySelectorAll(".rad-filter-chip").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -835,5 +890,6 @@ document.getElementById("wrShuffleBtn").addEventListener("click", () => {
 renderGrid();
 renderPatterns();
 initRadicalFilter();
+renderStructures();
 setStudyMode("review");
 renderWritingWord();
