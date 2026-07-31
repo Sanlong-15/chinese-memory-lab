@@ -1,0 +1,232 @@
+[
+{"chinese":"画家","pinyin":"huàjiā","english":"painter; artist","khmer":"វិចិត្រករ","breakdown":"画(painting)+家(expert, master) — a master of painting","chars":["画","家"],"examples":[
+{"level":"L14","cn":"他是一位有名的画家。","py":"Tā shì yí wèi yǒumíng de huàjiā.","en":"He is a famous painter."},
+{"level":"L14","cn":"我想当画家。","py":"Wǒ xiǎng dāng huàjiā.","en":"I want to be a painter."},
+{"level":"L14","cn":"这位画家画得很好。","py":"Zhè wèi huàjiā huà de hěn hǎo.","en":"This painter paints very well."},
+{"level":"L14","cn":"画家需要很多练习。","py":"Huàjiā xūyào hěn duō liànxí.","en":"A painter needs a lot of practice."},
+{"level":"L14","cn":"这幅画是一位老画家画的。","py":"Zhè fú huà shì yí wèi lǎo huàjiā huà de.","en":"This painting was done by an old painter."}]},
+
+{"chinese":"美术","pinyin":"měishù","english":"art; fine art","khmer":"វិចិត្រសិល្បៈ","breakdown":"美(beautiful)+术(skill, technique) — the skill of making beauty","chars":["美","术"],"examples":[
+{"level":"L14","cn":"我对美术很感兴趣。","py":"Wǒ duì měishù hěn gǎn xìngqù.","en":"I'm very interested in art."},
+{"level":"L14","cn":"今天有美术课。","py":"Jīntiān yǒu měishù kè.","en":"There is an art class today."},
+{"level":"L14","cn":"他学过美术。","py":"Tā xué guo měishù.","en":"He has studied art."},
+{"level":"L14","cn":"这是一所美术学校。","py":"Zhè shì yì suǒ měishù xuéxiào.","en":"This is an art school."},
+{"level":"L14","cn":"美术馆里有很多画。","py":"Měishùguǎn lǐ yǒu hěn duō huà.","en":"There are many paintings in the art museum."}]},
+
+{"chinese":"得","pinyin":"dé","english":"to get; to obtain; to gain","khmer":"ទទួលបាន","breakdown":"彳(walking radical)+旦+寸 — reaching out and getting something","chars":["得"],"examples":[
+{"level":"L14","cn":"他得了第一名。","py":"Tā dé le dì yī míng.","en":"He got first place."},
+{"level":"L14","cn":"考试我得了九十分。","py":"Kǎoshì wǒ dé le jiǔshí fēn.","en":"I got ninety on the exam."},
+{"level":"L14","cn":"她得了一个奖。","py":"Tā dé le yí ge jiǎng.","en":"She won a prize."},
+{"level":"L14","cn":"努力才能得到成功。","py":"Nǔlì cái néng dé dào chénggōng.","en":"Only effort brings success."},
+{"level":"L14","cn":"生病以后他得了很多照顾。","py":"Shēngbìng yǐhòu tā dé le hěn duō zhàogù.","en":"After getting sick he received a lot of care."}]},
+
+{"chinese":"成功","pinyin":"chénggōng","english":"to succeed; success","khmer":"ជោគជ័យ","breakdown":"成(accomplish)+功(achievement) — achieving what you set out to do","chars":["成","功"],"examples":[
+{"level":"L14","cn":"他成功了。","py":"Tā chénggōng le.","en":"He succeeded."},
+{"level":"L14","cn":"只有努力才能成功。","py":"Zhǐyǒu nǔlì cái néng chénggōng.","en":"Only through effort can you succeed."},
+{"level":"L14","cn":"这次实验很成功。","py":"Zhè cì shíyàn hěn chénggōng.","en":"This experiment was successful."},
+{"level":"L14","cn":"成功需要时间。","py":"Chénggōng xūyào shíjiān.","en":"Success takes time."},
+{"level":"L14","cn":"祝你成功！","py":"Zhù nǐ chénggōng!","en":"Wishing you success!"}]},
+
+{"chinese":"以为","pinyin":"yǐwéi","english":"to think (often mistakenly); to believe","khmer":"គិតថា (ជាញឹកញាប់ខុស)","breakdown":"以(take as)+为(be) — taking it to be so, often wrongly","chars":["以","为"],"examples":[
+{"level":"L14","cn":"我以为你不来了。","py":"Wǒ yǐwéi nǐ bù lái le.","en":"I thought you weren't coming."},
+{"level":"L14","cn":"他以为这个很简单。","py":"Tā yǐwéi zhège hěn jiǎndān.","en":"He thought this was easy."},
+{"level":"L14","cn":"我以为今天放假。","py":"Wǒ yǐwéi jīntiān fàngjià.","en":"I thought today was a holiday."},
+{"level":"L14","cn":"别以为我不知道。","py":"Bié yǐwéi wǒ bù zhīdào.","en":"Don't think I don't know."},
+{"level":"L14","cn":"我以为他是老师，其实是学生。","py":"Wǒ yǐwéi tā shì lǎoshī, qíshí shì xuésheng.","en":"I thought he was a teacher, actually he's a student."}]},
+
+{"chinese":"事情","pinyin":"shìqing","english":"affair; matter; thing","khmer":"រឿង / កិច្ចការ","breakdown":"事(matter)+情(situation) — a matter and its circumstances","chars":["事","情"],"examples":[
+{"level":"L14","cn":"这件事情很重要。","py":"Zhè jiàn shìqing hěn zhòngyào.","en":"This matter is very important."},
+{"level":"L14","cn":"我有很多事情要做。","py":"Wǒ yǒu hěn duō shìqing yào zuò.","en":"I have many things to do."},
+{"level":"L14","cn":"这件事情跟我无关。","py":"Zhè jiàn shìqing gēn wǒ wúguān.","en":"This matter has nothing to do with me."},
+{"level":"L14","cn":"事情已经解决了。","py":"Shìqing yǐjīng jiějué le.","en":"The matter has been resolved."},
+{"level":"L14","cn":"发生了什么事情？","py":"Fāshēng le shénme shìqing?","en":"What happened?"}]},
+
+{"chinese":"其实","pinyin":"qíshí","english":"in fact; actually","khmer":"តាមពិត","breakdown":"其(that, its)+实(real) — the real truth of it","chars":["其","实"],"examples":[
+{"level":"L14","cn":"其实我不喜欢。","py":"Qíshí wǒ bù xǐhuan.","en":"Actually I don't like it."},
+{"level":"L14","cn":"其实这个问题很简单。","py":"Qíshí zhège wèntí hěn jiǎndān.","en":"Actually this question is very simple."},
+{"level":"L14","cn":"其实他很年轻。","py":"Qíshí tā hěn niánqīng.","en":"In fact he is very young."},
+{"level":"L14","cn":"其实我早就知道了。","py":"Qíshí wǒ zǎo jiù zhīdào le.","en":"Actually I knew a long time ago."},
+{"level":"L14","cn":"看起来难，其实很容易。","py":"Kàn qǐlái nán, qíshí hěn róngyì.","en":"It looks hard, but actually it's easy."}]},
+
+{"chinese":"只要","pinyin":"zhǐyào","english":"if only; so long as; as long as","khmer":"គ្រាន់តែ / ឲ្យតែ","breakdown":"只(only)+要(need) — you only need this much","chars":["只","要"],"examples":[
+{"level":"L14","cn":"只要努力就会成功。","py":"Zhǐyào nǔlì jiù huì chénggōng.","en":"As long as you try, you'll succeed."},
+{"level":"L14","cn":"只要你来，我就高兴。","py":"Zhǐyào nǐ lái, wǒ jiù gāoxìng.","en":"As long as you come, I'm happy."},
+{"level":"L14","cn":"只要坚持，就有效果。","py":"Zhǐyào jiānchí, jiù yǒu xiàoguǒ.","en":"As long as you persist, there will be results."},
+{"level":"L14","cn":"只要有时间，我就阅读。","py":"Zhǐyào yǒu shíjiān, wǒ jiù yuèdú.","en":"Whenever I have time, I read."},
+{"level":"L14","cn":"只要不下雨，我们就出发。","py":"Zhǐyào bú xià yǔ, wǒmen jiù chūfā.","en":"As long as it doesn't rain, we'll set off."}]},
+
+{"chinese":"坚持","pinyin":"jiānchí","english":"to insist; to persist; to keep at it","khmer":"ព្យាយាមបន្ត / ទទូច","breakdown":"坚(firm, hard)+持(hold, 扌hand radical) — holding firmly","chars":["坚","持"],"examples":[
+{"level":"L14","cn":"请坚持下去。","py":"Qǐng jiānchí xiàqù.","en":"Please keep going."},
+{"level":"L14","cn":"他坚持每天锻炼。","py":"Tā jiānchí měitiān duànliàn.","en":"He keeps exercising every day."},
+{"level":"L14","cn":"坚持就是成功。","py":"Jiānchí jiù shì chénggōng.","en":"Persistence is success."},
+{"level":"L14","cn":"我坚持自己的看法。","py":"Wǒ jiānchí zìjǐ de kànfǎ.","en":"I stand by my own view."},
+{"level":"L14","cn":"学语言要坚持才有效果。","py":"Xué yǔyán yào jiānchí cái yǒu xiàoguǒ.","en":"Learning a language works only with persistence."}]},
+
+{"chinese":"理想","pinyin":"lǐxiǎng","english":"ideal; hope for the future; dream","khmer":"ឧត្តមគតិ","breakdown":"理(reason)+想(think) — what reason and thought aim at","chars":["理","想"],"examples":[
+{"level":"L14","cn":"我的理想是当画家。","py":"Wǒ de lǐxiǎng shì dāng huàjiā.","en":"My dream is to be a painter."},
+{"level":"L14","cn":"每个人都有理想。","py":"Měi ge rén dōu yǒu lǐxiǎng.","en":"Everyone has ideals."},
+{"level":"L14","cn":"这不是理想的结果。","py":"Zhè bú shì lǐxiǎng de jiéguǒ.","en":"This isn't the ideal result."},
+{"level":"L14","cn":"为了理想要努力。","py":"Wèile lǐxiǎng yào nǔlì.","en":"You must work hard for your dreams."},
+{"level":"L14","cn":"他实现了自己的理想。","py":"Tā shíxiàn le zìjǐ de lǐxiǎng.","en":"He realized his dream."}]},
+
+{"chinese":"实现","pinyin":"shíxiàn","english":"to accomplish; to realize (a goal)","khmer":"សម្រេច / ធ្វើឲ្យក្លាយជាការពិត","breakdown":"实(real)+现(appear) — making something become real","chars":["实","现"],"examples":[
+{"level":"L14","cn":"他实现了自己的理想。","py":"Tā shíxiàn le zìjǐ de lǐxiǎng.","en":"He realized his dream."},
+{"level":"L14","cn":"这个计划很难实现。","py":"Zhège jìhuà hěn nán shíxiàn.","en":"This plan is hard to accomplish."},
+{"level":"L14","cn":"只要坚持，理想就能实现。","py":"Zhǐyào jiānchí, lǐxiǎng jiù néng shíxiàn.","en":"As long as you persist, your dream can come true."},
+{"level":"L14","cn":"我们实现了目标。","py":"Wǒmen shíxiàn le mùbiāo.","en":"We accomplished the goal."},
+{"level":"L14","cn":"这个梦想终于实现了。","py":"Zhège mèngxiǎng zhōngyú shíxiàn le.","en":"This dream finally came true."}]},
+
+{"chinese":"画","pinyin":"huà","english":"to draw (a picture); a painting","khmer":"គូរ / រូបគំនូរ","breakdown":"Whole shape — a hand drawing lines inside a frame","chars":["画"],"examples":[
+{"level":"L14","cn":"我喜欢画画儿。","py":"Wǒ xǐhuan huà huàr.","en":"I like drawing."},
+{"level":"L14","cn":"这张画很有名。","py":"Zhè zhāng huà hěn yǒumíng.","en":"This painting is very famous."},
+{"level":"L14","cn":"他画得很好。","py":"Tā huà de hěn hǎo.","en":"He draws very well."},
+{"level":"L14","cn":"请画一个动物。","py":"Qǐng huà yí ge dòngwù.","en":"Please draw an animal."},
+{"level":"L14","cn":"墙上有一张大画。","py":"Qiáng shàng yǒu yì zhāng dà huà.","en":"There is a big painting on the wall."}]},
+
+{"chinese":"高中","pinyin":"gāozhōng","english":"senior high school","khmer":"វិទ្យាល័យ","breakdown":"高(high, senior)+中(middle school) — the senior part of middle school","chars":["高","中"],"examples":[
+{"level":"L14","cn":"我在读高中。","py":"Wǒ zài dú gāozhōng.","en":"I'm in senior high school."},
+{"level":"L14","cn":"他高中毕业了。","py":"Tā gāozhōng bìyè le.","en":"He graduated from senior high school."},
+{"level":"L14","cn":"高中的功课很多。","py":"Gāozhōng de gōngkè hěn duō.","en":"There is a lot of homework in senior high."},
+{"level":"L14","cn":"我们是高中同学。","py":"Wǒmen shì gāozhōng tóngxué.","en":"We are senior high school classmates."},
+{"level":"L14","cn":"高中以后就上大学。","py":"Gāozhōng yǐhòu jiù shàng dàxué.","en":"After senior high you go to university."}]},
+
+{"chinese":"年级","pinyin":"niánjí","english":"grade; year (in school)","khmer":"ថ្នាក់រៀន","breakdown":"年(year)+级(level) — your year level","chars":["年","级"],"examples":[
+{"level":"L14","cn":"我是二年级的学生。","py":"Wǒ shì èr niánjí de xuésheng.","en":"I am a second year student."},
+{"level":"L14","cn":"你上几年级？","py":"Nǐ shàng jǐ niánjí?","en":"What grade are you in?"},
+{"level":"L14","cn":"这个年级有五个班。","py":"Zhège niánjí yǒu wǔ ge bān.","en":"This grade has five classes."},
+{"level":"L14","cn":"他比我高一个年级。","py":"Tā bǐ wǒ gāo yí ge niánjí.","en":"He is one grade above me."},
+{"level":"L14","cn":"高年级的课比较难。","py":"Gāo niánjí de kè bǐjiào nán.","en":"Higher grade classes are harder."}]},
+
+{"chinese":"暂时","pinyin":"zànshí","english":"temporarily; for the time being","khmer":"បណ្ដោះអាសន្ន","breakdown":"暂(brief)+时(time) — a brief time","chars":["暂","时"],"examples":[
+{"level":"L14","cn":"我暂时住在这里。","py":"Wǒ zànshí zhù zài zhèlǐ.","en":"I'm living here temporarily."},
+{"level":"L14","cn":"暂时没有消息。","py":"Zànshí méiyǒu xiāoxi.","en":"There's no news for now."},
+{"level":"L14","cn":"这个问题暂时解决不了。","py":"Zhège wèntí zànshí jiějué bu liǎo.","en":"This problem can't be solved for now."},
+{"level":"L14","cn":"我暂时不想改变。","py":"Wǒ zànshí bù xiǎng gǎibiàn.","en":"I don't want to change for now."},
+{"level":"L14","cn":"网站暂时不能用。","py":"Wǎngzhàn zànshí bù néng yòng.","en":"The website is temporarily unavailable."}]},
+
+{"chinese":"停止","pinyin":"tíngzhǐ","english":"to stop; to cease","khmer":"ឈប់ / បញ្ឈប់","breakdown":"停(stop)+止(halt) — two 'stop' characters together","chars":["停","止"],"examples":[
+{"level":"L14","cn":"请停止说话。","py":"Qǐng tíngzhǐ shuōhuà.","en":"Please stop talking."},
+{"level":"L14","cn":"雨停止了。","py":"Yǔ tíngzhǐ le.","en":"The rain has stopped."},
+{"level":"L14","cn":"他停止了工作。","py":"Tā tíngzhǐ le gōngzuò.","en":"He stopped working."},
+{"level":"L14","cn":"机器停止了。","py":"Jīqì tíngzhǐ le.","en":"The machine stopped."},
+{"level":"L14","cn":"我们不能停止学习。","py":"Wǒmen bù néng tíngzhǐ xuéxí.","en":"We can't stop learning."}]},
+
+{"chinese":"画笔","pinyin":"huàbǐ","english":"painting brush","khmer":"ជក់គំនូរ","breakdown":"画(painting)+笔(pen, brush) — a brush for painting","chars":["画","笔"],"examples":[
+{"level":"L14","cn":"画家用画笔画画。","py":"Huàjiā yòng huàbǐ huà huà.","en":"The painter paints with a brush."},
+{"level":"L14","cn":"我买了一支新画笔。","py":"Wǒ mǎi le yì zhī xīn huàbǐ.","en":"I bought a new painting brush."},
+{"level":"L14","cn":"这支画笔很好用。","py":"Zhè zhī huàbǐ hěn hǎo yòng.","en":"This brush works well."},
+{"level":"L14","cn":"画笔在桌子上。","py":"Huàbǐ zài zhuōzi shàng.","en":"The painting brush is on the table."},
+{"level":"L14","cn":"请把画笔洗干净。","py":"Qǐng bǎ huàbǐ xǐ gānjìng.","en":"Please wash the brush clean."}]},
+
+{"chinese":"当","pinyin":"dāng","english":"to work as; to be; when","khmer":"ធ្វើជា","breakdown":"Whole shape — read dāng for 'serve as' or 'at the time of'","chars":["当"],"examples":[
+{"level":"L14","cn":"我想当画家。","py":"Wǒ xiǎng dāng huàjiā.","en":"I want to be a painter."},
+{"level":"L14","cn":"他当了经理。","py":"Tā dāng le jīnglǐ.","en":"He became a manager."},
+{"level":"L14","cn":"当我到家的时候，天黑了。","py":"Dāng wǒ dào jiā de shíhou, tiān hēi le.","en":"When I got home, it was dark."},
+{"level":"L14","cn":"她当过老师。","py":"Tā dāng guo lǎoshī.","en":"She used to be a teacher."},
+{"level":"L14","cn":"当学生要努力。","py":"Dāng xuésheng yào nǔlì.","en":"As a student you must work hard."}]},
+
+{"chinese":"辞","pinyin":"cí","english":"to resign; to quit one's job","khmer":"លាឈប់ (ការងារ)","breakdown":"舌(tongue)+辛 — words used to take leave; to resign","chars":["辞"],"examples":[
+{"level":"L14","cn":"他辞了工作。","py":"Tā cí le gōngzuò.","en":"He quit his job."},
+{"level":"L14","cn":"我想辞职。","py":"Wǒ xiǎng cízhí.","en":"I want to resign."},
+{"level":"L14","cn":"她辞了工作去留学。","py":"Tā cí le gōngzuò qù liúxué.","en":"She quit her job to study abroad."},
+{"level":"L14","cn":"辞职以前要好好考虑。","py":"Cízhí yǐqián yào hǎohǎo kǎolǜ.","en":"Think carefully before resigning."},
+{"level":"L14","cn":"他为了理想辞了工作。","py":"Tā wèile lǐxiǎng cí le gōngzuò.","en":"He quit his job for his dream."}]},
+
+{"chinese":"游览","pinyin":"yóulǎn","english":"to go sightseeing; to tour","khmer":"ទស្សនាកម្សាន្ត","breakdown":"游(roam, travel)+览(look over) — traveling around to look at sights","chars":["游","览"],"examples":[
+{"level":"L14","cn":"我们游览了长城。","py":"Wǒmen yóulǎn le Chángchéng.","en":"We toured the Great Wall."},
+{"level":"L14","cn":"这个地方很值得游览。","py":"Zhège dìfang hěn zhíde yóulǎn.","en":"This place is worth sightseeing."},
+{"level":"L14","cn":"暑假我们去游览北京。","py":"Shǔjià wǒmen qù yóulǎn Běijīng.","en":"In summer we'll go sightseeing in Beijing."},
+{"level":"L14","cn":"游览的时候要注意安全。","py":"Yóulǎn de shíhou yào zhùyì ānquán.","en":"Mind your safety when sightseeing."},
+{"level":"L14","cn":"游客们在游览美丽的景色。","py":"Yóukèmen zài yóulǎn měilì de jǐngsè.","en":"The tourists are touring the beautiful scenery."}]},
+
+{"chinese":"正好","pinyin":"zhènghǎo","english":"just right; just enough; as it happens","khmer":"ល្មមណាស់ / ស្រាប់តែ","breakdown":"正(exactly)+好(good) — exactly good","chars":["正","好"],"examples":[
+{"level":"L14","cn":"这件衣服正好。","py":"Zhè jiàn yīfu zhènghǎo.","en":"This clothing fits just right."},
+{"level":"L14","cn":"你来得正好。","py":"Nǐ lái de zhènghǎo.","en":"You came at just the right time."},
+{"level":"L14","cn":"我正好也要去那儿。","py":"Wǒ zhènghǎo yě yào qù nàr.","en":"As it happens I'm going there too."},
+{"level":"L14","cn":"钱正好够。","py":"Qián zhènghǎo gòu.","en":"The money is just enough."},
+{"level":"L14","cn":"温度正好，很舒服。","py":"Wēndù zhènghǎo, hěn shūfu.","en":"The temperature is just right, very comfortable."}]},
+
+{"chinese":"专门","pinyin":"zhuānmén","english":"especially; specially; specialized","khmer":"ដោយឡែក / ជាពិសេស","breakdown":"专(focused)+门(door, field) — focused on one field","chars":["专","门"],"examples":[
+{"level":"L14","cn":"我专门来看你。","py":"Wǒ zhuānmén lái kàn nǐ.","en":"I came specially to see you."},
+{"level":"L14","cn":"他专门研究美术。","py":"Tā zhuānmén yánjiū měishù.","en":"He specializes in studying art."},
+{"level":"L14","cn":"这是专门的画笔。","py":"Zhè shì zhuānmén de huàbǐ.","en":"This is a specialized painting brush."},
+{"level":"L14","cn":"这家店专门卖画。","py":"Zhè jiā diàn zhuānmén mài huà.","en":"This shop specializes in selling paintings."},
+{"level":"L14","cn":"我专门为你准备的。","py":"Wǒ zhuānmén wèi nǐ zhǔnbèi de.","en":"I prepared this specially for you."}]},
+
+{"chinese":"奖","pinyin":"jiǎng","english":"prize; award","khmer":"រង្វាន់","breakdown":"Whole shape — a reward given for achievement","chars":["奖"],"examples":[
+{"level":"L14","cn":"他得了一个奖。","py":"Tā dé le yí ge jiǎng.","en":"He won a prize."},
+{"level":"L14","cn":"这个奖很重要。","py":"Zhège jiǎng hěn zhòngyào.","en":"This prize is important."},
+{"level":"L14","cn":"她在美术比赛中得了奖。","py":"Tā zài měishù bǐsài zhōng dé le jiǎng.","en":"She won a prize in the art competition."},
+{"level":"L14","cn":"努力才能拿到奖。","py":"Nǔlì cái néng ná dào jiǎng.","en":"Only effort earns a prize."},
+{"level":"L14","cn":"第一名有奖金。","py":"Dì yī míng yǒu jiǎngjīn.","en":"First place gets prize money."}]},
+
+{"chinese":"小时候","pinyin":"xiǎoshíhou","english":"in one's childhood; when young","khmer":"កាលពីក្មេង","breakdown":"小(small, young)+时候(time) — the time when you were small","chars":["小","时","候"],"examples":[
+{"level":"L14","cn":"我小时候很喜欢画画。","py":"Wǒ xiǎoshíhou hěn xǐhuan huà huà.","en":"I loved drawing when I was little."},
+{"level":"L14","cn":"他小时候住在乡下。","py":"Tā xiǎoshíhou zhù zài xiāngxià.","en":"He lived in the countryside as a child."},
+{"level":"L14","cn":"小时候的事我记不清了。","py":"Xiǎoshíhou de shì wǒ jì bu qīng le.","en":"I can't clearly remember my childhood."},
+{"level":"L14","cn":"这是我小时候的照片。","py":"Zhè shì wǒ xiǎoshíhou de zhàopiàn.","en":"This is a photo of me as a child."},
+{"level":"L14","cn":"她小时候的理想是当画家。","py":"Tā xiǎoshíhou de lǐxiǎng shì dāng huàjiā.","en":"Her childhood dream was to be a painter."}]},
+
+{"chinese":"产生","pinyin":"chǎnshēng","english":"to come into being; to produce; to arise","khmer":"បង្កើត / កើតឡើង","breakdown":"产(produce, give birth)+生(be born) — bringing something into being","chars":["产","生"],"examples":[
+{"level":"L14","cn":"这件事产生了很大的影响。","py":"Zhè jiàn shì chǎnshēng le hěn dà de yǐngxiǎng.","en":"This matter produced a big influence."},
+{"level":"L14","cn":"我对美术产生了兴趣。","py":"Wǒ duì měishù chǎnshēng le xìngqù.","en":"I developed an interest in art."},
+{"level":"L14","cn":"新的问题产生了。","py":"Xīn de wèntí chǎnshēng le.","en":"A new problem has arisen."},
+{"level":"L14","cn":"误会常常从不交流产生。","py":"Wùhuì chángcháng cóng bù jiāoliú chǎnshēng.","en":"Misunderstandings often arise from not communicating."},
+{"level":"L14","cn":"这个想法是怎么产生的？","py":"Zhège xiǎngfǎ shì zěnme chǎnshēng de?","en":"How did this idea come about?"}]},
+
+{"chinese":"算","pinyin":"suàn","english":"to count; to calculate; to count as","khmer":"គិត / គណនា","breakdown":"竹(bamboo radical)+目+廾 — using bamboo counting sticks","chars":["算"],"examples":[
+{"level":"L14","cn":"请算一下一共多少钱。","py":"Qǐng suàn yíxià yígòng duōshao qián.","en":"Please calculate how much altogether."},
+{"level":"L14","cn":"我算错了。","py":"Wǒ suàn cuò le.","en":"I calculated wrong."},
+{"level":"L14","cn":"六十分才算及格。","py":"Liùshí fēn cái suàn jígé.","en":"Sixty points counts as a pass."},
+{"level":"L14","cn":"这也算成功了。","py":"Zhè yě suàn chénggōng le.","en":"This counts as a success too."},
+{"level":"L14","cn":"我们算算需要多少时间。","py":"Wǒmen suànsuan xūyào duōshao shíjiān.","en":"Let's work out how much time we need."}]},
+
+{"chinese":"加","pinyin":"jiā","english":"to add; to plus","khmer":"បូក / បន្ថែម","breakdown":"力(strength)+口(mouth) — adding force or amount","chars":["加"],"examples":[
+{"level":"L14","cn":"一加一等于二。","py":"Yī jiā yī děngyú èr.","en":"One plus one equals two."},
+{"level":"L14","cn":"请再加一点糖。","py":"Qǐng zài jiā yìdiǎn táng.","en":"Please add a little more sugar."},
+{"level":"L14","cn":"人数加了很多。","py":"Rénshù jiā le hěn duō.","en":"The number of people increased a lot."},
+{"level":"L14","cn":"加上运费一共一百元。","py":"Jiā shàng yùnfèi yígòng yìbǎi yuán.","en":"Adding shipping, it's a hundred yuan in total."},
+{"level":"L14","cn":"请把我加进这个组。","py":"Qǐng bǎ wǒ jiā jìn zhège zǔ.","en":"Please add me to this group."}]},
+
+{"chinese":"等于","pinyin":"děngyú","english":"to be equal to; to equal","khmer":"ស្មើនឹង","breakdown":"等(equal, 竹bamboo radical)+于(at, to) — being equal to","chars":["等","于"],"examples":[
+{"level":"L14","cn":"二加三等于五。","py":"Èr jiā sān děngyú wǔ.","en":"Two plus three equals five."},
+{"level":"L14","cn":"一元等于十角。","py":"Yì yuán děngyú shí jiǎo.","en":"One yuan equals ten jiao."},
+{"level":"L14","cn":"有钱不等于快乐。","py":"Yǒu qián bù děngyú kuàilè.","en":"Having money doesn't equal happiness."},
+{"level":"L14","cn":"这等于白做了。","py":"Zhè děngyú bái zuò le.","en":"This is the same as having done it for nothing."},
+{"level":"L14","cn":"流利不等于没有错误。","py":"Liúlì bù děngyú méiyǒu cuòwù.","en":"Fluent doesn't equal error-free."}]},
+
+{"chinese":"零","pinyin":"líng","english":"zero","khmer":"សូន្យ","breakdown":"雨(rain radical)+令 — originally light rain drops; now the number zero","chars":["零"],"examples":[
+{"level":"L14","cn":"现在是十点零五分。","py":"Xiànzài shì shí diǎn líng wǔ fēn.","en":"It's ten oh five now."},
+{"level":"L14","cn":"零是一个数字。","py":"Líng shì yí ge shùzì.","en":"Zero is a number."},
+{"level":"L14","cn":"温度是零度。","py":"Wēndù shì líng dù.","en":"The temperature is zero degrees."},
+{"level":"L14","cn":"一万有四个零。","py":"Yíwàn yǒu sì ge líng.","en":"Ten thousand has four zeros."},
+{"level":"L14","cn":"他的分数是零。","py":"Tā de fēnshù shì líng.","en":"His score is zero."}]},
+
+{"chinese":"其他","pinyin":"qítā","english":"other; else","khmer":"ផ្សេងទៀត","breakdown":"其(that)+他(he, it) — those others","chars":["其","他"],"examples":[
+{"level":"L14","cn":"其他人都走了。","py":"Qítā rén dōu zǒu le.","en":"Everyone else has left."},
+{"level":"L14","cn":"还有其他办法吗？","py":"Hái yǒu qítā bànfǎ ma?","en":"Are there other methods?"},
+{"level":"L14","cn":"我不知道其他的事。","py":"Wǒ bù zhīdào qítā de shì.","en":"I don't know about the other matters."},
+{"level":"L14","cn":"其他班的学生也参加了。","py":"Qítā bān de xuésheng yě cānjiā le.","en":"Students from other classes also took part."},
+{"level":"L14","cn":"除了这个，其他都可以。","py":"Chúle zhège, qítā dōu kěyǐ.","en":"Except this one, all the others are fine."}]},
+
+{"chinese":"与无关","pinyin":"yǔ...wúguān","english":"to have nothing to do with (the frame 与……无关)","khmer":"គ្មានទាក់ទងនឹង","breakdown":"与(with)+无(not have)+关(relation) — 'has no relation with', used as 与……无关","chars":["与","无","关"],"examples":[
+{"level":"L14","cn":"这件事与我无关。","py":"Zhè jiàn shì yǔ wǒ wúguān.","en":"This matter has nothing to do with me."},
+{"level":"L14","cn":"成功与年龄无关。","py":"Chénggōng yǔ niánlíng wúguān.","en":"Success has nothing to do with age."},
+{"level":"L14","cn":"这个问题与钱无关。","py":"Zhège wèntí yǔ qián wúguān.","en":"This problem has nothing to do with money."},
+{"level":"L14","cn":"他的话与事实无关。","py":"Tā de huà yǔ shìshí wúguān.","en":"What he said has nothing to do with the facts."},
+{"level":"L14","cn":"快乐与有钱无关。","py":"Kuàilè yǔ yǒu qián wúguān.","en":"Happiness has nothing to do with being rich."}]},
+
+{"chinese":"看法","pinyin":"kànfǎ","english":"point of view; opinion","khmer":"ទស្សនៈ","breakdown":"看(look)+法(way) — your way of looking at it","chars":["看","法"],"examples":[
+{"level":"L14","cn":"你的看法是什么？","py":"Nǐ de kànfǎ shì shénme?","en":"What is your view?"},
+{"level":"L14","cn":"我们的看法不一样。","py":"Wǒmen de kànfǎ bù yíyàng.","en":"Our views are different."},
+{"level":"L14","cn":"请说说你的看法。","py":"Qǐng shuōshuo nǐ de kànfǎ.","en":"Please share your view."},
+{"level":"L14","cn":"他改变了看法。","py":"Tā gǎibiàn le kànfǎ.","en":"He changed his view."},
+{"level":"L14","cn":"每个人都有自己的看法。","py":"Měi ge rén dōu yǒu zìjǐ de kànfǎ.","en":"Everyone has their own view."}]},
+
+{"chinese":"祝贺","pinyin":"zhùhè","english":"to congratulate; congratulations","khmer":"អបអរសាទរ","breakdown":"祝(wish)+贺(congratulate) — wishing and congratulating","chars":["祝","贺"],"examples":[
+{"level":"L14","cn":"祝贺你！","py":"Zhùhè nǐ!","en":"Congratulations!"},
+{"level":"L14","cn":"祝贺你成功了。","py":"Zhùhè nǐ chénggōng le.","en":"Congratulations on your success."},
+{"level":"L14","cn":"大家都来祝贺他。","py":"Dàjiā dōu lái zhùhè tā.","en":"Everyone came to congratulate him."},
+{"level":"L14","cn":"祝贺你得了奖。","py":"Zhùhè nǐ dé le jiǎng.","en":"Congratulations on winning the prize."},
+{"level":"L14","cn":"我收到了很多祝贺。","py":"Wǒ shōu dào le hěn duō zhùhè.","en":"I received many congratulations."}]}
+]
