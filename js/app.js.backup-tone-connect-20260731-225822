@@ -627,8 +627,6 @@ function renderSentence() {
   if (!cnEl) return;
   pyEl.textContent = "";
   wrap.innerHTML = "";
-  const sn = document.getElementById("sentNote");
-  if (sn) sn.textContent = "";
   if (!sentPool.length) {
     cnEl.textContent = "No sentences for this level.";
     enEl.textContent = "";
@@ -676,7 +674,6 @@ function chooseSent(btn, choice, w, ex) {
       blank.textContent = correct;
       blank.classList.add("filled-wrong");
     }
-    demoteToReview(w.id, "sentNote");
   }
   document.getElementById("sentPy").textContent = ex.py;
   speak(ex.cn);
@@ -703,157 +700,6 @@ function initSentences() {
       renderSentence();
     });
   buildSentPool();
-}
-
-// --- Connect practice modes to spaced repetition ---
-// When a word is missed in Sentences / Listen / Tone, bring it back soon in Study Mode.
-function demoteToReview(id, noteElId) {
-  if (typeof schedule === "function") schedule(id, "again");
-  if (typeof renderDashboard === "function") renderDashboard();
-  const note = noteElId && document.getElementById(noteElId);
-  if (note) note.textContent = "↩ added back to Study Mode";
-}
-
-// --- Tone practice ---
-const TONE1 = "āēīōūǖ";
-const TONE2 = "áéíóúǘ";
-const TONE3 = "ǎěǐǒǔǚ";
-const TONE4 = "àèìòùǜ";
-function toneSeq(pinyin) {
-  const seq = [];
-  for (const ch of pinyin) {
-    const c = ch.toLowerCase();
-    if (TONE1.includes(c)) seq.push(1);
-    else if (TONE2.includes(c)) seq.push(2);
-    else if (TONE3.includes(c)) seq.push(3);
-    else if (TONE4.includes(c)) seq.push(4);
-  }
-  return seq;
-}
-
-let toneLevel = "ALL";
-let tonePool = [];
-let toneIndex = 0;
-let toneCorrect = 0;
-let toneTotal = 0;
-let toneAnswered = false;
-let toneCurrentSeq = [];
-
-function toneEligible(w) {
-  const seq = toneSeq(w.pinyin);
-  const chars = Array.from(w.chinese).filter((ch) => /[一-鿿]/.test(ch)).length;
-  return seq.length === chars && seq.length >= 1 && seq.length <= 3;
-}
-
-function buildTonePool() {
-  const words =
-    toneLevel === "ALL"
-      ? dedupeByChinese(DB.words)
-      : dedupeByChinese(DB.words.filter((w) => w.level === toneLevel));
-  tonePool = words.filter(toneEligible);
-  shuffleArray(tonePool);
-  toneIndex = 0;
-  toneCorrect = 0;
-  toneTotal = 0;
-  renderTone();
-}
-
-function updateToneScore() {
-  const el = document.getElementById("toneScore");
-  if (el)
-    el.textContent =
-      "Correct " + toneCorrect + " / " + toneTotal + "  ·  " + tonePool.length + " words in this set";
-}
-
-function randTonePattern(len) {
-  const a = [];
-  for (let i = 0; i < len; i++) a.push(1 + Math.floor(Math.random() * 4));
-  return a.join("-");
-}
-
-function renderTone() {
-  const optWrap = document.getElementById("toneOptions");
-  const nextBtn = document.getElementById("toneNext");
-  if (!optWrap) return;
-  nextBtn.classList.add("hidden");
-  optWrap.innerHTML = "";
-  document.getElementById("toneNote").textContent = "";
-  document.getElementById("tonePy").textContent = "";
-  if (!tonePool.length) {
-    document.getElementById("toneZi").textContent = "—";
-    updateToneScore();
-    return;
-  }
-  const w = tonePool[toneIndex];
-  toneCurrentSeq = toneSeq(w.pinyin);
-  const correct = toneCurrentSeq.join("-");
-  document.getElementById("toneZi").textContent = "？";
-  toneAnswered = false;
-  const set = new Set([correct]);
-  let guard = 0;
-  while (set.size < 4 && guard < 50) {
-    set.add(randTonePattern(toneCurrentSeq.length));
-    guard++;
-  }
-  const opts = [...set];
-  shuffleArray(opts);
-  for (const o of opts) {
-    const b = document.createElement("button");
-    b.className = "listen-opt tone-opt";
-    b.textContent = o.split("-").join(" – ");
-    b.dataset.seq = o;
-    b.addEventListener("click", () => chooseTone(b, o, w));
-    optWrap.appendChild(b);
-  }
-  updateToneScore();
-  speak(w.chinese);
-}
-
-function chooseTone(btn, choice, w) {
-  if (toneAnswered) return;
-  toneAnswered = true;
-  toneTotal++;
-  const correct = toneCurrentSeq.join("-");
-  if (choice === correct) {
-    toneCorrect++;
-    btn.classList.add("correct");
-  } else {
-    btn.classList.add("wrong");
-    document.querySelectorAll(".tone-opt").forEach((bb) => {
-      if (bb.dataset.seq === correct) bb.classList.add("correct");
-    });
-    demoteToReview(w.id, "toneNote");
-  }
-  document.getElementById("toneZi").textContent = w.chinese;
-  document.getElementById("tonePy").textContent = w.pinyin;
-  document.getElementById("toneNext").classList.remove("hidden");
-  updateToneScore();
-}
-
-function initTone() {
-  document.querySelectorAll(".tone-filter-chip").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".tone-filter-chip")
-        .forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      toneLevel = btn.dataset.level;
-      buildTonePool();
-    });
-  });
-  const replay = document.getElementById("toneReplay");
-  if (replay)
-    replay.addEventListener("click", () => {
-      if (tonePool.length) speak(tonePool[toneIndex].chinese);
-    });
-  const next = document.getElementById("toneNext");
-  if (next)
-    next.addEventListener("click", () => {
-      if (!tonePool.length) return;
-      toneIndex = (toneIndex + 1) % tonePool.length;
-      renderTone();
-    });
-  buildTonePool();
 }
 
 // --- Grammar patterns ---
@@ -1034,22 +880,10 @@ function schedule(id, rating) {
   saveSrs(srs);
 }
 
-function dedupeByChinese(list) {
-  const seen = new Set();
-  const out = [];
-  for (const w of list) {
-    if (seen.has(w.chinese)) continue;
-    seen.add(w.chinese);
-    out.push(w);
-  }
-  return out;
-}
 function filteredWords() {
-  const base =
-    currentStudyLevel === "ALL"
-      ? DB.words.slice()
-      : DB.words.filter((w) => w.level === currentStudyLevel);
-  return dedupeByChinese(base);
+  return currentStudyLevel === "ALL"
+    ? DB.words.slice()
+    : DB.words.filter((w) => w.level === currentStudyLevel);
 }
 
 function updateSrsStats() {
@@ -1196,10 +1030,9 @@ function renderDashboard() {
     d.lastDay === today || d.lastDay === y ? d.streak || 0 : 0;
   const todayCount = d.lastDay === today ? d.todayCount || 0 : 0;
   const now = Date.now();
-  const distinct = dedupeByChinese(DB.words);
   let learned = 0,
     due = 0;
-  for (const w of distinct) {
+  for (const w of DB.words) {
     const st = getState(w.id);
     if (st.reps > 0) learned++;
     if (st.state !== "new" && st.due <= now) due++;
@@ -1207,7 +1040,7 @@ function renderDashboard() {
   streakEl.textContent = liveStreak;
   document.getElementById("dashToday").textContent = todayCount + " / " + goal;
   document.getElementById("dashLearned").textContent =
-    learned + " / " + distinct.length;
+    learned + " / " + DB.words.length;
   document.getElementById("dashDue").textContent = due;
   const pct = Math.min(100, Math.round((todayCount / goal) * 100));
   document.getElementById("dashBar").style.width = pct + "%";
@@ -1265,8 +1098,6 @@ function renderListen() {
   nextBtn.classList.add("hidden");
   revealEl.classList.remove("show");
   optWrap.innerHTML = "";
-  const ln = document.getElementById("listenNote");
-  if (ln) ln.textContent = "";
   if (!listenPool.length) {
     revealEl.classList.add("show");
     document.getElementById("listenZi").textContent = "—";
@@ -1313,7 +1144,6 @@ function chooseListen(btn, choice, w) {
     document.querySelectorAll(".listen-opt").forEach((bb) => {
       if (bb.textContent === w.english) bb.classList.add("correct");
     });
-    demoteToReview(w.id, "listenNote");
   }
   const revealEl = document.getElementById("listenReveal");
   document.getElementById("listenZi").textContent = w.chinese;
@@ -1588,7 +1418,6 @@ renderStructures();
 renderGrammar();
 initSentences();
 initListen();
-initTone();
 initDashboard();
 setStudyMode("review");
 renderWritingWord();

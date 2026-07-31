@@ -462,6 +462,9 @@
   .listen-opt.correct{ background:rgba(63,111,94,.14); border-color:var(--jade); color:var(--jade); font-weight:600; }
   .listen-opt.wrong{ background:rgba(179,49,44,.1); border-color:var(--seal); color:var(--seal); }
 
+  .tone-opt{ font-family:'Zilla Slab',sans-serif; font-size:18px; font-weight:600; letter-spacing:1px; }
+  .mode-note{ font-size:12px; color:var(--seal); font-weight:600; margin-top:8px; min-height:16px; }
+
   .dash{
     background:var(--card); border:1px solid var(--line); border-radius:14px;
     padding:14px 16px; margin:4px 0 16px; max-width:560px;
@@ -519,6 +522,35 @@
     30%{ box-shadow:0 0 0 4px rgba(179,49,44,.25); }
     100%{ box-shadow:0 0 0 0 rgba(179,49,44,0); }
   }
+
+  .gram-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px;
+  }
+  .gram-head{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .gram-pat{ font-family:'Noto Serif SC'; font-size:24px; font-weight:700; color:var(--seal); }
+  .gram-en{ font-size:13.5px; color:var(--ink); font-weight:600; }
+  .gram-badge{ font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:999px; background:#e0efe7; color:#2c5a48; margin-left:auto; white-space:nowrap; }
+  .gram-struct{
+    font-family:'Zilla Slab'; font-size:13.5px; color:var(--jade); font-weight:600;
+    background:rgba(63,111,94,.08); border-radius:9px; padding:8px 12px; margin:10px 0 0;
+  }
+  .gram-rule{ font-size:13px; color:var(--ink); line-height:1.65; margin:9px 0 11px; max-width:640px; }
+  .gram-examples{ display:flex; flex-direction:column; gap:8px; }
+  .gram-ex{
+    display:block; width:100%; text-align:left; cursor:pointer;
+    background:transparent; border:1px solid var(--line); border-radius:11px; padding:9px 12px; transition:.12s;
+  }
+  .gram-ex:hover{ border-color:var(--seal); }
+  .gcn{ display:block; font-family:'Noto Serif SC'; font-size:18px; color:var(--ink); line-height:1.5; }
+  .gk{ color:var(--seal); font-weight:700; }
+  .gpy{ display:block; font-family:'Zilla Slab'; font-size:12.5px; color:var(--jade); margin-top:2px; }
+  .gen{ display:block; font-size:12px; color:var(--ink-soft); margin-top:1px; }
+  .gram-pit{
+    font-size:12px; color:var(--ink); line-height:1.55; margin-top:11px;
+    background:rgba(179,49,44,.07); border-left:3px solid var(--seal); border-radius:0 8px 8px 0; padding:8px 12px;
+  }
+  .gram-pit strong{ color:var(--seal); }
 
   h2.section-title{
     font-family:'Zilla Slab'; font-size:20px; margin: 6px 0 14px; padding-bottom:8px;

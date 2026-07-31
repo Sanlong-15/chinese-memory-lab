@@ -1,101 +1,81 @@
-# Character Memory Lab — Roadmap
+# Character Memory Lab — Roadmap v2
 
-A plan to understand words better and learn Chinese faster.
-Ordered by value. Do the top items first.
+Updated after building Phase 1 and most of Phase 2.
 
-## Honest note
+## The honest truth first
 
-The app is already strong: 1,331 words, radicals, structures, writing, and
-spaced repetition. The single biggest gain now is **using SRS every day**, not
-a new feature. No feature replaces daily review or real speaking. Build the
-things below only to support that habit, not to replace it.
+The app is now feature-rich — more complete than most paid apps for your
+level. **More features will not help much now.** Two things matter more than
+any new build:
 
----
+1. **Study every day.** The dashboard measures the habit; it can't create it.
+2. **Grammar.** The one real gap. You have words and sentences but nothing
+   teaches the glue between them.
 
-## Phase 1 — biggest gains for efficiency (build these first)
+If you only do one thing: open Study Mode daily and keep the streak alive.
 
-### 1. Sentence practice (cloze / fill the blank)  ⭐ top pick
-- **What:** take a sentence you already have, hide one word, you fill it in.
-  Example: 只要努力就会 ___ (成功).
-- **Why:** you learn a word *in context*, not alone. This is the difference
-  between recognizing a word and actually using it. Trains reading + grammar
-  at the same time.
-- **Cost:** low. You already own 4,000+ example sentences. No new data needed.
-- **Done:** a "Sentences" mode; pick a level; a blanked sentence appears; you
-  type or choose the word; it checks and shows the full sentence + audio.
+## Already built (done)
 
-### 2. Listening / dictation
-- **What:** the app plays a word or sentence, you pick the meaning or type what
-  you heard. No characters shown first.
-- **Why:** listening is your weakest real-world skill. Reading trains the eyes;
-  this trains the ears.
-- **Cost:** low-medium. The app can already speak.
-- **Done:** a "Listen" mode with play button, multiple-choice or type-answer,
-  score at the end.
+- 1,331 words, full cards (pinyin, English, Khmer, breakdown, 5 examples)
+- Pattern families: sound-clue + meaning radicals (47 radicals)
+- Character structures (汉字结构) — the shapes
+- Study Mode with spaced repetition + daily dashboard (streak, goal, stats)
+- Sentence practice (fill the blank)
+- Listening practice (hear it, pick the meaning)
+- Character detail page + related words (the character web)
+- Writing practice (stroke order)
 
-### 3. Daily dashboard (goal + streak + stats)
-- **What:** a small home panel: "Due today", a streak counter, a bar showing
-  how many of 1,331 you have learned, a daily target like 20 cards.
-- **Why:** gives you a reason to open the app every day. Consistency beats
-  intensity. Pairs with SRS.
-- **Cost:** medium. Reads the SRS data you already save.
-- **Done:** a dashboard at the top of Study Mode showing the numbers and streak.
+## What actually matters next
 
----
+### 1. Grammar patterns  ⭐ the real gap
+- **What:** a "Grammar" tab. Short, simple lessons on the key HSK 3–4 patterns:
+  了 (change / done), 把 (do something to a thing), 被 (passive),
+  是…的 (emphasis), 比 (comparison), 得 (how well), 一…就… , 因为…所以… .
+  Each pattern: one plain-English rule + 3–4 example sentences pulled from
+  your own words.
+- **Why:** this is what moves you from recognizing words to *making sentences*.
+  No other feature covers it.
+- **Cost:** medium. I write the grammar content; the app just displays it.
 
-## Phase 2 — deeper understanding of characters
-
-### 4. Character detail page
-- **What:** click a single character (not a word) to see its pinyin, its
-  radical (meaning), its structure (shape), and every word in the lab that uses
-  it.
-- **Why:** ties together the three systems you already built — radicals,
-  structures, words. You start to see characters as a web, not a list.
+### 2. Tone practice
+- **What:** hear a word, pick its tone pattern (e.g. 4th-3rd).
+- **Why:** wrong tones are the top reason people misunderstand you.
 - **Cost:** medium.
-- **Done:** clicking a character opens a panel linking to all related words.
 
-### 5. Related words (same character)
-- **What:** on each word card, show other words that share a character.
-  Example: on 成功, show 成为, 完成, 功夫.
-- **Why:** builds connections. One character unlocks many words.
+### 3. Connect the modes to spaced repetition (efficiency)
+- **What:** when you miss a word in Sentences or Listen, it comes back sooner
+  in Study Mode.
+- **Why:** right now the three modes are separate. Linking them means every
+  mode feeds one memory system. Big efficiency multiplier.
+- **Cost:** medium.
+
+### 4. Smarter "All" study
+- **What:** when studying "All", show each word once even if it appears in
+  several lessons (会话, 提前, 其实 are now in multiple tracks).
+- **Why:** stop reviewing the same word 3 times.
 - **Cost:** low.
 
-### 6. Tone practice
-- **What:** a quiz on tones only — hear a word, pick the tone pattern.
-- **Why:** wrong tones are the most common reason people misunderstand you.
-- **Cost:** medium.
+## Quality and hygiene (not features, but important)
 
----
+- **Deploy checklist.** Your live site was behind — missing Sentences and
+  Listen. Always push together: index.html, js/app.js, js/data.js,
+  js/structures.js, css/style.css. Then reload the live site once.
+- **.gitignore.** Stop pushing scratch/backup files (_batch*, _source_*,
+  *.backup-*) to GitHub. They clutter a public repo.
+- **Khmer verification.** All Khmer is my best effort, never checked by a
+  native speaker. Verify before you memorize — it matters more as words get
+  abstract.
+- **Fix flagged entries.** 一定 listed as "fair" (should be "certainly");
+  辞 given as standalone (natural word is 辞职). Check against your books.
 
-## Phase 3 — polish and quality
+## What no app can do
 
-### 7. Leech flagging
-- **What:** words you fail again and again get marked "hard word" so you study
-  them a special way.
-- **Why:** a few hard words waste most of your time. Catch them.
-
-### 8. Favorites / tags
-- **What:** star a word, filter by starred. Add your own note.
-- **Why:** you control your own study list.
-
-### 9. Audio speed + voice control
-- **What:** slow/normal speed button, choose a clearer voice.
-- **Why:** helps listening practice.
-
-### 10. Khmer verification (not a feature — important)
-- **What:** a native Khmer speaker checks the translations.
-- **Why:** the Khmer is all my best effort, never checked. Wrong translations
-  memorized are worse than none. This matters more as words get abstract.
-
----
+To actually **speak**, you must speak — shadow the audio out loud, or talk
+with a person. The app builds input. Output is on you.
 
 ## Suggested order
 
-1. Sentence practice (Phase 1.1)
-2. Daily dashboard (Phase 1.3)
-3. Listening (Phase 1.2)
-4. Character detail + related words (Phase 2.4 + 2.5)
-5. Everything else as you want it
-
-Start with sentence practice. It uses data you already have and gives the
-biggest jump in real understanding.
+1. Grammar patterns  ← build this next
+2. Tone practice
+3. Connect modes to SRS + dedupe "All"
+4. Cleanup: .gitignore, deploy checklist, Khmer check

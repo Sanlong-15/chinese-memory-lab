@@ -22,8 +22,10 @@
   <button class="tab-btn active" data-view="wordsView">Word List</button>
   <button class="tab-btn" data-view="patternsView">Pattern Families</button>
   <button class="tab-btn" data-view="structuresView">Structures</button>
+  <button class="tab-btn" data-view="grammarView">Grammar</button>
   <button class="tab-btn" data-view="sentencesView">Sentences</button>
   <button class="tab-btn" data-view="listenView">Listen</button>
+  <button class="tab-btn" data-view="toneView">Tones</button>
   <button class="tab-btn" data-view="studyView">Study Mode</button>
   <button class="tab-btn" data-view="writingView">Writing</button>
 </nav>
@@ -77,6 +79,13 @@
     <div id="structuresWrap" style="margin-top:16px;"></div>
   </div>
 
+  <!-- GRAMMAR VIEW -->
+  <div id="grammarView" class="view">
+    <h2 class="section-title">Grammar Patterns</h2>
+    <p class="intro-text">Words are bricks; grammar is the glue. Each card shows one common pattern — the shape of the sentence, a simple rule, and real examples using words you already know. Tap an example to hear it. Learn these and you can start building your own sentences, not just recognizing words.</p>
+    <div id="grammarWrap" style="margin-top:16px;"></div>
+  </div>
+
   <!-- SENTENCES VIEW -->
   <div id="sentencesView" class="view">
     <h2 class="section-title">Sentence Practice</h2>
@@ -99,6 +108,7 @@
         <div class="sent-cn hanzi" id="sentCn"></div>
         <div class="sent-en" id="sentEn"></div>
         <div class="sent-py" id="sentPy"></div>
+        <div class="mode-note" id="sentNote"></div>
       </div>
       <div class="sent-options" id="sentOptions"></div>
       <button class="study-btn primary hidden" id="sentNext">Next &rarr;</button>
@@ -128,10 +138,40 @@
         <div class="listen-py" id="listenPy"></div>
         <div class="listen-en" id="listenEn"></div>
         <button class="study-btn" id="listenReplay">Play again</button>
+        <div class="mode-note" id="listenNote"></div>
         <div class="listen-reveal" id="listenReveal"></div>
       </div>
       <div class="sent-options" id="listenOptions"></div>
       <button class="study-btn primary hidden" id="listenNext">Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- TONE VIEW -->
+  <div id="toneView" class="view">
+    <h2 class="section-title">Tone Practice</h2>
+    <p class="intro-text">The word is spoken. Listen to the tones and pick the pattern. Tones: <b>1</b> flat &amp; high, <b>2</b> rising, <b>3</b> dips down then up, <b>4</b> falling sharp. Wrong tones are the top reason people misunderstand you.</p>
+    <div class="controls" style="margin-bottom:6px;">
+      <button class="filter-chip tone-filter-chip active" data-level="ALL">All</button>
+      <button class="filter-chip tone-filter-chip" data-level="HSK1">HSK 1</button>
+      <button class="filter-chip tone-filter-chip" data-level="HSK2">HSK 2</button>
+      <button class="filter-chip tone-filter-chip" data-level="HSK3">HSK 3</button>
+      <button class="filter-chip tone-filter-chip" data-level="HSK4">HSK 4</button>
+      <button class="filter-chip tone-filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip tone-filter-chip" data-level="L12">Boya L12</button>
+      <button class="filter-chip tone-filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip tone-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip tone-filter-chip" data-level="GCP6">GCP7 L6</button>
+    </div>
+    <p class="count-note" id="toneScore"></p>
+    <div class="sent-wrap">
+      <div class="listen-card">
+        <div class="listen-zi hanzi" id="toneZi">？</div>
+        <div class="listen-py" id="tonePy"></div>
+        <button class="study-btn" id="toneReplay">Play again</button>
+        <div class="mode-note" id="toneNote"></div>
+      </div>
+      <div class="sent-options" id="toneOptions"></div>
+      <button class="study-btn primary hidden" id="toneNext">Next &rarr;</button>
     </div>
   </div>
 
@@ -257,6 +297,7 @@
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <script src="js/data.js"></script>
 <script src="js/structures.js"></script>
+<script src="js/grammar.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
