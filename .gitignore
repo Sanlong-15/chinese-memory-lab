@@ -1,0 +1,15 @@
+# Scratch and build files — used while adding words, not needed by the website
+_batch*.json
+_source_*.txt
+_pending_*.txt
+_NOTES_*.md
+_radicals_source.json
+
+# Backups (kept locally, never pushed)
+*.backup-*
+js/*.backup-*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
