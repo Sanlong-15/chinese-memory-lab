@@ -91,7 +91,7 @@ function charStoryHTML(ch) {
   return `
     <div class="char-story-card">
       <div class="big-zi">
-        <span class="char-link" data-char="${ch}" title="Open character details">${ch}</span>
+        ${ch}
         <button class="speak-btn small" data-speak="${ch}" title="Play pronunciation" style="display:block;margin:6px auto 0;">🔊</button>
       </div>
       <div class="char-story-body">
@@ -205,7 +205,6 @@ function openDetail(id) {
   const w = DB.words.find((x) => x.id === id);
   if (!w) return;
   const uniqueChars = [...new Set(w.chars)];
-  const hasStory = uniqueChars.some((ch) => DB.charInfo[ch]);
   const examples =
     w.examples && w.examples.length
       ? w.examples
@@ -223,183 +222,36 @@ function openDetail(id) {
     <div id="wordImageWrap" class="word-image-wrap"><p class="image-loading">Looking for a picture&hellip;</p></div>
     <div class="section-label">${examples.length > 1 ? "Examples" : "Example"}</div>
     ${examples.map(exampleBoxHTML).join("")}
-    <div class="section-label">Characters — tap to explore</div>
-    <div class="char-row">${uniqueChars.map((ch) => `<button class="char-chip" data-char="${ch}">${ch}</button>`).join("")}</div>
-    ${uniqueChars.length > 1 ? `<div class="parts-line" style="margin:2px 0 8px;"><strong>Word breakdown:</strong> ${w.breakdown}</div>` : ""}
-    ${hasStory ? `<div class="section-label">How to remember it</div>${uniqueChars.map(charStoryHTML).join("")}` : ""}
-    ${renderRelatedWords(w)}
+    <div class="section-label">How to remember it</div>
+    ${uniqueChars.length > 1 ? `<div class="parts-line" style="margin-bottom:8px;"><strong>Word breakdown:</strong> ${w.breakdown}</div>` : ""}
+    ${uniqueChars.map(charStoryHTML).join("")}
   `;
   document.getElementById("detailContent").innerHTML = html;
   document.getElementById("overlay").classList.add("show");
   loadWordImage(w);
-  wireDetailLinks();
-}
 
-function scrollToInPatterns(selector) {
-  closeDetail();
-  switchView("patternsView");
-  setTimeout(() => {
-    const t = document.querySelector(selector);
-    if (t) {
-      t.scrollIntoView({ behavior: "smooth", block: "center" });
-      t.classList.remove("highlight-flash");
-      void t.offsetWidth;
-      t.classList.add("highlight-flash");
-    }
-  }, 120);
-}
-
-// Wire all clickable links inside the detail overlay (words + characters).
-function wireDetailLinks() {
   document.querySelectorAll("#detailContent [data-speak]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       speak(btn.dataset.speak);
     });
   });
-  document.querySelectorAll("#detailContent [data-char]").forEach((el) => {
-    el.addEventListener("click", () => openCharDetail(el.dataset.char));
-  });
-  document.querySelectorAll("#detailContent [data-word-id]").forEach((el) => {
-    el.addEventListener("click", () =>
-      openDetail(parseInt(el.dataset.wordId, 10)),
-    );
-  });
-  document.querySelectorAll("#detailContent .family-chip").forEach((chip) => {
-    chip.addEventListener("click", () =>
-      scrollToInPatterns(`[data-group-title="${chip.dataset.family}"]`),
-    );
-  });
-  const radBtn = document.querySelector("#detailContent [data-goto-rad]");
-  if (radBtn)
-    radBtn.addEventListener("click", () =>
-      scrollToInPatterns(`[data-radical="${radBtn.dataset.gotoRad}"]`),
-    );
-  const stBtn = document.querySelector("#detailContent [data-goto-struct]");
-  if (stBtn)
-    stBtn.addEventListener("click", () => {
+
+  document.querySelectorAll(".family-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
       closeDetail();
-      switchView("structuresView");
+      switchView("patternsView");
+      setTimeout(() => {
+        const target = document.querySelector(
+          `[data-group-title="${chip.dataset.family}"]`,
+        );
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "center" });
+          target.classList.add("highlight-flash");
+        }
+      }, 100);
     });
-}
-
-// --- Character index (words / radical / structure per single character) ---
-let charWords = new Map();
-let charPinyin = new Map();
-let charRadical = new Map();
-let charStruct = new Map();
-
-function buildCharIndex() {
-  charWords = new Map();
-  charPinyin = new Map();
-  charRadical = new Map();
-  charStruct = new Map();
-  for (const w of DB.words) {
-    const chars = Array.from(w.chinese);
-    if (chars.length === 1 && !charPinyin.has(w.chinese))
-      charPinyin.set(w.chinese, w.pinyin);
-    for (const ch of new Set(chars)) {
-      if (!/[一-鿿]/.test(ch)) continue;
-      if (!charWords.has(ch)) charWords.set(ch, []);
-      charWords.get(ch).push(w.id);
-    }
-  }
-  for (const g of DB.radicalGroups || [])
-    for (const m of g.members)
-      if (!charRadical.has(m))
-        charRadical.set(m, {
-          glyph: g.radical,
-          pinyin: g.pinyin,
-          meaning: g.meaning,
-        });
-  if (typeof STRUCTURES !== "undefined")
-    for (const s of STRUCTURES)
-      for (const m of s.members)
-        if (!charStruct.has(m))
-          charStruct.set(m, { name: s.name, en: s.en, svg: s.svg });
-}
-
-function wordChipsHTML(ids, selfId) {
-  const words = ids
-    .map((id) => DB.words.find((x) => x.id === id))
-    .filter((x) => x && x.id !== selfId);
-  const seen = new Set();
-  const uniq = [];
-  for (const x of words) {
-    if (seen.has(x.chinese)) continue;
-    seen.add(x.chinese);
-    uniq.push(x);
-  }
-  return uniq
-    .slice(0, 40)
-    .map(
-      (x) =>
-        `<button class="rel-word" data-word-id="${x.id}"><span class="rel-zi">${x.chinese}</span><span class="rel-py">${x.pinyin}</span></button>`,
-    )
-    .join("");
-}
-
-function renderRelatedWords(w) {
-  const ids = new Set();
-  for (const ch of new Set(Array.from(w.chinese)))
-    for (const id of charWords.get(ch) || []) if (id !== w.id) ids.add(id);
-  if (!ids.size) return "";
-  const chips = wordChipsHTML([...ids], w.id);
-  if (!chips) return "";
-  return `<div class="section-label">Related words (share a character)</div><div class="rel-words">${chips}</div>`;
-}
-
-function openCharDetail(ch) {
-  const info = DB.charInfo[ch];
-  const py = charPinyin.get(ch);
-  const rad = charRadical.get(ch);
-  const st = charStruct.get(ch);
-  const ids = charWords.get(ch) || [];
-  const families = DB.charToFamily[ch] || [];
-  const famHTML = families
-    .map(
-      (f) =>
-        `<span class="family-chip" data-family="${f}">Part of the ${f
-          .replace("The ", "")
-          .replace(" sound family", "")} family &rarr;</span>`,
-    )
-    .join(" ");
-  const html = `
-    <div class="detail-head">
-      <div class="zi-row"><div class="zi">${ch}</div>
-        <button class="speak-btn" data-speak="${ch}" title="Play pronunciation">🔊</button>
-      </div>
-      ${py ? `<div class="py">${py}</div>` : `<div class="py" style="font-size:12.5px;color:var(--ink-soft);">pinyin changes with the word</div>`}
-    </div>
-    ${
-      info
-        ? `<div class="section-label">How to remember it</div>
-      <div class="char-story-body" style="border:1px solid var(--line);border-radius:12px;padding:12px 14px;">
-        <span class="type-badge ${typeClass[info.type]}">${typeLabel[info.type]}</span>
-        ${info.parts && info.parts !== "-" ? `<div class="parts-line"><strong>Parts:</strong> ${info.parts}</div>` : ""}
-        <div class="story-line">${info.story}</div>
-        ${famHTML}
-      </div>`
-        : ""
-    }
-    ${
-      rad
-        ? `<div class="section-label">Meaning radical</div>
-      <div class="char-fact"><span class="cf-glyph">${rad.glyph}</span><div><div class="cf-main">${rad.pinyin} — ${rad.meaning}</div><button class="cf-link" data-goto-rad="${rad.glyph}">See this radical family &rarr;</button></div></div>`
-        : ""
-    }
-    ${
-      st
-        ? `<div class="section-label">Shape</div>
-      <div class="char-fact"><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true">${st.svg}</svg><div><div class="cf-main">${st.name} · ${st.en}</div><button class="cf-link" data-goto-struct="1">See character structures &rarr;</button></div></div>`
-        : ""
-    }
-    <div class="section-label">Words using ${ch} (${new Set(ids.map((id) => (DB.words.find((x) => x.id === id) || {}).chinese)).size})</div>
-    <div class="rel-words">${wordChipsHTML(ids, null) || '<span style="font-size:12.5px;color:var(--ink-soft);">No other words yet.</span>'}</div>
-  `;
-  document.getElementById("detailContent").innerHTML = html;
-  document.getElementById("overlay").classList.add("show");
-  wireDetailLinks();
+  });
 }
 
 function closeDetail() {
@@ -503,7 +355,7 @@ function renderRadicals(tierFilter) {
     .map((g) => {
       const showFull = g.full && g.full !== g.radical;
       return `
-    <div class="radical-group" data-radical="${g.radical}">
+    <div class="radical-group">
       <div class="rad-head">
         <div class="rad-glyph">${g.radical}</div>
         <div class="rad-id">
@@ -942,208 +794,11 @@ function rateCurrent(rating) {
   if (studyMode !== "review" || reviewQueue.length === 0) return;
   const w = reviewQueue.shift();
   schedule(w.id, rating);
-  recordStudyDay();
   if (rating === "again") {
     const pos = Math.min(4, reviewQueue.length);
     reviewQueue.splice(pos, 0, w); // repeat later this session
   }
   renderReviewCard();
-  renderDashboard();
-}
-
-// ---- Daily dashboard (streak, goal, stats) ----
-const DAILY_KEY = "cml_daily_v1";
-function dayStr(ts) {
-  const d = new Date(ts);
-  return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-}
-function loadDaily() {
-  try {
-    return JSON.parse(localStorage.getItem(DAILY_KEY)) || {};
-  } catch (e) {
-    return {};
-  }
-}
-function saveDaily(d) {
-  try {
-    localStorage.setItem(DAILY_KEY, JSON.stringify(d));
-  } catch (e) {
-    /* private mode */
-  }
-}
-function recordStudyDay() {
-  const d = loadDaily();
-  const today = dayStr(Date.now());
-  if (d.lastDay === today) {
-    d.todayCount = (d.todayCount || 0) + 1;
-  } else {
-    const y = dayStr(Date.now() - DAY);
-    d.streak = d.lastDay === y ? (d.streak || 0) + 1 : 1;
-    d.lastDay = today;
-    d.todayCount = 1;
-  }
-  if (!d.goal) d.goal = 20;
-  saveDaily(d);
-}
-function renderDashboard() {
-  const streakEl = document.getElementById("dashStreak");
-  if (!streakEl) return;
-  const d = loadDaily();
-  const today = dayStr(Date.now());
-  const y = dayStr(Date.now() - DAY);
-  const goal = d.goal || 20;
-  const liveStreak =
-    d.lastDay === today || d.lastDay === y ? d.streak || 0 : 0;
-  const todayCount = d.lastDay === today ? d.todayCount || 0 : 0;
-  const now = Date.now();
-  let learned = 0,
-    due = 0;
-  for (const w of DB.words) {
-    const st = getState(w.id);
-    if (st.reps > 0) learned++;
-    if (st.state !== "new" && st.due <= now) due++;
-  }
-  streakEl.textContent = liveStreak;
-  document.getElementById("dashToday").textContent = todayCount + " / " + goal;
-  document.getElementById("dashLearned").textContent =
-    learned + " / " + DB.words.length;
-  document.getElementById("dashDue").textContent = due;
-  const pct = Math.min(100, Math.round((todayCount / goal) * 100));
-  document.getElementById("dashBar").style.width = pct + "%";
-  const goalInput = document.getElementById("dashGoal");
-  if (goalInput && document.activeElement !== goalInput) goalInput.value = goal;
-}
-function initDashboard() {
-  const goalInput = document.getElementById("dashGoal");
-  if (goalInput)
-    goalInput.addEventListener("change", () => {
-      let v = parseInt(goalInput.value, 10);
-      if (isNaN(v) || v < 5) v = 5;
-      if (v > 200) v = 200;
-      const d = loadDaily();
-      d.goal = v;
-      saveDaily(d);
-      renderDashboard();
-    });
-  renderDashboard();
-}
-
-// --- Listening practice ---
-let listenLevel = "ALL";
-let listenPool = [];
-let listenIndex = 0;
-let listenCorrect = 0;
-let listenTotal = 0;
-let listenAnswered = false;
-
-function buildListenPool() {
-  const words =
-    listenLevel === "ALL"
-      ? DB.words
-      : DB.words.filter((w) => w.level === listenLevel);
-  listenPool = words.slice();
-  shuffleArray(listenPool);
-  listenIndex = 0;
-  listenCorrect = 0;
-  listenTotal = 0;
-  renderListen();
-}
-
-function updateListenScore() {
-  const el = document.getElementById("listenScore");
-  if (el)
-    el.textContent =
-      "Correct " + listenCorrect + " / " + listenTotal;
-}
-
-function renderListen() {
-  const revealEl = document.getElementById("listenReveal");
-  const optWrap = document.getElementById("listenOptions");
-  const nextBtn = document.getElementById("listenNext");
-  if (!optWrap) return;
-  nextBtn.classList.add("hidden");
-  revealEl.classList.remove("show");
-  optWrap.innerHTML = "";
-  if (!listenPool.length) {
-    revealEl.classList.add("show");
-    document.getElementById("listenZi").textContent = "—";
-    document.getElementById("listenPy").textContent = "";
-    document.getElementById("listenEn").textContent =
-      "No words for this level.";
-    updateListenScore();
-    return;
-  }
-  const w = listenPool[listenIndex];
-  document.getElementById("listenZi").textContent = "？";
-  document.getElementById("listenPy").textContent = "";
-  document.getElementById("listenEn").textContent = "";
-  listenAnswered = false;
-  // english options
-  const others = listenPool.filter((x) => x.english !== w.english);
-  shuffleArray(others);
-  const opts = [w.english];
-  for (const o of others) {
-    if (opts.length >= 4) break;
-    if (!opts.includes(o.english)) opts.push(o.english);
-  }
-  shuffleArray(opts);
-  for (const o of opts) {
-    const b = document.createElement("button");
-    b.className = "listen-opt";
-    b.textContent = o;
-    b.addEventListener("click", () => chooseListen(b, o, w));
-    optWrap.appendChild(b);
-  }
-  updateListenScore();
-  speak(w.chinese);
-}
-
-function chooseListen(btn, choice, w) {
-  if (listenAnswered) return;
-  listenAnswered = true;
-  listenTotal++;
-  if (choice === w.english) {
-    listenCorrect++;
-    btn.classList.add("correct");
-  } else {
-    btn.classList.add("wrong");
-    document.querySelectorAll(".listen-opt").forEach((bb) => {
-      if (bb.textContent === w.english) bb.classList.add("correct");
-    });
-  }
-  const revealEl = document.getElementById("listenReveal");
-  document.getElementById("listenZi").textContent = w.chinese;
-  document.getElementById("listenPy").textContent = w.pinyin;
-  document.getElementById("listenEn").textContent = w.english;
-  revealEl.classList.add("show");
-  document.getElementById("listenNext").classList.remove("hidden");
-  updateListenScore();
-}
-
-function initListen() {
-  document.querySelectorAll(".listen-filter-chip").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".listen-filter-chip")
-        .forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      listenLevel = btn.dataset.level;
-      buildListenPool();
-    });
-  });
-  const replay = document.getElementById("listenReplay");
-  if (replay)
-    replay.addEventListener("click", () => {
-      if (listenPool.length) speak(listenPool[listenIndex].chinese);
-    });
-  const next = document.getElementById("listenNext");
-  if (next)
-    next.addEventListener("click", () => {
-      if (!listenPool.length) return;
-      listenIndex = (listenIndex + 1) % listenPool.length;
-      renderListen();
-    });
-  buildListenPool();
 }
 
 // ---- Mode switching ----
@@ -1376,13 +1031,10 @@ document.getElementById("wrShuffleBtn").addEventListener("click", () => {
 });
 
 // init
-buildCharIndex();
 renderGrid();
 renderPatterns();
 initRadicalFilter();
 renderStructures();
 initSentences();
-initListen();
-initDashboard();
 setStudyMode("review");
 renderWritingWord();

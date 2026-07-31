@@ -22,6 +22,8 @@
   <button class="tab-btn active" data-view="wordsView">Word List</button>
   <button class="tab-btn" data-view="patternsView">Pattern Families</button>
   <button class="tab-btn" data-view="structuresView">Structures</button>
+  <button class="tab-btn" data-view="sentencesView">Sentences</button>
+  <button class="tab-btn" data-view="listenView">Listen</button>
   <button class="tab-btn" data-view="studyView">Study Mode</button>
   <button class="tab-btn" data-view="writingView">Writing</button>
 </nav>
@@ -75,10 +77,79 @@
     <div id="structuresWrap" style="margin-top:16px;"></div>
   </div>
 
+  <!-- SENTENCES VIEW -->
+  <div id="sentencesView" class="view">
+    <h2 class="section-title">Sentence Practice</h2>
+    <p class="intro-text">A word is hidden in a real sentence. Read the English meaning, then choose the missing word. This trains words the way you actually use them — inside sentences, not alone. After you answer, the blank fills in and you hear the whole sentence.</p>
+    <div class="controls" style="margin-bottom:6px;">
+      <button class="filter-chip sent-filter-chip active" data-level="ALL">All</button>
+      <button class="filter-chip sent-filter-chip" data-level="HSK1">HSK 1</button>
+      <button class="filter-chip sent-filter-chip" data-level="HSK2">HSK 2</button>
+      <button class="filter-chip sent-filter-chip" data-level="HSK3">HSK 3</button>
+      <button class="filter-chip sent-filter-chip" data-level="HSK4">HSK 4</button>
+      <button class="filter-chip sent-filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip sent-filter-chip" data-level="L12">Boya L12</button>
+      <button class="filter-chip sent-filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip sent-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip sent-filter-chip" data-level="GCP6">GCP7 L6</button>
+    </div>
+    <p class="count-note" id="sentScore"></p>
+    <div class="sent-wrap">
+      <div class="sent-card">
+        <div class="sent-cn hanzi" id="sentCn"></div>
+        <div class="sent-en" id="sentEn"></div>
+        <div class="sent-py" id="sentPy"></div>
+      </div>
+      <div class="sent-options" id="sentOptions"></div>
+      <button class="study-btn primary hidden" id="sentNext">Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- LISTEN VIEW -->
+  <div id="listenView" class="view">
+    <h2 class="section-title">Listening Practice</h2>
+    <p class="intro-text">The word is spoken, not shown. Listen, then choose the meaning. This trains your ears — your weakest skill for real conversation. Tap "Play again" if you need to hear it once more.</p>
+    <div class="controls" style="margin-bottom:6px;">
+      <button class="filter-chip listen-filter-chip active" data-level="ALL">All</button>
+      <button class="filter-chip listen-filter-chip" data-level="HSK1">HSK 1</button>
+      <button class="filter-chip listen-filter-chip" data-level="HSK2">HSK 2</button>
+      <button class="filter-chip listen-filter-chip" data-level="HSK3">HSK 3</button>
+      <button class="filter-chip listen-filter-chip" data-level="HSK4">HSK 4</button>
+      <button class="filter-chip listen-filter-chip" data-level="L11">Boya L11</button>
+      <button class="filter-chip listen-filter-chip" data-level="L12">Boya L12</button>
+      <button class="filter-chip listen-filter-chip" data-level="L13">Boya L13</button>
+      <button class="filter-chip listen-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip listen-filter-chip" data-level="GCP6">GCP7 L6</button>
+    </div>
+    <p class="count-note" id="listenScore"></p>
+    <div class="sent-wrap">
+      <div class="listen-card">
+        <div class="listen-zi hanzi" id="listenZi">？</div>
+        <div class="listen-py" id="listenPy"></div>
+        <div class="listen-en" id="listenEn"></div>
+        <button class="study-btn" id="listenReplay">Play again</button>
+        <div class="listen-reveal" id="listenReveal"></div>
+      </div>
+      <div class="sent-options" id="listenOptions"></div>
+      <button class="study-btn primary hidden" id="listenNext">Next &rarr;</button>
+    </div>
+  </div>
+
   <!-- STUDY VIEW -->
   <div id="studyView" class="view">
     <h2 class="section-title">Study Mode</h2>
     <p class="intro-text">Review mode uses spaced repetition: rate each card and it comes back at the right time — hard words often, easy words rarely. Try to recall the pinyin and meaning BEFORE you flip. Your progress is saved in this browser.</p>
+
+    <div class="dash">
+      <div class="dash-cards">
+        <div class="dash-metric"><div class="dash-num" id="dashStreak">0</div><div class="dash-lbl">day streak</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashToday">0 / 20</div><div class="dash-lbl">today's goal</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashLearned">0 / 0</div><div class="dash-lbl">words learned</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashDue">0</div><div class="dash-lbl">due now</div></div>
+      </div>
+      <div class="dash-bar"><div class="dash-bar-fill" id="dashBar"></div></div>
+      <div class="dash-goalrow">Daily goal: <input id="dashGoal" type="number" min="5" max="200" step="5" value="20"> cards</div>
+    </div>
 
     <div class="mode-toggle">
       <button id="mode-review" class="mode-btn active">Review (due)</button>
