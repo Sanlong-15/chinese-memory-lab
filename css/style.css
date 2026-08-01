@@ -466,6 +466,16 @@
   .rate-btn:hover{ transform:translateY(-1px); box-shadow:0 3px 8px rgba(0,0,0,.08); }
   .rate-btn:active{ transform:translateY(0); }
 
+  /* Today / daily session */
+  #todayStart, #todayDone{ text-align:center; padding:8px 0; }
+  #todayCard{ text-align:center; }
+  #todayProgress{ text-align:center; }
+  .session-task{ text-align:center; }
+  .tone-zi{ font-family:'Noto Serif SC',serif; font-size:48px; font-weight:900; line-height:1.1; }
+  #todayCard .sent-cn{ font-size:24px; margin:8px 0 2px; }
+  #todayCard .sent-en{ color:var(--ink-soft); font-size:14px; margin:0 0 12px; }
+  #todayCard .py{ font-size:16px; color:var(--seal); font-weight:600; margin:2px 0 6px; }
+
   .struct-card{
     display:flex; gap:16px; align-items:flex-start;
     background:var(--card); border:1px solid var(--line); border-radius:14px;

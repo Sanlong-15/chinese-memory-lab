@@ -64,6 +64,49 @@ describe("fsrsUpdate — scheduler", () => {
   });
 });
 
+describe("pickTaskFromState — daily task selection", () => {
+  const ALL = ["recognize", "recall", "listen", "tone", "sentence"];
+
+  it("new words always get recognition (see the story first)", () => {
+    expect(Logic.pickTaskFromState({ state: "new" }, ALL)).toBe("recognize");
+    expect(Logic.pickTaskFromState({ reps: 0 }, ALL)).toBe("recognize");
+    expect(Logic.pickTaskFromState(null, ALL)).toBe("recognize");
+  });
+
+  it("mature words never fall back to plain recognition", () => {
+    for (let i = 0; i < 40; i++) {
+      const t = Logic.pickTaskFromState({ state: "review", reps: 8 }, ALL);
+      expect(t).not.toBe("recognize");
+      expect(ALL).toContain(t);
+    }
+  });
+
+  it("only ever returns an eligible task", () => {
+    const elig = ["recognize", "recall"];
+    for (let i = 0; i < 40; i++) {
+      const t = Logic.pickTaskFromState({ state: "review", reps: 8 }, elig);
+      expect(elig).toContain(t);
+    }
+  });
+
+  it("falls back to an eligible task when weights don't intersect", () => {
+    // mature weights are recall/tone/sentence/listen; only recognize eligible
+    expect(
+      Logic.pickTaskFromState({ state: "review", reps: 9 }, ["recognize"])
+    ).toBe("recognize");
+  });
+
+  it("avoids repeating the exact same task as last time", () => {
+    for (let i = 0; i < 40; i++) {
+      const t = Logic.pickTaskFromState(
+        { state: "review", reps: 8, lastTask: "recall" },
+        ALL
+      );
+      expect(t).not.toBe("recall");
+    }
+  });
+});
+
 describe("toneSeq — pinyin tone parser", () => {
   it("reads the tone marks in order", () => {
     expect(Logic.toneSeq("nǐ hǎo")).toEqual([3, 3]);

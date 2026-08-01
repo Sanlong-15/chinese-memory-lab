@@ -261,6 +261,7 @@ document.querySelectorAll(".filter-chip").forEach((btn) => {
 // Deep links: reflect the open tab in the URL (#study, #words, ...) so it can
 // be bookmarked and shared, and restored on reload.
 const VIEW_HASH = {
+  todayView: "today",
   wordsView: "words",
   patternsView: "patterns",
   structuresView: "structures",

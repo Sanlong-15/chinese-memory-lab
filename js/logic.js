@@ -90,6 +90,50 @@
     return seq;
   }
 
+  // ---- Choose a study task for a word based on how well it's known ----
+  // Pure + testable. state = SRS card state, eligible = task types the word can
+  // support (recognize/recall/listen/tone/sentence), rng = () => 0..1.
+  // New words always get recognition (see the story first); as a word matures
+  // (more reps) the mix shifts toward production (recall), tones, and sentences.
+  // Avoids repeating the exact same task as last time when alternatives exist.
+  function pickTaskFromState(state, eligible, rng) {
+    rng = rng || Math.random;
+    eligible = eligible && eligible.length ? eligible : ["recognize"];
+    const isNew = !state || state.state === "new" || !state.reps;
+    if (isNew) return "recognize";
+    const elig = new Set(eligible);
+    const reps = state.reps || 0;
+    const pool = [];
+    const add = (t, n) => {
+      if (elig.has(t)) for (let i = 0; i < n; i++) pool.push(t);
+    };
+    if (reps < 2) {
+      add("recognize", 3);
+      add("listen", 1);
+    } else if (reps < 5) {
+      add("recognize", 1);
+      add("recall", 2);
+      add("listen", 1);
+      add("tone", 1);
+      add("sentence", 1);
+    } else {
+      add("recall", 3);
+      add("tone", 1);
+      add("sentence", 2);
+      add("listen", 1);
+    }
+    if (!pool.length) {
+      const arr = [...elig];
+      return arr[Math.floor(rng() * arr.length)];
+    }
+    let choices = pool;
+    if (state.lastTask) {
+      const alt = pool.filter((t) => t !== state.lastTask);
+      if (alt.length) choices = alt;
+    }
+    return choices[Math.floor(rng() * choices.length)];
+  }
+
   // ---- Dedupe a word list by its Chinese text (keeps first seen) ----
   function dedupeByChinese(list) {
     const seen = new Set();
@@ -116,6 +160,7 @@
     TONE4,
     toneSeq,
     dedupeByChinese,
+    pickTaskFromState,
   };
 
   if (typeof module !== "undefined" && module.exports) module.exports = Logic;

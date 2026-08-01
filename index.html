@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=22">
+<link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body>
 
@@ -22,6 +22,7 @@
 </header>
 
 <nav class="tabs">
+  <button class="tab-btn" data-view="todayView">Today</button>
   <button class="tab-btn active" data-view="wordsView">Word List</button>
   <button class="tab-btn" data-view="patternsView">Pattern Families</button>
   <button class="tab-btn" data-view="structuresView">Structures</button>
@@ -34,6 +35,28 @@
 </nav>
 
 <main>
+
+  <!-- TODAY VIEW (unified daily session) -->
+  <div id="todayView" class="view">
+    <div id="todayStart">
+      <h2 class="section-title">Today</h2>
+      <p class="intro-text" id="todaySummaryLine">Your daily review — recognition and recall, mixed and scheduled for you.</p>
+      <button id="todayStartBtn" class="study-btn primary">Start today's review</button>
+    </div>
+    <div id="todaySession" class="hidden">
+      <p class="progress-note" id="todayProgress"></p>
+      <div id="todayCard"></div>
+    </div>
+    <div id="todayDone" class="hidden">
+      <h2 class="section-title" id="todayDoneTitle">Done for today</h2>
+      <p class="intro-text" id="todayDoneLine"></p>
+      <p class="intro-text" id="todayDoneStats" style="font-weight:600;"></p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button id="todayMoreBtn" class="study-btn primary hidden">Keep going</button>
+        <button id="todayAgainBtn" class="study-btn">Back to Today</button>
+      </div>
+    </div>
+  </div>
 
   <!-- WORDS VIEW -->
   <div id="wordsView" class="view active">
@@ -360,15 +383,16 @@
 <footer>Built for Koko · Chinese &amp; English &amp; Khmer study aid · Khmer translations are best-effort, please verify with a native speaker</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-<script src="js/data.js?v=22"></script>
-<script src="js/structures.js?v=22"></script>
-<script src="js/grammar.js?v=22"></script>
-<script src="js/logic.js?v=22"></script>
-<script src="js/core.js?v=22"></script>
-<script src="js/detail.js?v=22"></script>
-<script src="js/reference.js?v=22"></script>
-<script src="js/study.js?v=22"></script>
-<script src="js/ui.js?v=22"></script>
-<script src="js/main.js?v=22"></script>
+<script src="js/data.js?v=26"></script>
+<script src="js/structures.js?v=26"></script>
+<script src="js/grammar.js?v=26"></script>
+<script src="js/logic.js?v=26"></script>
+<script src="js/core.js?v=26"></script>
+<script src="js/detail.js?v=26"></script>
+<script src="js/reference.js?v=26"></script>
+<script src="js/study.js?v=26"></script>
+<script src="js/ui.js?v=26"></script>
+<script src="js/session.js?v=26"></script>
+<script src="js/main.js?v=26"></script>
 </body>
 </html>
