@@ -9,6 +9,10 @@ _radicals_source.json
 *.backup-*
 js/*.backup-*
 
+# Node dev tools (tests + linter) — not needed by the website
+node_modules/
+coverage/
+
 # OS / editor junk
 .DS_Store
 Thumbs.db

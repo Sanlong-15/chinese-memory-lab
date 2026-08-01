@@ -54,28 +54,135 @@ function renderGrid() {
   });
 }
 
+// ---- Audio (text-to-speech) with smart voice selection ----
+const VOICE_KEY = "cml_voice"; // remembers the user's chosen voice
+let chosenVoiceURI = null;
+try {
+  chosenVoiceURI = localStorage.getItem(VOICE_KEY);
+} catch (e) {}
+
+// All installed Mandarin/Chinese voices.
+function chineseVoices() {
+  if (!("speechSynthesis" in window)) return [];
+  return window.speechSynthesis
+    .getVoices()
+    .filter((v) => v.lang && v.lang.toLowerCase().startsWith("zh"));
+}
+
+// Score a voice so we can pick the best-sounding one by default.
+// Higher = better. Mainland Mandarin + natural/neural voices win;
+// robotic eSpeak loses.
+function voiceScore(v) {
+  let s = 0;
+  const lang = (v.lang || "").toLowerCase();
+  if (lang.startsWith("zh-cn")) s += 100;
+  else if (lang.startsWith("zh-sg")) s += 60;
+  else if (lang.startsWith("zh-tw") || lang.startsWith("zh-hk")) s += 40;
+  else s += 20;
+  const n = (v.name || "").toLowerCase();
+  if (n.includes("natural") || n.includes("neural")) s += 45;
+  if (n.includes("google")) s += 30;
+  if (n.includes("siri")) s += 28;
+  if (n.includes("microsoft")) s += 22;
+  if (
+    /tingting|ting-ting|yaoyao|huihui|kangkang|xiaoxiao|xiaoyi|yunxi|mei-jia|meijia|sinji|yue/.test(
+      n
+    )
+  )
+    s += 18;
+  if (n.includes("espeak")) s -= 60; // notoriously robotic
+  if (v.localService === false) s += 5; // cloud voices usually clearer
+  return s;
+}
+
+// The voice we will actually use: the remembered one if still present,
+// otherwise the best-scoring Chinese voice.
+function currentVoice() {
+  const list = chineseVoices();
+  if (!list.length) return null;
+  if (chosenVoiceURI) {
+    const saved = list.find((v) => v.voiceURI === chosenVoiceURI);
+    if (saved) return saved;
+  }
+  return list.slice().sort((a, b) => voiceScore(b) - voiceScore(a))[0];
+}
+
 function speak(text) {
   if (!("speechSynthesis" in window)) {
-    alert("Your browser doesn't support speech. Try Chrome or Edge.");
+    updateVoiceUI();
+    return;
+  }
+  const voice = currentVoice();
+  if (!voice) {
+    // No Chinese voice on this device — an English voice would mangle the
+    // characters, so warn instead of playing wrong sounds.
+    updateVoiceUI();
     return;
   }
   window.speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "zh-CN";
-  utter.rate = 0.85;
-  // Try to pick a Chinese voice if one is installed
-  const voices = window.speechSynthesis.getVoices();
-  const zhVoice =
-    voices.find((v) => v.lang === "zh-CN") ||
-    voices.find((v) => v.lang && v.lang.startsWith("zh"));
-  if (zhVoice) utter.voice = zhVoice;
+  utter.voice = voice;
+  utter.lang = voice.lang || "zh-CN";
+  utter.rate = 0.8;
   window.speechSynthesis.speak(utter);
 }
-// Some browsers load voices asynchronously - warm them up
+
+// Turn a long system voice name into a short, clean label.
+// "Microsoft Huihui - Chinese (Simplified, PRC)" -> { name: "Huihui", region: "普通话 · zh-CN" }
+const VOICE_REGIONS = {
+  "zh-cn": "普通话",
+  "zh-sg": "新加坡",
+  "zh-tw": "台灣",
+  "zh-hk": "粵語",
+};
+function voiceLabel(v) {
+  let name = (v.name || "Voice")
+    .replace(/^(Microsoft|Google|Apple)\s+/i, "")
+    .split(" - ")[0]
+    .split(" (")[0]
+    .replace(/\s+Online$/i, "")
+    .trim();
+  const lang = (v.lang || "").toLowerCase();
+  const region = VOICE_REGIONS[lang] || v.lang || "";
+  return { name, region: region ? region + " · " + v.lang : v.lang };
+}
+
+// Fill the custom voice picker and show/hide the "no Chinese voice" warning.
+function updateVoiceUI() {
+  const label = document.getElementById("voiceCurrentLabel");
+  const menu = document.getElementById("voiceMenu");
+  const warn = document.getElementById("voiceWarn");
+  const picker = document.getElementById("voicePicker");
+  if (!label || !menu || !warn || !picker) return;
+  const list = chineseVoices();
+  if (!list.length) {
+    picker.style.display = "none";
+    warn.textContent =
+      "No Chinese voice on this device. Add one in your settings (Language / Text-to-speech) to hear audio.";
+    warn.style.display = "";
+    return;
+  }
+  warn.style.display = "none";
+  picker.style.display = "";
+  const active = currentVoice();
+  const sorted = list.slice().sort((a, b) => voiceScore(b) - voiceScore(a));
+  const cur = voiceLabel(active);
+  label.innerHTML = `<span class="vc-name">${cur.name}</span><span class="vc-region">${cur.region}</span>`;
+  menu.innerHTML = sorted
+    .map((v) => {
+      const l = voiceLabel(v);
+      const sel = active && v.voiceURI === active.voiceURI;
+      return `<li class="voice-opt" role="option" data-uri="${v.voiceURI}" aria-selected="${sel}"><span class="vo-name">${l.name}</span><span class="vo-region">${l.region}</span></li>`;
+    })
+    .join("");
+}
+
 if ("speechSynthesis" in window) {
-  window.speechSynthesis.getVoices();
-  window.speechSynthesis.onvoiceschanged = () =>
+  window.speechSynthesis.getVoices(); // warm up
+  window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
+    updateVoiceUI();
+  };
 }
 
 function charStoryHTML(ch) {
@@ -230,7 +337,7 @@ function openDetail(id) {
     ${renderRelatedWords(w)}
   `;
   document.getElementById("detailContent").innerHTML = html;
-  document.getElementById("overlay").classList.add("show");
+  openOverlay();
   loadWordImage(w);
   wireDetailLinks();
 }
@@ -398,12 +505,43 @@ function openCharDetail(ch) {
     <div class="rel-words">${wordChipsHTML(ids, null) || '<span style="font-size:12.5px;color:var(--ink-soft);">No other words yet.</span>'}</div>
   `;
   document.getElementById("detailContent").innerHTML = html;
-  document.getElementById("overlay").classList.add("show");
+  openOverlay();
   wireDetailLinks();
 }
 
+// ---- Overlay accessibility: focus, Escape, focus trap ----
+let lastOverlayFocus = null;
+function openOverlay() {
+  lastOverlayFocus = document.activeElement; // remember what to return focus to
+  const ov = document.getElementById("overlay");
+  ov.classList.add("show");
+  const card = ov.querySelector(".detail-card");
+  card.setAttribute("tabindex", "-1");
+  card.focus();
+}
+function overlayIsOpen() {
+  return document.getElementById("overlay").classList.contains("show");
+}
 function closeDetail() {
   document.getElementById("overlay").classList.remove("show");
+  if (lastOverlayFocus && lastOverlayFocus.focus) lastOverlayFocus.focus();
+}
+// keep keyboard focus inside a dialog while it is open
+function trapFocus(container, e) {
+  const items = container.querySelectorAll(
+    'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+  );
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  const active = document.activeElement;
+  if (e.shiftKey && active === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && active === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 document.getElementById("closeDetail").addEventListener("click", closeDetail);
 document.getElementById("overlay").addEventListener("click", (e) => {
@@ -433,10 +571,33 @@ function switchView(viewId) {
   document
     .querySelectorAll(".tab-btn")
     .forEach((b) => b.classList.remove("active"));
-  document.querySelector(`[data-view="${viewId}"]`).classList.add("active");
+  const activeTab = document.querySelector(`[data-view="${viewId}"]`);
+  if (activeTab) {
+    activeTab.classList.add("active");
+    // on mobile the tab row scrolls; keep the active tab visible
+    activeTab.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+  // sync the phone bottom bar
+  document.querySelectorAll(".bn-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.bn === viewId);
+  });
 }
 document.querySelectorAll(".tab-btn").forEach((btn) => {
   btn.addEventListener("click", () => switchView(btn.dataset.view));
+});
+
+// Phone bottom bar: Words / Study / Search
+document.querySelectorAll(".bn-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const target = btn.dataset.bn;
+    if (target === "search") {
+      switchView("wordsView");
+      const box = document.getElementById("searchBox");
+      if (box) box.focus();
+    } else {
+      switchView(target);
+    }
+  });
 });
 
 function renderPatterns() {
@@ -705,6 +866,35 @@ function initSentences() {
   buildSentPool();
 }
 
+// --- Theme (day / night) ---
+function applyTheme(t) {
+  if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+  else document.documentElement.removeAttribute("data-theme");
+  const btn = document.getElementById("themeToggle");
+  if (btn) btn.textContent = t === "dark" ? "Day mode" : "Night mode";
+}
+function initTheme() {
+  const KEY = "cml_theme";
+  let t = "light";
+  try {
+    t = localStorage.getItem(KEY) || "light";
+  } catch (e) {}
+  applyTheme(t);
+  const btn = document.getElementById("themeToggle");
+  if (btn)
+    btn.addEventListener("click", () => {
+      const cur =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+      const next = cur === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try {
+        localStorage.setItem(KEY, next);
+      } catch (e) {}
+    });
+}
+
 // --- Connect practice modes to spaced repetition ---
 // When a word is missed in Sentences / Listen / Tone, bring it back soon in Study Mode.
 function demoteToReview(id, noteElId) {
@@ -715,20 +905,9 @@ function demoteToReview(id, noteElId) {
 }
 
 // --- Tone practice ---
-const TONE1 = "āēīōūǖ";
-const TONE2 = "áéíóúǘ";
-const TONE3 = "ǎěǐǒǔǚ";
-const TONE4 = "àèìòùǜ";
+// tone parsing lives in js/logic.js (Logic.toneSeq), unit-tested
 function toneSeq(pinyin) {
-  const seq = [];
-  for (const ch of pinyin) {
-    const c = ch.toLowerCase();
-    if (TONE1.includes(c)) seq.push(1);
-    else if (TONE2.includes(c)) seq.push(2);
-    else if (TONE3.includes(c)) seq.push(3);
-    else if (TONE4.includes(c)) seq.push(4);
-  }
-  return seq;
+  return Logic.toneSeq(pinyin);
 }
 
 let toneLevel = "ALL";
@@ -960,6 +1139,7 @@ function initRadicalFilter() {
 // --- Study mode (with spaced repetition) ---
 let currentStudyLevel = "ALL";
 let studyMode = "review"; // "review" (SRS due queue) or "browse" (free flip)
+let studyDir = "recognize"; // "recognize" (中→meaning) or "recall" (meaning→中)
 
 // browse-mode state
 let studyList = (DB.words || []).slice();
@@ -996,53 +1176,32 @@ function saveSrs(data) {
 }
 let srs = loadSrs();
 
+// The FSRS scheduler math lives in js/logic.js (Logic.fsrsUpdate) so it can be
+// unit-tested. Here we only read/write the stored card states.
 function getState(id) {
-  return (
-    srs[id] || { state: "new", due: 0, interval: 0, ease: 2.3, reps: 0, lapses: 0 }
-  );
+  let st = srs[id];
+  if (!st)
+    return { state: "new", due: 0, S: 0, D: 0, reps: 0, lapses: 0, last: 0 };
+  if (st.S === undefined) {
+    // migrate old SM-2-lite state so existing progress is not lost
+    const iv = st.interval || 0;
+    st.S = iv > 0 ? Math.max(0.5, iv) : 0;
+    st.D = 5;
+    st.last = st.due && iv ? st.due - iv * DAY : 0;
+    if (st.state === undefined) st.state = st.reps > 0 ? "review" : "new";
+    srs[id] = st;
+  }
+  return st;
 }
 
 function schedule(id, rating) {
-  const now = Date.now();
-  const st = { ...getState(id) };
-  const fresh = st.state === "new" || st.state === "learning";
-  if (rating === "again") {
-    if (st.state === "review") st.lapses++;
-    st.ease = Math.max(1.3, st.ease - 0.2);
-    st.state = "learning";
-    st.interval = 0;
-    st.due = now;
-  } else if (rating === "hard") {
-    st.ease = Math.max(1.3, st.ease - 0.15);
-    st.interval = fresh ? 1 : Math.max(1, Math.round(st.interval * 1.2));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  } else if (rating === "good") {
-    st.interval = fresh ? 1 : Math.max(1, Math.round(st.interval * st.ease));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  } else if (rating === "easy") {
-    st.ease = st.ease + 0.15;
-    st.interval = fresh ? 4 : Math.max(4, Math.round(st.interval * st.ease * 1.3));
-    st.state = "review";
-    st.reps++;
-    st.due = now + st.interval * DAY;
-  }
-  srs[id] = st;
+  srs[id] = Logic.fsrsUpdate(getState(id), rating, Date.now());
   saveSrs(srs);
 }
 
+// dedupe lives in js/logic.js (Logic.dedupeByChinese), unit-tested
 function dedupeByChinese(list) {
-  const seen = new Set();
-  const out = [];
-  for (const w of list) {
-    if (seen.has(w.chinese)) continue;
-    seen.add(w.chinese);
-    out.push(w);
-  }
-  return out;
+  return Logic.dedupeByChinese(list);
 }
 function filteredWords() {
   const base =
@@ -1081,15 +1240,38 @@ function buildStudyList() {
   renderBrowseCard();
 }
 
+// Fill the flashcard for one word in the chosen direction.
+// recognize: front = characters, reveal = pinyin + meaning + Khmer.
+// recall:    front = meaning,    reveal = characters + pinyin + Khmer.
+function paintFlashcard(w, dir) {
+  const zi = document.getElementById("fc-zi");
+  const ans = document.getElementById("fc-answer");
+  const hint = document.querySelector("#flashcard .prompt-hint");
+  if (dir === "recall") {
+    zi.textContent = w.english;
+    zi.classList.add("recall-prompt");
+    ans.textContent = w.chinese;
+    document.getElementById("fc-py").textContent = w.pinyin;
+    document.getElementById("fc-en").textContent = "";
+    document.getElementById("fc-kh").textContent = w.khmer;
+    if (hint) hint.textContent = "Say the characters, then tap to check";
+  } else {
+    zi.textContent = w.chinese;
+    zi.classList.remove("recall-prompt");
+    ans.textContent = "";
+    document.getElementById("fc-py").textContent = w.pinyin;
+    document.getElementById("fc-en").textContent = w.english;
+    document.getElementById("fc-kh").textContent = w.khmer;
+    if (hint) hint.textContent = "Tap to reveal pinyin, meaning & memory story";
+  }
+}
+
 function renderBrowseCard() {
   const w = studyList[studyIndex];
   const card = document.getElementById("flashcard");
   card.classList.remove("flipped");
   if (!w) return;
-  document.getElementById("fc-zi").textContent = w.chinese;
-  document.getElementById("fc-py").textContent = w.pinyin;
-  document.getElementById("fc-en").textContent = w.english;
-  document.getElementById("fc-kh").textContent = w.khmer;
+  paintFlashcard(w, "recognize");
   document.getElementById("progressNote").textContent =
     studyIndex + 1 + " / " + studyList.length;
 }
@@ -1119,7 +1301,10 @@ function renderReviewCard() {
   updateSrsStats();
 
   if (reviewQueue.length === 0) {
-    document.getElementById("fc-zi").textContent = "完成";
+    const zi = document.getElementById("fc-zi");
+    zi.textContent = "完成";
+    zi.classList.remove("recall-prompt");
+    document.getElementById("fc-answer").textContent = "";
     document.getElementById("fc-py").textContent = "wánchéng le";
     document.getElementById("fc-en").textContent =
       "All caught up for this filter. Come back later, or switch level.";
@@ -1130,10 +1315,7 @@ function renderReviewCard() {
   }
   card.classList.remove("done");
   const w = reviewQueue[0];
-  document.getElementById("fc-zi").textContent = w.chinese;
-  document.getElementById("fc-py").textContent = w.pinyin;
-  document.getElementById("fc-en").textContent = w.english;
-  document.getElementById("fc-kh").textContent = w.khmer;
+  paintFlashcard(w, studyDir);
   document.getElementById("progressNote").textContent =
     "In this session: " + reviewQueue.length + " left";
 }
@@ -1365,6 +1547,9 @@ function setStudyMode(mode) {
   document
     .getElementById("browseControls")
     .classList.toggle("hidden", mode !== "browse");
+  document
+    .getElementById("dirToggle")
+    .classList.toggle("hidden", mode !== "review");
   const ratingRow = document.getElementById("ratingRow");
   if (mode === "review") {
     ratingRow.classList.remove("hidden");
@@ -1373,6 +1558,25 @@ function setStudyMode(mode) {
     ratingRow.classList.add("hidden");
     ratingRow.classList.remove("show");
     buildStudyList();
+  }
+}
+
+function setStudyDir(dir) {
+  studyDir = dir;
+  document
+    .getElementById("dir-recognize")
+    .classList.toggle("active", dir === "recognize");
+  document
+    .getElementById("dir-recall")
+    .classList.toggle("active", dir === "recall");
+  // re-paint the current card without losing the queue or its schedule
+  const card = document.getElementById("flashcard");
+  card.classList.remove("flipped");
+  document.getElementById("ratingRow").classList.remove("show");
+  if (studyMode === "review") {
+    if (reviewQueue.length) paintFlashcard(reviewQueue[0], studyDir);
+  } else if (studyList[studyIndex]) {
+    paintFlashcard(studyList[studyIndex], "recognize");
   }
 }
 
@@ -1395,6 +1599,90 @@ document.querySelectorAll(".study-filter-chip").forEach((btn) => {
 
 document.getElementById("mode-review").addEventListener("click", () => setStudyMode("review"));
 document.getElementById("mode-browse").addEventListener("click", () => setStudyMode("browse"));
+document.getElementById("dir-recognize").addEventListener("click", () => setStudyDir("recognize"));
+document.getElementById("dir-recall").addEventListener("click", () => setStudyDir("recall"));
+
+// custom audio voice picker
+function voiceMenuEl() {
+  return document.getElementById("voiceMenu");
+}
+function voiceMenuOpen() {
+  return !voiceMenuEl().hasAttribute("hidden");
+}
+function openVoiceMenu() {
+  voiceMenuEl().removeAttribute("hidden");
+  document.getElementById("voiceCurrent").setAttribute("aria-expanded", "true");
+  const cur = voiceMenuEl().querySelector('[aria-selected="true"]');
+  if (cur) cur.classList.add("active");
+}
+function closeVoiceMenu() {
+  voiceMenuEl().setAttribute("hidden", "");
+  document.getElementById("voiceCurrent").setAttribute("aria-expanded", "false");
+  voiceMenuEl()
+    .querySelectorAll(".active")
+    .forEach((o) => o.classList.remove("active"));
+}
+function selectVoice(uri) {
+  chosenVoiceURI = uri;
+  try {
+    localStorage.setItem(VOICE_KEY, uri);
+  } catch (err) {}
+  updateVoiceUI();
+  closeVoiceMenu();
+  document.getElementById("voiceCurrent").focus();
+}
+document.getElementById("voiceCurrent").addEventListener("click", () => {
+  if (voiceMenuOpen()) closeVoiceMenu();
+  else openVoiceMenu();
+});
+voiceMenuEl().addEventListener("click", (e) => {
+  const opt = e.target.closest(".voice-opt");
+  if (opt) selectVoice(opt.dataset.uri);
+});
+// keyboard nav inside the picker (stopPropagation so Study shortcuts don't fire)
+document.getElementById("voicePicker").addEventListener("keydown", (e) => {
+  const opts = Array.from(voiceMenuEl().querySelectorAll(".voice-opt"));
+  if (["ArrowDown", "ArrowUp", "Enter", " ", "Escape"].includes(e.key))
+    e.stopPropagation();
+  if (e.key === "Escape") {
+    if (voiceMenuOpen()) {
+      e.preventDefault();
+      closeVoiceMenu();
+      document.getElementById("voiceCurrent").focus();
+    }
+    return;
+  }
+  if ((e.key === "Enter" || e.key === " ") && !voiceMenuOpen()) {
+    e.preventDefault();
+    openVoiceMenu();
+    return;
+  }
+  if (!voiceMenuOpen()) return;
+  let i = opts.findIndex((o) => o.classList.contains("active"));
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    i = (i + 1) % opts.length;
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    i = (i - 1 + opts.length) % opts.length;
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    if (opts[i]) selectVoice(opts[i].dataset.uri);
+    return;
+  } else {
+    return;
+  }
+  opts.forEach((o) => o.classList.remove("active"));
+  if (opts[i]) {
+    opts[i].classList.add("active");
+    opts[i].scrollIntoView({ block: "nearest" });
+  }
+});
+// click outside closes the menu
+document.addEventListener("click", (e) => {
+  if (voiceMenuOpen() && !e.target.closest("#voicePicker")) closeVoiceMenu();
+});
+document.getElementById("voiceTest").addEventListener("click", () => speak("你好"));
 
 document.getElementById("flashcard").addEventListener("click", () => {
   const card = document.getElementById("flashcard");
@@ -1579,7 +1867,86 @@ document.getElementById("wrShuffleBtn").addEventListener("click", () => {
   renderWritingWord();
 });
 
+// ---- Welcome / help dialog (first run, reopen with ?) ----
+const WELCOME_KEY = "cml_seen_welcome_v1";
+let lastWelcomeFocus = null;
+function showWelcome() {
+  lastWelcomeFocus = document.activeElement;
+  const w = document.getElementById("welcome");
+  w.classList.add("show");
+  const start = document.getElementById("welcomeStart");
+  if (start) start.focus();
+}
+function hideWelcome() {
+  document.getElementById("welcome").classList.remove("show");
+  try {
+    localStorage.setItem(WELCOME_KEY, "1");
+  } catch (e) {}
+  if (lastWelcomeFocus && lastWelcomeFocus.focus) lastWelcomeFocus.focus();
+}
+function welcomeIsOpen() {
+  return document.getElementById("welcome").classList.contains("show");
+}
+function initWelcome() {
+  let seen = false;
+  try {
+    seen = localStorage.getItem(WELCOME_KEY) === "1";
+  } catch (e) {}
+  if (!seen) showWelcome();
+  document.getElementById("welcomeStart").addEventListener("click", () => {
+    hideWelcome();
+    switchView("studyView");
+    setStudyMode("review");
+  });
+  document
+    .getElementById("welcomeClose")
+    .addEventListener("click", hideWelcome);
+  document.getElementById("welcomeX").addEventListener("click", hideWelcome);
+  document.getElementById("helpBtn").addEventListener("click", showWelcome);
+}
+
+// ---- Keyboard shortcuts + dialog Escape/focus-trap ----
+document.addEventListener("keydown", (e) => {
+  // 1) welcome dialog has priority
+  if (welcomeIsOpen()) {
+    if (e.key === "Escape") hideWelcome();
+    else if (e.key === "Tab")
+      trapFocus(document.querySelector("#welcome .welcome-card"), e);
+    return;
+  }
+  // 2) detail overlay
+  if (overlayIsOpen()) {
+    if (e.key === "Escape") closeDetail();
+    else if (e.key === "Tab")
+      trapFocus(document.querySelector("#overlay .detail-card"), e);
+    return;
+  }
+  // 3) Study Mode shortcuts (only when not typing in a field)
+  const tag = (e.target.tagName || "").toLowerCase();
+  if (tag === "input" || tag === "textarea" || tag === "select") return;
+  if (!document.getElementById("studyView").classList.contains("active")) return;
+  const card = document.getElementById("flashcard");
+  if (e.key === " " || e.key === "Enter") {
+    e.preventDefault();
+    card.click(); // flip (reuses existing flip logic)
+  } else if (["1", "2", "3", "4"].includes(e.key)) {
+    if (studyMode === "review" && card.classList.contains("flipped")) {
+      const map = { 1: "again", 2: "hard", 3: "good", 4: "easy" };
+      rateCurrent(map[e.key]);
+    }
+  } else if (e.key === "ArrowRight" && studyMode === "browse") {
+    const b = document.getElementById("nextBtn");
+    if (b) b.click();
+  } else if (e.key === "ArrowLeft" && studyMode === "browse") {
+    const b = document.getElementById("prevBtn");
+    if (b) b.click();
+  }
+});
+
 // init
+initTheme();
+initWelcome();
+updateVoiceUI();
 buildCharIndex();
 renderGrid();
 renderPatterns();
