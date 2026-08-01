@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.wikimedia.org; connect-src 'self' https://cdn.jsdelivr.net https://*.wikimedia.org; object-src 'none'; base-uri 'self'">
 <title>汉字记忆 · Character Memory Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body>
 
@@ -38,7 +39,7 @@
   <div id="wordsView" class="view active">
     <div class="controls">
       <div class="search-wrap">
-        <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, or English...">
+        <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, or English..." aria-label="Search words by Chinese, pinyin, English, or Khmer">
       </div>
       <button class="filter-chip active" data-level="ALL">All</button>
       <button class="filter-chip" data-level="HSK1">HSK 1</button>
@@ -51,7 +52,7 @@
       <button class="filter-chip" data-level="L14">Boya L14</button>
       <button class="filter-chip" data-level="GCP6">GCP7 L6</button>
     </div>
-    <p class="count-note" id="countNote"></p>
+    <p class="count-note" id="countNote" aria-live="polite"></p>
     <div class="grid" id="wordGrid"></div>
   </div>
 
@@ -232,8 +233,13 @@
     </div>
 
     <div class="srs-bar">
-      <div id="srsStats" class="srs-stats"></div>
-      <button id="srsReset" class="srs-reset" title="Reset progress for the current level">Reset progress</button>
+      <div id="srsStats" class="srs-stats" aria-live="polite"></div>
+      <div class="data-actions">
+        <button id="exportBtn" class="srs-reset" title="Download a backup file of all your progress">Backup</button>
+        <button id="importBtn" class="srs-reset" title="Restore your progress from a backup file">Restore</button>
+        <button id="srsReset" class="srs-reset" title="Reset progress for the current level">Reset progress</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
 
     <div class="study-wrap">
@@ -354,10 +360,15 @@
 <footer>Built for Koko · Chinese &amp; English &amp; Khmer study aid · Khmer translations are best-effort, please verify with a native speaker</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-<script src="js/data.js?v=1"></script>
-<script src="js/structures.js?v=1"></script>
-<script src="js/grammar.js?v=1"></script>
-<script src="js/logic.js?v=1"></script>
-<script src="js/app.js?v=1"></script>
+<script src="js/data.js?v=22"></script>
+<script src="js/structures.js?v=22"></script>
+<script src="js/grammar.js?v=22"></script>
+<script src="js/logic.js?v=22"></script>
+<script src="js/core.js?v=22"></script>
+<script src="js/detail.js?v=22"></script>
+<script src="js/reference.js?v=22"></script>
+<script src="js/study.js?v=22"></script>
+<script src="js/ui.js?v=22"></script>
+<script src="js/main.js?v=22"></script>
 </body>
 </html>

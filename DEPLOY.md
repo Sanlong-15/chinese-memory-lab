@@ -8,16 +8,25 @@ this every time so it never happens again.
 - index.html
 - css/style.css
 - js/data.js
-- js/logic.js
-- js/app.js
+- js/examples.js  (the example sentences — loaded on demand, but must be pushed)
 - js/structures.js
 - js/grammar.js
+- js/logic.js
+- js/core.js      (app split, part 1 — search, grid, audio, examples loader)
+- js/detail.js    (app split, part 2 — word/character detail, tabs, deep links)
+- js/reference.js (app split, part 3 — patterns, radicals, sentences, grammar, tones)
+- js/study.js     (app split, part 4 — SRS, Study Mode, dashboard, listen)
+- js/ui.js        (app split, part 5 — voice picker, flashcard, backup, writing, welcome, keyboard)
+- js/main.js      (app split, part 6 — startup; loads last)
 - js/upload.js
 
-If you change even one, push the whole set. They depend on each other —
-a new tab in index.html needs the matching code in js/app.js, or it breaks.
-`js/logic.js` holds the scheduler + tone + dedupe logic and must load before
-`js/app.js` (index.html already lists it in the right order).
+The old `js/app.js` was split into the six files above. It is no longer used —
+delete it once with `git rm js/app.js`.
+
+If you change even one, push the whole set. They depend on each other, and the
+script order in index.html matters: data → structures → grammar → logic →
+core → detail → reference → study → ui → main. `js/logic.js` (scheduler + tone +
+dedupe) must load before the split files; `js/main.js` starts the app and loads last.
 
 ## Dev tools (optional to push, not used by the website)
 
@@ -44,6 +53,32 @@ Push them if you want the green "tests" badge on your repo. To run locally:
 4. Open https://sanlong-15.github.io/chinese-memory-lab/ and **hard-refresh**
    (Ctrl+Shift+R on a laptop; on iPhone use a Private tab, which ignores the
    cache). Browsers cache old files — a normal refresh may show the old version.
+
+## Security (#8)
+
+- index.html has a Content-Security-Policy meta tag. It only allows scripts
+  from your own site and jsDelivr, fonts from Google, and images from Wikimedia.
+  This blocks any injected inline script from running. If a feature ever breaks
+  after a change, check the browser console for a CSP error and add the needed
+  source (or remove the meta tag to roll back — it's one line).
+- External data (Wikimedia image URLs) is now HTML-escaped before it's shown.
+
+### SRI (optional, do it once on your machine)
+
+To lock the hanzi-writer CDN file so a hacked CDN can't swap in bad code, run:
+
+```
+curl -s https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js | openssl dgst -sha384 -binary | openssl base64 -A
+```
+
+Then in index.html add the result to the hanzi-writer script tag:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"
+        integrity="sha384-PASTE_THE_HASH_HERE" crossorigin="anonymous"></script>
+```
+
+Don't add a made-up hash — a wrong one stops the character animations from loading.
 
 ## Cache-busting (why the files end with ?v=1)
 

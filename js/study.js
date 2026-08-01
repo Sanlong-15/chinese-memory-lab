@@ -1,0 +1,464 @@
+let currentStudyLevel = "ALL";
+let studyMode = "review"; // "review" (SRS due queue) or "browse" (free flip)
+let studyDir = "recognize"; // "recognize" (中→meaning) or "recall" (meaning→中)
+
+// browse-mode state
+let studyList = (DB.words || []).slice();
+let studyIndex = 0;
+
+// review-mode state
+let reviewQueue = [];
+const NEW_PER_SESSION = 15;
+const DAY = 86400000;
+const SRS_KEY = "cml_srs_v1";
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// ---- SRS storage ----
+function loadSrs() {
+  try {
+    return JSON.parse(localStorage.getItem(SRS_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+function saveSrs(data) {
+  try {
+    localStorage.setItem(SRS_KEY, JSON.stringify(data));
+  } catch (e) {
+    /* private mode: progress won't persist, app still works */
+  }
+}
+let srs = loadSrs();
+
+// The FSRS scheduler math lives in js/logic.js (Logic.fsrsUpdate) so it can be
+// unit-tested. Here we only read/write the stored card states.
+function getState(id) {
+  let st = srs[id];
+  if (!st)
+    return { state: "new", due: 0, S: 0, D: 0, reps: 0, lapses: 0, last: 0 };
+  if (st.S === undefined) {
+    // migrate old SM-2-lite state so existing progress is not lost
+    const iv = st.interval || 0;
+    st.S = iv > 0 ? Math.max(0.5, iv) : 0;
+    st.D = 5;
+    st.last = st.due && iv ? st.due - iv * DAY : 0;
+    if (st.state === undefined) st.state = st.reps > 0 ? "review" : "new";
+    srs[id] = st;
+  }
+  return st;
+}
+
+function schedule(id, rating) {
+  srs[id] = Logic.fsrsUpdate(getState(id), rating, Date.now());
+  saveSrs(srs);
+}
+
+// dedupe lives in js/logic.js (Logic.dedupeByChinese), unit-tested
+function dedupeByChinese(list) {
+  return Logic.dedupeByChinese(list);
+}
+function filteredWords() {
+  const base =
+    currentStudyLevel === "ALL"
+      ? DB.words.slice()
+      : DB.words.filter((w) => w.level === currentStudyLevel);
+  return dedupeByChinese(base);
+}
+
+function updateSrsStats() {
+  const el = document.getElementById("srsStats");
+  if (!el) return;
+  const now = Date.now();
+  const words = filteredWords();
+  let due = 0,
+    fresh = 0,
+    learned = 0;
+  for (const w of words) {
+    const st = getState(w.id);
+    if (st.state === "new") fresh++;
+    else {
+      if (st.reps > 0) learned++;
+      if (st.due <= now) due++;
+    }
+  }
+  el.innerHTML =
+    `<span class="srs-stat due">Due: ${due}</span>` +
+    `<span class="srs-stat new">New: ${fresh}</span>` +
+    `<span class="srs-stat learned">Learned: ${learned}</span>`;
+}
+
+// ---- Browse mode ----
+function buildStudyList() {
+  studyList = filteredWords();
+  studyIndex = 0;
+  renderBrowseCard();
+}
+
+// Fill the flashcard for one word in the chosen direction.
+// recognize: front = characters, reveal = pinyin + meaning + Khmer.
+// recall:    front = meaning,    reveal = characters + pinyin + Khmer.
+function paintFlashcard(w, dir) {
+  const zi = document.getElementById("fc-zi");
+  const ans = document.getElementById("fc-answer");
+  const hint = document.querySelector("#flashcard .prompt-hint");
+  if (dir === "recall") {
+    zi.textContent = w.english;
+    zi.classList.add("recall-prompt");
+    ans.textContent = w.chinese;
+    document.getElementById("fc-py").textContent = w.pinyin;
+    document.getElementById("fc-en").textContent = "";
+    document.getElementById("fc-kh").textContent = w.khmer;
+    if (hint) hint.textContent = "Say the characters, then tap to check";
+  } else {
+    zi.textContent = w.chinese;
+    zi.classList.remove("recall-prompt");
+    ans.textContent = "";
+    document.getElementById("fc-py").textContent = w.pinyin;
+    document.getElementById("fc-en").textContent = w.english;
+    document.getElementById("fc-kh").textContent = w.khmer;
+    if (hint) hint.textContent = "Tap to reveal pinyin, meaning & memory story";
+  }
+}
+
+function renderBrowseCard() {
+  const w = studyList[studyIndex];
+  const card = document.getElementById("flashcard");
+  card.classList.remove("flipped");
+  if (!w) return;
+  paintFlashcard(w, "recognize");
+  document.getElementById("progressNote").textContent =
+    studyIndex + 1 + " / " + studyList.length;
+}
+
+// ---- Review mode (SRS queue) ----
+function buildReviewQueue() {
+  const now = Date.now();
+  const words = filteredWords();
+  const dueCards = [];
+  const newCards = [];
+  for (const w of words) {
+    const st = getState(w.id);
+    if (st.state === "new") newCards.push(w);
+    else if (st.due <= now) dueCards.push(w);
+  }
+  shuffleArray(dueCards);
+  shuffleArray(newCards);
+  reviewQueue = dueCards.concat(newCards.slice(0, NEW_PER_SESSION));
+  renderReviewCard();
+}
+
+function renderReviewCard() {
+  const card = document.getElementById("flashcard");
+  const ratingRow = document.getElementById("ratingRow");
+  card.classList.remove("flipped");
+  ratingRow.classList.remove("show");
+  updateSrsStats();
+
+  if (reviewQueue.length === 0) {
+    const zi = document.getElementById("fc-zi");
+    zi.textContent = "完成";
+    zi.classList.remove("recall-prompt");
+    document.getElementById("fc-answer").textContent = "";
+    document.getElementById("fc-py").textContent = "wánchéng le";
+    document.getElementById("fc-en").textContent =
+      "All caught up for this filter. Come back later, or switch level.";
+    document.getElementById("fc-kh").textContent = "";
+    document.getElementById("progressNote").textContent = "Nothing due right now";
+    card.classList.add("done");
+    return;
+  }
+  card.classList.remove("done");
+  const w = reviewQueue[0];
+  paintFlashcard(w, studyDir);
+  document.getElementById("progressNote").textContent =
+    "In this session: " + reviewQueue.length + " left";
+}
+
+function rateCurrent(rating) {
+  if (studyMode !== "review" || reviewQueue.length === 0) return;
+  const w = reviewQueue.shift();
+  schedule(w.id, rating);
+  recordStudyDay();
+  if (rating === "again") {
+    const pos = Math.min(4, reviewQueue.length);
+    reviewQueue.splice(pos, 0, w); // repeat later this session
+  }
+  renderReviewCard();
+  renderDashboard();
+}
+
+// ---- Daily dashboard (streak, goal, stats) ----
+const DAILY_KEY = "cml_daily_v1";
+function dayStr(ts) {
+  const d = new Date(ts);
+  return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+}
+function loadDaily() {
+  try {
+    return JSON.parse(localStorage.getItem(DAILY_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+function saveDaily(d) {
+  try {
+    localStorage.setItem(DAILY_KEY, JSON.stringify(d));
+  } catch (e) {
+    /* private mode */
+  }
+}
+function recordStudyDay() {
+  const d = loadDaily();
+  const today = dayStr(Date.now());
+  if (d.lastDay === today) {
+    d.todayCount = (d.todayCount || 0) + 1;
+  } else {
+    const y = dayStr(Date.now() - DAY);
+    d.streak = d.lastDay === y ? (d.streak || 0) + 1 : 1;
+    d.lastDay = today;
+    d.todayCount = 1;
+  }
+  if (!d.goal) d.goal = 20;
+  saveDaily(d);
+}
+function renderDashboard() {
+  const streakEl = document.getElementById("dashStreak");
+  if (!streakEl) return;
+  const d = loadDaily();
+  const today = dayStr(Date.now());
+  const y = dayStr(Date.now() - DAY);
+  const goal = d.goal || 20;
+  const liveStreak =
+    d.lastDay === today || d.lastDay === y ? d.streak || 0 : 0;
+  const todayCount = d.lastDay === today ? d.todayCount || 0 : 0;
+  const now = Date.now();
+  const distinct = dedupeByChinese(DB.words);
+  let learned = 0,
+    due = 0;
+  for (const w of distinct) {
+    const st = getState(w.id);
+    if (st.reps > 0) learned++;
+    if (st.state !== "new" && st.due <= now) due++;
+  }
+  streakEl.textContent = liveStreak;
+  document.getElementById("dashToday").textContent = todayCount + " / " + goal;
+  document.getElementById("dashLearned").textContent =
+    learned + " / " + distinct.length;
+  document.getElementById("dashDue").textContent = due;
+  const pct = Math.min(100, Math.round((todayCount / goal) * 100));
+  document.getElementById("dashBar").style.width = pct + "%";
+  const goalInput = document.getElementById("dashGoal");
+  if (goalInput && document.activeElement !== goalInput) goalInput.value = goal;
+}
+function initDashboard() {
+  const goalInput = document.getElementById("dashGoal");
+  if (goalInput)
+    goalInput.addEventListener("change", () => {
+      let v = parseInt(goalInput.value, 10);
+      if (isNaN(v) || v < 5) v = 5;
+      if (v > 200) v = 200;
+      const d = loadDaily();
+      d.goal = v;
+      saveDaily(d);
+      renderDashboard();
+    });
+  renderDashboard();
+}
+
+// --- Listening practice ---
+let listenLevel = "ALL";
+let listenPool = [];
+let listenIndex = 0;
+let listenCorrect = 0;
+let listenTotal = 0;
+let listenAnswered = false;
+
+function buildListenPool() {
+  const words =
+    listenLevel === "ALL"
+      ? DB.words
+      : DB.words.filter((w) => w.level === listenLevel);
+  listenPool = words.slice();
+  shuffleArray(listenPool);
+  listenIndex = 0;
+  listenCorrect = 0;
+  listenTotal = 0;
+  renderListen();
+}
+
+function updateListenScore() {
+  const el = document.getElementById("listenScore");
+  if (el)
+    el.textContent =
+      "Correct " + listenCorrect + " / " + listenTotal;
+}
+
+function renderListen() {
+  const revealEl = document.getElementById("listenReveal");
+  const optWrap = document.getElementById("listenOptions");
+  const nextBtn = document.getElementById("listenNext");
+  if (!optWrap) return;
+  nextBtn.classList.add("hidden");
+  revealEl.classList.remove("show");
+  optWrap.innerHTML = "";
+  const ln = document.getElementById("listenNote");
+  if (ln) ln.textContent = "";
+  if (!listenPool.length) {
+    revealEl.classList.add("show");
+    document.getElementById("listenZi").textContent = "—";
+    document.getElementById("listenPy").textContent = "";
+    document.getElementById("listenEn").textContent =
+      "No words for this level.";
+    updateListenScore();
+    return;
+  }
+  const w = listenPool[listenIndex];
+  document.getElementById("listenZi").textContent = "？";
+  document.getElementById("listenPy").textContent = "";
+  document.getElementById("listenEn").textContent = "";
+  listenAnswered = false;
+  // english options
+  const others = listenPool.filter((x) => x.english !== w.english);
+  shuffleArray(others);
+  const opts = [w.english];
+  for (const o of others) {
+    if (opts.length >= 4) break;
+    if (!opts.includes(o.english)) opts.push(o.english);
+  }
+  shuffleArray(opts);
+  for (const o of opts) {
+    const b = document.createElement("button");
+    b.className = "listen-opt";
+    b.textContent = o;
+    b.addEventListener("click", () => chooseListen(b, o, w));
+    optWrap.appendChild(b);
+  }
+  updateListenScore();
+  speak(w.chinese);
+}
+
+function chooseListen(btn, choice, w) {
+  if (listenAnswered) return;
+  listenAnswered = true;
+  listenTotal++;
+  if (choice === w.english) {
+    listenCorrect++;
+    btn.classList.add("correct");
+  } else {
+    btn.classList.add("wrong");
+    document.querySelectorAll(".listen-opt").forEach((bb) => {
+      if (bb.textContent === w.english) bb.classList.add("correct");
+    });
+    demoteToReview(w.id, "listenNote");
+  }
+  const revealEl = document.getElementById("listenReveal");
+  document.getElementById("listenZi").textContent = w.chinese;
+  document.getElementById("listenPy").textContent = w.pinyin;
+  document.getElementById("listenEn").textContent = w.english;
+  revealEl.classList.add("show");
+  document.getElementById("listenNext").classList.remove("hidden");
+  updateListenScore();
+}
+
+function initListen() {
+  document.querySelectorAll(".listen-filter-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".listen-filter-chip")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      listenLevel = btn.dataset.level;
+      buildListenPool();
+    });
+  });
+  const replay = document.getElementById("listenReplay");
+  if (replay)
+    replay.addEventListener("click", () => {
+      if (listenPool.length) speak(listenPool[listenIndex].chinese);
+    });
+  const next = document.getElementById("listenNext");
+  if (next)
+    next.addEventListener("click", () => {
+      if (!listenPool.length) return;
+      listenIndex = (listenIndex + 1) % listenPool.length;
+      renderListen();
+    });
+  buildListenPool();
+}
+
+// ---- Mode switching ----
+function setStudyMode(mode) {
+  studyMode = mode;
+  document
+    .getElementById("mode-review")
+    .classList.toggle("active", mode === "review");
+  document
+    .getElementById("mode-browse")
+    .classList.toggle("active", mode === "browse");
+  document
+    .getElementById("srsStats")
+    .classList.toggle("hidden", mode !== "review");
+  document
+    .getElementById("browseControls")
+    .classList.toggle("hidden", mode !== "browse");
+  document
+    .getElementById("dirToggle")
+    .classList.toggle("hidden", mode !== "review");
+  const ratingRow = document.getElementById("ratingRow");
+  if (mode === "review") {
+    ratingRow.classList.remove("hidden");
+    buildReviewQueue();
+  } else {
+    ratingRow.classList.add("hidden");
+    ratingRow.classList.remove("show");
+    buildStudyList();
+  }
+}
+
+function setStudyDir(dir) {
+  studyDir = dir;
+  document
+    .getElementById("dir-recognize")
+    .classList.toggle("active", dir === "recognize");
+  document
+    .getElementById("dir-recall")
+    .classList.toggle("active", dir === "recall");
+  // re-paint the current card without losing the queue or its schedule
+  const card = document.getElementById("flashcard");
+  card.classList.remove("flipped");
+  document.getElementById("ratingRow").classList.remove("show");
+  if (studyMode === "review") {
+    if (reviewQueue.length) paintFlashcard(reviewQueue[0], studyDir);
+  } else if (studyList[studyIndex]) {
+    paintFlashcard(studyList[studyIndex], "recognize");
+  }
+}
+
+function refreshStudy() {
+  if (studyMode === "review") buildReviewQueue();
+  else buildStudyList();
+}
+
+// ---- Wiring ----
+document.querySelectorAll(".study-filter-chip").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".study-filter-chip")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentStudyLevel = btn.dataset.level;
+    refreshStudy();
+  });
+});
+
+document.getElementById("mode-review").addEventListener("click", () => setStudyMode("review"));
+document.getElementById("mode-browse").addEventListener("click", () => setStudyMode("browse"));
+document.getElementById("dir-recognize").addEventListener("click", () => setStudyDir("recognize"));
+document.getElementById("dir-recall").addEventListener("click", () => setStudyDir("recall"));
