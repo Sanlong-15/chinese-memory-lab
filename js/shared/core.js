@@ -237,6 +237,22 @@ if ("speechSynthesis" in window) {
   };
 }
 
+// Character-type labels for the "How to remember it" cards.
+// Kept here (hand-maintained) rather than in the generated data file, which
+// used to hold them and dropped them on regeneration.
+const typeLabel = {
+  pictograph: "Pictograph — no parts",
+  compound: "Meaning + Meaning",
+  phono: "Sound + Meaning",
+  whole: "Whole shape — no reliable split",
+};
+const typeClass = {
+  pictograph: "type-pictograph",
+  compound: "type-compound",
+  phono: "type-phono",
+  whole: "type-whole",
+};
+
 function charStoryHTML(ch) {
   const info = DB.charInfo[ch];
   if (!info) return "";
@@ -386,7 +402,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=44";
+  s.src = "js/data/examples.js?v=45";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
