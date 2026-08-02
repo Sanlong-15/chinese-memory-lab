@@ -13,6 +13,91 @@
 const DAILY_GOAL = 20; // target reviews per session (PRD default)
 const NEW_PER_DAY = 12; // hard cap on brand-new words introduced per calendar day
 
+// A0 "building blocks" — component/pictograph characters to introduce BEFORE
+// HSK 1 words, so later characters are assembled from known parts. Ordered by
+// encoding priority; only characters that exist as single-word cards are listed.
+const A0_ORDER = ["一", "二", "三", "十", "人", "大", "小", "口", "日", "月", "水", "火", "上", "下", "好"];
+const A0_MAP = new Map(A0_ORDER.map((ch, i) => [ch, i]));
+
+// Sound-clue families: char -> { component, members }. Built from the data so a
+// new word can surface its phonetic family the first time it's met (chunking).
+const SOUND_FAM = new Map();
+(function buildSoundFam() {
+  const pg = (typeof DB !== "undefined" && DB.patternGroups) || [];
+  for (const g of pg) {
+    const component = g.sound_component || "";
+    const members = (g.members || []).map((m) => m[0]);
+    const entry = { component, members };
+    for (const ch of members) SOUND_FAM.set(ch, entry);
+    const compChar = component.trim().charAt(0);
+    if (compChar) SOUND_FAM.set(compChar, entry);
+  }
+})();
+
+// --- Tone primer: teach the 4 tones as an ordered drill, from day one -------
+// Shown at the front of the session until the learner has seen it a few times.
+const TONE_PRIMER_KEY = "cml_tone_primer_v1";
+const TONE_PRIMER_TIMES = 3;
+function primerReps() {
+  try {
+    return parseInt(localStorage.getItem(TONE_PRIMER_KEY) || "0", 10) || 0;
+  } catch (e) {
+    return 0;
+  }
+}
+function bumpPrimer() {
+  try {
+    localStorage.setItem(TONE_PRIMER_KEY, String(primerReps() + 1));
+  } catch (e) {}
+}
+const TONE_ROWS = [
+  { n: 1, py: "mā", zi: "妈", mark: "ˉ", desc: "high and flat" },
+  { n: 2, py: "má", zi: "麻", mark: "ˊ", desc: "rising, like a question" },
+  { n: 3, py: "mǎ", zi: "马", mark: "ˇ", desc: "dips down, then up" },
+  { n: 4, py: "mà", zi: "骂", mark: "ˋ", desc: "sharp, falling" },
+];
+function renderTonePrimer(_word, onResult) {
+  const host = document.getElementById("todayCard");
+  if (!host) return;
+  host.innerHTML =
+    `<div class="tone-primer">` +
+    `<p class="intro-text">The four tones — one sound, four meanings. Tap each to hear it.</p>` +
+    TONE_ROWS.map(
+      (r) =>
+        `<button class="tp-row" type="button" data-zi="${r.zi}">` +
+        `<span class="tp-num">${r.n}</span>` +
+        `<span class="tp-mark">${r.mark}</span>` +
+        `<span class="tp-zi hanzi">${r.zi}</span>` +
+        `<span class="tp-py">${escapeHTML(r.py)}</span>` +
+        `<span class="tp-desc">${r.desc}</span>` +
+        `</button>`
+    ).join("") +
+    `<button class="study-btn primary" id="primerDone" type="button">Got it</button>` +
+    `</div>`;
+  host
+    .querySelectorAll(".tp-row")
+    .forEach((b) => b.addEventListener("click", () => speak(b.dataset.zi)));
+  const done = host.querySelector("#primerDone");
+  if (done) done.addEventListener("click", () => onResult("primer"));
+  speak("妈");
+}
+
+// Hint for the first character of a word that belongs to a sound family.
+function soundFamilyHint(word) {
+  for (const ch of word.chinese || "") {
+    const fam = SOUND_FAM.get(ch);
+    if (fam) {
+      return (
+        "Sound clue: " +
+        escapeHTML(fam.component) +
+        " → " +
+        escapeHTML(fam.members.join(" "))
+      );
+    }
+  }
+  return "";
+}
+
 // How many new words were already introduced today (across sessions).
 function newIntroducedToday() {
   const d = loadDaily();
@@ -92,6 +177,9 @@ function renderFlashTask(word, dir, onResult) {
   const hint = recall
     ? "Say the characters, then tap to check"
     : "Tap to reveal pinyin & meaning";
+  // on a new word's first recognition, teach its sound family (chunking)
+  const isNew = !(getState(word.id).reps || 0);
+  const fam = !recall && isNew ? soundFamilyHint(word) : "";
   host.innerHTML = `
     <div class="flashcard" role="button" tabindex="0" aria-label="Flashcard, tap to reveal">
       <div class="zi ${recall ? "recall-prompt" : ""}">${front}</div>
@@ -101,6 +189,7 @@ function renderFlashTask(word, dir, onResult) {
         <div class="py">${escapeHTML(word.pinyin)}</div>
         ${recall ? "" : `<div class="en">${escapeHTML(word.english)}</div>`}
         <div class="kh">${escapeHTML(word.khmer || "")}</div>
+        ${fam ? `<div class="session-fam">${fam}</div>` : ""}
       </div>
     </div>
     <div class="rating-row" id="todayRating">
@@ -202,6 +291,7 @@ const taskRenderers = {
     canUse: (w) => !!(w.ex_cn && w.ex_cn.includes(w.chinese)),
     render: renderSentenceTask,
   },
+  tonePrimer: { canUse: () => true, render: renderTonePrimer },
 };
 
 // --- task selection (pure logic in Logic.pickTaskFromState) --------
@@ -242,14 +332,20 @@ function buildDailyQueue(opts) {
   }
   shuffleArray(due);
   shuffleArray(fresh);
+  // introduce A0 building blocks before other new words
+  const orderedFresh = Logic.orderNewByPriority(fresh, A0_MAP);
   const dueTake = due.slice(0, goal);
   const room = Math.max(0, goal - dueTake.length); // fewer new when many are due
   const dailyLeft = Math.max(0, NEW_PER_DAY - newIntroducedToday()); // per-day cap
-  const newTake = fresh.slice(0, Math.min(newCap, room, dailyLeft));
+  const newTake = orderedFresh.slice(0, Math.min(newCap, room, dailyLeft));
   const items = dueTake
     .map((w) => ({ word: w, task: pickTask(w) }))
     .concat(newTake.map((w) => ({ word: w, task: "recognize" })));
   shuffleArray(items); // interleave
+  // lead with the tone primer until the learner has seen it a few times
+  if (primerReps() < TONE_PRIMER_TIMES) {
+    items.unshift({ word: null, task: "tonePrimer", primer: true });
+  }
   return items;
 }
 
@@ -310,6 +406,13 @@ function renderCurrentTask() {
 }
 
 function submitSessionAnswer(item, rating) {
+  if (item.primer) {
+    // tone primer is a lesson, not a scheduled review — just advance
+    bumpPrimer();
+    SESSION.queue.shift();
+    renderCurrentTask();
+    return;
+  }
   const wasNew = !(getState(item.word.id).reps || 0); // detect first-ever review
   schedule(item.word.id, rating);
   // remember how we showed it, so pickTask can vary next time

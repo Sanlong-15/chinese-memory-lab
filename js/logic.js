@@ -134,6 +134,21 @@
     return choices[Math.floor(rng() * choices.length)];
   }
 
+  // ---- Order new words so a priority list (e.g. A0 building blocks) comes
+  // first, in its given order; everything else keeps its incoming order.
+  // priorityMap: Map from chinese -> priority index. Pure + testable.
+  function orderNewByPriority(words, priorityMap) {
+    if (!priorityMap || typeof priorityMap.has !== "function") return words.slice();
+    const pri = [];
+    const rest = [];
+    for (const w of words) {
+      if (priorityMap.has(w.chinese)) pri.push(w);
+      else rest.push(w);
+    }
+    pri.sort((a, b) => priorityMap.get(a.chinese) - priorityMap.get(b.chinese));
+    return pri.concat(rest);
+  }
+
   // ---- Dedupe a word list by its Chinese text (keeps first seen) ----
   function dedupeByChinese(list) {
     const seen = new Set();
@@ -161,6 +176,7 @@
     toneSeq,
     dedupeByChinese,
     pickTaskFromState,
+    orderNewByPriority,
   };
 
   if (typeof module !== "undefined" && module.exports) module.exports = Logic;

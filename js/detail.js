@@ -271,53 +271,110 @@ const VIEW_HASH = {
   toneView: "tones",
   studyView: "study",
   writingView: "writing",
+  progressView: "progress",
+  settingsView: "settings",
 };
 const HASH_VIEW = Object.fromEntries(
   Object.entries(VIEW_HASH).map(([k, v]) => [v, k])
 );
 
+// Information architecture: five intent-based groups, each holding one or more
+// existing views. Single-view groups (Today/Progress/You) skip the sub-row.
+const GROUPS = {
+  today: [["todayView", "Today"]],
+  learn: [
+    ["wordsView", "Vocabulary"],
+    ["structuresView", "Characters"],
+    ["patternsView", "Radicals & families"],
+    ["grammarView", "Grammar"],
+    ["sentencesView", "Sentences"],
+  ],
+  practice: [
+    ["studyView", "Flashcards"],
+    ["listenView", "Listening"],
+    ["toneView", "Tones"],
+    ["writingView", "Writing"],
+  ],
+  progress: [["progressView", "Overview"]],
+  you: [["settingsView", "Settings"]],
+};
+const VIEW_GROUP = {};
+Object.entries(GROUPS).forEach(([g, views]) =>
+  views.forEach(([v]) => (VIEW_GROUP[v] = g))
+);
+
+function renderSubnav(group, activeView) {
+  const sub = document.getElementById("subNav");
+  if (!sub) return;
+  const views = GROUPS[group] || [];
+  if (views.length > 1) {
+    sub.innerHTML = views
+      .map(
+        ([v, label]) =>
+          `<button class="subnav-btn${
+            v === activeView ? " active" : ""
+          }" data-view="${v}">${label}</button>`
+      )
+      .join("");
+    sub.style.display = "";
+  } else {
+    sub.innerHTML = "";
+    sub.style.display = "none";
+  }
+}
+
+function setActiveGroup(group) {
+  document
+    .querySelectorAll(".group-btn")
+    .forEach((b) => b.classList.toggle("active", b.dataset.group === group));
+  document
+    .querySelectorAll(".bn-btn")
+    .forEach((b) => b.classList.toggle("active", b.dataset.group === group));
+}
+
+// clicking a primary group opens its first view
+function selectGroup(group) {
+  const views = GROUPS[group];
+  if (views) switchView(views[0][0]);
+}
+
 function switchView(viewId) {
+  const el = document.getElementById(viewId);
+  if (!el) return;
   document
     .querySelectorAll(".view")
     .forEach((v) => v.classList.remove("active"));
-  document.getElementById(viewId).classList.add("active");
-  // update the URL without adding a new history entry each tap
+  el.classList.add("active");
   const token = VIEW_HASH[viewId];
   if (token && "#" + token !== location.hash) {
     history.replaceState(null, "", "#" + token);
   }
-  document
-    .querySelectorAll(".tab-btn")
-    .forEach((b) => b.classList.remove("active"));
-  const activeTab = document.querySelector(`[data-view="${viewId}"]`);
-  if (activeTab) {
-    activeTab.classList.add("active");
-    // on mobile the tab row scrolls; keep the active tab visible
-    activeTab.scrollIntoView({ inline: "center", block: "nearest" });
-  }
-  // sync the phone bottom bar
-  document.querySelectorAll(".bn-btn").forEach((b) => {
-    b.classList.toggle("active", b.dataset.bn === viewId);
-  });
-  // Sentences needs the lazy-loaded examples; build its pool on first open
+  const group = VIEW_GROUP[viewId] || "today";
+  setActiveGroup(group);
+  renderSubnav(group, viewId);
+  // per-view refreshes
   if (viewId === "sentencesView" && !sentPool.length) {
     ensureExamples(buildSentPool);
   }
+  if (viewId === "progressView" && typeof renderDashboard === "function") {
+    renderDashboard();
+  }
+  if (viewId === "todayView" && typeof updateTodayStart === "function") {
+    updateTodayStart();
+  }
 }
-document.querySelectorAll(".tab-btn").forEach((btn) => {
-  btn.addEventListener("click", () => switchView(btn.dataset.view));
-});
 
-// Phone bottom bar: Words / Study / Search
-document.querySelectorAll(".bn-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.bn;
-    if (target === "search") {
-      switchView("wordsView");
-      const box = document.getElementById("searchBox");
-      if (box) box.focus();
-    } else {
-      switchView(target);
-    }
-  });
+document.querySelectorAll(".group-btn").forEach((btn) => {
+  btn.addEventListener("click", () => selectGroup(btn.dataset.group));
 });
+document.querySelectorAll(".bn-btn").forEach((btn) => {
+  btn.addEventListener("click", () => selectGroup(btn.dataset.group));
+});
+const subNavEl = document.getElementById("subNav");
+if (subNavEl)
+  subNavEl.addEventListener("click", (e) => {
+    const b = e.target.closest(".subnav-btn");
+    if (b) switchView(b.dataset.view);
+  });
+// render the initial sub-nav for the default group
+renderSubnav("today", "todayView");

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=26">
+<link rel="stylesheet" href="css/style.css?v=30">
 </head>
 <body>
 
@@ -21,23 +21,19 @@
   <p style="margin:10px 0 0;"><a href="index.html" style="font-size:12.5px; color:var(--jade); font-weight:600;">+ Upload a new lesson from a PDF</a></p>
 </header>
 
-<nav class="tabs">
-  <button class="tab-btn" data-view="todayView">Today</button>
-  <button class="tab-btn active" data-view="wordsView">Word List</button>
-  <button class="tab-btn" data-view="patternsView">Pattern Families</button>
-  <button class="tab-btn" data-view="structuresView">Structures</button>
-  <button class="tab-btn" data-view="grammarView">Grammar</button>
-  <button class="tab-btn" data-view="sentencesView">Sentences</button>
-  <button class="tab-btn" data-view="listenView">Listen</button>
-  <button class="tab-btn" data-view="toneView">Tones</button>
-  <button class="tab-btn" data-view="studyView">Study Mode</button>
-  <button class="tab-btn" data-view="writingView">Writing</button>
+<nav class="groupnav" id="groupNav" aria-label="Sections">
+  <button class="group-btn active" data-group="today">Today</button>
+  <button class="group-btn" data-group="learn">Learn</button>
+  <button class="group-btn" data-group="practice">Practice</button>
+  <button class="group-btn" data-group="progress">Progress</button>
+  <button class="group-btn" data-group="you">You</button>
 </nav>
+<nav class="subnav" id="subNav" aria-label="Section pages"></nav>
 
 <main>
 
   <!-- TODAY VIEW (unified daily session) -->
-  <div id="todayView" class="view">
+  <div id="todayView" class="view active">
     <div id="todayStart">
       <h2 class="section-title">Today</h2>
       <p class="intro-text" id="todaySummaryLine">Your daily review — recognition and recall, mixed and scheduled for you.</p>
@@ -59,7 +55,7 @@
   </div>
 
   <!-- WORDS VIEW -->
-  <div id="wordsView" class="view active">
+  <div id="wordsView" class="view">
     <div class="controls">
       <div class="search-wrap">
         <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, or English..." aria-label="Search words by Chinese, pinyin, English, or Khmer">
@@ -207,17 +203,6 @@
     <h2 class="section-title">Study Mode</h2>
     <p class="intro-text">Review mode uses spaced repetition: rate each card and it comes back at the right time — hard words often, easy words rarely. Try to recall the pinyin and meaning BEFORE you flip. Your progress is saved in this browser.</p>
 
-    <div class="dash">
-      <div class="dash-cards">
-        <div class="dash-metric"><div class="dash-num" id="dashStreak">0</div><div class="dash-lbl">day streak</div></div>
-        <div class="dash-metric"><div class="dash-num" id="dashToday">0 / 20</div><div class="dash-lbl">today's goal</div></div>
-        <div class="dash-metric"><div class="dash-num" id="dashLearned">0 / 0</div><div class="dash-lbl">words learned</div></div>
-        <div class="dash-metric"><div class="dash-num" id="dashDue">0</div><div class="dash-lbl">due now</div></div>
-      </div>
-      <div class="dash-bar"><div class="dash-bar-fill" id="dashBar"></div></div>
-      <div class="dash-goalrow">Daily goal: <input id="dashGoal" type="number" min="5" max="200" step="5" value="20"> cards</div>
-    </div>
-
     <div class="mode-toggle">
       <button id="mode-review" class="mode-btn active">Review (due)</button>
       <button id="mode-browse" class="mode-btn">Browse freely</button>
@@ -227,19 +212,6 @@
       <span class="dir-label">Direction:</span>
       <button id="dir-recognize" class="mode-btn active" title="See the characters, recall the meaning">汉字 → meaning</button>
       <button id="dir-recall" class="mode-btn" title="See the meaning, recall the characters (harder, stronger memory)">meaning → 汉字</button>
-    </div>
-
-    <div class="audio-bar" id="audioBar">
-      <span class="audio-label">Voice</span>
-      <div class="voice-picker" id="voicePicker">
-        <button class="voice-current" id="voiceCurrent" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose the Chinese voice">
-          <span class="vc-text" id="voiceCurrentLabel">Loading…</span>
-          <svg class="voice-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <ul class="voice-menu" id="voiceMenu" role="listbox" aria-label="Chinese voices" hidden></ul>
-      </div>
-      <button id="voiceTest" class="voice-test" type="button">Test 你好</button>
-      <span id="voiceWarn" class="voice-warn" style="display:none"></span>
     </div>
 
     <div class="controls" style="margin-bottom:6px;">
@@ -258,11 +230,8 @@
     <div class="srs-bar">
       <div id="srsStats" class="srs-stats" aria-live="polite"></div>
       <div class="data-actions">
-        <button id="exportBtn" class="srs-reset" title="Download a backup file of all your progress">Backup</button>
-        <button id="importBtn" class="srs-reset" title="Restore your progress from a backup file">Restore</button>
         <button id="srsReset" class="srs-reset" title="Reset progress for the current level">Reset progress</button>
       </div>
-      <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
 
     <div class="study-wrap">
@@ -335,6 +304,50 @@
     </div>
   </div>
 
+  <!-- PROGRESS VIEW -->
+  <div id="progressView" class="view">
+    <h2 class="section-title">Progress</h2>
+    <p class="intro-text">Your streak, today's goal, and how many words you've learned and have due.</p>
+    <div class="dash">
+      <div class="dash-cards">
+        <div class="dash-metric"><div class="dash-num" id="dashStreak">0</div><div class="dash-lbl">day streak</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashToday">0 / 20</div><div class="dash-lbl">today's goal</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashLearned">0 / 0</div><div class="dash-lbl">words learned</div></div>
+        <div class="dash-metric"><div class="dash-num" id="dashDue">0</div><div class="dash-lbl">due now</div></div>
+      </div>
+      <div class="dash-bar"><div class="dash-bar-fill" id="dashBar"></div></div>
+      <div class="dash-goalrow">Daily goal: <input id="dashGoal" type="number" min="5" max="200" step="5" value="20"> cards</div>
+    </div>
+  </div>
+
+  <!-- YOU / SETTINGS VIEW -->
+  <div id="settingsView" class="view">
+    <h2 class="section-title">You</h2>
+    <p class="intro-text">Audio, your data, and help. Day and night mode is the button at the top of the page.</p>
+
+    <h3 class="settings-h">Audio voice</h3>
+    <div class="audio-bar" id="audioBar">
+      <span class="audio-label">Voice</span>
+      <div class="voice-picker" id="voicePicker">
+        <button class="voice-current" id="voiceCurrent" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose the Chinese voice">
+          <span class="vc-text" id="voiceCurrentLabel">Loading…</span>
+          <svg class="voice-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="voice-menu" id="voiceMenu" role="listbox" aria-label="Chinese voices" hidden></ul>
+      </div>
+      <button id="voiceTest" class="voice-test" type="button">Test 你好</button>
+      <span id="voiceWarn" class="voice-warn" style="display:none"></span>
+    </div>
+
+    <h3 class="settings-h">Your data</h3>
+    <div class="data-actions">
+      <button id="exportBtn" class="srs-reset" title="Download a backup file of all your progress">Backup</button>
+      <button id="importBtn" class="srs-reset" title="Restore your progress from a backup file">Restore</button>
+      <button id="helpBtn2" class="srs-reset" title="Show the welcome guide again">Show guide</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+  </div>
+
 </main>
 
 <div id="overlay">
@@ -366,33 +379,41 @@
 
 <!-- Quick bar (phones only) -->
 <nav class="bottom-nav" id="bottomNav" aria-label="Quick navigation">
-  <button class="bn-btn" data-bn="wordsView">
+  <button class="bn-btn active" data-group="today">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>
+    <span>Today</span>
+  </button>
+  <button class="bn-btn" data-group="learn">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4z M13 5h7v14h-7z"/></svg>
-    <span>Words</span>
+    <span>Learn</span>
   </button>
-  <button class="bn-btn" data-bn="studyView">
+  <button class="bn-btn" data-group="practice">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
-    <span>Study</span>
+    <span>Practice</span>
   </button>
-  <button class="bn-btn" data-bn="search">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg>
-    <span>Search</span>
+  <button class="bn-btn" data-group="progress">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V9M12 20V4M19 20v-7"/></svg>
+    <span>Progress</span>
+  </button>
+  <button class="bn-btn" data-group="you">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+    <span>You</span>
   </button>
 </nav>
 
 <footer>Built for Koko · Chinese &amp; English &amp; Khmer study aid · Khmer translations are best-effort, please verify with a native speaker</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-<script src="js/data.js?v=26"></script>
-<script src="js/structures.js?v=26"></script>
-<script src="js/grammar.js?v=26"></script>
-<script src="js/logic.js?v=26"></script>
-<script src="js/core.js?v=26"></script>
-<script src="js/detail.js?v=26"></script>
-<script src="js/reference.js?v=26"></script>
-<script src="js/study.js?v=26"></script>
-<script src="js/ui.js?v=26"></script>
-<script src="js/session.js?v=26"></script>
-<script src="js/main.js?v=26"></script>
+<script src="js/data.js?v=30"></script>
+<script src="js/structures.js?v=30"></script>
+<script src="js/grammar.js?v=30"></script>
+<script src="js/logic.js?v=30"></script>
+<script src="js/core.js?v=30"></script>
+<script src="js/detail.js?v=30"></script>
+<script src="js/reference.js?v=30"></script>
+<script src="js/study.js?v=30"></script>
+<script src="js/ui.js?v=30"></script>
+<script src="js/session.js?v=30"></script>
+<script src="js/main.js?v=30"></script>
 </body>
 </html>

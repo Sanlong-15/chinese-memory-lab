@@ -385,6 +385,8 @@ function initWelcome() {
     .addEventListener("click", hideWelcome);
   document.getElementById("welcomeX").addEventListener("click", hideWelcome);
   document.getElementById("helpBtn").addEventListener("click", showWelcome);
+  const helpBtn2 = document.getElementById("helpBtn2");
+  if (helpBtn2) helpBtn2.addEventListener("click", showWelcome);
 }
 
 // ---- Keyboard shortcuts + dialog Escape/focus-trap ----

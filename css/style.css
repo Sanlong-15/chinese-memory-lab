@@ -101,6 +101,36 @@
     flex-wrap: wrap;
     padding: 16px 16px 0;
   }
+
+  /* Two-level nav: primary groups + sub-pages */
+  .groupnav{
+    display:flex; gap:6px; justify-content:center; flex-wrap:wrap;
+    padding: 16px 16px 0;
+  }
+  .group-btn{
+    border:none; background:transparent; color:var(--ink-soft);
+    padding: 8px 16px; border-radius:999px;
+    font-family:'Inter'; font-weight:700; font-size:14px; cursor:pointer;
+    transition: all .15s ease;
+  }
+  .group-btn:hover{ color:var(--seal); }
+  .group-btn.active{ background:var(--seal); color:#fff; }
+
+  .subnav{
+    display:flex; gap:7px; justify-content:center; flex-wrap:wrap;
+    padding: 10px 16px 0;
+  }
+  .subnav:empty{ display:none; }
+  .subnav-btn{
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    padding: 6px 13px; border-radius:999px;
+    font-family:'Inter'; font-weight:600; font-size:12.5px; cursor:pointer;
+    transition: all .15s ease;
+  }
+  .subnav-btn:hover{ border-color:var(--seal); color:var(--seal); }
+  .subnav-btn.active{ background:var(--seal-soft); border-color:var(--seal); color:var(--seal); }
+
+  .settings-h{ font-family:'Zilla Slab'; font-size:15px; color:var(--ink); margin:18px 0 8px; }
   .tab-btn{
     border:1px solid var(--line);
     background: var(--card);
@@ -475,6 +505,17 @@
   #todayCard .sent-cn{ font-size:24px; margin:8px 0 2px; }
   #todayCard .sent-en{ color:var(--ink-soft); font-size:14px; margin:0 0 12px; }
   #todayCard .py{ font-size:16px; color:var(--seal); font-weight:600; margin:2px 0 6px; }
+  .session-fam{ font-size:12.5px; color:var(--jade); font-weight:600; margin-top:10px; font-family:'Noto Serif SC',serif; }
+
+  .tone-primer{ text-align:center; }
+  .tp-row{ display:flex; align-items:center; gap:12px; width:100%; max-width:360px; margin:6px auto; padding:8px 12px; border:1px solid var(--line); border-radius:12px; background:var(--card); cursor:pointer; text-align:left; }
+  .tp-row:hover{ border-color:var(--seal); }
+  .tp-num{ font-weight:700; color:var(--ink-soft); width:14px; }
+  .tp-mark{ font-size:22px; width:18px; color:var(--seal); }
+  .tp-zi{ font-family:'Noto Serif SC',serif; font-size:28px; font-weight:900; width:32px; }
+  .tp-py{ font-weight:600; color:var(--seal); width:42px; }
+  .tp-desc{ font-size:12.5px; color:var(--ink-soft); flex:1; }
+  .tone-primer .study-btn{ margin-top:12px; }
 
   .struct-card{
     display:flex; gap:16px; align-items:flex-start;

@@ -107,6 +107,32 @@ describe("pickTaskFromState — daily task selection", () => {
   });
 });
 
+describe("orderNewByPriority — A0 building blocks first", () => {
+  const words = [
+    { chinese: "认" },
+    { chinese: "一" },
+    { chinese: "好" },
+    { chinese: "识" },
+    { chinese: "人" },
+  ];
+  const pri = new Map([["一", 0], ["人", 1], ["好", 2]]);
+
+  it("pulls priority words to the front in priority order", () => {
+    const out = Logic.orderNewByPriority(words, pri).map((w) => w.chinese);
+    expect(out.slice(0, 3)).toEqual(["一", "人", "好"]);
+  });
+
+  it("keeps non-priority words after, in their original order", () => {
+    const out = Logic.orderNewByPriority(words, pri).map((w) => w.chinese);
+    expect(out.slice(3)).toEqual(["认", "识"]);
+  });
+
+  it("returns a copy when there is no priority map", () => {
+    const out = Logic.orderNewByPriority(words, null).map((w) => w.chinese);
+    expect(out).toEqual(words.map((w) => w.chinese));
+  });
+});
+
 describe("toneSeq — pinyin tone parser", () => {
   it("reads the tone marks in order", () => {
     expect(Logic.toneSeq("nǐ hǎo")).toEqual([3, 3]);
