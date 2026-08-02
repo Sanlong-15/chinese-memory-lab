@@ -22,3 +22,12 @@ function applyHash() {
 }
 window.addEventListener("hashchange", applyHash);
 applyHash();
+
+// sticky nav: add a shadow once the header scrolls under the nav bar
+(function stickyNav() {
+  const nav = document.getElementById("navbar");
+  if (!nav) return;
+  const onScroll = () => nav.classList.toggle("stuck", window.scrollY > 4);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();

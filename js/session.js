@@ -142,13 +142,14 @@ function sampleField(word, field, n) {
 
 // Generic multiple-choice with immediate feedback: mark correct/wrong, then
 // advance. Wrong answers linger a little longer (error-based learning).
-function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult) {
+function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelFn) {
+  const label = labelFn || ((o) => escapeHTML(o));
   const optsHTML = options
     .map(
       (o) =>
         `<button class="sent-opt${isHanzi ? " hanzi" : ""}" data-v="${escapeHTML(
           o
-        )}">${escapeHTML(o)}</button>`
+        )}">${label(o)}</button>`
     )
     .join("");
   host.innerHTML = `<div class="session-task">${promptHTML}<div class="sent-options">${optsHTML}</div></div>`;
@@ -257,7 +258,15 @@ function renderToneTask(word, onResult) {
     `<div class="tone-zi">${word.chinese}</div>` +
     `<div class="py">${escapeHTML(word.pinyin)}</div>` +
     `<p class="intro-text">What are the tones?</p>`;
-  renderMCQ(host, prompt, opts, correct, false, onResult);
+  renderMCQ(
+    host,
+    prompt,
+    opts,
+    correct,
+    false,
+    onResult,
+    (o) => `<span class="tone-glyph">${Logic.toneGlyphs(o)}</span>`
+  );
 }
 
 // --- sentence cloze: fill the blank with the right word ------------
@@ -444,14 +453,16 @@ function endSession() {
   if (line)
     line.textContent =
       "Nice work — come back tomorrow, or keep practicing in the other tabs.";
-  if (stats)
-    stats.textContent =
-      reviewed +
-      " reviewed · " +
-      acc +
-      "% recalled · streak " +
-      streak +
-      (streak === 1 ? " day" : " days");
+  if (stats) {
+    const card = (n, l) =>
+      `<div class="summary-metric"><div class="summary-num">${n}</div><div class="summary-lbl">${l}</div></div>`;
+    stats.innerHTML =
+      '<div class="summary-cards">' +
+      card(reviewed, reviewed === 1 ? "card reviewed" : "cards reviewed") +
+      card(acc + "%", "recalled") +
+      card(streak, streak === 1 ? "day streak" : "day streak") +
+      "</div>";
+  }
   // offer to keep going if there is still work left (goal capped this session)
   const { due, fresh } = countDaily();
   const more = due + Math.min(fresh, NEW_PER_DAY - newIntroducedToday()) > 0;

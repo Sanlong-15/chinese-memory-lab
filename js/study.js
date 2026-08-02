@@ -256,6 +256,69 @@ function renderDashboard() {
   document.getElementById("dashBar").style.width = pct + "%";
   const goalInput = document.getElementById("dashGoal");
   if (goalInput && document.activeElement !== goalInput) goalInput.value = goal;
+
+  renderRetention(distinct, now);
+}
+
+// Average predicted retention + a short "words to watch" list.
+function renderRetention(distinct, now) {
+  const gauge = document.getElementById("retGauge");
+  const numEl = document.getElementById("retNum");
+  if (!gauge || !numEl) return;
+
+  let sum = 0,
+    n = 0;
+  const weak = [];
+  for (const w of distinct) {
+    const st = getState(w.id);
+    if (!(st.reps > 0) || !st.S) continue;
+    sum += Logic.recallProb(st, now);
+    n++;
+    // "weak" = hard cards or ones you've forgotten before
+    if ((st.D || 0) >= 7 || (st.lapses || 0) >= 1) {
+      weak.push({ w, D: st.D || 0, lapses: st.lapses || 0 });
+    }
+  }
+
+  const pct = n ? Math.round((sum / n) * 100) : 0;
+  numEl.textContent = n ? pct + "%" : "–";
+  gauge.style.setProperty("--pct", n ? pct : 0);
+
+  const desc = document.getElementById("retDesc");
+  if (desc && n) {
+    desc.textContent =
+      pct >= 90
+        ? "Strong. You're holding your words well — keep the daily habit."
+        : pct >= 75
+          ? "Good. A few words are slipping; today's review will catch them."
+          : "Some words are fading. A review session now will pull this back up.";
+  }
+
+  // top weak words: hardest first, then most-forgotten
+  weak.sort((a, b) => b.D - a.D || b.lapses - a.lapses);
+  const top = weak.slice(0, 8);
+  const panel = document.getElementById("weakPanel");
+  const list = document.getElementById("weakList");
+  if (!panel || !list) return;
+  if (!top.length) {
+    panel.hidden = true;
+    list.innerHTML = "";
+    return;
+  }
+  panel.hidden = false;
+  list.innerHTML = top
+    .map(
+      (it) =>
+        `<button class="weak-item" data-speak="${escapeHTML(it.w.chinese)}">` +
+        `<span class="weak-zi hanzi">${escapeHTML(it.w.chinese)}</span>` +
+        `<span class="weak-py">${escapeHTML(it.w.pinyin || "")}</span>` +
+        `<span class="weak-en">${escapeHTML(it.w.english || "")}</span>` +
+        `</button>`
+    )
+    .join("");
+  list.querySelectorAll(".weak-item").forEach((b) => {
+    b.addEventListener("click", () => speak(b.dataset.speak));
+  });
 }
 function initDashboard() {
   const goalInput = document.getElementById("dashGoal");
@@ -447,16 +510,44 @@ function refreshStudy() {
 }
 
 // ---- Wiring ----
-document.querySelectorAll(".study-filter-chip").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".study-filter-chip")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentStudyLevel = btn.dataset.level;
-    refreshStudy();
+// Filter menu: collapsed trigger + popover holding the level chips
+(function wireStudyFilter() {
+  const trigger = document.getElementById("studyFilterTrigger");
+  const pop = document.getElementById("studyFilterPop");
+  const lbl = document.getElementById("studyFilterLbl");
+  const menu = document.getElementById("studyFilterMenu");
+  if (!trigger || !pop) return;
+  const closeMenu = () => {
+    pop.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
+  };
+  const openMenu = () => {
+    pop.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
+  };
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    pop.hidden ? openMenu() : closeMenu();
   });
-});
+  document.addEventListener("click", (e) => {
+    if (!pop.hidden && !menu.contains(e.target)) closeMenu();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !pop.hidden) closeMenu();
+  });
+  document.querySelectorAll(".study-filter-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".study-filter-chip")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentStudyLevel = btn.dataset.level;
+      lbl.textContent = btn.dataset.level === "ALL" ? "All levels" : btn.textContent;
+      closeMenu();
+      refreshStudy();
+    });
+  });
+})();
 
 document.getElementById("mode-review").addEventListener("click", () => setStudyMode("review"));
 document.getElementById("mode-browse").addEventListener("click", () => setStudyMode("browse"));

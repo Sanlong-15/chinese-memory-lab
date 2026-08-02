@@ -377,7 +377,7 @@ function renderTone() {
   for (const o of opts) {
     const b = document.createElement("button");
     b.className = "listen-opt tone-opt";
-    b.textContent = o.split("-").join(" – ");
+    b.innerHTML = `<span class="tone-glyph">${Logic.toneGlyphs(o)}</span>`;
     b.dataset.seq = o;
     b.addEventListener("click", () => chooseTone(b, o, w));
     optWrap.appendChild(b);
@@ -452,11 +452,11 @@ function renderGrammar() {
     return `
     <div class="gram-card">
       <div class="gram-head">
-        <span class="gram-pat">${g.pat}</span>
+        <span class="gram-pat hanzi">${g.pat}</span>
         <span class="gram-en">${g.en}</span>
         <span class="gram-badge">${g.tier}</span>
       </div>
-      <div class="gram-struct">${g.struct}</div>
+      <div class="gram-formula"><span class="gram-formula-lbl">Pattern</span><span class="gram-struct">${g.struct}</span></div>
       <p class="gram-rule">${g.rule}</p>
       <div class="gram-examples">${ex}</div>
       ${g.pit ? `<div class="gram-pit"><strong>Watch out:</strong> ${g.pit}</div>` : ""}

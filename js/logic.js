@@ -27,6 +27,14 @@
     return (S / FSRS_FACTOR) * (Math.pow(TARGET_R, 1 / FSRS_DECAY) - 1);
   }
 
+  // Predicted probability you'd recall this card right now (0..1).
+  // Same forgetting curve FSRS uses: R = (1 + FACTOR * t/S) ^ DECAY.
+  function recallProb(state, now) {
+    if (!state || !state.S || !state.reps) return 0;
+    const t = Math.max(0, (now - (state.last || now)) / DAY);
+    return Math.pow(1 + FSRS_FACTOR * (t / state.S), FSRS_DECAY);
+  }
+
   // Pure: take the current card state + a rating, return the NEW state.
   // Does not read or write storage — the caller persists the result.
   function fsrsUpdate(state, rating, now) {
@@ -88,6 +96,16 @@
       else if (TONE4.includes(c)) seq.push(4);
     }
     return seq;
+  }
+
+  // ---- Tone number string -> contour glyphs ----
+  // "3-1-2" -> "ˇ ˉ ˊ".  1=high flat, 2=rising, 3=dip, 4=falling, 0/5=neutral.
+  const TONE_MARK = { 1: "ˉ", 2: "ˊ", 3: "ˇ", 4: "ˋ", 5: "·", 0: "·" };
+  function toneGlyphs(str) {
+    return String(str)
+      .split("-")
+      .map((n) => TONE_MARK[n.trim()] || n)
+      .join(" ");
   }
 
   // ---- Choose a study task for a word based on how well it's known ----
@@ -165,6 +183,7 @@
     FSRS_W,
     FSRS_DECAY,
     FSRS_FACTOR,
+    recallProb,
     TARGET_R,
     DAY,
     fsrsInterval,
@@ -174,6 +193,7 @@
     TONE3,
     TONE4,
     toneSeq,
+    toneGlyphs,
     dedupeByChinese,
     pickTaskFromState,
     orderNewByPriority,
