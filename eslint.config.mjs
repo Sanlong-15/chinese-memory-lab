@@ -6,7 +6,8 @@ import js from "@eslint/js";
 export default [
   js.configs.recommended,
   {
-    files: ["js/logic.js"],
+    // The pure domain layer: FSRS logic + SRS storage. No feature UI.
+    files: ["js/domain/*.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "script",
@@ -14,6 +15,9 @@ export default [
         module: "readonly",
         window: "readonly",
         globalThis: "readonly",
+        localStorage: "readonly",
+        Logic: "readonly",
+        console: "readonly",
       },
     },
   },

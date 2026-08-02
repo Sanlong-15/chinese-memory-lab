@@ -8,6 +8,7 @@ _radicals_source.json
 # Backups (kept locally, never pushed)
 *.backup-*
 js/*.backup-*
+archive/
 
 # Node dev tools (tests + linter) — not needed by the website
 node_modules/

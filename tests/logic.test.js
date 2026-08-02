@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import Logic from "../js/logic.js";
+import Logic from "../js/domain/logic.js";
 
 const DAY = 86400000;
 const newCard = () => ({ state: "new", due: 0, S: 0, D: 0, reps: 0, lapses: 0, last: 0 });

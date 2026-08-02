@@ -338,6 +338,19 @@ function selectGroup(group) {
   if (views) switchView(views[0][0]);
 }
 
+// Lazy view rendering: heavy views build their DOM the first time they are
+// opened, not at startup. main.js registers render fns into LAZY_VIEWS.
+const LAZY_VIEWS = {};
+const _lazyRendered = new Set();
+function lazyRender(viewId) {
+  if (_lazyRendered.has(viewId)) return;
+  const fn = LAZY_VIEWS[viewId];
+  if (typeof fn === "function") {
+    _lazyRendered.add(viewId); // mark first so a re-entrant call can't loop
+    fn();
+  }
+}
+
 function switchView(viewId) {
   const el = document.getElementById(viewId);
   if (!el) return;
@@ -345,6 +358,7 @@ function switchView(viewId) {
     .querySelectorAll(".view")
     .forEach((v) => v.classList.remove("active"));
   el.classList.add("active");
+  lazyRender(viewId); // build this view's DOM on first open
   const token = VIEW_HASH[viewId];
   if (token && "#" + token !== location.hash) {
     history.replaceState(null, "", "#" + token);

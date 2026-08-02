@@ -2,12 +2,12 @@
     --paper: #F1ECE4;
     --paper-2: #E9E1D5;
     --ink: #3D362E;
-    --ink-soft: #7A6E5F;
-    --seal: #B45C3E;
+    --ink-soft: #6D6255; /* darkened for WCAG AA (>=4.5) on Warm Stone surfaces */
+    --seal: #994E35;
     --seal-soft: #EBDACF;
-    --jade: #6E8E63;
+    --jade: #526A4A;
     --jade-soft: #E0E7D6;
-    --gold: #B8863E;
+    --gold: #7F5C2B;
     --line: #E4DBCE;
     --card: #FBF8F3;
     --dot: rgba(61,54,46,0.05);
@@ -1024,3 +1024,17 @@
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
   }
+
+  /* Global error fallback banner (shown by observability.js on uncaught errors) */
+  #cml-error-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:9999;
+    display:flex; align-items:center; gap:12px; justify-content:center;
+    padding:12px 16px; font-size:14px; font-weight:600;
+    background:var(--seal); color:#fff;
+    box-shadow:0 -2px 14px rgba(0,0,0,.18);
+  }
+  #cml-error-bar button{
+    background:rgba(255,255,255,.18); color:#fff; border:1px solid rgba(255,255,255,.5);
+    border-radius:8px; padding:6px 12px; font-weight:700; cursor:pointer;
+  }
+  #cml-error-bar #cml-error-dismiss{ border:0; background:transparent; font-size:20px; line-height:1; padding:2px 8px; }

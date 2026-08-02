@@ -11,14 +11,14 @@ const read = (f) => fs.readFileSync(path.join(dir, "..", "js", f), "utf8");
 function loadDB() {
   const c = {};
   vm.createContext(c);
-  vm.runInContext(read("data.js") + "\nthis.__DB = DB;", c);
+  vm.runInContext(read("data/words.js") + "\nthis.__DB = DB;", c);
   return c.__DB;
 }
 function loadExamples() {
   const c = {};
   c.window = c;
   vm.createContext(c);
-  vm.runInContext(read("examples.js"), c);
+  vm.runInContext(read("data/examples.js"), c);
   return c.window.DB_EXAMPLES;
 }
 

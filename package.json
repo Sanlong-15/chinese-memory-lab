@@ -6,8 +6,9 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint js/logic.js tests",
-    "format": "prettier --write ."
+    "lint": "eslint js/domain/logic.js js/domain/srs.js tests",
+    "format": "prettier --write .",
+    "format:check": "prettier --check \"js/**/*.js\" \"tests/**/*.js\" \"*.md\""
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

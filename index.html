@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.wikimedia.org; connect-src 'self' https://cdn.jsdelivr.net https://*.wikimedia.org; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.wikimedia.org https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://cdn.jsdelivr.net https://*.wikimedia.org https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'">
 <title>汉字记忆 · Character Memory Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=40">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=44">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3F6F5E">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 
@@ -18,7 +21,6 @@
   <div class="stamp">学习</div>
   <h1 class="title">Character Memory Lab</h1>
   <p class="subtitle">1,331 words · HSK 1–4 complete · Boya L11–L14 · GCP7 L6 · every character broken into its story</p>
-  <p style="margin:10px 0 0;"><a href="index.html" style="font-size:12.5px; color:var(--jade); font-weight:600;">+ Upload a new lesson from a PDF</a></p>
 </header>
 
 <div class="navbar" id="navbar">
@@ -486,17 +488,28 @@
 
 <footer>Built for Koko · Chinese &amp; English &amp; Khmer study aid · Khmer translations are best-effort, please verify with a native speaker</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-<script src="js/data.js?v=40"></script>
-<script src="js/structures.js?v=40"></script>
-<script src="js/grammar.js?v=40"></script>
-<script src="js/logic.js?v=40"></script>
-<script src="js/core.js?v=40"></script>
-<script src="js/detail.js?v=40"></script>
-<script src="js/reference.js?v=40"></script>
-<script src="js/study.js?v=40"></script>
-<script src="js/ui.js?v=40"></script>
-<script src="js/session.js?v=40"></script>
-<script src="js/main.js?v=40"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<!-- observability: logger + global error handling (loads first) -->
+<script defer src="js/shared/observability.js?v=44"></script>
+<!-- data layer -->
+<script defer src="js/data/words.js?v=44"></script>
+<script defer src="js/data/structures.js?v=44"></script>
+<script defer src="js/data/grammar.js?v=44"></script>
+<!-- domain (pure logic + SRS storage) -->
+<script defer src="js/domain/logic.js?v=44"></script>
+<script defer src="js/domain/srs.js?v=44"></script>
+<!-- shared helpers -->
+<script defer src="js/shared/core.js?v=44"></script>
+<!-- app shell (nav, word detail) -->
+<script defer src="js/app/detail.js?v=44"></script>
+<!-- features -->
+<script defer src="js/features/practice/reference.js?v=44"></script>
+<script defer src="js/features/flashcards/study.js?v=44"></script>
+<script defer src="js/app/ui.js?v=44"></script>
+<script defer src="js/features/today/session.js?v=44"></script>
+<!-- analytics (GA4, off until a Measurement ID is set) -->
+<script defer src="js/app/analytics.js?v=44"></script>
+<!-- app entry -->
+<script defer src="js/app/main.js?v=44"></script>
 </body>
 </html>

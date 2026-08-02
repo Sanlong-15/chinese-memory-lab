@@ -58,31 +58,51 @@ function renderGrid() {
   }
 
   grid.innerHTML = filtered
-    .map(
-      (w) => `
-    <div class="word-card" data-id="${w.id}" role="button" tabindex="0" aria-label="${w.chinese}, ${w.pinyin}, ${w.english}. Open details.">
-      <div class="zi">${w.chinese}</div>
-      <div class="py">${w.pinyin}</div>
-      <div class="en">${w.english}</div>
-      <div class="level-tag">${w.level}</div>
+    .map((w) => {
+      // Escape every field: the word list can be extended via lesson upload,
+      // so treat it as untrusted before putting it in HTML / an attribute.
+      const zi = escapeHTML(w.chinese);
+      const py = escapeHTML(w.pinyin);
+      const en = escapeHTML(w.english);
+      const lvl = escapeHTML(w.level);
+      const label = escapeHTML(
+        `${w.chinese}, ${w.pinyin}, ${w.english}. Open details.`
+      );
+      return `
+    <div class="word-card" data-id="${w.id}" role="button" tabindex="0" aria-label="${label}">
+      <div class="zi">${zi}</div>
+      <div class="py">${py}</div>
+      <div class="en">${en}</div>
+      <div class="level-tag">${lvl}</div>
     </div>
-  `,
-    )
+  `;
+    })
     .join("");
-  grid.querySelectorAll(".word-card").forEach((card) => {
-    const open = () => {
-      const id = parseInt(card.dataset.id, 10);
-      const w = (DB.words || []).find((x) => x.id === id);
-      if (w) speak(w.chinese);
-      openDetail(id);
-    };
-    card.addEventListener("click", open);
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        open();
-      }
-    });
+}
+
+// One delegated listener for the whole grid instead of 2 per card.
+// Called once at startup; survives every renderGrid() re-render.
+function wireWordGrid() {
+  const grid = document.getElementById("wordGrid");
+  if (!grid || grid.dataset.wired) return;
+  grid.dataset.wired = "1";
+  const openCard = (card) => {
+    const id = parseInt(card.dataset.id, 10);
+    const w = (DB.words || []).find((x) => x.id === id);
+    if (w) speak(w.chinese);
+    openDetail(id);
+  };
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest(".word-card");
+    if (card && card.dataset.id) openCard(card);
+  });
+  grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".word-card");
+    if (card && card.dataset.id) {
+      e.preventDefault();
+      openCard(card);
+    }
   });
 }
 
@@ -366,7 +386,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/examples.js?v=40";
+  s.src = "js/data/examples.js?v=44";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
