@@ -170,8 +170,8 @@ function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelF
 }
 
 // --- flashcard renderer (recognition + recall) ---------------------
-function renderFlashTask(word, dir, onResult) {
-  const host = document.getElementById("todayCard");
+function renderFlashTask(word, dir, onResult, host) {
+  host = host || document.getElementById("todayCard");
   if (!host) return;
   const recall = dir === "recall";
   const front = recall ? escapeHTML(word.english) : word.chinese;
@@ -223,8 +223,8 @@ function renderFlashTask(word, dir, onResult) {
 }
 
 // --- listening: hear the word, choose the meaning ------------------
-function renderListenTask(word, onResult) {
-  const host = document.getElementById("todayCard");
+function renderListenTask(word, onResult, host) {
+  host = host || document.getElementById("todayCard");
   if (!host) return;
   speak(word.chinese);
   const opts = sampleField(word, "english", 4);
@@ -241,8 +241,8 @@ function renderListenTask(word, onResult) {
 }
 
 // --- tone: see the word, choose its tone pattern -------------------
-function renderToneTask(word, onResult) {
-  const host = document.getElementById("todayCard");
+function renderToneTask(word, onResult, host) {
+  host = host || document.getElementById("todayCard");
   if (!host) return;
   const seq = toneSeq(word.pinyin);
   const correct = seq.join("-");
@@ -270,12 +270,12 @@ function renderToneTask(word, onResult) {
 }
 
 // --- sentence cloze: fill the blank with the right word ------------
-function renderSentenceTask(word, onResult) {
-  const host = document.getElementById("todayCard");
+function renderSentenceTask(word, onResult, host) {
+  host = host || document.getElementById("todayCard");
   if (!host) return;
   const ex = word.ex_cn || "";
   if (!ex.includes(word.chinese)) {
-    renderFlashTask(word, "recognize", onResult); // safe fallback
+    renderFlashTask(word, "recognize", onResult, host); // safe fallback
     return;
   }
   const blanked = ex.split(word.chinese).join("____");

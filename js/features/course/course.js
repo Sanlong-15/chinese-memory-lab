@@ -335,37 +335,22 @@ function openLesson(lessonId) {
   if (words[0]) speak(words[0].chinese); // Hear-first
 }
 
-// ---- Quiz phase (active recall) ----
+// ---- Quiz phase: multi-mode practice engine (active recall) ----
 function startQuiz(lessonId) {
   const host = document.getElementById("courseView");
   const L = lessonById(lessonId);
   const words = L.wordIds.map(cWord).filter(Boolean);
-  let i = 0,
-    correct = 0;
-
-  const step = () => {
-    if (i >= words.length) return finishQuiz(lessonId, correct / words.length);
-    const w = words[i];
-    host.innerHTML = `
-      <button class="course-back" id="courseBack">← Course</button>
-      <p class="progress-note">Quiz · ${i + 1} / ${words.length}</p>
-      <div id="courseQuiz"></div>`;
-    host.querySelector("#courseBack").addEventListener("click", renderCourse);
-    const opts = sampleField(w, "chinese", 4);
-    const prompt = `<p class="intro-text">Which word means <strong>“${escapeHTML(
-      w.english
-    )}”</strong>?</p>`;
-    renderMCQ(host.querySelector("#courseQuiz"), prompt, opts, w.chinese, true, (rating) => {
-      if (rating === "good") correct++;
-      i++;
-      step();
-    });
-  };
-  step();
+  host.innerHTML = `
+    <button class="course-back" id="courseBack">← Course</button>
+    <div id="practiceHost"></div>`;
+  host.querySelector("#courseBack").addEventListener("click", renderCourse);
+  runPractice(host.querySelector("#practiceHost"), words, {
+    onDone: (r) => finishQuiz(lessonId, r.accuracy, r),
+  });
 }
 
 // ---- Mastery check ----
-function finishQuiz(lessonId, score) {
+function finishQuiz(lessonId, score, stats) {
   const host = document.getElementById("courseView");
   const L = lessonById(lessonId);
   const path = COURSE.paths.find((p) => p.id === L.path);
@@ -393,6 +378,13 @@ function finishQuiz(lessonId, score) {
           ? "You passed the mastery check."
           : `You need ${Math.round(threshold * 100)}% to unlock the next lesson. Review and try again.`
       }</p>
+      ${
+        stats
+          ? `<p class="course-result-stats">${stats.correct}/${stats.total} correct · ${stats.avgSec}s avg${
+              stats.wrongCount ? ` · ${stats.wrongCount} reviewed` : ""
+            }</p>`
+          : ""
+      }
     </div>
     <div class="course-result-actions">
       ${

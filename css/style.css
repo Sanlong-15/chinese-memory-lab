@@ -1069,6 +1069,34 @@
   .course-track-sub{ font-size:12.5px; color:var(--ink-soft); margin:2px 0 8px; }
   .course-track-bar{ height:8px; background:var(--line); border-radius:999px; overflow:hidden; }
   .course-track-fill{ height:100%; background:var(--jade); border-radius:999px; transition:width .3s; }
+  .course-result-stats{ font-size:12.5px; color:var(--ink-soft); margin-top:8px; }
+
+  /* ---- Practice modes ---- */
+  .practice-progress{ margin:0 0 10px; }
+  .practice-q{ max-width:520px; }
+  .type-zi{ font-family:'Noto Serif SC'; font-size:56px; font-weight:900; text-align:center; margin:6px 0 10px; }
+  .type-input{
+    width:100%; font-size:18px; padding:12px 14px; border-radius:12px;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); text-align:center;
+  }
+  .type-input:focus{ outline:2px solid var(--jade); outline-offset:1px; }
+  .practice-q .study-btn.primary{ margin-top:12px; }
+  .type-feedback{ min-height:22px; margin-top:12px; text-align:center; font-size:14px; font-weight:600; }
+  .type-feedback .fb-ok{ color:var(--jade); }
+  .type-feedback .fb-no{ color:var(--seal); }
+  .match-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  .match-col{ display:flex; flex-direction:column; gap:8px; }
+  .match-item{
+    min-height:48px; padding:10px 12px; border-radius:12px; cursor:pointer;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; font-weight:600;
+    transition:transform .1s, border-color .12s, background .12s;
+  }
+  .match-item.hanzi{ font-family:'Noto Serif SC'; font-size:22px; font-weight:700; }
+  .match-item.sel{ border-color:var(--seal); background:var(--seal-soft); }
+  .match-item.done{ border-color:var(--jade); background:var(--jade-soft); opacity:.6; cursor:default; }
+  .match-item.bad{ border-color:var(--seal); background:rgba(179,49,44,.12); }
+  .match-item:focus-visible{ outline:2px solid var(--jade); outline-offset:2px; }
+  .practice-review-intro{ text-align:center; padding:20px 12px; }
   .course-path-nodes{ display:flex; flex-direction:column; max-width:560px; }
   .course-path{ max-width:560px; margin:8px 0 22px; }
   .course-path-title{ font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px 2px; }
