@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=45">
+<link rel="stylesheet" href="css/style.css?v=47">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -20,7 +20,7 @@
   <button id="themeToggle" class="theme-toggle" aria-label="Switch between day and night mode">Night mode</button>
   <div class="stamp">学习</div>
   <h1 class="title">Character Memory Lab</h1>
-  <p class="subtitle">1,331 words · HSK 1–4 complete · Boya L11–L14 · GCP7 L6 · every character broken into its story</p>
+  <p class="subtitle">1,377 words · HSK 1–4 complete · Boya L11–L14 · GCP7 L5–L7 · every character broken into its story</p>
 </header>
 
 <div class="navbar" id="navbar">
@@ -73,7 +73,9 @@
       <button class="filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip" data-level="L13">Boya L13</button>
       <button class="filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip" data-level="GCP6">GCP7 L6</button>
+      <button class="filter-chip" data-level="GCP7">GCP7 L7</button>
     </div>
     <p class="count-note" id="countNote" aria-live="polite"></p>
     <div class="grid" id="wordGrid"></div>
@@ -126,7 +128,9 @@
       <button class="filter-chip sent-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip sent-filter-chip" data-level="L13">Boya L13</button>
       <button class="filter-chip sent-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip sent-filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip sent-filter-chip" data-level="GCP6">GCP7 L6</button>
+      <button class="filter-chip sent-filter-chip" data-level="GCP7">GCP7 L7</button>
     </div>
     <p class="count-note" id="sentScore"></p>
     <div class="sent-wrap">
@@ -155,7 +159,9 @@
       <button class="filter-chip listen-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip listen-filter-chip" data-level="L13">Boya L13</button>
       <button class="filter-chip listen-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip listen-filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip listen-filter-chip" data-level="GCP6">GCP7 L6</button>
+      <button class="filter-chip listen-filter-chip" data-level="GCP7">GCP7 L7</button>
     </div>
     <p class="count-note" id="listenScore"></p>
     <div class="sent-wrap">
@@ -190,7 +196,9 @@
       <button class="filter-chip tone-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip tone-filter-chip" data-level="L13">Boya L13</button>
       <button class="filter-chip tone-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip tone-filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip tone-filter-chip" data-level="GCP6">GCP7 L6</button>
+      <button class="filter-chip tone-filter-chip" data-level="GCP7">GCP7 L7</button>
     </div>
     <p class="count-note" id="toneScore"></p>
     <div class="sent-wrap">
@@ -239,7 +247,9 @@
           <button class="filter-chip study-filter-chip" data-level="L12">Boya L12</button>
           <button class="filter-chip study-filter-chip" data-level="L13">Boya L13</button>
           <button class="filter-chip study-filter-chip" data-level="L14">Boya L14</button>
+          <button class="filter-chip study-filter-chip" data-level="GCP5">GCP7 L5</button>
           <button class="filter-chip study-filter-chip" data-level="GCP6">GCP7 L6</button>
+          <button class="filter-chip study-filter-chip" data-level="GCP7">GCP7 L7</button>
         </div>
       </div>
     </div>
@@ -294,7 +304,9 @@
       <button class="filter-chip writing-filter-chip" data-level="L12">Boya L12</button>
       <button class="filter-chip writing-filter-chip" data-level="L13">Boya L13</button>
       <button class="filter-chip writing-filter-chip" data-level="L14">Boya L14</button>
+      <button class="filter-chip writing-filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip writing-filter-chip" data-level="GCP6">GCP7 L6</button>
+      <button class="filter-chip writing-filter-chip" data-level="GCP7">GCP7 L7</button>
     </div>
     <div class="writing-wrap">
       <div class="writing-info">
@@ -490,26 +502,26 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=45"></script>
+<script defer src="js/shared/observability.js?v=47"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=45"></script>
-<script defer src="js/data/structures.js?v=45"></script>
-<script defer src="js/data/grammar.js?v=45"></script>
+<script defer src="js/data/words.js?v=47"></script>
+<script defer src="js/data/structures.js?v=47"></script>
+<script defer src="js/data/grammar.js?v=47"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=45"></script>
-<script defer src="js/domain/srs.js?v=45"></script>
+<script defer src="js/domain/logic.js?v=47"></script>
+<script defer src="js/domain/srs.js?v=47"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=45"></script>
+<script defer src="js/shared/core.js?v=47"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=45"></script>
+<script defer src="js/app/detail.js?v=47"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=45"></script>
-<script defer src="js/features/flashcards/study.js?v=45"></script>
-<script defer src="js/app/ui.js?v=45"></script>
-<script defer src="js/features/today/session.js?v=45"></script>
+<script defer src="js/features/practice/reference.js?v=47"></script>
+<script defer src="js/features/flashcards/study.js?v=47"></script>
+<script defer src="js/app/ui.js?v=47"></script>
+<script defer src="js/features/today/session.js?v=47"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=45"></script>
+<script defer src="js/app/analytics.js?v=47"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=45"></script>
+<script defer src="js/app/main.js?v=47"></script>
 </body>
 </html>
