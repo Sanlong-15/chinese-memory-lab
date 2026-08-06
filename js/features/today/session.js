@@ -214,6 +214,14 @@ function renderFlashTask(word, dir, onResult, host) {
       flip();
     }
   });
+  // Mobile gestures: swipe up to flip; once flipped, swipe right = Good, left = Again.
+  if (typeof attachSwipe === "function") {
+    attachSwipe(card, {
+      up: flip,
+      right: () => (card.classList.contains("flipped") ? onResult("good") : flip()),
+      left: () => (card.classList.contains("flipped") ? onResult("again") : flip()),
+    });
+  }
   rating.querySelectorAll(".rate-btn").forEach((b) => {
     b.addEventListener("click", (e) => {
       e.stopPropagation();

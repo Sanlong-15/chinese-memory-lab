@@ -106,6 +106,126 @@ function renderMatchTask(host, words, field, done) {
   });
 }
 
+// ---- New mode: Sentence Ordering ----
+function renderOrderTask(host, word, done) {
+  const target = (word.ex_cn || "").replace(/[。！？，、,.!?]/g, "");
+  const tokens = Array.from(target);
+  if (tokens.length < 3 || tokens.length > 10) {
+    // sentence too short/long to order — fall back to recognition
+    return renderPracticeQuestion(host, { mode: "recognize", word }, done);
+  }
+  const bank = shuffleArray(tokens.map((c, i) => ({ c, i })));
+  host.innerHTML = `
+    <div class="practice-q">
+      <p class="intro-text">Tap the words in order to build: <strong>“${escapeHTML(
+        word.ex_en || word.english
+      )}”</strong></p>
+      <div class="order-answer" id="orderAnswer" aria-label="Your sentence"></div>
+      <div class="order-bank" id="orderBank">${bank
+        .map(
+          (t) =>
+            `<button class="order-tile hanzi" data-i="${t.i}">${escapeHTML(t.c)}</button>`
+        )
+        .join("")}</div>
+      <button class="study-btn primary" id="orderCheck">Check</button>
+      <div class="type-feedback" id="orderFb" aria-live="polite"></div>
+    </div>`;
+  const ans = host.querySelector("#orderAnswer");
+  const fb = host.querySelector("#orderFb");
+  let answered = false;
+  host.querySelectorAll("#orderBank .order-tile").forEach((t) => {
+    t.addEventListener("click", () => {
+      if (answered || t.classList.contains("used")) return;
+      t.classList.add("used");
+      const a = document.createElement("button");
+      a.className = "order-tile hanzi in-answer";
+      a.textContent = t.textContent;
+      a.addEventListener("click", () => {
+        if (answered) return;
+        a.remove();
+        t.classList.remove("used");
+      });
+      ans.appendChild(a);
+    });
+  });
+  host.querySelector("#orderCheck").addEventListener("click", () => {
+    if (answered) return;
+    answered = true;
+    const built = Array.from(ans.querySelectorAll(".order-tile"))
+      .map((x) => x.textContent)
+      .join("");
+    const ok = built === target;
+    fb.innerHTML = ok
+      ? `<span class="fb-ok">Correct!</span>`
+      : `<span class="fb-no">Answer: ${escapeHTML(word.ex_cn)}</span>`;
+    speak(word.ex_cn);
+    setTimeout(() => done(ok), ok ? 900 : 1900);
+  });
+}
+
+// ---- New mode: Speaking (best-effort). Not graded — the browser can't judge
+// Mandarin tones reliably, so it gives feedback but never blocks mastery. ----
+function renderSpeakTask(host, word, done) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  host.innerHTML = `
+    <div class="practice-q" style="text-align:center">
+      <div class="type-zi hanzi">${escapeHTML(word.chinese)}</div>
+      <div class="lesson-py">${escapeHTML(word.pinyin)}</div>
+      <p class="intro-text">Say it out loud.</p>
+      <button class="play-btn" id="speakHear" type="button" aria-label="Hear it">
+        <svg class="play-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span class="play-lbl">Hear</span>
+      </button>
+      <button class="study-btn primary" id="speakBtn">🎤 Tap and speak</button>
+      <div class="type-feedback" id="speakFb" aria-live="polite"></div>
+    </div>`;
+  host.querySelector("#speakHear").addEventListener("click", () => speak(word.chinese));
+  const fb = host.querySelector("#speakFb");
+  const btn = host.querySelector("#speakBtn");
+  if (!SR) {
+    fb.innerHTML =
+      '<span class="fb-no">Speaking check needs Chrome and a microphone. Tap to continue.</span>';
+    btn.textContent = "Continue";
+    btn.addEventListener("click", () => done(true));
+    return;
+  }
+  let answered = false;
+  const finishSpeak = (heard, note) => {
+    if (answered) return;
+    answered = true;
+    fb.innerHTML = heard
+      ? '<span class="fb-ok">Heard it 👍</span>'
+      : `<span class="fb-no">${note || "Keep practising."}</span>`;
+    setTimeout(() => done(true), 1200); // never penalise — practice, not a gate
+  };
+  btn.addEventListener("click", () => {
+    if (answered) return;
+    const rec = new SR();
+    rec.lang = "zh-CN";
+    rec.interimResults = false;
+    rec.maxAlternatives = 3;
+    fb.textContent = "Listening…";
+    rec.onresult = (e) => {
+      let hit = false,
+        first = "";
+      const alts = e.results[0];
+      for (let i = 0; i < alts.length; i++) {
+        const t = alts[i].transcript.replace(/\s/g, "");
+        if (!first) first = t;
+        if (t.includes(word.chinese)) hit = true;
+      }
+      finishSpeak(hit, `Heard: “${escapeHTML(first)}”. Aim for ${escapeHTML(word.chinese)}.`);
+    };
+    rec.onerror = () => finishSpeak(false, "Couldn't hear clearly.");
+    rec.onend = () => finishSpeak(false, "No speech detected.");
+    try {
+      rec.start();
+    } catch (e) {
+      done(true);
+    }
+  });
+}
+
 // ---- Build a mixed queue from a lesson's words ----
 function buildPracticeQueue(words) {
   const perWord = [
@@ -132,6 +252,14 @@ function buildPracticeQueue(words) {
     q.push({ mode: "match", words: shuffleArray(words.slice()).slice(0, 4), field: "english" });
   if (words.length >= 6)
     q.push({ mode: "match", words: shuffleArray(words.slice()).slice(0, 4), field: "pinyin" });
+  // one sentence-ordering question if a word has a short-enough example
+  const orderable = words.find((w) => {
+    const r = (w.ex_cn || "").replace(/[。！？，、,.!?]/g, "");
+    return r.length >= 3 && r.length <= 10 && r.includes(w.chinese);
+  });
+  if (orderable) q.push({ mode: "order", word: orderable });
+  // one speaking prompt (best-effort, never gates mastery)
+  q.push({ mode: "speak", word: words[0] });
   return q;
 }
 
@@ -148,6 +276,10 @@ function renderPracticeQuestion(host, item, done) {
       return renderSentenceTask(w, (r) => done(r === "good"), host);
     case "match":
       return renderMatchTask(host, item.words, item.field, done);
+    case "order":
+      return renderOrderTask(host, w, done);
+    case "speak":
+      return renderSpeakTask(host, w, done);
     case "recognize":
     default:
       return renderMCQ(

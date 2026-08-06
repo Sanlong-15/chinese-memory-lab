@@ -106,6 +106,38 @@ function wireWordGrid() {
   });
 }
 
+// Reusable touch-swipe helper for mobile gestures. handlers = {left,right,up,down}.
+function attachSwipe(el, handlers) {
+  let x0 = 0,
+    y0 = 0,
+    t0 = 0;
+  el.addEventListener(
+    "touchstart",
+    (e) => {
+      const t = e.changedTouches[0];
+      x0 = t.clientX;
+      y0 = t.clientY;
+      t0 = Date.now();
+    },
+    { passive: true }
+  );
+  el.addEventListener(
+    "touchend",
+    (e) => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - x0,
+        dy = t.clientY - y0;
+      if (Date.now() - t0 > 800) return; // too slow to be a swipe
+      if (Math.abs(dx) < 45 && Math.abs(dy) < 45) return; // too small
+      let fn;
+      if (Math.abs(dx) > Math.abs(dy)) fn = dx > 0 ? handlers.right : handlers.left;
+      else fn = dy < 0 ? handlers.up : handlers.down;
+      if (fn) fn();
+    },
+    { passive: true }
+  );
+}
+
 // ---- Audio (text-to-speech) with smart voice selection ----
 const VOICE_KEY = "cml_voice"; // remembers the user's chosen voice
 let chosenVoiceURI = null;
@@ -402,7 +434,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=52";
+  s.src = "js/data/examples.js?v=53";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
