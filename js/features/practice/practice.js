@@ -226,8 +226,23 @@ function renderSpeakTask(host, word, done) {
   });
 }
 
-// ---- Build a mixed queue from a lesson's words ----
-function buildPracticeQueue(words) {
+// ---- Build a queue from words. `only` limits to a single mode (for the
+// standalone practice picker); null builds the full mixed lesson queue. ----
+function buildPracticeQueue(words, only) {
+  if (only) {
+    const q = [];
+    if (only === "typing" || only === "speak") {
+      words.forEach((w) => q.push({ mode: only, word: w }));
+    } else if (only === "charmatch" || only === "pinyinmatch") {
+      const field = only === "charmatch" ? "english" : "pinyin";
+      const pool = shuffleArray(words.slice());
+      for (let i = 0; i < pool.length; i += 4) {
+        const g = pool.slice(i, i + 4);
+        if (g.length >= 2) q.push({ mode: "match", words: g, field });
+      }
+    }
+    return q;
+  }
   const perWord = [
     { mode: "recognize", ok: () => true },
     { mode: "typing", ok: () => true },
@@ -298,7 +313,7 @@ function renderPracticeQuestion(host, item, done) {
 // ---- The engine ----
 function runPractice(host, words, opts) {
   opts = opts || {};
-  const queue = buildPracticeQueue(words);
+  const queue = buildPracticeQueue(words, opts.only);
   let i = 0,
     correct = 0;
   const times = [];
@@ -368,4 +383,102 @@ function runPractice(host, words, opts) {
     );
   };
   next();
+}
+
+// ---- Standalone Practice picker (Practice tab) ----
+// Reuses runPractice + all the mode renderers; just a new entry point.
+let _pickMode = "mixed";
+let _pickLevel = "HSK1";
+const PICK_MODES = [
+  ["mixed", "Mixed"],
+  ["typing", "Typing"],
+  ["charmatch", "Character match"],
+  ["pinyinmatch", "Pinyin match"],
+  ["speak", "Speaking"],
+];
+
+function coursePracticeLevels() {
+  const set = [];
+  (DB.words || []).forEach((w) => {
+    if (set.indexOf(w.level) === -1) set.push(w.level);
+  });
+  return set;
+}
+
+function renderPracticePicker() {
+  const host = document.getElementById("practiceView");
+  if (!host) return;
+  const levels = coursePracticeLevels();
+  if (levels.indexOf(_pickLevel) === -1) _pickLevel = levels[0];
+  host.innerHTML = `
+    <h2 class="section-title">Practice</h2>
+    <p class="intro-text">Pick a mode and a level, then drill. Each round is up to 12 random words with instant feedback and a review of your misses.</p>
+    <div class="pick-group"><span class="pick-label">Mode</span>
+      <div class="pick-row">${PICK_MODES.map(
+        (m) =>
+          `<button class="pick-chip${m[0] === _pickMode ? " active" : ""}" data-mode="${m[0]}">${m[1]}</button>`
+      ).join("")}</div>
+    </div>
+    <div class="pick-group"><span class="pick-label">Level</span>
+      <div class="pick-row">${levels
+        .map(
+          (l) =>
+            `<button class="pick-chip${l === _pickLevel ? " active" : ""}" data-plevel="${l}">${escapeHTML(
+              l
+            )}</button>`
+        )
+        .join("")}</div>
+    </div>
+    <button class="study-btn primary" id="pickStart">Start practice</button>`;
+  host
+    .querySelectorAll(".pick-chip[data-mode]")
+    .forEach((b) =>
+      b.addEventListener("click", () => {
+        _pickMode = b.dataset.mode;
+        renderPracticePicker();
+      })
+    );
+  host
+    .querySelectorAll(".pick-chip[data-plevel]")
+    .forEach((b) =>
+      b.addEventListener("click", () => {
+        _pickLevel = b.dataset.plevel;
+        renderPracticePicker();
+      })
+    );
+  host.querySelector("#pickStart").addEventListener("click", startStandalonePractice);
+}
+
+function startStandalonePractice() {
+  const host = document.getElementById("practiceView");
+  const pool = (DB.words || []).filter((w) => w.level === _pickLevel);
+  const words = shuffleArray(pool.slice()).slice(0, 12);
+  if (!words.length) return;
+  host.innerHTML = `
+    <button class="course-back" id="practiceBack">← Practice modes</button>
+    <div id="practiceRunHost"></div>`;
+  host.querySelector("#practiceBack").addEventListener("click", renderPracticePicker);
+  runPractice(document.getElementById("practiceRunHost"), words, {
+    only: _pickMode === "mixed" ? null : _pickMode,
+    onDone: (r) => {
+      const runHost = document.getElementById("practiceRunHost");
+      runHost.innerHTML = `
+        <div class="course-result pass">
+          <div class="course-score">${Math.round(r.accuracy * 100)}%</div>
+          <p>${r.correct}/${r.total} correct · ${r.avgSec}s avg${
+            r.wrongCount ? ` · ${r.wrongCount} reviewed` : ""
+          }</p>
+        </div>
+        <div class="course-result-actions">
+          <button class="study-btn primary" id="practiceAgain">Practice again</button>
+          <button class="study-btn" id="practiceHome">Change mode</button>
+        </div>`;
+      runHost
+        .querySelector("#practiceAgain")
+        .addEventListener("click", startStandalonePractice);
+      runHost
+        .querySelector("#practiceHome")
+        .addEventListener("click", renderPracticePicker);
+    },
+  });
 }

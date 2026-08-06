@@ -270,6 +270,7 @@ const VIEW_HASH = {
   sentencesView: "sentences",
   listenView: "listen",
   toneView: "tones",
+  practiceView: "drill",
   studyView: "study",
   writingView: "writing",
   progressView: "progress",
@@ -292,6 +293,7 @@ const GROUPS = {
     ["sentencesView", "Sentences"],
   ],
   practice: [
+    ["practiceView", "Practice"],
     ["studyView", "Flashcards"],
     ["listenView", "Listening"],
     ["toneView", "Tones"],
@@ -380,6 +382,9 @@ function switchView(viewId) {
   }
   if (viewId === "courseView" && typeof renderCourse === "function") {
     renderCourse(); // rebuild each open so unlock progress is current
+  }
+  if (viewId === "practiceView" && typeof renderPracticePicker === "function") {
+    renderPracticePicker();
   }
 }
 

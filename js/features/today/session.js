@@ -419,8 +419,10 @@ function renderCurrentTask() {
   if (prog) prog.textContent = SESSION.queue.length + " left in this session";
   const item = SESSION.queue[0];
   const r = taskRenderers[item.task] || taskRenderers.recognize;
+  _taskStart = Date.now(); // for response-time tracking
   r.render(item.word, (rating) => submitSessionAnswer(item, rating));
 }
+let _taskStart = 0;
 
 function submitSessionAnswer(item, rating) {
   if (item.primer) {
@@ -431,7 +433,8 @@ function submitSessionAnswer(item, rating) {
     return;
   }
   const wasNew = !(getState(item.word.id).reps || 0); // detect first-ever review
-  schedule(item.word.id, rating);
+  const ms = _taskStart ? Date.now() - _taskStart : 0; // response time
+  schedule(item.word.id, rating, ms);
   // remember how we showed it, so pickTask can vary next time
   const st = getState(item.word.id);
   st.lastTask = item.task;
