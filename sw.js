@@ -10,8 +10,8 @@
 //
 // Bump CACHE on every release so old caches are cleaned up on activate.
 
-const CACHE = "cml-v47";
-const V = "?v=47";
+const CACHE = "cml-v51";
+const V = "?v=51";
 
 const CORE = [
   "./",
@@ -22,6 +22,7 @@ const CORE = [
   "./js/data/words.js" + V,
   "./js/data/structures.js" + V,
   "./js/data/grammar.js" + V,
+  "./js/data/course.js" + V,
   "./js/domain/logic.js" + V,
   "./js/domain/srs.js" + V,
   "./js/shared/core.js" + V,
@@ -30,6 +31,7 @@ const CORE = [
   "./js/features/flashcards/study.js" + V,
   "./js/app/ui.js" + V,
   "./js/features/today/session.js" + V,
+  "./js/features/course/course.js" + V,
   "./js/app/analytics.js" + V,
   "./js/app/main.js" + V,
   "./icons/icon-192.png",

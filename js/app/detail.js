@@ -262,6 +262,7 @@ document.querySelectorAll(".filter-chip").forEach((btn) => {
 // be bookmarked and shared, and restored on reload.
 const VIEW_HASH = {
   todayView: "today",
+  courseView: "course",
   wordsView: "words",
   patternsView: "patterns",
   structuresView: "structures",
@@ -283,6 +284,7 @@ const HASH_VIEW = Object.fromEntries(
 const GROUPS = {
   today: [["todayView", "Today"]],
   learn: [
+    ["courseView", "Course"],
     ["wordsView", "Vocabulary"],
     ["structuresView", "Characters"],
     ["patternsView", "Radicals & families"],
@@ -375,6 +377,9 @@ function switchView(viewId) {
   }
   if (viewId === "todayView" && typeof updateTodayStart === "function") {
     updateTodayStart();
+  }
+  if (viewId === "courseView" && typeof renderCourse === "function") {
+    renderCourse(); // rebuild each open so unlock progress is current
   }
 }
 

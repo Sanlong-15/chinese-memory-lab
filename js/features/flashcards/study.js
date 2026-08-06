@@ -187,6 +187,7 @@ function renderDashboard() {
   if (goalInput && document.activeElement !== goalInput) goalInput.value = goal;
 
   renderRetention(distinct, now);
+  if (typeof renderCourseProgressCard === "function") renderCourseProgressCard();
 }
 
 // Average predicted retention + a short "words to watch" list.

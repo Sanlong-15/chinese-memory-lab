@@ -402,7 +402,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=47";
+  s.src = "js/data/examples.js?v=51";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
