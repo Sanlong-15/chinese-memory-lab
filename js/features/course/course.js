@@ -310,6 +310,57 @@ function openLesson(lessonId) {
     .map((m) => `<li>${escapeHTML(m)}</li>`)
     .join("");
 
+  // Grammar section (optional, only on authored lessons that define it).
+  const grammarHTML = L.grammar
+    ? `<div class="lesson-grammar">
+        <h3 class="lesson-step-title">Grammar · ${escapeHTML(L.grammar.point)}</h3>
+        <div class="lesson-pattern">${escapeHTML(L.grammar.pattern)}</div>
+        ${(L.grammar.examples || [])
+          .map(
+            (ex) => `<div class="lesson-gex">
+              <div class="gex-cn hanzi">${escapeHTML(ex.cn)}
+                <button class="speak-btn small" data-speak="${escapeHTML(
+                  ex.cn
+                )}" title="Play sentence">${SPEAK_ICON}</button></div>
+              <div class="gex-py">${escapeHTML(ex.py)}</div>
+              <div class="gex-en">${escapeHTML(ex.en)}${
+                ex.note ? ` <span class="gex-note">· ${escapeHTML(ex.note)}</span>` : ""
+              }</div>
+            </div>`
+          )
+          .join("")}
+        ${
+          L.grammar.note
+            ? `<div class="lesson-note"><strong>Note:</strong> ${escapeHTML(
+                L.grammar.note
+              )}</div>`
+            : ""
+        }
+      </div>`
+    : "";
+
+  // Collocations / useful chunks (optional).
+  const collocHTML =
+    L.collocations && L.collocations.length
+      ? `<div class="lesson-colloc">
+          <h3 class="lesson-step-title">Useful chunks</h3>
+          <ul class="colloc-list">
+            ${L.collocations
+              .map(
+                (c) => `<li>
+                  <span class="colloc-chunk hanzi">${escapeHTML(c.chunk)}</span>
+                  <button class="speak-btn small" data-speak="${escapeHTML(
+                    c.chunk
+                  )}" title="Play">${SPEAK_ICON}</button>
+                  <span class="colloc-py">${escapeHTML(c.py)}</span>
+                  <span class="colloc-en">${escapeHTML(c.en)}</span>
+                </li>`
+              )
+              .join("")}
+          </ul>
+        </div>`
+      : "";
+
   host.innerHTML = `
     <button class="course-back" id="courseBack">← Course</button>
     <h2 class="section-title">Lesson ${L.index} · ${escapeHTML(L.title)}</h2>
@@ -325,21 +376,49 @@ function openLesson(lessonId) {
     }
     <h3 class="lesson-step-title">Meet the words</h3>
     <div class="lesson-words">${wordCards}</div>
+    ${grammarHTML}
+    ${collocHTML}
     ${
       mistakes
         ? `<div class="lesson-mistakes"><h3 class="lesson-step-title">Common mistakes</h3><ul>${mistakes}</ul></div>`
         : ""
     }
-    <button class="study-btn primary lesson-start-quiz" id="startQuiz">Start the quiz</button>`;
+    <div class="lesson-actions">
+      <button class="study-btn lesson-warmup" id="warmupBtn">Warm up · no score</button>
+      <button class="study-btn primary lesson-start-quiz" id="startQuiz">Start the quiz</button>
+    </div>`;
 
   host.querySelector("#courseBack").addEventListener("click", renderCourse);
   host
     .querySelectorAll(".speak-btn")
     .forEach((b) => b.addEventListener("click", () => speak(b.dataset.speak)));
   host
+    .querySelector("#warmupBtn")
+    .addEventListener("click", () => startWarmup(lessonId));
+  host
     .querySelector("#startQuiz")
     .addEventListener("click", () => startQuiz(lessonId));
   if (words[0]) speak(words[0].chinese); // Hear-first
+}
+
+// Ungraded warm-up: a short retrieval round before the graded quiz. Low stakes,
+// so the learner recalls the words once with no mastery pressure. Reuses the
+// practice engine; when done it returns to the lesson.
+function startWarmup(lessonId) {
+  const host = document.getElementById("courseView");
+  const L = lessonById(lessonId);
+  if (!host || !L) return;
+  const words = L.wordIds.map(cWord).filter(Boolean).slice(0, 4);
+  host.innerHTML = `
+    <button class="course-back" id="courseBack">← Lesson</button>
+    <p class="lesson-warmup-note">Warm-up — no score. Just to wake up the words.</p>
+    <div id="practiceHost"></div>`;
+  host
+    .querySelector("#courseBack")
+    .addEventListener("click", () => openLesson(lessonId));
+  runPractice(host.querySelector("#practiceHost"), words, {
+    onDone: () => openLesson(lessonId),
+  });
 }
 
 // ---- Quiz phase: multi-mode practice engine (active recall) ----

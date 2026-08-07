@@ -1262,7 +1262,26 @@
   .lesson-breakdown{ font-size:12.5px; color:var(--ink-soft); margin-top:6px; }
   .lesson-mistakes ul{ margin:6px 0 0; padding-left:18px; }
   .lesson-mistakes li{ font-size:13px; color:var(--ink); line-height:1.6; margin-bottom:4px; }
-  .lesson-start-quiz{ margin-top:20px; }
+
+  .lesson-grammar{ background:var(--card); border:1px solid var(--line); border-left:3px solid var(--seal); border-radius:14px; padding:16px; max-width:600px; margin-top:4px; }
+  .lesson-pattern{ font-family:'Zilla Slab'; font-size:15px; font-weight:600; color:var(--seal); background:var(--seal-soft); border-radius:9px; padding:8px 12px; margin-bottom:12px; }
+  .lesson-gex{ padding:8px 0; border-top:1px solid var(--line); }
+  .lesson-gex:first-of-type{ border-top:none; }
+  .gex-cn{ font-family:'Noto Serif SC'; font-size:20px; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .gex-py{ font-family:'Zilla Slab'; font-size:14px; color:var(--seal); font-weight:600; margin-top:2px; }
+  .gex-en{ font-size:13px; color:var(--ink); margin-top:2px; }
+  .gex-note{ color:var(--ink-soft); font-size:12.5px; }
+
+  .lesson-colloc{ max-width:600px; }
+  .colloc-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .colloc-list li{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 14px; }
+  .colloc-chunk{ font-family:'Noto Serif SC'; font-size:19px; font-weight:700; }
+  .colloc-py{ font-family:'Zilla Slab'; font-size:14px; color:var(--seal); font-weight:600; }
+  .colloc-en{ font-size:13px; color:var(--ink-soft); margin-left:auto; }
+
+  .lesson-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
+  .lesson-warmup-note{ font-size:13px; color:var(--ink-soft); max-width:600px; margin:4px 0 12px; }
+  .lesson-start-quiz{ margin-top:0; }
 
   .course-result{ max-width:420px; text-align:center; padding:22px 16px; border-radius:16px; margin:8px 0 16px; }
   .course-result.pass{ background:rgba(63,111,94,.12); border:1px solid var(--jade); }
