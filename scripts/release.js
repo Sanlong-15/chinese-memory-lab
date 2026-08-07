@@ -17,7 +17,7 @@ const edits = [];
 edit("index.html", (s) => s.replace(/\?v=\d+/g, "?v=" + v));
 // 2) shared/core.js — the lazily-injected examples.js path
 edit("js/shared/core.js", (s) =>
-  s.replace(/examples\.js\?v=\d+/g, "examples.js?v=" + v)
+  s.replace(/\?v=\d+/g, "?v=" + v)
 );
 // 3) sw.js — cache name + the ?v used to build the precache list
 edit("sw.js", (s) =>

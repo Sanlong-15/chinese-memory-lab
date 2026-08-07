@@ -369,6 +369,8 @@
   .speak-btn:hover{ transform: scale(1.08); }
   .speak-btn:active{ transform: scale(0.94); }
   .speak-btn.small{ width:22px; height:22px; font-size:11px; }
+  .speak-ic{ width:15px; height:15px; fill: currentColor; display:block; }
+  .speak-btn.small .speak-ic{ width:12px; height:12px; }
   .zi-row{ display:flex; align-items:center; justify-content:center; gap:6px; }
 
   /* --- Patterns view --- */

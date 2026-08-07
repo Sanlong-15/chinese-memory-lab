@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=62">
+<link rel="stylesheet" href="css/style.css?v=64">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -335,7 +335,7 @@
         <div class="py" id="wr-py"></div>
         <div class="en" id="wr-en"></div>
         <div class="kh" id="wr-kh"></div>
-        <button class="speak-btn small" id="wrHearBtn" title="Hear pronunciation" style="margin-top:6px;">🔊</button>
+        <button class="speak-btn small" id="wrHearBtn" title="Hear pronunciation" style="margin-top:6px;"><svg class="speak-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5V5.5L7.5 9.5H4z"/><path d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M17.6 7a7.5 7.5 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
       </div>
       <div class="example-box" style="margin-top:12px; max-width:420px;">
         <div class="cn" id="wr-ex-cn"></div>
@@ -529,30 +529,30 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=62"></script>
+<script defer src="js/shared/observability.js?v=64"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=62"></script>
-<script defer src="js/data/structures.js?v=62"></script>
-<script defer src="js/data/grammar.js?v=62"></script>
-<script defer src="js/data/course.js?v=62"></script>
+<script defer src="js/data/words.js?v=64"></script>
+<script defer src="js/data/structures.js?v=64"></script>
+<script defer src="js/data/grammar.js?v=64"></script>
+<script defer src="js/data/course.js?v=64"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=62"></script>
-<script defer src="js/domain/srs.js?v=62"></script>
+<script defer src="js/domain/logic.js?v=64"></script>
+<script defer src="js/domain/srs.js?v=64"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=62"></script>
+<script defer src="js/shared/core.js?v=64"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=62"></script>
+<script defer src="js/app/detail.js?v=64"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=62"></script>
-<script defer src="js/features/flashcards/study.js?v=62"></script>
-<script defer src="js/features/flashcards/review.js?v=62"></script>
-<script defer src="js/app/ui.js?v=62"></script>
-<script defer src="js/features/today/session.js?v=62"></script>
-<script defer src="js/features/practice/practice.js?v=62"></script>
-<script defer src="js/features/course/course.js?v=62"></script>
+<script defer src="js/features/practice/reference.js?v=64"></script>
+<script defer src="js/features/flashcards/study.js?v=64"></script>
+<script defer src="js/features/flashcards/review.js?v=64"></script>
+<script defer src="js/app/ui.js?v=64"></script>
+<script defer src="js/features/today/session.js?v=64"></script>
+<script defer src="js/features/practice/practice.js?v=64"></script>
+<script defer src="js/features/course/course.js?v=64"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=62"></script>
+<script defer src="js/app/analytics.js?v=64"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=62"></script>
+<script defer src="js/app/main.js?v=64"></script>
 </body>
 </html>

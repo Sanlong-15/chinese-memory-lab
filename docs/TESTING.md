@@ -7,12 +7,23 @@ scheduler math and the data), fast feedback in CI, and honesty about what is
 ## The pyramid, as it applies here
 
 ```
-        manual / exploratory   ← DOM, gestures, audio, PWA install (by hand)
+        manual / exploratory   ← gestures, audio, PWA install, screen reader (by hand)
       ───────────────────────
-        headless load smoke    ← whole app boots, no exceptions, views render
+        e2e (Playwright)       ← real Chromium clicks a lesson + daily review  (CI)
     ───────────────────────────
+        headless load smoke    ← whole app boots, no exceptions, views render  (CI)
+  ───────────────────────────────
         unit tests (vitest)    ← pure FSRS logic + data integrity  (CI)
 ```
+
+### End-to-end — `tests-e2e/*.e2e.js` (Playwright, CI)
+
+Drives the app in a real headless Chromium (served by `python3 -m http.server`):
+loads the page, starts a daily review and checks a task renders, opens a course
+lesson and checks its word cards appear (which also proves the lazy `charinfo.js`
+chunk loaded), and opens a word detail from the grid. Run: `npm run e2e`. This is
+the coverage the headless vm smoke can't give — real DOM, real clicks, real
+lazy-loading. It runs as its own GitHub Actions job (`.github/workflows/e2e.yml`).
 
 ### 1. Unit tests — `tests/` (run in CI)
 

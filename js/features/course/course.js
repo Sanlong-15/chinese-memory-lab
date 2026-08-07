@@ -269,6 +269,11 @@ function openLesson(lessonId) {
   const host = document.getElementById("courseView");
   const L = lessonById(lessonId);
   if (!host || !L) return;
+  // character stories are a lazy chunk — load them before rendering the words
+  if (typeof charInfoLoaded !== "undefined" && !charInfoLoaded) {
+    ensureCharInfo(() => openLesson(lessonId));
+    return;
+  }
   const words = L.wordIds.map(cWord).filter(Boolean);
 
   const wordCards = words
@@ -282,7 +287,7 @@ function openLesson(lessonId) {
           <span class="lesson-zi hanzi">${escapeHTML(w.chinese)}</span>
           <button class="speak-btn" data-speak="${escapeHTML(
             w.chinese
-          )}" title="Play pronunciation">🔊</button>
+          )}" title="Play pronunciation">${SPEAK_ICON}</button>
         </div>
         <div class="lesson-py">${escapeHTML(w.pinyin)}</div>
         <div class="lesson-en">${escapeHTML(w.english)}${

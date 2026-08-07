@@ -6,6 +6,11 @@ function openDetail(id) {
     ensureExamples(() => openDetail(id));
     return;
   }
+  if (!charInfoLoaded) {
+    // load the character stories (lazy chunk) before rendering
+    ensureCharInfo(() => openDetail(id));
+    return;
+  }
   const uniqueChars = [...new Set(w.chars)];
   const hasStory = uniqueChars.some((ch) => DB.charInfo[ch]);
   const examples =
@@ -33,7 +38,7 @@ function openDetail(id) {
   const html = `
     <div class="detail-head">
       <div class="zi-row"><div class="zi">${w.chinese}</div>
-        <button class="speak-btn" data-speak="${escapeHTML(w.chinese)}" title="Play pronunciation">🔊</button>
+        <button class="speak-btn" data-speak="${escapeHTML(w.chinese)}" title="Play pronunciation">${SPEAK_ICON}</button>
         <button class="bm-btn${bookmarked ? " on" : ""}" id="bmBtn" aria-pressed="${bookmarked}" title="Bookmark this word">${bookmarked ? "★" : "☆"}</button>
       </div>
       <div class="py">${escapeHTML(w.pinyin)}</div>
@@ -227,7 +232,7 @@ function openCharDetail(ch) {
   const html = `
     <div class="detail-head">
       <div class="zi-row"><div class="zi">${ch}</div>
-        <button class="speak-btn" data-speak="${ch}" title="Play pronunciation">🔊</button>
+        <button class="speak-btn" data-speak="${ch}" title="Play pronunciation">${SPEAK_ICON}</button>
       </div>
       ${py ? `<div class="py">${py}</div>` : `<div class="py" style="font-size:12.5px;color:var(--ink-soft);">pinyin changes with the word</div>`}
     </div>
@@ -447,6 +452,7 @@ function switchView(viewId) {
   if (viewId === "wordsView") {
     if (typeof renderRecent === "function") renderRecent();
     if (typeof renderWordFilters === "function") renderWordFilters();
+    if (typeof ensureCharInfo === "function") ensureCharInfo(); // for radical search
   }
 }
 

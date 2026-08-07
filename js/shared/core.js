@@ -4,6 +4,16 @@ let _grammarKeys = []; // active grammar-pattern filter (its key characters)
 let _lessonIds = new Set(); // active lesson filter (word ids in the lesson)
 const wordImageCache = {};
 
+// Shared speaker icon for every "play pronunciation" button. Inline SVG (not an
+// emoji glyph) so it looks identical on every device. Uses currentColor, so it
+// inherits the button's text colour. Defined once, reused everywhere.
+const SPEAK_ICON =
+  '<svg class="speak-ic" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<path d="M4 9.5v5h3.5L12 18.5V5.5L7.5 9.5H4z"/>' +
+  '<path d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>' +
+  '<path d="M17.6 7a7.5 7.5 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>' +
+  "</svg>";
+
 // Escape text before putting it inside innerHTML — important for values that
 // come from an external source (e.g. the Wikimedia image API).
 function escapeHTML(s) {
@@ -504,7 +514,7 @@ function charStoryHTML(ch) {
     <div class="char-story-card">
       <div class="big-zi">
         <span class="char-link" data-char="${ch}" title="Open character details">${ch}</span>
-        <button class="speak-btn small" data-speak="${ch}" title="Play pronunciation" style="display:block;margin:6px auto 0;">🔊</button>
+        <button class="speak-btn small" data-speak="${ch}" title="Play pronunciation" style="display:block;margin:6px auto 0;">${SPEAK_ICON}</button>
       </div>
       <div class="char-story-body">
         <span class="type-badge ${typeClass[info.type]}">${typeLabel[info.type]}</span>
@@ -607,7 +617,7 @@ function exampleBoxHTML(ex) {
   return `
     <div class="example-box">
       ${badge}
-      <div class="cn">${ex.cn} <button class="speak-btn small" data-speak="${ex.cn}" title="Play sentence">🔊</button></div>
+      <div class="cn">${ex.cn} <button class="speak-btn small" data-speak="${ex.cn}" title="Play sentence">${SPEAK_ICON}</button></div>
       <div class="py">${ex.py}</div>
       <div class="en">${ex.en}</div>
     </div>
@@ -639,7 +649,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=62";
+  s.src = "js/data/examples.js?v=64";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
@@ -650,5 +660,33 @@ function ensureExamples(cb) {
   };
   s.onload = () => done(true);
   s.onerror = () => done(false);
+  document.head.appendChild(s);
+}
+
+// Lazily load the character stories (charinfo.js sets DB.charInfo). Kept out of
+// the initial payload — it's ~48 KB gzipped and only needed when a word or
+// lesson opens, or when searching by radical.
+let charInfoLoaded = false;
+let charInfoLoading = false;
+let charInfoQueue = [];
+function ensureCharInfo(cb) {
+  if (charInfoLoaded) {
+    if (cb) cb();
+    return;
+  }
+  if (cb) charInfoQueue.push(cb);
+  if (charInfoLoading) return;
+  charInfoLoading = true;
+  const s = document.createElement("script");
+  s.src = "js/data/charinfo.js?v=64";
+  const done = () => {
+    charInfoLoaded = true; // charinfo.js has assigned DB.charInfo by now
+    charInfoLoading = false;
+    const q = charInfoQueue.slice();
+    charInfoQueue = [];
+    q.forEach((f) => f());
+  };
+  s.onload = done;
+  s.onerror = done; // degrade gracefully: stories just won't show
   document.head.appendChild(s);
 }
