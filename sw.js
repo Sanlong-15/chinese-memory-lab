@@ -10,8 +10,8 @@
 //
 // Bump CACHE on every release so old caches are cleaned up on activate.
 
-const CACHE = "cml-v55";
-const V = "?v=55";
+const CACHE = "cml-v62";
+const V = "?v=62";
 
 const CORE = [
   "./",

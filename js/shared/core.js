@@ -1,5 +1,7 @@
 let currentLevel = "ALL";
 let currentSearch = "";
+let _grammarKeys = []; // active grammar-pattern filter (its key characters)
+let _lessonIds = new Set(); // active lesson filter (word ids in the lesson)
 const wordImageCache = {};
 
 // Escape text before putting it inside innerHTML — important for values that
@@ -28,36 +30,187 @@ function normPinyin(str) {
 }
 
 function matchesFilter(w) {
-  if (currentLevel !== "ALL" && w.level !== currentLevel) {
+  if (currentLevel === "BOOKMARKS") {
+    if (!isBookmarked(w.id)) return false;
+  } else if (currentLevel === "GRAMMAR") {
+    if (!_grammarKeys.some((k) => w.chinese.indexOf(k) !== -1)) return false;
+  } else if (currentLevel === "LESSON") {
+    if (!_lessonIds.has(w.id)) return false;
+  } else if (currentLevel !== "ALL" && w.level !== currentLevel) {
     return false;
   }
   if (currentSearch) {
     const s = currentSearch.toLowerCase();
     const sp = normPinyin(currentSearch); // tone/space-insensitive query
-    return (
+    if (
       w.chinese.includes(currentSearch) ||
       (sp && normPinyin(w.pinyin).includes(sp)) ||
       w.english.toLowerCase().includes(s) ||
       (w.khmer && w.khmer.toLowerCase().includes(s)) ||
       (w.breakdown && w.breakdown.toLowerCase().includes(s))
-    );
+    )
+      return true;
+    // radical / component search: match the characters' parts & story
+    if (typeof DB !== "undefined" && DB.charInfo) {
+      for (const ch of w.chars || []) {
+        const ci = DB.charInfo[ch];
+        if (
+          ci &&
+          ((ci.parts || "").toLowerCase().includes(s) ||
+            (ci.story || "").toLowerCase().includes(s))
+        )
+          return true;
+      }
+    }
+    return false;
   }
   return true;
 }
 
-function renderGrid() {
-  const grid = document.getElementById("wordGrid");
-  const filtered = (DB.words || []).filter(matchesFilter);
-  document.getElementById("countNote").textContent = filtered.length
-    ? filtered.length + " words"
-    : "No matching characters found";
+// Recently-viewed strip on the Words view.
+function renderRecent() {
+  const row = document.getElementById("recentRow");
+  if (!row) return;
+  const ids = loadRecent();
+  const words = ids
+    .map((id) => (DB.words || []).find((w) => w.id === id))
+    .filter(Boolean)
+    .slice(0, 12);
+  if (!words.length) {
+    row.innerHTML = "";
+    return;
+  }
+  row.innerHTML =
+    `<span class="recent-label">Recently viewed</span>` +
+    words
+      .map(
+        (w) =>
+          `<button class="recent-chip" data-word-id="${w.id}"><span class="hanzi">${escapeHTML(
+            w.chinese
+          )}</span></button>`
+      )
+      .join("");
+  row.querySelectorAll("[data-word-id]").forEach((b) =>
+    b.addEventListener("click", () => openDetail(parseInt(b.dataset.wordId, 10)))
+  );
+}
 
+// Build the "More filters" menu (grammar patterns + course lessons). Built once.
+function renderWordFilters() {
+  const menu = document.getElementById("wordFilterMenu");
+  if (!menu || menu.dataset.built) return;
+  const gWrap = document.getElementById("wfGrammar");
+  const lWrap = document.getElementById("wfLesson");
+  const trigger = document.getElementById("wordFilterTrigger");
+  const pop = document.getElementById("wordFilterPop");
+  const lbl = document.getElementById("wordFilterLbl");
+  if (!gWrap || !lWrap || !trigger || !pop) return;
+  menu.dataset.built = "1";
+
+  const grammar = typeof GRAMMAR !== "undefined" ? GRAMMAR : [];
+  gWrap.innerHTML = grammar
+    .map(
+      (g, i) =>
+        `<button class="filter-chip wf-opt" data-gi="${i}">${escapeHTML(g.pat)}</button>`
+    )
+    .join("");
+
+  if (typeof COURSE !== "undefined" && typeof pathLessons === "function") {
+    lWrap.innerHTML = COURSE.paths
+      .map(
+        (p) =>
+          `<div class="fp-sub">${escapeHTML(p.title)}</div>` +
+          pathLessons(p)
+            .map(
+              (L) =>
+                `<button class="filter-chip wf-opt" data-lesson="${escapeHTML(
+                  L.id
+                )}">L${L.index} · ${escapeHTML(L.title)}</button>`
+            )
+            .join("")
+      )
+      .join("");
+  }
+
+  const close = () => {
+    pop.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
+  };
+  const open = () => {
+    pop.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
+  };
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    pop.hidden ? open() : close();
+  });
+  document.addEventListener("click", (e) => {
+    if (!pop.hidden && !menu.contains(e.target)) close();
+  });
+  const clearActive = () =>
+    document
+      .querySelectorAll("#wordsView .controls .filter-chip[data-level]")
+      .forEach((c) => c.classList.remove("active"));
+
+  gWrap.querySelectorAll(".wf-opt").forEach((b) =>
+    b.addEventListener("click", () => {
+      const g = grammar[+b.dataset.gi];
+      _grammarKeys = g.keys || [];
+      currentLevel = "GRAMMAR";
+      lbl.textContent = "Grammar: " + g.pat;
+      clearActive();
+      close();
+      renderGrid();
+    })
+  );
+  lWrap.querySelectorAll(".wf-opt").forEach((b) =>
+    b.addEventListener("click", () => {
+      const L = typeof lessonById === "function" ? lessonById(b.dataset.lesson) : null;
+      _lessonIds = new Set((L && L.wordIds) || []);
+      currentLevel = "LESSON";
+      lbl.textContent = "Lesson: " + (L ? L.title : "");
+      clearActive();
+      close();
+      renderGrid();
+    })
+  );
+  const clr = pop.querySelector("[data-clear]");
+  if (clr)
+    clr.addEventListener("click", () => {
+      currentLevel = "ALL";
+      _grammarKeys = [];
+      _lessonIds = new Set();
+      lbl.textContent = "More filters";
+      close();
+      renderGrid();
+    });
+  // picking a normal level chip resets the menu label
+  document
+    .querySelectorAll("#wordsView .controls .filter-chip[data-level]")
+    .forEach((c) =>
+      c.addEventListener("click", () => (lbl.textContent = "More filters"))
+    );
+}
+
+let _gridLimit = 80; // windowing: cap rendered cards (keeps DOM + tab order sane)
+function renderGrid(keepLimit) {
+  const grid = document.getElementById("wordGrid");
+  if (!grid) return;
+  if (!keepLimit) _gridLimit = 80; // reset on a fresh filter/search
+  const more = document.getElementById("gridMore");
+  const filtered = (DB.words || []).filter(matchesFilter);
+  const note = document.getElementById("countNote");
+  if (note)
+    note.textContent = filtered.length
+      ? filtered.length + " words"
+      : "No matching characters found";
+  if (more) more.innerHTML = "";
   if (!filtered.length) {
     grid.innerHTML = `<div class="word-card empty">No matching characters found.</div>`;
     return;
   }
-
-  grid.innerHTML = filtered
+  const shown = filtered.slice(0, _gridLimit);
+  grid.innerHTML = shown
     .map((w) => {
       // Escape every field: the word list can be extended via lesson upload,
       // so treat it as untrusted before putting it in HTML / an attribute.
@@ -78,6 +231,15 @@ function renderGrid() {
   `;
     })
     .join("");
+  if (more && filtered.length > _gridLimit) {
+    more.innerHTML = `<button class="study-btn" id="gridMoreBtn">Show more (${
+      filtered.length - _gridLimit
+    } left)</button>`;
+    more.querySelector("#gridMoreBtn").addEventListener("click", () => {
+      _gridLimit += 120;
+      renderGrid(true);
+    });
+  }
 }
 
 // One delegated listener for the whole grid instead of 2 per card.
@@ -136,6 +298,49 @@ function attachSwipe(el, handlers) {
     },
     { passive: true }
   );
+}
+
+// ---- Bookmarks + recently-viewed (exploration history) ----
+const BOOKMARK_KEY = "cml_bookmarks_v1";
+const RECENT_KEY = "cml_recent_v1";
+function loadBookmarks() {
+  try {
+    return JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+function isBookmarked(id) {
+  return loadBookmarks().indexOf(id) !== -1;
+}
+function toggleBookmark(id) {
+  const b = loadBookmarks();
+  const i = b.indexOf(id);
+  if (i === -1) b.push(id);
+  else b.splice(i, 1);
+  try {
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify(b));
+  } catch (e) {
+    /* private mode */
+  }
+  return i === -1; // true if now bookmarked
+}
+function loadRecent() {
+  try {
+    return JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+function pushRecent(id) {
+  let r = loadRecent().filter((x) => x !== id);
+  r.unshift(id);
+  r = r.slice(0, 24);
+  try {
+    localStorage.setItem(RECENT_KEY, JSON.stringify(r));
+  } catch (e) {
+    /* private mode */
+  }
 }
 
 // ---- Audio (text-to-speech) with smart voice selection ----
@@ -434,7 +639,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=55";
+  s.src = "js/data/examples.js?v=62";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example

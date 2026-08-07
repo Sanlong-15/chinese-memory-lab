@@ -363,6 +363,7 @@ function runPractice(host, words, opts) {
     }
     const t0 = Date.now();
     renderPracticeQuestion(host, item, (ok) => {
+      recordSkill(item.mode, ok); // per-skill performance
       if (!reviewing) {
         times.push(Date.now() - t0);
         if (ok) correct++;

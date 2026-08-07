@@ -12,29 +12,87 @@ function openDetail(id) {
     w.examples && w.examples.length
       ? w.examples
       : [{ level: null, cn: w.ex_cn, py: w.ex_py, en: w.ex_en }];
+  const bookmarked = isBookmarked(id);
+  // grammar usage: a pattern whose key characters appear in this word
+  const gram = (typeof GRAMMAR !== "undefined" ? GRAMMAR : []).find((g) =>
+    (g.keys || []).some((k) => w.chinese.indexOf(k) !== -1)
+  );
+  // easily-confused: same sounds, different tone (a minimal pair)
+  const pairs = dedupeByChinese(DB.words).filter(
+    (x) =>
+      x.id !== id &&
+      normPinyin(x.pinyin) === normPinyin(w.pinyin) &&
+      x.pinyin !== w.pinyin
+  );
+  const strokeHTML =
+    typeof HanziWriter !== "undefined"
+      ? `<div class="section-label">Stroke order — tap to replay</div><div class="stroke-row">${uniqueChars
+          .map((ch) => `<div class="stroke-cell" data-stroke="${escapeHTML(ch)}"></div>`)
+          .join("")}</div>`
+      : "";
   const html = `
     <div class="detail-head">
       <div class="zi-row"><div class="zi">${w.chinese}</div>
-        <button class="speak-btn" data-speak="${w.chinese}" title="Play pronunciation">🔊</button>
+        <button class="speak-btn" data-speak="${escapeHTML(w.chinese)}" title="Play pronunciation">🔊</button>
+        <button class="bm-btn${bookmarked ? " on" : ""}" id="bmBtn" aria-pressed="${bookmarked}" title="Bookmark this word">${bookmarked ? "★" : "☆"}</button>
       </div>
-      <div class="py">${w.pinyin}</div>
-      <div class="en">${w.english}</div>
-      <div class="kh">${w.khmer}</div>
+      <div class="py">${escapeHTML(w.pinyin)}</div>
+      <div class="en">${escapeHTML(w.english)}</div>
+      <div class="kh">${escapeHTML(w.khmer || "")}</div>
+      <div class="detail-badges"><span class="lvl-badge">${escapeHTML(w.level)}</span></div>
     </div>
     <div class="section-label">Picture</div>
     <div id="wordImageWrap" class="word-image-wrap"><p class="image-loading">Looking for a picture&hellip;</p></div>
+    ${strokeHTML}
     <div class="section-label">${examples.length > 1 ? "Examples" : "Example"}</div>
     ${examples.map(exampleBoxHTML).join("")}
+    ${gram ? `<div class="section-label">Grammar usage</div><div class="info-card"><strong class="hanzi">${escapeHTML(gram.pat)}</strong> — ${escapeHTML(gram.en)}. <button class="mini-link" data-goview="grammarView">Open grammar →</button></div>` : ""}
     <div class="section-label">Characters — tap to explore</div>
-    <div class="char-row">${uniqueChars.map((ch) => `<button class="char-chip" data-char="${ch}">${ch}</button>`).join("")}</div>
-    ${uniqueChars.length > 1 ? `<div class="parts-line" style="margin:2px 0 8px;"><strong>Word breakdown:</strong> ${w.breakdown}</div>` : ""}
+    <div class="char-row">${uniqueChars.map((ch) => `<button class="char-chip" data-char="${escapeHTML(ch)}">${ch}</button>`).join("")}</div>
+    ${uniqueChars.length > 1 ? `<div class="parts-line" style="margin:2px 0 8px;"><strong>Word breakdown:</strong> ${escapeHTML(w.breakdown)}</div>` : ""}
     ${hasStory ? `<div class="section-label">How to remember it</div>${uniqueChars.map(charStoryHTML).join("")}` : ""}
+    ${pairs.length ? `<div class="section-label">Easily confused (same sound, different tone)</div><div class="rel-words">${wordChipsHTML(pairs.map((p) => p.id), w.id)}</div>` : ""}
     ${renderRelatedWords(w)}
   `;
   document.getElementById("detailContent").innerHTML = html;
   openOverlay();
   loadWordImage(w);
   wireDetailLinks();
+  pushRecent(id); // exploration history
+
+  const bm = document.getElementById("bmBtn");
+  if (bm)
+    bm.addEventListener("click", () => {
+      const on = toggleBookmark(id);
+      bm.textContent = on ? "★" : "☆";
+      bm.classList.toggle("on", on);
+      bm.setAttribute("aria-pressed", on);
+    });
+  document.querySelectorAll("#detailContent [data-goview]").forEach((b) =>
+    b.addEventListener("click", () => {
+      closeDetail();
+      switchView(b.dataset.goview);
+    })
+  );
+  if (typeof HanziWriter !== "undefined") {
+    document.querySelectorAll("#detailContent .stroke-cell").forEach((cell) => {
+      try {
+        const writer = HanziWriter.create(cell, cell.dataset.stroke, {
+          width: 80,
+          height: 80,
+          padding: 5,
+          showCharacter: true,
+          strokeColor: "#2A2622",
+          outlineColor: "#DDD2BC",
+          strokeAnimationSpeed: 1.2,
+          delayBetweenStrokes: 120,
+        });
+        cell.addEventListener("click", () => writer.animateCharacter());
+      } catch (e) {
+        /* no stroke data */
+      }
+    });
+  }
 }
 
 function scrollToInPatterns(selector) {
@@ -385,6 +443,10 @@ function switchView(viewId) {
   }
   if (viewId === "practiceView" && typeof renderPracticePicker === "function") {
     renderPracticePicker();
+  }
+  if (viewId === "wordsView") {
+    if (typeof renderRecent === "function") renderRecent();
+    if (typeof renderWordFilters === "function") renderWordFilters();
   }
 }
 

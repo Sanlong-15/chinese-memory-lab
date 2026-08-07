@@ -8,7 +8,8 @@
     "test:watch": "vitest",
     "lint": "eslint js/domain/logic.js js/domain/srs.js tests",
     "format": "prettier --write .",
-    "format:check": "prettier --check \"js/**/*.js\" \"tests/**/*.js\" \"*.md\""
+    "format:check": "prettier --check \"js/**/*.js\" \"tests/**/*.js\" \"*.md\"",
+    "release": "node scripts/release.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

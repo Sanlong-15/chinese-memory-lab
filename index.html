@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=55">
+<link rel="stylesheet" href="css/style.css?v=62">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -82,9 +82,25 @@
       <button class="filter-chip" data-level="GCP5">GCP7 L5</button>
       <button class="filter-chip" data-level="GCP6">GCP7 L6</button>
       <button class="filter-chip" data-level="GCP7">GCP7 L7</button>
+      <button class="filter-chip" data-level="BOOKMARKS">★ Saved</button>
+      <div class="filter-menu" id="wordFilterMenu">
+        <button class="filter-trigger" id="wordFilterTrigger" aria-haspopup="true" aria-expanded="false">
+          <span class="filter-trigger-lbl" id="wordFilterLbl">More filters</span>
+          <span class="filter-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="filter-pop wf-pop" id="wordFilterPop" role="menu" hidden>
+          <div class="fp-head">Grammar pattern</div>
+          <div id="wfGrammar" class="fp-opts"></div>
+          <div class="fp-head">Lesson</div>
+          <div id="wfLesson" class="fp-opts fp-scroll"></div>
+          <button class="filter-chip" data-clear="1">Clear filters</button>
+        </div>
+      </div>
     </div>
+    <div id="recentRow" class="recent-row"></div>
     <p class="count-note" id="countNote" aria-live="polite"></p>
     <div class="grid" id="wordGrid"></div>
+    <div id="gridMore" style="text-align:center; margin-top:14px;"></div>
   </div>
 
   <!-- PATTERNS VIEW -->
@@ -374,6 +390,8 @@
     </div>
 
     <div id="courseProgressCard"></div>
+    <div id="learningSummary"></div>
+    <div id="skillScores"></div>
     <div id="reviewAnalytics"></div>
   </div>
 
@@ -511,30 +529,30 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=55"></script>
+<script defer src="js/shared/observability.js?v=62"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=55"></script>
-<script defer src="js/data/structures.js?v=55"></script>
-<script defer src="js/data/grammar.js?v=55"></script>
-<script defer src="js/data/course.js?v=55"></script>
+<script defer src="js/data/words.js?v=62"></script>
+<script defer src="js/data/structures.js?v=62"></script>
+<script defer src="js/data/grammar.js?v=62"></script>
+<script defer src="js/data/course.js?v=62"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=55"></script>
-<script defer src="js/domain/srs.js?v=55"></script>
+<script defer src="js/domain/logic.js?v=62"></script>
+<script defer src="js/domain/srs.js?v=62"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=55"></script>
+<script defer src="js/shared/core.js?v=62"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=55"></script>
+<script defer src="js/app/detail.js?v=62"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=55"></script>
-<script defer src="js/features/flashcards/study.js?v=55"></script>
-<script defer src="js/features/flashcards/review.js?v=55"></script>
-<script defer src="js/app/ui.js?v=55"></script>
-<script defer src="js/features/today/session.js?v=55"></script>
-<script defer src="js/features/practice/practice.js?v=55"></script>
-<script defer src="js/features/course/course.js?v=55"></script>
+<script defer src="js/features/practice/reference.js?v=62"></script>
+<script defer src="js/features/flashcards/study.js?v=62"></script>
+<script defer src="js/features/flashcards/review.js?v=62"></script>
+<script defer src="js/app/ui.js?v=62"></script>
+<script defer src="js/features/today/session.js?v=62"></script>
+<script defer src="js/features/practice/practice.js?v=62"></script>
+<script defer src="js/features/course/course.js?v=62"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=55"></script>
+<script defer src="js/app/analytics.js?v=62"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=55"></script>
+<script defer src="js/app/main.js?v=62"></script>
 </body>
 </html>

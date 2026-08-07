@@ -319,7 +319,19 @@ function eligibleTasks(word) {
   return out;
 }
 function pickTask(word) {
-  return Logic.pickTaskFromState(getState(word.id), eligibleTasks(word), Math.random);
+  const st = getState(word.id);
+  const elig = eligibleTasks(word);
+  const base = Logic.pickTaskFromState(st, elig, Math.random);
+  // Adaptive deliberate practice: for words already seen, sometimes drill the
+  // learner's weakest skill instead of the default task.
+  if ((st.reps || 0) > 0 && Math.random() < 0.45) {
+    const weak = weakestSkill(8);
+    if (weak) {
+      const t = elig.find((task) => skillOf(task) === weak);
+      if (t) return t;
+    }
+  }
+  return base;
 }
 
 // --- counts + queue ------------------------------------------------
@@ -435,6 +447,7 @@ function submitSessionAnswer(item, rating) {
   const wasNew = !(getState(item.word.id).reps || 0); // detect first-ever review
   const ms = _taskStart ? Date.now() - _taskStart : 0; // response time
   schedule(item.word.id, rating, ms);
+  recordSkill(item.task, rating !== "again"); // per-skill performance
   // remember how we showed it, so pickTask can vary next time
   const st = getState(item.word.id);
   st.lastTask = item.task;

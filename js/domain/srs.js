@@ -63,6 +63,68 @@ function schedule(id, rating, ms) {
   saveSrs(srs);
 }
 
+// ---- Per-skill performance (reading / listening / tones / sentences / typing) ----
+// Every answer is logged by the skill it exercises, so the app can show real
+// per-skill scores and adaptively drill the learner's weakest skill.
+const SKILL_KEY = "cml_skills_v1";
+// Map a task/mode name to a learning skill. null = not scored (speak/writing).
+function skillOf(task) {
+  switch (task) {
+    case "recognize":
+    case "recall":
+    case "match":
+      return "reading";
+    case "listen":
+      return "listening";
+    case "tone":
+      return "tones";
+    case "sentence":
+    case "cloze":
+    case "order":
+      return "sentences";
+    case "typing":
+      return "typing";
+    default:
+      return null;
+  }
+}
+function loadSkills() {
+  try {
+    return JSON.parse(localStorage.getItem(SKILL_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+function recordSkill(task, correct) {
+  const skill = skillOf(task);
+  if (!skill) return;
+  const s = loadSkills();
+  s[skill] = s[skill] || { n: 0, correct: 0 };
+  s[skill].n++;
+  if (correct) s[skill].correct++;
+  try {
+    localStorage.setItem(SKILL_KEY, JSON.stringify(s));
+  } catch (e) {
+    /* private mode */
+  }
+}
+function skillAccuracy(skill) {
+  const s = loadSkills()[skill];
+  return s && s.n ? s.correct / s.n : null;
+}
+// The skill with the lowest accuracy among those with enough attempts.
+function weakestSkill(minAttempts) {
+  const s = loadSkills();
+  let worst = null;
+  for (const k in s) {
+    if (s[k].n >= (minAttempts || 8)) {
+      const acc = s[k].correct / s[k].n;
+      if (!worst || acc < worst.acc) worst = { skill: k, acc };
+    }
+  }
+  return worst ? worst.skill : null;
+}
+
 // ---- Study heatmap: reviews per day (starts logging from now on) ----
 const HEAT_KEY = "cml_heat_v1";
 function loadHeat() {

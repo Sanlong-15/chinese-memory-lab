@@ -162,3 +162,24 @@ describe("dedupeByChinese", () => {
     expect(Logic.dedupeByChinese(undefined)).toEqual([]);
   });
 });
+
+describe("toneGlyphs — tone-number string to contour marks", () => {
+  it("maps 1-4 to the right marks", () => {
+    expect(Logic.toneGlyphs("3-1-2")).toBe("ˇ ˉ ˊ");
+    expect(Logic.toneGlyphs("4")).toBe("ˋ");
+  });
+});
+
+describe("recallProb — predicted retention", () => {
+  const DAY2 = 86400000;
+  it("is ~1.0 right after a review and ~0.9 at the due point", () => {
+    const now = Date.now();
+    expect(Logic.recallProb({ reps: 1, S: 3, last: now }, now)).toBeCloseTo(1, 2);
+    expect(
+      Logic.recallProb({ reps: 1, S: 3, last: now - 3 * DAY2 }, now)
+    ).toBeCloseTo(0.9, 1);
+  });
+  it("returns 0 for a new/unseen card", () => {
+    expect(Logic.recallProb({ reps: 0, S: 0 }, Date.now())).toBe(0);
+  });
+});

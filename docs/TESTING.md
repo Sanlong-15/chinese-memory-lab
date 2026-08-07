@@ -16,22 +16,25 @@ scheduler math and the data), fast feedback in CI, and honesty about what is
 
 ### 1. Unit tests — `tests/` (run in CI)
 
-The scheduler is the riskiest code, so it lives in `domain/logic.js` as pure
-functions with no DOM and is tested in isolation:
+The pure logic is tested in isolation (no DOM):
 
-- `logic.test.js` — FSRS update, interval growth, tone parsing, task selection.
+- `logic.test.js` — FSRS update + interval growth, tone parsing, task selection,
+  `toneGlyphs` (tone contour marks), `recallProb` (predicted retention).
 - `data.test.js` — the word DB and examples load and have the expected shape.
 
-Run: `npm test` (vitest). These gate every push and PR via GitHub Actions.
+### 2. Full-app smoke — `tests/smoke.test.js` (run in CI)
 
-### 2. Headless load smoke
+Because the app is classic scripts sharing global scope, this test concatenates
+every file in load order into a Node `vm` context with DOM / `localStorage` /
+`speechSynthesis` stubs, boots the app, and asserts across the whole surface:
+the data loads (1,377 words), the SRS functions resolve, **every lazy view
+renders** on `switchView` without throwing, `buildPracticeQueue` produces a mixed
+multi-mode queue, the **course mastery gate** locks lesson 2 until lesson 1 is
+mastered, and `computeLearningStats` returns a valid shape. This is the
+regression net for the feature code that isn't a pure module — it would have
+caught the `typeClass` data regression.
 
-Because the app is classic scripts sharing global scope, a Node `vm` harness
-concatenates every file in load order with DOM/`localStorage`/`speechSynthesis`
-stubs, boots the app, and asserts: the data loads (1,331 words), the SRS
-functions resolve, and every lazy view renders on `switchView` without throwing.
-This catches load-order regressions and broken references after refactors — the
-failure modes that unit tests miss.
+Run all: `npm test` (vitest). These gate every push and PR via GitHub Actions.
 
 ### 3. Manual / exploratory
 

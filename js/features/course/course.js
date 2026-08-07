@@ -135,12 +135,14 @@ function pathLessons(path) {
       index: idx,
       title: chunk[0].chinese + " … " + chunk[chunk.length - 1].chinese,
       objective:
-        "Learn and master these words: " +
+        "By the end you'll recognise, hear, and type " +
+        chunk.length +
+        " new words — starting with " +
         chunk
-          .slice(0, 6)
+          .slice(0, 4)
           .map((w) => w.english)
           .join(", ") +
-        (chunk.length > 6 ? " …" : "") +
+        (chunk.length > 4 ? "…" : "") +
         ".",
       wordIds: chunk.map((w) => w.id),
       toneNote: autoToneNote(chunk),
