@@ -164,6 +164,8 @@ function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelF
         else if (x === b) x.classList.add("wrong");
         x.disabled = true;
       });
+      // audio feedback: hear the correct word (only when the answer is Chinese)
+      if (isHanzi && typeof speak === "function") speak(correct);
       // diagnose the mistake (only where we can classify it honestly)
       if (!ok && mistakeType && typeof recordMistake === "function") {
         recordMistake(

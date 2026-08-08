@@ -885,7 +885,7 @@
   .study-wrap{ display:flex; flex-direction:column; align-items:center; padding: 10px 0 30px; }
   .study-wrap, #todayCard{ perspective:1200px; }
   .flashcard{
-    width:100%; max-width:420px; min-height:220px;
+    width:100%; max-width:420px; min-height:220px; margin:0 auto;
     background: var(--card); border:1px solid var(--line); border-radius:18px;
     box-shadow: var(--shadow);
     display:flex; flex-direction:column; align-items:center; justify-content:center;

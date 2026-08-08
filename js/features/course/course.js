@@ -188,7 +188,6 @@ function renderDailyMission() {
   const rows = plan
     .map(
       (p, i) => `<button class="mission-row" data-i="${i}">
-        <span class="mission-ic" aria-hidden="true">${p.icon}</span>
         <span class="mission-main"><span class="mission-title">${escapeHTML(p.title)}</span>
           <span class="mission-detail">${escapeHTML(p.detail)}</span></span>
         <span class="mission-arrow" aria-hidden="true">→</span>
