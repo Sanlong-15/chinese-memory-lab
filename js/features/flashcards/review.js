@@ -121,6 +121,122 @@ function renderLearningSummary() {
   if (ex) ex.addEventListener("click", exportAnalyticsCSV);
 }
 
+// ---- Your Learning Insights: honest weaknesses + one-tap practice ----
+const INSIGHT_SKILL_MODE = {
+  tones: ["tone", "Practice tones"],
+  listening: ["listen", "Practice listening"],
+  typing: ["typing", "Practice pinyin typing"],
+  sentences: ["order", "Practice sentences"],
+  reading: ["recognize", "Practice vocabulary"],
+};
+const INSIGHT_MISTAKE = {
+  "confused-character": ["recognize", "Practice vocabulary", "You've mixed up some characters"],
+  "wrong-meaning": ["recognize", "Practice vocabulary", "Some meanings aren't sticking yet"],
+  "wrong-pinyin": ["typing", "Practice pinyin typing", "Your pinyin spelling slips sometimes"],
+  tone: ["tone", "Practice tones", "Tones are tripping you up"],
+  listening: ["listen", "Practice listening", "Listening is harder for you right now"],
+  "sentence-use": ["order", "Practice sentences", "Picking the right word in a sentence is shaky"],
+  "word-order": ["order", "Practice sentences", "Word order needs more practice"],
+};
+const INSIGHT_MISTAKE_LABEL = {
+  "confused-character": "Confused characters",
+  "wrong-meaning": "Wrong meaning",
+  "wrong-pinyin": "Wrong pinyin",
+  tone: "Wrong tone",
+  listening: "Listening",
+  "sentence-use": "Sentence use",
+  "word-order": "Word order",
+};
+
+function renderLearningInsights() {
+  const host = document.getElementById("learningInsights");
+  if (!host) return;
+  const recs = [];
+  const usedModes = new Set();
+  const addRec = (mode, label, msg) => {
+    if (!usedModes.has(mode)) {
+      usedModes.add(mode);
+      recs.push({ mode, label, msg });
+    }
+  };
+
+  const weak = typeof weakestSkill === "function" ? weakestSkill(8) : null;
+  if (weak && INSIGHT_SKILL_MODE[weak]) {
+    const acc = Math.round((skillAccuracy(weak) || 0) * 100);
+    addRec(INSIGHT_SKILL_MODE[weak][0], INSIGHT_SKILL_MODE[weak][1], `Your weakest skill is ${weak} (${acc}%).`);
+  }
+  const tm = typeof topMistakeType === "function" ? topMistakeType(3) : null;
+  if (tm && INSIGHT_MISTAKE[tm.type]) {
+    const M = INSIGHT_MISTAKE[tm.type];
+    addRec(M[0], M[1], `${M[2]} (${tm.count}×).`);
+  }
+  const pairs = typeof confusedPairs === "function" ? confusedPairs(2) : [];
+  if (pairs.length) {
+    addRec("recognize", "Practice vocabulary", `You've confused ${pairs[0].target} and ${pairs[0].chosen} ${pairs[0].count}×.`);
+  }
+
+  const types = typeof loadMistakes === "function" ? loadMistakes().types : {};
+  const typeEntries = Object.entries(types).sort((a, b) => b[1] - a[1]);
+  const totalMistakes = typeEntries.reduce((s, e) => s + e[1], 0);
+
+  if (!recs.length && !totalMistakes) {
+    host.innerHTML = `<div class="insights-card">
+      <h3 class="rev-h">Your Learning Insights</h3>
+      <p class="weak-sub">Do a few review sessions and your personal weak spots and tips will show up here — all from your own answers, nothing guessed.</p></div>`;
+    return;
+  }
+
+  const recHTML = recs
+    .map(
+      (r) => `<div class="insight-rec">
+        <p class="rec-msg">${escapeHTML(r.msg)}</p>
+        <button class="study-btn primary rec-btn" data-mode="${escapeHTML(r.mode)}">${escapeHTML(r.label)} →</button>
+      </div>`
+    )
+    .join("");
+
+  const pairsHTML = pairs.length
+    ? `<h4 class="insight-h">Frequently confused</h4>
+       <div class="confuse-list">${pairs
+         .slice(0, 5)
+         .map(
+           (p) =>
+             `<span class="confuse-pair"><span class="hanzi">${escapeHTML(p.target)}</span> vs <span class="hanzi">${escapeHTML(
+               p.chosen
+             )}</span> <span class="confuse-n">${p.count}×</span></span>`
+         )
+         .join("")}</div>`
+    : "";
+
+  const typesHTML = typeEntries.length
+    ? `<h4 class="insight-h">Mistake types</h4>
+       <div class="mtype-list">${typeEntries
+         .map((e) => {
+           const pct = totalMistakes ? Math.round((e[1] / totalMistakes) * 100) : 0;
+           return `<div class="mtype-row"><span class="mtype-lbl">${escapeHTML(
+             INSIGHT_MISTAKE_LABEL[e[0]] || e[0]
+           )}</span><div class="mtype-bar"><div class="mtype-fill" style="width:${pct}%"></div></div><span class="mtype-n">${e[1]}</span></div>`;
+         })
+         .join("")}</div>`
+    : "";
+
+  host.innerHTML = `<div class="insights-card">
+    <h3 class="rev-h">Your Learning Insights</h3>
+    ${
+      recs.length
+        ? `<p class="weak-sub">Based on your own answers — here's what to work on next.</p>${recHTML}`
+        : ""
+    }
+    ${pairsHTML}
+    ${typesHTML}
+  </div>`;
+  host.querySelectorAll(".rec-btn").forEach((b) =>
+    b.addEventListener("click", () => {
+      if (typeof launchPractice === "function") launchPractice(b.dataset.mode);
+    })
+  );
+}
+
 // Per-skill accuracy bars (fills the "per-skill" gap honestly — real answers).
 function renderSkillScores() {
   const host = document.getElementById("skillScores");

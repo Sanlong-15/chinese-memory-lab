@@ -44,6 +44,192 @@ function renderCourseProgressCard() {
     });
 }
 
+// ---- Adaptive plan: what should the student do today? ----
+// Composes REAL signals already tracked: course position, FSRS due load, the
+// weakest measured skill, and whether a lesson is being struggled with. It never
+// invents targets — items only appear when there is real data behind them.
+
+// The next lesson to learn: first unlocked-but-unmastered lesson across paths.
+function resumeLesson() {
+  if (typeof COURSE === "undefined") return null;
+  for (const p of COURSE.paths) {
+    const r = pathLessons(p).find((l) => courseLessonStatus(p, l.id) === "available");
+    if (r) return r;
+  }
+  return null;
+}
+// A lesson the learner attempted but didn't pass — its previous lesson is the
+// prerequisite to revisit.
+function strugglingLesson() {
+  if (typeof COURSE === "undefined") return null;
+  const prog = loadCourseProgress();
+  for (const p of COURSE.paths) {
+    const lessons = pathLessons(p);
+    for (let i = 0; i < lessons.length; i++) {
+      const st = prog[lessons[i].id];
+      const thr = (lessons[i].mastery && lessons[i].mastery.threshold) || 0.8;
+      if (st && st.status === "inProgress" && st.score > 0 && st.score < thr) {
+        return { lesson: lessons[i], prev: i > 0 ? lessons[i - 1] : null };
+      }
+    }
+  }
+  return null;
+}
+
+const PLAN_SKILL = {
+  tones: ["tone", "Tone practice", "🎵"],
+  listening: ["listen", "Listening practice", "🎧"],
+  typing: ["typing", "Pinyin practice", "⌨️"],
+  sentences: ["order", "Sentence practice", "💬"],
+  reading: ["recognize", "Vocabulary practice", "📖"],
+};
+
+function buildTodayPlan() {
+  const plan = [];
+  // 1. Reviews that are actually due (FSRS) come first.
+  const cd = typeof countDaily === "function" ? countDaily() : { due: 0, fresh: 0 };
+  if (cd.due > 0)
+    plan.push({
+      kind: "review",
+      icon: "🔁",
+      title: "Review due cards",
+      detail: cd.due + (cd.due === 1 ? " card" : " cards"),
+      count: cd.due,
+      minPer: 0.15,
+      action: "session",
+    });
+  // 2. Extra practice for the weakest measured skill (only if genuinely weak).
+  const weak = typeof weakestSkill === "function" ? weakestSkill(8) : null;
+  if (weak && PLAN_SKILL[weak]) {
+    const acc = Math.round((skillAccuracy(weak) || 0) * 100);
+    if (acc < 85) {
+      const m = PLAN_SKILL[weak];
+      plan.push({
+        kind: "practice",
+        icon: m[2],
+        title: m[1],
+        detail: acc + "% — your weakest skill",
+        count: 5,
+        minPer: 0.25,
+        action: "practice",
+        mode: m[0],
+      });
+    }
+  }
+  // 3. Learn the next lesson (never a mastered one).
+  const next = resumeLesson();
+  if (next)
+    plan.push({
+      kind: "learn",
+      icon: "📚",
+      title: "Learn Lesson " + next.index,
+      detail: next.title + " · " + next.wordIds.length + " words",
+      count: next.wordIds.length,
+      minPer: 0.6,
+      action: "lesson",
+      lessonId: next.id,
+    });
+  // 4. If a lesson is being struggled with, revisit its prerequisite first.
+  const stuck = strugglingLesson();
+  if (stuck && stuck.prev)
+    plan.push({
+      kind: "revisit",
+      icon: "↩️",
+      title: "Revisit Lesson " + stuck.prev.index,
+      detail: "strengthen the basics first",
+      count: 1,
+      minPer: 0.5,
+      action: "lesson",
+      lessonId: stuck.prev.id,
+    });
+  return plan;
+}
+
+function planEstRange(plan) {
+  const mins = plan.reduce((s, p) => s + (p.count || 1) * (p.minPer || 0.2), 0);
+  const lo = Math.max(2, Math.round(mins));
+  return lo + "–" + (lo + 5);
+}
+function greetingWord() {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 18) return "Good afternoon";
+  return "Good evening";
+}
+function planRetentionPct(now) {
+  const words = (typeof DB !== "undefined" && DB.words) || [];
+  let sum = 0;
+  let n = 0;
+  for (const w of words) {
+    const st = getState(w.id);
+    if (st.reps > 0) {
+      sum += Logic.recallProb(st, now);
+      n++;
+    }
+  }
+  return n ? Math.round((sum / n) * 100) : null;
+}
+function planHsk1Pct() {
+  const hs = ((typeof DB !== "undefined" && DB.words) || []).filter((w) => w.level === "HSK1");
+  if (!hs.length) return 0;
+  let learned = 0;
+  hs.forEach((w) => {
+    if (getState(w.id).reps > 0) learned++;
+  });
+  return Math.round((learned / hs.length) * 100);
+}
+
+// The Daily Mission dashboard on the Today start screen.
+function renderDailyMission() {
+  const host = document.getElementById("todayPlan");
+  if (!host) return;
+  const plan = buildTodayPlan();
+  const now = Date.now();
+  const rows = plan
+    .map(
+      (p, i) => `<button class="mission-row" data-i="${i}">
+        <span class="mission-ic" aria-hidden="true">${p.icon}</span>
+        <span class="mission-main"><span class="mission-title">${escapeHTML(p.title)}</span>
+          <span class="mission-detail">${escapeHTML(p.detail)}</span></span>
+        <span class="mission-arrow" aria-hidden="true">→</span>
+      </button>`
+    )
+    .join("");
+  const d = typeof loadDaily === "function" ? loadDaily() : {};
+  const today = typeof dayStr === "function" ? dayStr(now) : "";
+  const yday = typeof dayStr === "function" ? dayStr(now - DAY) : "";
+  const streak = d.lastDay === today || d.lastDay === yday ? d.streak || 0 : 0;
+  const ret = planRetentionPct(now);
+  const hsk1 = planHsk1Pct();
+  host.innerHTML = `<div class="mission">
+      <div class="mission-greet">${greetingWord()}!</div>
+      <div class="mission-h">Today's plan</div>
+      <div class="mission-list">${
+        rows || '<p class="mission-empty">You\'re all caught up. Explore new words in Learn.</p>'
+      }</div>
+      <div class="mission-time">Estimated time · ${planEstRange(plan)} min</div>
+      <div class="mission-progress">
+        <span class="mp-item">🔥 ${streak}-day streak</span>
+        ${ret != null ? `<span class="mp-item">${ret}% retention</span>` : ""}
+        <span class="mp-item">HSK 1: ${hsk1}%</span>
+      </div>
+    </div>`;
+  host.querySelectorAll(".mission-row[data-i]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const p = plan[+b.dataset.i];
+      if (!p) return;
+      if (p.action === "practice" && typeof launchPractice === "function") {
+        launchPractice(p.mode);
+      } else if (p.action === "lesson" && typeof openLesson === "function") {
+        if (typeof switchView === "function") switchView("courseView");
+        openLesson(p.lessonId);
+      } else if (p.action === "session" && typeof startDailySession === "function") {
+        startDailySession();
+      }
+    })
+  );
+}
+
 function loadCourseProgress() {
   try {
     return JSON.parse(localStorage.getItem(COURSE_KEY)) || {};
@@ -265,6 +451,71 @@ function renderCourse() {
 }
 
 // ---- Lesson player: learn phase ----
+// ---- Guided lesson flow ----
+// One focused item at a time with progressive disclosure. The learner hears and
+// tries to recall each word BEFORE revealing it (retrieval practice), then a
+// grammar step, then the practice quiz (recognition/recall/production) and the
+// mastery check. Reuses charStoryHTML, exampleBoxHTML, runPractice — no new
+// engine and no duplicated task logic.
+let _flow = null;
+
+// --- reusable content section builders (also used by the grammar step) ---
+function grammarSectionHTML(L) {
+  if (!L.grammar) return "";
+  return `<div class="lesson-grammar">
+      <h3 class="lesson-step-title">Grammar · ${escapeHTML(L.grammar.point)}</h3>
+      <div class="lesson-pattern">${escapeHTML(L.grammar.pattern)}</div>
+      ${(L.grammar.examples || [])
+        .map(
+          (ex) => `<div class="lesson-gex">
+            <div class="gex-cn hanzi">${escapeHTML(ex.cn)}
+              <button class="speak-btn small" data-speak="${escapeHTML(
+                ex.cn
+              )}" title="Play sentence">${SPEAK_ICON}</button></div>
+            <div class="gex-py">${escapeHTML(ex.py)}</div>
+            <div class="gex-en">${escapeHTML(ex.en)}${
+              ex.note ? ` <span class="gex-note">· ${escapeHTML(ex.note)}</span>` : ""
+            }</div>
+          </div>`
+        )
+        .join("")}
+      ${
+        L.grammar.note
+          ? `<div class="lesson-note"><strong>Note:</strong> ${escapeHTML(
+              L.grammar.note
+            )}</div>`
+          : ""
+      }
+    </div>`;
+}
+
+function collocSectionHTML(L) {
+  if (!L.collocations || !L.collocations.length) return "";
+  return `<div class="lesson-colloc">
+      <h3 class="lesson-step-title">Useful chunks</h3>
+      <ul class="colloc-list">
+        ${L.collocations
+          .map(
+            (c) => `<li>
+              <span class="colloc-chunk hanzi">${escapeHTML(c.chunk)}</span>
+              <button class="speak-btn small" data-speak="${escapeHTML(
+                c.chunk
+              )}" title="Play">${SPEAK_ICON}</button>
+              <span class="colloc-py">${escapeHTML(c.py)}</span>
+              <span class="colloc-en">${escapeHTML(c.en)}</span>
+            </li>`
+          )
+          .join("")}
+      </ul>
+    </div>`;
+}
+
+function mistakesSectionHTML(L) {
+  if (!L.commonMistakes || !L.commonMistakes.length) return "";
+  const items = L.commonMistakes.map((m) => `<li>${escapeHTML(m)}</li>`).join("");
+  return `<div class="lesson-mistakes"><h3 class="lesson-step-title">Common mistakes</h3><ul>${items}</ul></div>`;
+}
+
 function openLesson(lessonId) {
   const host = document.getElementById("courseView");
   const L = lessonById(lessonId);
@@ -275,150 +526,211 @@ function openLesson(lessonId) {
     return;
   }
   const words = L.wordIds.map(cWord).filter(Boolean);
+  const steps = [{ type: "intro" }];
+  words.forEach((w) => steps.push({ type: "word", word: w }));
+  if (L.grammar || (L.collocations && L.collocations.length) || (L.commonMistakes && L.commonMistakes.length)) {
+    steps.push({ type: "grammar" });
+  }
+  if (L.dialogue && L.dialogue.lines && L.dialogue.lines.length) {
+    steps.push({ type: "dialogue" });
+  }
+  _flow = { id: lessonId, L, words, steps, i: 0, revealed: false };
+  renderFlowStep();
+}
 
-  const wordCards = words
-    .map((w) => {
-      const chars = [...new Set(w.chars || [...w.chinese])];
-      const stories = chars
-        .map((ch) => (DB.charInfo[ch] ? charStoryHTML(ch) : ""))
-        .join("");
-      return `<div class="lesson-word">
-        <div class="lesson-word-head">
-          <span class="lesson-zi hanzi">${escapeHTML(w.chinese)}</span>
-          <button class="speak-btn" data-speak="${escapeHTML(
-            w.chinese
-          )}" title="Play pronunciation">${SPEAK_ICON}</button>
-        </div>
-        <div class="lesson-py">${escapeHTML(w.pinyin)}</div>
-        <div class="lesson-en">${escapeHTML(w.english)}${
-          w.khmer ? ` · ${escapeHTML(w.khmer)}` : ""
-        }</div>
-        ${
-          w.breakdown && w.breakdown !== "-"
-            ? `<div class="lesson-breakdown"><strong>Parts:</strong> ${escapeHTML(
-                w.breakdown
-              )}</div>`
-            : ""
-        }
-        ${stories}
-        ${w.ex_cn ? exampleBoxHTML({ level: null, cn: w.ex_cn, py: w.ex_py, en: w.ex_en }) : ""}
-      </div>`;
-    })
-    .join("");
+// Progress dots reflect the learning steps (words + grammar), not the intro.
+function flowDotsHTML() {
+  const learn = _flow.steps.filter((s) => s.type !== "intro");
+  const before = _flow.steps.slice(0, _flow.i).filter((s) => s.type !== "intro").length;
+  return (
+    '<div class="lf-dots" aria-label="Lesson progress">' +
+    learn
+      .map(
+        (s, k) =>
+          `<span class="lf-dot${k < before ? " done" : k === before ? " now" : ""}"></span>`
+      )
+      .join("") +
+    "</div>"
+  );
+}
 
-  const mistakes = (L.commonMistakes || [])
-    .map((m) => `<li>${escapeHTML(m)}</li>`)
-    .join("");
-
-  // Grammar section (optional, only on authored lessons that define it).
-  const grammarHTML = L.grammar
-    ? `<div class="lesson-grammar">
-        <h3 class="lesson-step-title">Grammar · ${escapeHTML(L.grammar.point)}</h3>
-        <div class="lesson-pattern">${escapeHTML(L.grammar.pattern)}</div>
-        ${(L.grammar.examples || [])
-          .map(
-            (ex) => `<div class="lesson-gex">
-              <div class="gex-cn hanzi">${escapeHTML(ex.cn)}
-                <button class="speak-btn small" data-speak="${escapeHTML(
-                  ex.cn
-                )}" title="Play sentence">${SPEAK_ICON}</button></div>
-              <div class="gex-py">${escapeHTML(ex.py)}</div>
-              <div class="gex-en">${escapeHTML(ex.en)}${
-                ex.note ? ` <span class="gex-note">· ${escapeHTML(ex.note)}</span>` : ""
-              }</div>
-            </div>`
-          )
-          .join("")}
-        ${
-          L.grammar.note
-            ? `<div class="lesson-note"><strong>Note:</strong> ${escapeHTML(
-                L.grammar.note
-              )}</div>`
-            : ""
-        }
-      </div>`
-    : "";
-
-  // Collocations / useful chunks (optional).
-  const collocHTML =
-    L.collocations && L.collocations.length
-      ? `<div class="lesson-colloc">
-          <h3 class="lesson-step-title">Useful chunks</h3>
-          <ul class="colloc-list">
-            ${L.collocations
-              .map(
-                (c) => `<li>
-                  <span class="colloc-chunk hanzi">${escapeHTML(c.chunk)}</span>
-                  <button class="speak-btn small" data-speak="${escapeHTML(
-                    c.chunk
-                  )}" title="Play">${SPEAK_ICON}</button>
-                  <span class="colloc-py">${escapeHTML(c.py)}</span>
-                  <span class="colloc-en">${escapeHTML(c.en)}</span>
-                </li>`
-              )
-              .join("")}
-          </ul>
-        </div>`
-      : "";
-
-  host.innerHTML = `
-    <button class="course-back" id="courseBack">← Course</button>
-    <h2 class="section-title">Lesson ${L.index} · ${escapeHTML(L.title)}</h2>
-    <div class="lesson-objective"><strong>Goal:</strong> ${escapeHTML(
-      L.objective
-    )}</div>
-    ${
-      L.toneNote
-        ? `<div class="lesson-note"><strong>Tones:</strong> ${escapeHTML(
-            L.toneNote
-          )}</div>`
-        : ""
-    }
-    <h3 class="lesson-step-title">Meet the words</h3>
-    <div class="lesson-words">${wordCards}</div>
-    ${grammarHTML}
-    ${collocHTML}
-    ${
-      mistakes
-        ? `<div class="lesson-mistakes"><h3 class="lesson-step-title">Common mistakes</h3><ul>${mistakes}</ul></div>`
-        : ""
-    }
-    <div class="lesson-actions">
-      <button class="study-btn lesson-warmup" id="warmupBtn">Warm up · no score</button>
-      <button class="study-btn primary lesson-start-quiz" id="startQuiz">Start the quiz</button>
+function flowChrome(bodyHTML, actionsHTML) {
+  const L = _flow.L;
+  return `
+    <div class="lesson-flow">
+      <div class="lf-top">
+        <button class="course-back" id="courseBack">← Course</button>
+        <div class="lf-meta">Lesson ${L.index} · ${escapeHTML(L.title)}</div>
+        ${flowDotsHTML()}
+      </div>
+      <div class="lf-body">${bodyHTML}</div>
+      <div class="lf-actions">${actionsHTML}</div>
     </div>`;
+}
 
-  host.querySelector("#courseBack").addEventListener("click", renderCourse);
+function wordStepHTML(w, revealed) {
+  if (!revealed) {
+    return `<div class="lf-word">
+      <div class="lf-zi hanzi">${escapeHTML(w.chinese)}</div>
+      <button class="speak-btn" data-speak="${escapeHTML(
+        w.chinese
+      )}" title="Play pronunciation">${SPEAK_ICON}</button>
+      <p class="lf-recall">Listen. Can you recall the pinyin and meaning?</p>
+    </div>`;
+  }
+  const chars = [...new Set(w.chars || [...w.chinese])];
+  const stories = chars.map((ch) => (DB.charInfo[ch] ? charStoryHTML(ch) : "")).join("");
+  return `<div class="lf-word revealed">
+    <div class="lf-zi hanzi">${escapeHTML(w.chinese)}</div>
+    <button class="speak-btn" data-speak="${escapeHTML(
+      w.chinese
+    )}" title="Play pronunciation">${SPEAK_ICON}</button>
+    <div class="lf-py">${escapeHTML(w.pinyin)}</div>
+    <div class="lf-en">${escapeHTML(w.english)}${
+      w.khmer ? ` · ${escapeHTML(w.khmer)}` : ""
+    }</div>
+    ${
+      w.breakdown && w.breakdown !== "-"
+        ? `<div class="lesson-breakdown"><strong>Parts:</strong> ${escapeHTML(w.breakdown)}</div>`
+        : ""
+    }
+    ${stories}
+    ${w.ex_cn ? exampleBoxHTML({ level: null, cn: w.ex_cn, py: w.ex_py, en: w.ex_en }) : ""}
+  </div>`;
+}
+
+// Conversation step: word → phrase → sentence → dialogue. A calm, readable
+// exchange (not chat bubbles) with speaker labels, per-line audio, and one
+// comprehension check. The dialogue reuses words the learner already knows.
+function dialogueStepHTML(L) {
+  const d = L.dialogue;
+  const lines = d.lines
+    .map(
+      (ln) => `<div class="dlg-line dlg-${ln.sp === "A" ? "a" : "b"}">
+        <span class="dlg-sp" aria-hidden="true">${escapeHTML(ln.sp)}</span>
+        <div class="dlg-bubble">
+          <div class="dlg-cn hanzi">${escapeHTML(ln.cn)}
+            <button class="speak-btn small" data-speak="${escapeHTML(
+              ln.cn
+            )}" title="Play line">${SPEAK_ICON}</button></div>
+          <div class="dlg-py">${escapeHTML(ln.py)}</div>
+          <div class="dlg-en">${escapeHTML(ln.en)}</div>
+        </div>
+      </div>`
+    )
+    .join("");
+  const c = d.comprehension;
+  let comp = "";
+  if (c && c.options && c.options.length) {
+    const opts = shuffleArray(c.options.slice())
+      .map(
+        (o) =>
+          `<button class="sent-opt hanzi dlg-opt" data-v="${escapeHTML(o)}">${escapeHTML(o)}</button>`
+      )
+      .join("");
+    comp = `<div class="dlg-comp">
+        <p class="intro-text">${escapeHTML(c.q)}</p>
+        <div class="sent-options">${opts}</div>
+        <div class="mcq-explain" id="dlgFb" aria-live="polite"></div>
+      </div>`;
+  }
+  return `<div class="lf-dialogue">
+      <div class="dlg-situation">${escapeHTML(d.situation)}</div>
+      <div class="dlg-lines">${lines}</div>
+      ${comp}
+      <p class="dlg-yourturn">Your turn: tap a line to hear it, then read it aloud before you continue.</p>
+    </div>`;
+}
+
+function renderFlowStep() {
+  const host = document.getElementById("courseView");
+  if (!host || !_flow) return;
+  const step = _flow.steps[_flow.i];
+  if (!step) return startQuiz(_flow.id); // learning done → practice
+
+  let body = "";
+  let actions = "";
+  if (step.type === "intro") {
+    const L = _flow.L;
+    body = `<div class="lf-intro">
+        <div class="lf-kicker">New lesson</div>
+        <h2 class="lf-title">${escapeHTML(L.title)}</h2>
+        <p class="lf-objective">${escapeHTML(L.objective)}</p>
+        ${
+          L.toneNote
+            ? `<div class="lesson-note"><strong>Tones:</strong> ${escapeHTML(L.toneNote)}</div>`
+            : ""
+        }
+        <p class="lf-hint">${_flow.words.length} words · hear each one, try to recall it, then reveal.</p>
+      </div>`;
+    actions = `<button class="study-btn primary" id="lfNext">Begin</button>`;
+  } else if (step.type === "word") {
+    body = wordStepHTML(step.word, _flow.revealed);
+    actions = _flow.revealed
+      ? `<button class="study-btn primary" id="lfNext">Continue</button>`
+      : `<button class="study-btn primary" id="lfReveal">Reveal</button>`;
+  } else if (step.type === "grammar") {
+    body =
+      grammarSectionHTML(_flow.L) + collocSectionHTML(_flow.L) + mistakesSectionHTML(_flow.L);
+    actions = `<button class="study-btn primary" id="lfNext">${
+      _flow.L.dialogue ? "Next: conversation" : "Start practice"
+    }</button>`;
+  } else if (step.type === "dialogue") {
+    body = dialogueStepHTML(_flow.L);
+    actions = `<button class="study-btn primary" id="lfNext">Start practice</button>`;
+  }
+
+  host.innerHTML = flowChrome(body, actions);
+
+  host.querySelector("#courseBack").addEventListener("click", () => {
+    _flow = null;
+    renderCourse();
+  });
   host
     .querySelectorAll(".speak-btn")
     .forEach((b) => b.addEventListener("click", () => speak(b.dataset.speak)));
-  host
-    .querySelector("#warmupBtn")
-    .addEventListener("click", () => startWarmup(lessonId));
-  host
-    .querySelector("#startQuiz")
-    .addEventListener("click", () => startQuiz(lessonId));
-  if (words[0]) speak(words[0].chinese); // Hear-first
-}
+  const reveal = host.querySelector("#lfReveal");
+  if (reveal)
+    reveal.addEventListener("click", () => {
+      _flow.revealed = true;
+      renderFlowStep();
+    });
+  const nextBtn = host.querySelector("#lfNext");
+  if (nextBtn)
+    nextBtn.addEventListener("click", () => {
+      _flow.i++;
+      _flow.revealed = false;
+      renderFlowStep();
+    });
 
-// Ungraded warm-up: a short retrieval round before the graded quiz. Low stakes,
-// so the learner recalls the words once with no mastery pressure. Reuses the
-// practice engine; when done it returns to the lesson.
-function startWarmup(lessonId) {
-  const host = document.getElementById("courseView");
-  const L = lessonById(lessonId);
-  if (!host || !L) return;
-  const words = L.wordIds.map(cWord).filter(Boolean).slice(0, 4);
-  host.innerHTML = `
-    <button class="course-back" id="courseBack">← Lesson</button>
-    <p class="lesson-warmup-note">Warm-up — no score. Just to wake up the words.</p>
-    <div id="practiceHost"></div>`;
-  host
-    .querySelector("#courseBack")
-    .addEventListener("click", () => openLesson(lessonId));
-  runPractice(host.querySelector("#practiceHost"), words, {
-    onDone: () => openLesson(lessonId),
-  });
+  // comprehension check on the dialogue step (records real performance)
+  if (step.type === "dialogue") {
+    const c = _flow.L.dialogue.comprehension;
+    host.querySelectorAll(".dlg-opt").forEach((b) =>
+      b.addEventListener("click", () => {
+        if (b.disabled) return;
+        const ok = b.dataset.v === c.answer;
+        host.querySelectorAll(".dlg-opt").forEach((x) => {
+          if (x.dataset.v === c.answer) x.classList.add("correct");
+          else if (x === b) x.classList.add("wrong");
+          x.disabled = true;
+        });
+        if (typeof recordSkill === "function") recordSkill("recognize", ok);
+        if (!ok && typeof recordMistake === "function") recordMistake("wrong-meaning");
+        const fb = host.querySelector("#dlgFb");
+        if (fb)
+          fb.innerHTML = ok
+            ? '<span class="fb-ans">Correct.</span>'
+            : `<span class="fb-ans">Answer: ${escapeHTML(c.answer)}</span>`;
+      })
+    );
+  }
+
+  // hear-first: auto-play audio on word steps, the intro, and the first dialogue line
+  if (step.type === "word") speak(step.word.chinese);
+  else if (step.type === "intro" && _flow.words[0]) speak(_flow.words[0].chinese);
+  else if (step.type === "dialogue" && _flow.L.dialogue.lines[0])
+    speak(_flow.L.dialogue.lines[0].cn);
 }
 
 // ---- Quiz phase: multi-mode practice engine (active recall) ----
@@ -451,6 +763,12 @@ function finishQuiz(lessonId, score, stats) {
     masteredAt: passed ? Date.now() : prev.masteredAt || null,
   };
   saveCourseProgress(prog);
+
+  // On mastery, enroll the lesson's words into the FSRS review engine so they
+  // get scheduled future reviews. Idempotent — reuses the tested schedule().
+  if (passed && typeof enrollLearned === "function") {
+    L.wordIds.forEach((id) => enrollLearned(id, lessonId));
+  }
 
   const lessons = pathLessons(path);
   const idx = lessons.findIndex((l) => l.id === lessonId);

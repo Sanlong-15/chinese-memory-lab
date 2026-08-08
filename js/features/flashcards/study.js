@@ -189,6 +189,7 @@ function renderDashboard() {
   renderRetention(distinct, now);
   if (typeof renderCourseProgressCard === "function") renderCourseProgressCard();
   if (typeof renderLearningSummary === "function") renderLearningSummary();
+  if (typeof renderLearningInsights === "function") renderLearningInsights();
   if (typeof renderSkillScores === "function") renderSkillScores();
   if (typeof renderReviewAnalytics === "function") renderReviewAnalytics();
 }

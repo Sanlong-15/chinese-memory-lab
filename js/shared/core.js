@@ -649,7 +649,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=74";
+  s.src = "js/data/examples.js?v=79";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
@@ -678,7 +678,7 @@ function ensureCharInfo(cb) {
   if (charInfoLoading) return;
   charInfoLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/charinfo.js?v=74";
+  s.src = "js/data/charinfo.js?v=79";
   const done = () => {
     charInfoLoaded = true; // charinfo.js has assigned DB.charInfo by now
     charInfoLoading = false;

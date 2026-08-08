@@ -21,13 +21,19 @@ test("starting the daily review renders a task card", async ({ page }) => {
   await expect(page.locator("#todayCard")).not.toBeEmpty();
 });
 
-test("opening a course lesson shows its words", async ({ page }) => {
+test("opening a course lesson starts the guided flow", async ({ page }) => {
   await page.locator('.group-btn[data-group="learn"]').click();
   // Course is the first sub-tab under Learn; the map renders lesson nodes
   await expect(page.locator(".course-node").first()).toBeVisible();
   await page.locator(".course-node:not(.locked)").first().click();
-  // the "Meet the words" cards render (proves the lazy charInfo chunk loaded too)
-  await expect(page.locator(".lesson-word").first()).toBeVisible({ timeout: 15000 });
+  // the guided lesson flow opens on the intro step
+  await expect(page.locator(".lesson-flow")).toBeVisible({ timeout: 15000 });
+  await expect(page.locator(".lf-title")).toBeVisible();
+  // Begin -> a word step, then Reveal shows pinyin (proves lazy charInfo loaded)
+  await page.locator("#lfNext").click();
+  await expect(page.locator(".lf-zi").first()).toBeVisible();
+  await page.locator("#lfReveal").click();
+  await expect(page.locator(".lf-py")).toBeVisible({ timeout: 15000 });
 });
 
 test("a word detail opens from the vocabulary grid", async ({ page }) => {

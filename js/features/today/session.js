@@ -142,7 +142,7 @@ function sampleField(word, field, n) {
 
 // Generic multiple-choice with immediate feedback: mark correct/wrong, then
 // advance. Wrong answers linger a little longer (error-based learning).
-function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelFn) {
+function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelFn, explainHTML, mistakeType) {
   const label = labelFn || ((o) => escapeHTML(o));
   const optsHTML = options
     .map(
@@ -152,7 +152,7 @@ function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelF
         )}">${label(o)}</button>`
     )
     .join("");
-  host.innerHTML = `<div class="session-task">${promptHTML}<div class="sent-options">${optsHTML}</div></div>`;
+  host.innerHTML = `<div class="session-task">${promptHTML}<div class="sent-options">${optsHTML}</div><div class="mcq-explain" id="mcqExplain" aria-live="polite"></div></div>`;
   let answered = false;
   host.querySelectorAll(".sent-opt").forEach((b) => {
     b.addEventListener("click", () => {
@@ -164,7 +164,21 @@ function renderMCQ(host, promptHTML, options, correct, isHanzi, onResult, labelF
         else if (x === b) x.classList.add("wrong");
         x.disabled = true;
       });
-      setTimeout(() => onResult(ok ? "good" : "again"), ok ? 700 : 1500);
+      // diagnose the mistake (only where we can classify it honestly)
+      if (!ok && mistakeType && typeof recordMistake === "function") {
+        recordMistake(
+          mistakeType,
+          mistakeType === "confused-character" ? { target: correct, chosen: b.dataset.v } : null
+        );
+      }
+      // richer feedback: explain the answer (why), not just right/wrong
+      let delay = ok ? 700 : 1500;
+      if (explainHTML) {
+        const box = host.querySelector("#mcqExplain");
+        if (box) box.innerHTML = explainHTML;
+        delay = ok ? 1200 : 2400;
+      }
+      setTimeout(() => onResult(ok ? "good" : "again"), delay);
     });
   });
 }
@@ -239,7 +253,7 @@ function renderListenTask(word, onResult, host) {
   const prompt =
     `<p class="intro-text">Listen and choose the meaning.</p>` +
     `<button class="study-btn" id="replayBtn" type="button">Play again</button>`;
-  renderMCQ(host, prompt, opts, word.english, false, onResult);
+  renderMCQ(host, prompt, opts, word.english, false, onResult, null, null, "listening");
   const rb = host.querySelector("#replayBtn");
   if (rb)
     rb.addEventListener("click", (e) => {
@@ -273,7 +287,9 @@ function renderToneTask(word, onResult, host) {
     correct,
     false,
     onResult,
-    (o) => `<span class="tone-glyph">${Logic.toneGlyphs(o)}</span>`
+    (o) => `<span class="tone-glyph">${Logic.toneGlyphs(o)}</span>`,
+    null,
+    "tone"
   );
 }
 
@@ -292,7 +308,7 @@ function renderSentenceTask(word, onResult, host) {
     `<div class="sent-cn hanzi">${escapeHTML(blanked)}</div>` +
     `<div class="sent-en">${escapeHTML(word.ex_en || word.english)}</div>` +
     `<p class="intro-text">Choose the missing word.</p>`;
-  renderMCQ(host, prompt, opts, word.chinese, true, onResult);
+  renderMCQ(host, prompt, opts, word.chinese, true, onResult, null, null, "sentence-use");
 }
 
 // --- task registry -------------------------------------------------
@@ -386,10 +402,31 @@ function updateTodayStart() {
   if (!line) return;
   const { due, fresh } = countDaily();
   const newShown = Math.min(fresh, NEW_PER_DAY - newIntroducedToday());
+  const est = Math.max(1, Math.round((due + newShown) * 0.15));
   line.textContent =
     due + newShown === 0
       ? "Nothing due right now — you're all caught up. Learn new words in the tabs, or come back later."
-      : `${due} due · ${newShown} new — about ${Math.max(1, Math.round((due + newShown) * 0.15))} min.`;
+      : `${due} due · ${newShown} new — about ${est} min.`;
+
+  // Daily Mission: a personalized, adaptive plan (Phase 5). Falls back to the
+  // simple stat cards if the adaptive engine isn't available.
+  if (typeof renderDailyMission === "function") {
+    renderDailyMission();
+    return;
+  }
+  const plan = document.getElementById("todayPlan");
+  if (plan) {
+    const weak = typeof weakWordsCount === "function" ? weakWordsCount() : 0;
+    const stat = (num, lbl, unit) =>
+      `<div class="tp-stat"><div class="tp-num">${num}${
+        unit ? `<span class="tp-unit">${unit}</span>` : ""
+      }</div><div class="tp-lbl">${lbl}</div></div>`;
+    plan.innerHTML =
+      stat(newShown, "To learn") +
+      stat(due, "Reviews due") +
+      stat(weak, "Weak words") +
+      stat(est, "Est. time", "m");
+  }
 }
 
 function startDailySession(opts) {

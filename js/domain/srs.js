@@ -63,6 +63,124 @@ function schedule(id, rating, ms) {
   saveSrs(srs);
 }
 
+// ---- Course ⇄ FSRS link ----
+// Which lesson first introduced a word, and when. This is course-side metadata
+// that FSRS itself does not hold (FSRS keeps S / D / reps / due / history).
+const LEARNED_KEY = "cml_learned_v1";
+function loadLearned() {
+  try {
+    return JSON.parse(localStorage.getItem(LEARNED_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+function saveLearned(m) {
+  try {
+    localStorage.setItem(LEARNED_KEY, JSON.stringify(m));
+  } catch (e) {
+    /* private mode */
+  }
+}
+
+// Enroll a word into the review engine when its lesson is mastered. Idempotent:
+// if the word is already in FSRS we leave its schedule untouched (never disturb a
+// real review card, never create a duplicate); we only add the lesson / first-
+// learned metadata once. Reuses the tested schedule() — no new scheduling math.
+function enrollLearned(id, lessonId) {
+  const st = getState(id);
+  if (st.state === "new" || !st.reps) {
+    schedule(id, "good"); // first real review → creates S / D / due via fsrsUpdate
+  }
+  const m = loadLearned();
+  if (!m[id]) {
+    m[id] = { lesson: lessonId, firstLearned: Date.now() };
+    saveLearned(m);
+  }
+}
+
+// A word "needs attention" (weak) if it has lapsed — got an "again" — before.
+function isWeakState(st) {
+  return !!(
+    st &&
+    (st.lapses > 0 ||
+      (st.hist && st.hist.length && st.hist[st.hist.length - 1].r === "again"))
+  );
+}
+function weakWordsCount() {
+  let n = 0;
+  for (const id in srs) if (isWeakState(srs[id])) n++;
+  return n;
+}
+
+// Derived course state for a word. This deliberately separates "passed the
+// lesson" from "long-term mastery": a word can sit in a mastered lesson and
+// still be Learning or Needs-attention as a review card.
+function wordCourseState(id) {
+  const st = getState(id);
+  const learned = loadLearned()[id];
+  if (isWeakState(st)) return "Needs attention";
+  if (st.reps >= 1 && st.S >= 21) return "Mastered"; // ~3-week stability
+  if (st.reps >= 3) return "Reviewing";
+  if (st.reps >= 1) return "Learning";
+  if (learned) return "Learning";
+  return "New";
+}
+
+// ---- Mistake diagnosis ----
+// When an answer is wrong we log WHAT kind of mistake it was (only where we can
+// classify it honestly) and, for character choices, which wrong character was
+// picked — so real "frequently confused" pairs emerge from actual behaviour.
+const MISTAKE_KEY = "cml_mistakes_v1";
+function loadMistakes() {
+  try {
+    const m = JSON.parse(localStorage.getItem(MISTAKE_KEY));
+    return m && m.types ? m : { types: {}, pairs: {} };
+  } catch (e) {
+    return { types: {}, pairs: {} };
+  }
+}
+function saveMistakes(m) {
+  try {
+    localStorage.setItem(MISTAKE_KEY, JSON.stringify(m));
+  } catch (e) {
+    /* private mode */
+  }
+}
+// type: a classified mistake string. pair (optional) = { target, chosen } chars.
+function recordMistake(type, pair) {
+  const m = loadMistakes();
+  if (type) m.types[type] = (m.types[type] || 0) + 1;
+  if (pair && pair.target && pair.chosen && pair.target !== pair.chosen) {
+    const key = pair.target + "→" + pair.chosen;
+    m.pairs[key] = (m.pairs[key] || 0) + 1;
+  }
+  saveMistakes(m);
+}
+// The most common mistake type, only if seen at least `min` times (avoids
+// drawing conclusions from a tiny sample — no misleading analytics).
+function topMistakeType(min) {
+  const t = loadMistakes().types;
+  let best = null;
+  let bn = 0;
+  for (const k in t)
+    if (t[k] > bn) {
+      bn = t[k];
+      best = k;
+    }
+  return best && bn >= (min || 3) ? { type: best, count: bn } : null;
+}
+// Character pairs confused at least `minCount` times, most-confused first.
+function confusedPairs(minCount) {
+  const p = loadMistakes().pairs;
+  return Object.entries(p)
+    .filter(([, n]) => n >= (minCount || 2))
+    .map(([k, n]) => {
+      const parts = k.split("→");
+      return { target: parts[0], chosen: parts[1], count: n };
+    })
+    .sort((a, b) => b.count - a.count);
+}
+
 // ---- Per-skill performance (reading / listening / tones / sentences / typing) ----
 // Every answer is logged by the skill it exercises, so the app can show real
 // per-skill scores and adaptively drill the learner's weakest skill.

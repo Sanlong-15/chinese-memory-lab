@@ -46,6 +46,20 @@ const COURSE = {
         { chunk: "没关系", py: "méi guānxi", en: "it's okay (reply to sorry)" },
         { chunk: "明天见", py: "míngtiān jiàn", en: "see you tomorrow" },
       ],
+      dialogue: {
+        situation: "Meeting someone",
+        lines: [
+          { sp: "A", cn: "你好！我是 Lin。", py: "nǐ hǎo! wǒ shì Lín.", en: "Hello! I'm Lin." },
+          { sp: "B", cn: "你好，Lin！我是 Wang。", py: "nǐ hǎo, Lín! wǒ shì Wáng.", en: "Hello, Lin! I'm Wang." },
+          { sp: "A", cn: "谢谢！再见！", py: "xièxie! zàijiàn!", en: "Thanks! Goodbye!" },
+          { sp: "B", cn: "再见！", py: "zàijiàn!", en: "Goodbye!" },
+        ],
+        comprehension: {
+          q: "How does the conversation end?",
+          options: ["再见", "谢谢", "你好", "对不起"],
+          answer: "再见",
+        },
+      },
       mastery: { threshold: 0.8 },
     },
     "hsk1-02": {
@@ -154,6 +168,20 @@ const COURSE = {
         { chunk: "他是谁？", py: "tā shì shéi?", en: "who is he?" },
         { chunk: "好吗？", py: "hǎo ma?", en: "is that okay?" },
       ],
+      dialogue: {
+        situation: "Introductions",
+        lines: [
+          { sp: "A", cn: "你好！你叫什么名字？", py: "nǐ hǎo! nǐ jiào shénme míngzi?", en: "Hi! What's your name?" },
+          { sp: "B", cn: "我叫 Lin。你呢？", py: "wǒ jiào Lín. nǐ ne?", en: "I'm Lin. And you?" },
+          { sp: "A", cn: "我叫 Wang。他是谁？", py: "wǒ jiào Wáng. tā shì shéi?", en: "I'm Wang. Who is he?" },
+          { sp: "B", cn: "他叫 Li。", py: "tā jiào Lǐ.", en: "He's called Li." },
+        ],
+        comprehension: {
+          q: "What is B's name?",
+          options: ["Lin", "Wang", "Li", "Koko"],
+          answer: "Lin",
+        },
+      },
       mastery: { threshold: 0.8 },
     },
     "hsk1-05": {
@@ -194,6 +222,19 @@ const COURSE = {
         { chunk: "很多", py: "hěn duō", en: "a lot / many" },
         { chunk: "不高兴", py: "bù gāoxìng", en: "unhappy" },
       ],
+      dialogue: {
+        situation: "Talking about feelings",
+        lines: [
+          { sp: "A", cn: "你好！你喜欢你的家吗？", py: "nǐ hǎo! nǐ xǐhuan nǐ de jiā ma?", en: "Hi! Do you like your home?" },
+          { sp: "B", cn: "我很喜欢。你高兴吗？", py: "wǒ hěn xǐhuan. nǐ gāoxìng ma?", en: "I like it a lot. Are you happy?" },
+          { sp: "A", cn: "我很高兴！", py: "wǒ hěn gāoxìng!", en: "I'm very happy!" },
+        ],
+        comprehension: {
+          q: "How does A feel?",
+          options: ["高兴", "不高兴", "冷", "热"],
+          answer: "高兴",
+        },
+      },
       mastery: { threshold: 0.8 },
     },
     "hsk1-06": {
@@ -394,6 +435,22 @@ const COURSE = {
         { chunk: "一个苹果", py: "yí gè píngguǒ", en: "an apple (uses 个 from lesson 2)" },
         { chunk: "喝茶", py: "hē chá", en: "drink tea (uses 喝 from lesson 3)" },
       ],
+      dialogue: {
+        situation: "Buying tea at a shop",
+        lines: [
+          { sp: "A", cn: "你好！我想买茶。", py: "nǐ hǎo! wǒ xiǎng mǎi chá.", en: "Hello! I want to buy tea." },
+          { sp: "B", cn: "好。你想买多少？", py: "hǎo. nǐ xiǎng mǎi duōshao?", en: "OK. How much do you want?" },
+          { sp: "A", cn: "这个茶多少钱？", py: "zhège chá duōshao qián?", en: "How much is this tea?" },
+          { sp: "B", cn: "十块。", py: "shí kuài.", en: "Ten yuan." },
+          { sp: "A", cn: "好，我买。谢谢！", py: "hǎo, wǒ mǎi. xièxie!", en: "OK, I'll buy it. Thanks!" },
+          { sp: "B", cn: "谢谢！再见！", py: "xièxie! zàijiàn!", en: "Thanks! Goodbye!" },
+        ],
+        comprehension: {
+          q: "How much is the tea?",
+          options: ["十块", "五块", "二十块", "一块"],
+          answer: "十块",
+        },
+      },
       mastery: { threshold: 0.8 },
     },
   },

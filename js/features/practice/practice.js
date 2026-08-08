@@ -20,14 +20,21 @@ function renderTypingTask(host, word, done) {
     if (answered) return;
     answered = true;
     const ok = normPinyin(input.value) === normPinyin(word.pinyin);
+    if (!ok && typeof recordMistake === "function") recordMistake("wrong-pinyin");
+    const parts =
+      word.breakdown && word.breakdown !== "-"
+        ? ` · Parts: ${escapeHTML(word.breakdown)}`
+        : "";
     fb.innerHTML = ok
-      ? `<span class="fb-ok">Correct — ${escapeHTML(word.pinyin)}</span>`
+      ? `<span class="fb-ok">Correct — ${escapeHTML(word.pinyin)} · ${escapeHTML(
+          word.english
+        )}</span>`
       : `<span class="fb-no">Answer: <strong>${escapeHTML(
           word.pinyin
-        )}</strong> · ${escapeHTML(word.english)}</span>`;
+        )}</strong> · ${escapeHTML(word.english)}${parts}</span>`;
     input.disabled = true;
     speak(word.chinese);
-    setTimeout(() => done(ok), ok ? 800 : 1700);
+    setTimeout(() => done(ok), ok ? 900 : 2100);
   };
   host.querySelector("#typeCheck").addEventListener("click", check);
   input.addEventListener("keydown", (e) => {
@@ -155,6 +162,7 @@ function renderOrderTask(host, word, done) {
       .map((x) => x.textContent)
       .join("");
     const ok = built === target;
+    if (!ok && typeof recordMistake === "function") recordMistake("word-order");
     fb.innerHTML = ok
       ? `<span class="fb-ok">Correct!</span>`
       : `<span class="fb-no">Answer: ${escapeHTML(word.ex_cn)}</span>`;
@@ -296,7 +304,14 @@ function renderPracticeQuestion(host, item, done) {
     case "speak":
       return renderSpeakTask(host, w, done);
     case "recognize":
-    default:
+    default: {
+      const explain =
+        `<span class="fb-ans"><strong class="hanzi">${escapeHTML(w.chinese)}</strong> ${escapeHTML(
+          w.pinyin
+        )} — ${escapeHTML(w.english)}</span>` +
+        (w.breakdown && w.breakdown !== "-"
+          ? `<span class="fb-parts">Parts: ${escapeHTML(w.breakdown)}</span>`
+          : "");
       return renderMCQ(
         host,
         `<p class="intro-text">Which word means <strong>“${escapeHTML(
@@ -305,8 +320,12 @@ function renderPracticeQuestion(host, item, done) {
         sampleField(w, "chinese", 4),
         w.chinese,
         true,
-        (r) => done(r === "good")
+        (r) => done(r === "good"),
+        null,
+        explain,
+        "confused-character"
       );
+    }
   }
 }
 
@@ -404,6 +423,15 @@ function coursePracticeLevels() {
     if (set.indexOf(w.level) === -1) set.push(w.level);
   });
   return set;
+}
+
+// Launch a single-mode drill directly — used by the Learning Insights
+// recommendation buttons. Reuses the standalone practice runner (no new engine).
+function launchPractice(mode, level) {
+  _pickMode = mode || "mixed";
+  _pickLevel = level || _pickLevel || "HSK1";
+  if (typeof switchView === "function") switchView("practiceView");
+  startStandalonePractice();
 }
 
 function renderPracticePicker() {
