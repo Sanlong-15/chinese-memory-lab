@@ -8,12 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=86">
+<link rel="stylesheet" href="css/style.css?v=95">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
+
+<div id="offlineBar" class="offline-bar" role="status" aria-live="polite" hidden>You're offline — the app still works, and your progress is saved on this device.</div>
 
 <header class="top">
   <button id="helpBtn" class="help-toggle" aria-label="Show the welcome guide and keyboard help">?</button>
@@ -476,6 +478,29 @@
 
 </main>
 
+<nav class="bottomnav" id="bottomNav" aria-label="Main navigation">
+  <button class="bn-btn active" data-group="today" aria-label="Today">
+    <svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="bn-lbl">Today</span>
+  </button>
+  <button class="bn-btn" data-group="learn" aria-label="Learn">
+    <svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-1.6-1-4-1.6-6-1.2v12c2-.4 4.4.2 6 1.2 1.6-1 4-1.6 6-1.2v-12c-2-.4-4.4.2-6 1.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 6v12" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+    <span class="bn-lbl">Learn</span>
+  </button>
+  <button class="bn-btn" data-group="practice" aria-label="Practice">
+    <svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+    <span class="bn-lbl">Practice</span>
+  </button>
+  <button class="bn-btn" data-group="progress" aria-label="Progress">
+    <svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span class="bn-lbl">Progress</span>
+  </button>
+  <button class="bn-btn" data-group="you" aria-label="You">
+    <svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span class="bn-lbl">You</span>
+  </button>
+</nav>
+
 <div id="overlay">
   <div class="detail-card" role="dialog" aria-modal="true" aria-label="Word and character details">
     <button class="close-btn" id="closeDetail" aria-label="Close details">&times;</button>
@@ -531,30 +556,30 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=86"></script>
+<script defer src="js/shared/observability.js?v=95"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=86"></script>
-<script defer src="js/data/structures.js?v=86"></script>
-<script defer src="js/data/grammar.js?v=86"></script>
-<script defer src="js/data/course.js?v=86"></script>
+<script defer src="js/data/words.js?v=95"></script>
+<script defer src="js/data/structures.js?v=95"></script>
+<script defer src="js/data/grammar.js?v=95"></script>
+<script defer src="js/data/course.js?v=95"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=86"></script>
-<script defer src="js/domain/srs.js?v=86"></script>
+<script defer src="js/domain/logic.js?v=95"></script>
+<script defer src="js/domain/srs.js?v=95"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=86"></script>
+<script defer src="js/shared/core.js?v=95"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=86"></script>
+<script defer src="js/app/detail.js?v=95"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=86"></script>
-<script defer src="js/features/flashcards/study.js?v=86"></script>
-<script defer src="js/features/flashcards/review.js?v=86"></script>
-<script defer src="js/app/ui.js?v=86"></script>
-<script defer src="js/features/today/session.js?v=86"></script>
-<script defer src="js/features/practice/practice.js?v=86"></script>
-<script defer src="js/features/course/course.js?v=86"></script>
+<script defer src="js/features/practice/reference.js?v=95"></script>
+<script defer src="js/features/flashcards/study.js?v=95"></script>
+<script defer src="js/features/flashcards/review.js?v=95"></script>
+<script defer src="js/app/ui.js?v=95"></script>
+<script defer src="js/features/today/session.js?v=95"></script>
+<script defer src="js/features/practice/practice.js?v=95"></script>
+<script defer src="js/features/course/course.js?v=95"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=86"></script>
+<script defer src="js/app/analytics.js?v=95"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=86"></script>
+<script defer src="js/app/main.js?v=95"></script>
 </body>
 </html>

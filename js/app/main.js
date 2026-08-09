@@ -38,6 +38,19 @@ applyHash();
   onScroll();
 })();
 
+// Offline indicator: the app works offline (PWA), so tell the user rather than
+// leaving them guessing. Progress is stored locally, so nothing is lost.
+(function offlineIndicator() {
+  const bar = document.getElementById("offlineBar");
+  if (!bar) return;
+  const update = () => {
+    bar.hidden = navigator.onLine;
+  };
+  window.addEventListener("online", update);
+  window.addEventListener("offline", update);
+  update();
+})();
+
 // PWA: register the service worker for offline support.
 // Skipped on file:// (service workers need http/https).
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {

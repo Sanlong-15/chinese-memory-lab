@@ -537,20 +537,18 @@ function openLesson(lessonId) {
   renderFlowStep();
 }
 
-// Progress dots reflect the learning steps (words + grammar), not the intro.
-function flowDotsHTML() {
-  const learn = _flow.steps.filter((s) => s.type !== "intro");
-  const before = _flow.steps.slice(0, _flow.i).filter((s) => s.type !== "intro").length;
-  return (
-    '<div class="lf-dots" aria-label="Lesson progress">' +
-    learn
-      .map(
-        (s, k) =>
-          `<span class="lf-dot${k < before ? " done" : k === before ? " now" : ""}"></span>`
-      )
-      .join("") +
-    "</div>"
-  );
+// A slim progress bar + "step X / Y" counter — scales better than dots for a
+// lesson with a dozen steps, and matches the learning-screen spec.
+function flowProgressHTML() {
+  const total = _flow.steps.length;
+  const cur = Math.min(_flow.i + 1, total);
+  const pct = Math.round((cur / total) * 100);
+  return `<div class="lf-progress">
+      <div class="lf-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="${total}" aria-valuenow="${cur}" aria-label="Lesson progress">
+        <div class="lf-progress-fill" style="width:${pct}%"></div>
+      </div>
+      <span class="lf-progress-num">${cur} / ${total}</span>
+    </div>`;
 }
 
 function flowChrome(bodyHTML, actionsHTML) {
@@ -560,8 +558,8 @@ function flowChrome(bodyHTML, actionsHTML) {
       <div class="lf-top">
         <button class="course-back" id="courseBack">← Course</button>
         <div class="lf-meta">Lesson ${L.index} · ${escapeHTML(L.title)}</div>
-        ${flowDotsHTML()}
       </div>
+      ${flowProgressHTML()}
       <div class="lf-body">${bodyHTML}</div>
       <div class="lf-actions">${actionsHTML}</div>
     </div>`;

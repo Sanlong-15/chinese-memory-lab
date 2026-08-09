@@ -305,6 +305,17 @@ document.getElementById("closeDetail").addEventListener("click", closeDetail);
 document.getElementById("overlay").addEventListener("click", (e) => {
   if (e.target.id === "overlay") closeDetail();
 });
+// keyboard: while the dialog is open, Escape closes it and Tab stays trapped inside
+document.addEventListener("keydown", (e) => {
+  if (!overlayIsOpen()) return;
+  if (e.key === "Escape") {
+    e.preventDefault();
+    closeDetail();
+  } else if (e.key === "Tab") {
+    const card = document.getElementById("overlay").querySelector(".detail-card");
+    if (card) trapFocus(card, e);
+  }
+});
 
 document.getElementById("searchBox").addEventListener("input", (e) => {
   currentSearch = e.target.value.trim();
