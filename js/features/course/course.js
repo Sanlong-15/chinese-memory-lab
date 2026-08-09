@@ -208,7 +208,7 @@ function renderDailyMission() {
       }</div>
       <div class="mission-time">Estimated time · ${planEstRange(plan)} min</div>
       <div class="mission-progress">
-        <span class="mp-item">🔥 ${streak}-day streak</span>
+        <span class="mp-item">${streak}-day streak</span>
         ${ret != null ? `<span class="mp-item">${ret}% retention</span>` : ""}
         <span class="mp-item">HSK 1: ${hsk1}%</span>
       </div>
@@ -393,7 +393,7 @@ function renderCourse() {
         )}</span>
         <span class="cc-arrow" aria-hidden="true">→</span>
       </button>`
-    : `<div class="course-complete">🎉 You've mastered every lesson in ${escapeHTML(
+    : `<div class="course-complete">You've mastered every lesson in ${escapeHTML(
         path.title
       )}.</div>`;
 
@@ -403,10 +403,10 @@ function renderCourse() {
       const score = prog[L.id] && prog[L.id].score;
       const badge =
         status === "mastered"
-          ? '<span class="course-mark ok">✓</span>'
+          ? '<span class="course-mark ok">' + ICON.check + "</span>"
           : status === "locked"
-            ? '<span class="course-mark lock">🔒</span>'
-            : '<span class="course-mark go">▸</span>';
+            ? '<span class="course-mark lock">' + ICON.lock + "</span>"
+            : '<span class="course-mark go">' + ICON.chevron + "</span>";
       const sub =
         status === "mastered" && score != null
           ? `mastered · ${Math.round(score * 100)}%`
@@ -714,6 +714,7 @@ function renderFlowStep() {
           else if (x === b) x.classList.add("wrong");
           x.disabled = true;
         });
+        if (typeof playAnswerSound === "function") playAnswerSound(ok);
         if (typeof recordSkill === "function") recordSkill("recognize", ok);
         if (!ok && typeof recordMistake === "function") recordMistake("wrong-meaning");
         const fb = host.querySelector("#dlgFb");
@@ -773,7 +774,7 @@ function finishQuiz(lessonId, score, stats) {
   const idx = lessons.findIndex((l) => l.id === lessonId);
   const next = lessons[idx + 1];
   host.innerHTML = `
-    <h2 class="section-title">${passed ? "Lesson mastered 🎉" : "Almost there"}</h2>
+    <h2 class="section-title">${passed ? "Lesson mastered" : "Almost there"}</h2>
     <div class="course-result ${passed ? "pass" : "fail"}">
       <div class="course-score">${Math.round(score * 100)}%</div>
       <p>${

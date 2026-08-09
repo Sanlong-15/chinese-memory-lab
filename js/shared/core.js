@@ -14,6 +14,49 @@ const SPEAK_ICON =
   '<path d="M17.6 7a7.5 7.5 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>' +
   "</svg>";
 
+// Shared UI icon set — inline SVG line icons (currentColor), matching the
+// speaker icon. Replaces scattered emoji so the whole app uses one icon style.
+const ICON = {
+  check:
+    '<svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  lock:
+    '<svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+  chevron:
+    '<svg class="ui-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+
+// Short right/wrong sound effect on answering. Uses the Web Audio API (no audio
+// files) — two rising notes for correct, two low falling notes for wrong. Runs
+// on a click (a user gesture), so the audio context is allowed to play.
+let _fxCtx = null;
+function playAnswerSound(ok) {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    _fxCtx = _fxCtx || new AC();
+    const ctx = _fxCtx;
+    if (ctx.state === "suspended") ctx.resume();
+    const now = ctx.currentTime;
+    const notes = ok ? [660, 880] : [320, 200];
+    notes.forEach((f, i) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = ok ? "sine" : "triangle";
+      o.frequency.value = f;
+      const t = now + i * 0.09;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.13, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.13);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start(t);
+      o.stop(t + 0.15);
+    });
+  } catch (e) {
+    /* audio not available — silent */
+  }
+}
+
 // Escape text before putting it inside innerHTML — important for values that
 // come from an external source (e.g. the Wikimedia image API).
 function escapeHTML(s) {
@@ -649,7 +692,7 @@ function ensureExamples(cb) {
   if (examplesLoading) return;
   examplesLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/examples.js?v=82";
+  s.src = "js/data/examples.js?v=86";
   const done = (ok) => {
     if (ok) mergeExamples();
     else examplesLoaded = true; // degrade gracefully to the primary example
@@ -678,7 +721,7 @@ function ensureCharInfo(cb) {
   if (charInfoLoading) return;
   charInfoLoading = true;
   const s = document.createElement("script");
-  s.src = "js/data/charinfo.js?v=82";
+  s.src = "js/data/charinfo.js?v=86";
   const done = () => {
     charInfoLoaded = true; // charinfo.js has assigned DB.charInfo by now
     charInfoLoading = false;

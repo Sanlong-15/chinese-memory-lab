@@ -20,6 +20,7 @@ function renderTypingTask(host, word, done) {
     if (answered) return;
     answered = true;
     const ok = normPinyin(input.value) === normPinyin(word.pinyin);
+    if (typeof playAnswerSound === "function") playAnswerSound(ok);
     if (!ok && typeof recordMistake === "function") recordMistake("wrong-pinyin");
     const parts =
       word.breakdown && word.breakdown !== "-"
@@ -162,6 +163,7 @@ function renderOrderTask(host, word, done) {
       .map((x) => x.textContent)
       .join("");
     const ok = built === target;
+    if (typeof playAnswerSound === "function") playAnswerSound(ok);
     if (!ok && typeof recordMistake === "function") recordMistake("word-order");
     fb.innerHTML = ok
       ? `<span class="fb-ok">Correct!</span>`
