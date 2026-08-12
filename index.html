@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=100">
+<link rel="stylesheet" href="css/style.css?v=101">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -279,6 +279,7 @@
       <div class="seg" id="dirToggle" aria-label="Card direction">
         <button id="dir-recognize" class="mode-btn seg-btn active" title="See the characters, recall the meaning">汉字 → EN</button>
         <button id="dir-recall" class="mode-btn seg-btn" title="See the meaning, recall the characters (harder, stronger memory)">EN → 汉字</button>
+        <button id="dir-pinyin" class="mode-btn seg-btn" title="See the pinyin, recall the word & meaning">拼音 → 汉字</button>
       </div>
 
       <div class="filter-menu" id="studyFilterMenu">
@@ -313,7 +314,6 @@
     <div class="study-wrap">
       <div class="flashcard" id="flashcard">
         <div class="zi" id="fc-zi">你</div>
-        <div class="fc-front-py" id="fc-front-py"></div>
         <div class="prompt-hint hint">Tap to reveal pinyin, meaning &amp; memory story</div>
         <div class="revealed">
           <div class="zi ans" id="fc-answer"></div>
@@ -581,30 +581,30 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=100"></script>
+<script defer src="js/shared/observability.js?v=101"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=100"></script>
-<script defer src="js/data/structures.js?v=100"></script>
-<script defer src="js/data/grammar.js?v=100"></script>
-<script defer src="js/data/course.js?v=100"></script>
+<script defer src="js/data/words.js?v=101"></script>
+<script defer src="js/data/structures.js?v=101"></script>
+<script defer src="js/data/grammar.js?v=101"></script>
+<script defer src="js/data/course.js?v=101"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=100"></script>
-<script defer src="js/domain/srs.js?v=100"></script>
+<script defer src="js/domain/logic.js?v=101"></script>
+<script defer src="js/domain/srs.js?v=101"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=100"></script>
+<script defer src="js/shared/core.js?v=101"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=100"></script>
+<script defer src="js/app/detail.js?v=101"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=100"></script>
-<script defer src="js/features/flashcards/study.js?v=100"></script>
-<script defer src="js/features/flashcards/review.js?v=100"></script>
-<script defer src="js/app/ui.js?v=100"></script>
-<script defer src="js/features/today/session.js?v=100"></script>
-<script defer src="js/features/practice/practice.js?v=100"></script>
-<script defer src="js/features/course/course.js?v=100"></script>
+<script defer src="js/features/practice/reference.js?v=101"></script>
+<script defer src="js/features/flashcards/study.js?v=101"></script>
+<script defer src="js/features/flashcards/review.js?v=101"></script>
+<script defer src="js/app/ui.js?v=101"></script>
+<script defer src="js/features/today/session.js?v=101"></script>
+<script defer src="js/features/practice/practice.js?v=101"></script>
+<script defer src="js/features/course/course.js?v=101"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=100"></script>
+<script defer src="js/app/analytics.js?v=101"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=100"></script>
+<script defer src="js/app/main.js?v=101"></script>
 </body>
 </html>

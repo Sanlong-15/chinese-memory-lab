@@ -68,21 +68,35 @@ function paintFlashcard(w, dir) {
   const zi = document.getElementById("fc-zi");
   const ans = document.getElementById("fc-answer");
   const hint = document.querySelector("#flashcard .prompt-hint");
+  const py = document.getElementById("fc-py");
+  const en = document.getElementById("fc-en");
+  const kh = document.getElementById("fc-kh");
+  zi.classList.remove("recall-prompt");
   if (dir === "recall") {
+    // front = meaning; reveal = characters + pinyin + Khmer
     zi.textContent = w.english;
     zi.classList.add("recall-prompt");
     ans.textContent = w.chinese;
-    document.getElementById("fc-py").textContent = w.pinyin;
-    document.getElementById("fc-en").textContent = "";
-    document.getElementById("fc-kh").textContent = w.khmer;
+    py.textContent = w.pinyin;
+    en.textContent = "";
+    kh.textContent = w.khmer;
     if (hint) hint.textContent = "Say the characters, then tap to check";
+  } else if (dir === "pinyin") {
+    // front = pinyin; reveal = word + English + Khmer
+    zi.textContent = w.pinyin;
+    zi.classList.add("recall-prompt");
+    ans.textContent = w.chinese;
+    py.textContent = "";
+    en.textContent = w.english;
+    kh.textContent = w.khmer;
+    if (hint) hint.textContent = "Tap to reveal the word & meaning";
   } else {
+    // recognize: front = characters; reveal = pinyin + meaning + Khmer
     zi.textContent = w.chinese;
-    zi.classList.remove("recall-prompt");
     ans.textContent = "";
-    document.getElementById("fc-py").textContent = w.pinyin;
-    document.getElementById("fc-en").textContent = w.english;
-    document.getElementById("fc-kh").textContent = w.khmer;
+    py.textContent = w.pinyin;
+    en.textContent = w.english;
+    kh.textContent = w.khmer;
     if (hint) hint.textContent = "Tap to reveal pinyin, meaning & memory story";
   }
 }
@@ -92,10 +106,7 @@ function renderBrowseCard() {
   const card = document.getElementById("flashcard");
   card.classList.remove("flipped");
   if (!w) return;
-  paintFlashcard(w, "recognize");
-  // Browse is for reading, so show the pinyin on the front too (before flip).
-  const fp = document.getElementById("fc-front-py");
-  if (fp) fp.textContent = w.pinyin;
+  paintFlashcard(w, studyDir); // browse respects the chosen direction (incl. pinyin)
   document.getElementById("progressNote").textContent =
     studyIndex + 1 + " / " + studyList.length;
 }
@@ -122,9 +133,6 @@ function renderReviewCard() {
   const ratingRow = document.getElementById("ratingRow");
   card.classList.remove("flipped");
   ratingRow.classList.remove("show");
-  // review is a recall test — never reveal pinyin on the front
-  const fp = document.getElementById("fc-front-py");
-  if (fp) fp.textContent = "";
   updateSrsStats();
 
   if (reviewQueue.length === 0) {
@@ -433,6 +441,8 @@ function setStudyDir(dir) {
   document
     .getElementById("dir-recall")
     .classList.toggle("active", dir === "recall");
+  const dp = document.getElementById("dir-pinyin");
+  if (dp) dp.classList.toggle("active", dir === "pinyin");
   // re-paint the current card without losing the queue or its schedule
   const card = document.getElementById("flashcard");
   card.classList.remove("flipped");
@@ -440,7 +450,7 @@ function setStudyDir(dir) {
   if (studyMode === "review") {
     if (reviewQueue.length) paintFlashcard(reviewQueue[0], studyDir);
   } else if (studyList[studyIndex]) {
-    paintFlashcard(studyList[studyIndex], "recognize");
+    paintFlashcard(studyList[studyIndex], studyDir);
   }
 }
 
@@ -493,3 +503,4 @@ document.getElementById("mode-review").addEventListener("click", () => setStudyM
 document.getElementById("mode-browse").addEventListener("click", () => setStudyMode("browse"));
 document.getElementById("dir-recognize").addEventListener("click", () => setStudyDir("recognize"));
 document.getElementById("dir-recall").addEventListener("click", () => setStudyDir("recall"));
+document.getElementById("dir-pinyin").addEventListener("click", () => setStudyDir("pinyin"));
