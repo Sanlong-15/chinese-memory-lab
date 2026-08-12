@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=95">
+<link rel="stylesheet" href="css/style.css?v=100">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3F6F5E">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -74,17 +74,41 @@
         <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, or English..." aria-label="Search words by Chinese, pinyin, English, or Khmer">
       </div>
       <button class="filter-chip active" data-level="ALL">All</button>
-      <button class="filter-chip" data-level="HSK1">HSK 1</button>
-      <button class="filter-chip" data-level="HSK2">HSK 2</button>
-      <button class="filter-chip" data-level="HSK3">HSK 3</button>
-      <button class="filter-chip" data-level="HSK4">HSK 4</button>
-      <button class="filter-chip" data-level="L11">Boya L11</button>
-      <button class="filter-chip" data-level="L12">Boya L12</button>
-      <button class="filter-chip" data-level="L13">Boya L13</button>
-      <button class="filter-chip" data-level="L14">Boya L14</button>
-      <button class="filter-chip" data-level="GCP5">GCP7 L5</button>
-      <button class="filter-chip" data-level="GCP6">GCP7 L6</button>
-      <button class="filter-chip" data-level="GCP7">GCP7 L7</button>
+      <div class="filter-menu lvl-menu">
+        <button class="filter-trigger lvl-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Filter by HSK level">
+          <span class="lvl-lbl">HSK</span>
+          <span class="filter-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="filter-pop lvl-pop" role="menu" hidden>
+          <button class="filter-chip lvl-opt" data-level="HSK1">HSK 1</button>
+          <button class="filter-chip lvl-opt" data-level="HSK2">HSK 2</button>
+          <button class="filter-chip lvl-opt" data-level="HSK3">HSK 3</button>
+          <button class="filter-chip lvl-opt" data-level="HSK4">HSK 4</button>
+        </div>
+      </div>
+      <div class="filter-menu lvl-menu">
+        <button class="filter-trigger lvl-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Filter by Boya level">
+          <span class="lvl-lbl">Boya</span>
+          <span class="filter-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="filter-pop lvl-pop" role="menu" hidden>
+          <button class="filter-chip lvl-opt" data-level="L11">Boya L11</button>
+          <button class="filter-chip lvl-opt" data-level="L12">Boya L12</button>
+          <button class="filter-chip lvl-opt" data-level="L13">Boya L13</button>
+          <button class="filter-chip lvl-opt" data-level="L14">Boya L14</button>
+        </div>
+      </div>
+      <div class="filter-menu lvl-menu">
+        <button class="filter-trigger lvl-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Filter by GCP7 lesson">
+          <span class="lvl-lbl">GCP7</span>
+          <span class="filter-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="filter-pop lvl-pop" role="menu" hidden>
+          <button class="filter-chip lvl-opt" data-level="GCP5">GCP7 L5</button>
+          <button class="filter-chip lvl-opt" data-level="GCP6">GCP7 L6</button>
+          <button class="filter-chip lvl-opt" data-level="GCP7">GCP7 L7</button>
+        </div>
+      </div>
       <button class="filter-chip" data-level="BOOKMARKS">★ Saved</button>
       <div class="filter-menu" id="wordFilterMenu">
         <button class="filter-trigger" id="wordFilterTrigger" aria-haspopup="true" aria-expanded="false">
@@ -289,6 +313,7 @@
     <div class="study-wrap">
       <div class="flashcard" id="flashcard">
         <div class="zi" id="fc-zi">你</div>
+        <div class="fc-front-py" id="fc-front-py"></div>
         <div class="prompt-hint hint">Tap to reveal pinyin, meaning &amp; memory story</div>
         <div class="revealed">
           <div class="zi ans" id="fc-answer"></div>
@@ -556,30 +581,30 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <!-- observability: logger + global error handling (loads first) -->
-<script defer src="js/shared/observability.js?v=95"></script>
+<script defer src="js/shared/observability.js?v=100"></script>
 <!-- data layer -->
-<script defer src="js/data/words.js?v=95"></script>
-<script defer src="js/data/structures.js?v=95"></script>
-<script defer src="js/data/grammar.js?v=95"></script>
-<script defer src="js/data/course.js?v=95"></script>
+<script defer src="js/data/words.js?v=100"></script>
+<script defer src="js/data/structures.js?v=100"></script>
+<script defer src="js/data/grammar.js?v=100"></script>
+<script defer src="js/data/course.js?v=100"></script>
 <!-- domain (pure logic + SRS storage) -->
-<script defer src="js/domain/logic.js?v=95"></script>
-<script defer src="js/domain/srs.js?v=95"></script>
+<script defer src="js/domain/logic.js?v=100"></script>
+<script defer src="js/domain/srs.js?v=100"></script>
 <!-- shared helpers -->
-<script defer src="js/shared/core.js?v=95"></script>
+<script defer src="js/shared/core.js?v=100"></script>
 <!-- app shell (nav, word detail) -->
-<script defer src="js/app/detail.js?v=95"></script>
+<script defer src="js/app/detail.js?v=100"></script>
 <!-- features -->
-<script defer src="js/features/practice/reference.js?v=95"></script>
-<script defer src="js/features/flashcards/study.js?v=95"></script>
-<script defer src="js/features/flashcards/review.js?v=95"></script>
-<script defer src="js/app/ui.js?v=95"></script>
-<script defer src="js/features/today/session.js?v=95"></script>
-<script defer src="js/features/practice/practice.js?v=95"></script>
-<script defer src="js/features/course/course.js?v=95"></script>
+<script defer src="js/features/practice/reference.js?v=100"></script>
+<script defer src="js/features/flashcards/study.js?v=100"></script>
+<script defer src="js/features/flashcards/review.js?v=100"></script>
+<script defer src="js/app/ui.js?v=100"></script>
+<script defer src="js/features/today/session.js?v=100"></script>
+<script defer src="js/features/practice/practice.js?v=100"></script>
+<script defer src="js/features/course/course.js?v=100"></script>
 <!-- analytics (GA4, off until a Measurement ID is set) -->
-<script defer src="js/app/analytics.js?v=95"></script>
+<script defer src="js/app/analytics.js?v=100"></script>
 <!-- app entry -->
-<script defer src="js/app/main.js?v=95"></script>
+<script defer src="js/app/main.js?v=100"></script>
 </body>
 </html>

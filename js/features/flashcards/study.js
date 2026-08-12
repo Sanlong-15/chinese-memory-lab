@@ -93,6 +93,9 @@ function renderBrowseCard() {
   card.classList.remove("flipped");
   if (!w) return;
   paintFlashcard(w, "recognize");
+  // Browse is for reading, so show the pinyin on the front too (before flip).
+  const fp = document.getElementById("fc-front-py");
+  if (fp) fp.textContent = w.pinyin;
   document.getElementById("progressNote").textContent =
     studyIndex + 1 + " / " + studyList.length;
 }
@@ -119,6 +122,9 @@ function renderReviewCard() {
   const ratingRow = document.getElementById("ratingRow");
   card.classList.remove("flipped");
   ratingRow.classList.remove("show");
+  // review is a recall test — never reveal pinyin on the front
+  const fp = document.getElementById("fc-front-py");
+  if (fp) fp.textContent = "";
   updateSrsStats();
 
   if (reviewQueue.length === 0) {

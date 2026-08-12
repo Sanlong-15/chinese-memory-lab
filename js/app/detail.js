@@ -332,6 +332,63 @@ document.querySelectorAll(".filter-chip").forEach((btn) => {
   });
 });
 
+// Level dropdowns (HSK, Boya, …): each groups its levels under one menu. The
+// level itself is set by the generic .filter-chip handler above; this only
+// opens/closes the menus and reflects the choice on each trigger. Because the
+// grid shows one level at a time, picking in one dropdown (or any plain chip)
+// resets the others back to neutral.
+(function initLevelDropdowns() {
+  const menus = Array.from(document.querySelectorAll("#wordsView .lvl-menu"));
+  if (!menus.length) return;
+  const ctrls = menus.map((menu) => {
+    const trigger = menu.querySelector(".lvl-trigger");
+    const pop = menu.querySelector(".lvl-pop");
+    const lbl = menu.querySelector(".lvl-lbl");
+    const def = lbl.textContent; // "HSK" / "Boya" — what to reset to
+    const closePop = () => {
+      pop.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+    };
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const wasOpen = !pop.hidden;
+      ctrls.forEach((c) => c.closePop()); // close any other open menu first
+      if (!wasOpen) {
+        pop.hidden = false;
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+    return { menu, trigger, pop, lbl, def, closePop };
+  });
+  const resetOthers = (keep) =>
+    ctrls.forEach((c) => {
+      if (c !== keep) {
+        c.lbl.textContent = c.def;
+        c.trigger.classList.remove("active");
+      }
+    });
+  ctrls.forEach((c) => {
+    c.pop.querySelectorAll(".lvl-opt").forEach((opt) => {
+      opt.addEventListener("click", () => {
+        c.lbl.textContent = opt.textContent; // e.g. "HSK 2" / "Boya L12"
+        c.trigger.classList.add("active");
+        c.closePop();
+        resetOthers(c);
+      });
+    });
+  });
+  // outside click closes every menu
+  document.addEventListener("click", (e) => {
+    ctrls.forEach((c) => {
+      if (!c.menu.contains(e.target)) c.closePop();
+    });
+  });
+  // choosing a plain level chip (All / GCP / Saved) resets all dropdowns
+  document
+    .querySelectorAll('#wordsView .controls .filter-chip[data-level]:not(.lvl-opt)')
+    .forEach((chip) => chip.addEventListener("click", () => resetOthers(null)));
+})();
+
 // Deep links: reflect the open tab in the URL (#study, #words, ...) so it can
 // be bookmarked and shared, and restored on reload.
 const VIEW_HASH = {
